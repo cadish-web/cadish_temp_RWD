@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+<!--[if lt IE 9]>
+<script src="../../base_temp/common/js/html5shiv.js"></script>
+<script src="../../base_temp/common/js/selectivizr.js"></script>
+<script src="../../base_temp/common/js/css3-mediaqueries.js"></script>
+<![endif]-->
+
+
+<!-- ▽ magnific-popup / ポップアップ＆モーダルウィンドウ / セットCSS有 / 共通要素ここから▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.magnific-popup.min.js"></script>
+<link rel="stylesheet" href="common/css/jquery.magnific-popup.css" />
+<link rel="stylesheet" href="common/css/style.css" />
+<!-- △ magnific-popup・共通要素ここまで△ -->
+
+
+<!-- ▽ 画像単体・ここから▽ -->
+<script>
+$(document).ready(function() {
+	$('.popup').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		closeBtnInside: false,
+		fixedContentPos: true,
+		mainClass: 'mfp-no-margins mfp-with-zoom',
+		image: {
+			verticalFit: true
+		},
+		zoom: {
+			enabled: true,
+			duration: 300
+		}
+	});
+});
+</script>
+<!-- △ 画像単体・ここまで△ -->
+
+
+<!-- ▽ ギャラリー・ここから▽ -->
+<script>
+$(document).ready(function() {
+	$('.popup-gallery').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		gallery: { //ギャラリー表示にする
+			enabled:true
+		}
+	});
+});
+</script>
+<!-- △ ギャラリー・ここまで△ -->
+
+
+<!-- ▽ インラインで画像とテキストを表示・ここから▽ -->
+<script>
+$(document).ready(function() {
+	$('.popup-modal').magnificPopup({
+		type: 'inline',
+		preloader: false
+	});
+	$(document).on('click', '.popup-modal-dismiss', function (e) {
+		e.preventDefault();
+		$.magnificPopup.close();
+	});
+});
+</script>
+<!-- △ インラインで画像とテキストを表示・ここまで△ -->
+
+
+<!-- ▽ iframeで表示・ここから▽ -->
+<script>
+$(document).ready(function() {
+  $('.popup-iframe').magnificPopup({
+    type: 'iframe',
+    disableOn: 640, //ウィンドウ幅が640px以下だったらモーダル表示させずにリンク先へ遷移
+    mainClass: 'mfp-fade',
+    removalDelay: 200,
+    preloader: false,
+    fixedContentPos: false
+  });
+});
+</script>
+<!-- △ iframeで表示・ここまで△ -->
+
+
+<style>
+/* サンプル用 */
+	section:last-child{ margin: 0 auto 250px;}
+</style>
+
+</head>
+<body>
+<article>
+
+	<section>
+		<h1>モーダルウィンドウ：Magnific Popup</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>モーダルウィンドウ用プラグイン：　同一ページ内複数設置可・レスポンシブ対応</dd>
+		</dl>
+		<dl>
+			<dt>参考サイト</dt>
+			<dd>
+			<ul>
+				<li><a href="http://gimmicklog.main.jp/jquery/180/" target="_blank">Magnific Popup で色んなモーダルウィンドウを作ってみる｜ Gimmick log</a>　配布サイト</li>
+				<li><a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank">Magnific Popup</a>　配布サイト</li>
+			</ul>
+			</dd>
+		</dl>
+	</section>
+
+	<section>
+	<h2>画像単体</h2>
+	<ul class="popup_list">
+		<li><a href="../common/img/sample_img_s01.jpg" class="popup" title="ここにテキストを入れることができます。ここにテキストを入れることができます。"><img src="../common/img/sample_img_s01.jpg" alt=""></a></li>
+		<li><a href="../common/img/sample_img_s02.jpg" class="popup" title="ここにテキストを入れることができます。ここにテキストを入れることができます。"><img src="../common/img/sample_img_s02.jpg" alt=""></a></li>
+		<li><a href="../common/img/sample_img_s03.jpg" class="popup" title="ここにテキストを入れることができます。ここにテキストを入れることができます。"><img src="../common/img/sample_img_s03.jpg" alt=""></a></li>
+		<li><a href="../common/img/sample_img_s04.jpg" class="popup" title="ここにテキストを入れることができます。ここにテキストを入れることができます。"><img src="../common/img/sample_img_s04.jpg" alt=""></a></li>
+	</ul>
+	</section>
+
+
+	<section>
+	<h2>ギャラリー</h2>
+	<ul class="popup-gallery">
+		<li><a href="../common/img/sample_img_s01.jpg" title="ここにテキストを入れることができます。ここにテキストを入れることができます。"><img src="../common/img/sample_img_s01.jpg" alt=""></a></li>
+		<li><a href="../common/img/sample_img_s02.jpg" title="ここにテキストを入れることができます。ここにテキストを入れることができます。"><img src="../common/img/sample_img_s02.jpg" alt=""></a></li>
+		<li><a href="../common/img/sample_img_s03.jpg" title="ここにテキストを入れることができます。ここにテキストを入れることができます。"><img src="../common/img/sample_img_s03.jpg" alt=""></a></li>
+		<li><a href="../common/img/sample_img_s04.jpg" title="ここにテキストを入れることができます。ここにテキストを入れることができます。"><img src="../common/img/sample_img_s04.jpg" alt=""></a></li>
+	</ul>
+	</section>
+
+
+	<section>
+	<h2>インラインで画像とテキストを表示</h2>
+	<ul class="popup_modal">
+		<li>
+			<a class="popup-modal" href="#sample01">Open 01</a>
+			<div id="sample01" class="inline-block mfp-hide">
+				<h3>画像＆テキストを表示</h3>
+				<p class="photo"><img src="../common/img/sample_img_s01.jpg" alt=""></p>
+				<p>ここにテキストを入れることができます。キャプションを付けたい時なんかに便利です。</p>
+			</div>
+		</li>
+		<li>
+			<a class="popup-modal" href="#sample02">Open 02</a>
+			<div id="sample02" class="inline-block mfp-hide">
+				<h3>画像＆テキストを表示</h3>
+				<p class="photo"><img src="../common/img/sample_img_s02.jpg" alt=""></p>
+				<p>ここにテキストを入れることができます。キャプションを付けたい時なんかに便利です。</p>
+			</div>
+		</li>
+			<li>
+			<a class="popup-modal" href="#sample03">Open 03</a>
+			<div id="sample03" class="inline-block mfp-hide">
+				<h3>画像＆テキストを表示</h3>
+				<p class="photo"><img src="../common/img/sample_img_s03.jpg" alt=""></p>
+				<p>ここにテキストを入れることができます。キャプションを付けたい時なんかに便利です。</p>
+			</div>
+		</li>
+		<li>
+			<a class="popup-modal" href="#sample04">Open 04</a>
+			<div id="sample04" class="inline-block mfp-hide">
+				<h3>画像＆テキストを表示</h3>
+				<p class="photo"><img src="../common/img/sample_img_s04.jpg" alt=""></p>
+				<p>ここにテキストを入れることができます。キャプションを付けたい時なんかに便利です。</p>
+			</div>
+		</li>
+	</ul>
+	</section>
+
+
+	<section>
+	<h2>iframeで表示</h2>
+	<ul>
+		<li><a class="popup-iframe" href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom">Google Map</a></li>
+		<li><a class="popup-iframe" href="http://www.youtube.com/watch?v=NZlfxWMr7nc">YouTube動画</a></li>
+		<li><a class="popup-iframe" href="http://www.apple.com/jp/">Apple</a></li>
+	</ul>
+	</section>
+
+
+</article>
+</body>
+</html>

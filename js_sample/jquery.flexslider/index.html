@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet" href="../common/css/sample_style.css" />
+<!--[if lt IE 9]>
+<script src="../../base_temp/common/js/html5shiv.js"></script>
+<script src="../../base_temp/common/js/selectivizr.js"></script>
+<script src="../../base_temp/common/js/css3-mediaqueries.js"></script>
+<![endif]-->
+
+
+<!-- ▽ flexslider / レスポンシブ対応スライダー ・セットCSS有 / 共通要素ここから▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.flexslider-min.js"></script>
+<link rel="stylesheet" href="common/css/jquery.flexslider.css" />
+<link rel="stylesheet" href="common/css/style.css" />
+<!-- △ flexslider・共通要素ここまで△ -->
+
+<!-- ▽フェードイン＆フェードアウト・ここから▽ -->
+<script>
+$(document).ready(function() {
+	$('.flex_fade').flexslider({
+		animation: "fade",
+		slideshowSpeed: 5000,
+		animationSpeed: 2500,
+		directionNav: false, // 前後へのナビゲーション　表示させたい場合は true に変更
+		controlNav: false,     // ページ送り　表示させたい場合は true に変更
+		pauseOnAction:false,
+		touch: false
+	});
+});
+</script>
+<!-- △フェードイン＆フェードアウト・ここまで△ -->
+
+<!-- ▽ サムネイル付き＆フェードイン・フェードアウト・ここから▽ -->
+<script>
+$(document).ready(function() {
+		$('.flex_thum_fade').flexslider({
+		animation: "fade",
+		slideshowSpeed: 5000,
+		animationSpeed: 2500,
+		controlNav: "thumbnails",
+		directionNav: true,        // 前後へのナビゲーション　表示させない場合は false に変更
+		pauseOnAction:false,    // ページ送り　表示させたい場合は true に変更
+		touch: false
+	});
+});
+</script>
+<!-- △ サムネイル付き＆フェードイン・フェードアウト・ここまで△ -->
+
+<!-- ▽ サムネイル付き＆スライド・ここから▽ -->
+<script>
+$(document).ready(function() {
+		$('.flex_thum_slide').flexslider({
+		animation: "slide",
+		slideshowSpeed: 5000,
+		animationSpeed: 2500,
+		controlNav: "thumbnails",
+		directionNav: true,        // 前後へのナビゲーション　表示させない場合は false に変更
+		pauseOnAction:false,    // ページ送り　表示させたい場合は true に変更
+		touch: false
+	});
+});
+</script>
+<!-- △ サムネイル付き＆スライド・ここまで△ -->
+
+</head>
+<body>
+<article>
+
+	<section>
+		<h1>flexslider</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>色々できる多機能スライダー：　同一ページ内複数設置可・レスポンシブ対応</dd>
+		</dl>
+		<dl>
+			<dt>参考サイト</dt>
+			<dd>
+			<ul>
+				<li><a href="http://on-ze.com/archives/409" target="_blank">超万能スライダー FlexSlider の使い方をマスターする。｜ ONZE</a>　※オプション設定が細かく紹介されています。</li>
+				<li><a href="http://memocarilog.info/jquery/3593" target="_blank">レスポンシブなコンテンツスライダー「FLEXSLIDER」jQueryプラグインの使い方とサンプル ｜ memocarilog</a></li>
+				<li><a href="https://www.woothemes.com/flexslider/" target="_blank">Flexslider｜ WooThemes</a>　※配布サイト</li>
+			</ul>
+			</dd>
+		</dl>
+	</section>
+
+
+	<section>
+		<h2>フェードイン＆フェードアウト</h2>
+		<p>クラス名：　flex_fade　（bxSliderでも同様の事ができます）</p>
+		<div class="flex_fade flexslider">
+			<ul class="slides">
+				<li><img src="../common/img/sample_img01.jpg" alt="" /></li>
+				<li><img src="../common/img/sample_img02.jpg" alt="" /></li>
+				<li><img src="../common/img/sample_img03.jpg" alt="" /></li>
+				<li><img src="../common/img/sample_img04.jpg" alt="" /></li>
+			</ul>
+		</div>
+	</section>
+
+
+	<section>
+		<h2>サムネイル付き＆フェードイン・フェードアウト</h2>
+		<p>クラス名：　flex_thum_fade</p>
+		<p>data属性でサムネイル画像を設定し、オプションで「controlNav: 'thumbnails'」とすることでサムネイルが生成されます。<br />
+		サムネイル用の画像を別途作成して表示させる事も可能です。</p>
+		<div class="flex_thum_fade flexslider">
+			<ul class="slides">
+				<li data-thumb="../common/img/sample_img01.jpg"><img src="../common/img/sample_img01.jpg" alt="" /></li>
+				<li data-thumb="../common/img/sample_img02.jpg"><img src="../common/img/sample_img02.jpg" alt="" /></li>
+				<li data-thumb="../common/img/sample_img03.jpg"><img src="../common/img/sample_img03.jpg" alt="" /></li>
+				<li data-thumb="../common/img/sample_img04.jpg"><img src="../common/img/sample_img04.jpg" alt="" /></li>
+			</ul>
+		</div>
+	</section>
+
+
+	<section>
+		<h2>サムネイル付き＆スライド</h2>
+		<p>クラス名：　flex_thum_slide</p>
+		<p>data属性でサムネイル画像を設定し、オプションで「controlNav: 'thumbnails'」とすることでサムネイルが生成されます。<br />
+		サムネイル用の画像を別途作成して表示させる事も可能です。</p>
+		<div class="flex_thum_slide flexslider">
+			<ul class="slides">
+				<li data-thumb="../common/img/sample_img01.jpg"><img src="../common/img/sample_img01.jpg" alt="" /></li>
+				<li data-thumb="../common/img/sample_img02.jpg"><img src="../common/img/sample_img02.jpg" alt="" /></li>
+				<li data-thumb="../common/img/sample_img03.jpg"><img src="../common/img/sample_img03.jpg" alt="" /></li>
+				<li data-thumb="../common/img/sample_img04.jpg"><img src="../common/img/sample_img04.jpg" alt="" /></li>
+			</ul>
+		</div>
+	</section>
+
+</article>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div id="header_wrap">
+<header id="header">
+<h1>
+	<span>施設名やディスクリプション等が入ります。</span>
+	<a href="./"><img src="../common/img/h_logo.png" alt="施設名"></a>
+</h1>
+<ul id="head_nav">
+	<li><a class="tel-link" href="tel:0000000000"><img src="../common/img/h_tel.png" alt="TEL.000-000-0000"></a></li>
+	<li><a class="btn" href="#" target="_blank"><img src="../common/img/h_planlist.png" alt="ご予約・プラン一覧"></a></li>
+</ul>
+</header>
+</div>

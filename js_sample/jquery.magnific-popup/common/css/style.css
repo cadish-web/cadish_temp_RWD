@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* ---------------------------------------------------
+	magnific-popup / ポップアップ＆モーダルウィンドウ
+------------------------------------------------------ */
+/* 画像単体 */
+.popup_list{}
+.popup_list:after { clear: both; content: "."; display: block; height: 0; font-size: 0; visibility: hidden; }
+
+.popup_list li{ margin: 0 0 15px; width: 25%; float: left;}
+.popup_list li img{ margin: 0 auto; width: 96%; border-radius: 25px;}
+
+
+/* ギャラリー */
+.popup-gallery{}
+.popup-gallery:after { clear: both; content: "."; display: block; height: 0; font-size: 0; visibility: hidden; }
+
+.popup-gallery li{ margin: 0 0 15px; width: 25%; float: left;}
+.popup-gallery li img{ margin: 0 auto; width: 96%; border-radius: 25px;}
+
+
+/* インライン */
+.popup_modal{}
+.popup_modal:after { clear: both; content: "."; display: block; height: 0; font-size: 0; visibility: hidden; }
+
+.popup_modal li  { float: left; width: 50%; text-align: center;}
+.popup_modal li a{ display: block; margin: 2px; padding: 10px 0; color: #fff; text-align: center; background: #555; }
+.popup_modal li a:hover{ text-decoration: none; background: #000; }
+
+.inline-block    { position: relative; margin: 10px auto; padding: 25px; width: 500px; max-width: 90%; background: #fff;}
+.inline-block h3 { margin: 0 0 15px; font-size: 18px; font-weight: 400; }
+.inline-block .photo img { width:100%; max-width: 100%; }
+.inline-block .photo,
+.inline-block .popup-modal-dismiss { margin: 15px 0; text-align: center; }
+
+
+/* iframe */
+.popup-iframe{}
+.popup-iframe:after { clear: both; content: "."; display: block; height: 0; font-size: 0; visibility: hidden; }
+
+
+
+
