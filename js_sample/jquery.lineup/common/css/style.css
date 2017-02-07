@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* ===================================================
+◇　js & jQuery Style CSS　◇
+====================================================== */
+
+/* ---------------------------------------------------
+	lineup
+------------------------------------------------------ */
+.item {
+	width: 24%; float: left; padding: 10px; margin: 0 1% 10px 0;
+	background: #ccc; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
+}
+.item:nth-of-type(4n) { margin-right: 0;}
+section:after { clear: both; content: "."; display: block; height: 0; font-size: 0; visibility: hidden;}
+
+@media screen and (max-width: 1000px) {
+	.item { width: 32%; margin-right: 2% !important;}
+	.item:nth-of-type(3n) { margin-right: 0 !important;}
+}
+@media screen and (max-width: 768px) {
+	.item { width: 49%; margin-right: 0 !important;}
+	.item:nth-of-type(2n) { float: right;}
+}
+@media screen and (max-width: 640px) {
+	.item { width: 100%;}
+}

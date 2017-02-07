@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+<!--[if lt IE 9]>
+<script src="../base_temp/common/js/html5shiv.js"></script>
+<script src="../base_temp/common/js/selectivizr.js"></script>
+<script src="../base_temp/common/js/css3-mediaqueries.js"></script>
+<![endif]-->
+
+
+<!-- ▽ lineup / レスポンシブ対応 要素の高さ揃え / 共通要素ここから▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery-lineup.min.js"></script>
+<link href="common/css/style.css" rel="stylesheet">
+<script>
+$(window).on('load',function(){
+	$(".item").lineUp();
+});
+</script>
+<style>
+	article{ padding: 0 0 150px;}
+</style>
+<!-- △ lineup・ここまで△ -->
+</head>
+<body>
+<article>
+
+	<section>
+		<h1>要素の高さ揃え：lineup.js</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>指定した要素の高さを揃えます。フォントサイズ変更対応。<br>
+			オプションを使用して、ウィンドウサイズごとに揃えるかどうかを指定できます。<br>
+			自動的に横並びになっているカラムだけで高さを揃えてくれるので、レスポンシブサイトにも便利。</dd>
+		</dl>
+		<dl>
+			<dt>参考サイト</dt>
+			<dd>
+			<ul>
+				<li><a href="http://blog.mach3.jp/2013/03/04/jquery-lineup.html" target="_blank">ブロック要素の高さを行毎にあわせるjQueryプラグインを習作する｜Mach3.laBlog</a></li>
+				<li><a href="http://mach3.github.io/jquery-lineup/" target="_blank">jquery-lineup</a>　配布元</li>
+			</ul>
+			</dd>
+		</dl>
+	</section>
+
+	<section>
+		<div class="item">これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</div>
+		<div class="item">これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</div>
+		<div class="item">これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</div>
+		<div class="item">これはサンプルテキストです。 これはサンプルテキストです。</div>
+		<div class="item">これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。</div>
+		<div class="item">これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。 </div>
+		<div class="item">これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。 </div>
+		<div class="item">これはサンプルテキストです。 これはサンプルテキストです。</div>
+	</section>
+
+</article>
+</body>
+</html>

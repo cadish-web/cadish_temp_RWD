@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* ===================================================
+	Privacy CSS
+====================================================== */
+/* ---------------------------------------------------
+layout ※余白やらアイコンやらは施設に合わせて変えてください
+------------------------------------------------------ */
+
+#privacy article h3 { padding: 50px 0 10px; font-size: 20px;}
+#privacy article h4 { padding: 10px 0; font-size: 16px;}
+#privacy article h5 { padding: 0 0 5px;}
+
+#privacy article p { padding: 0 0 15px;}
+
+#privacy article li:before { content:'○'; padding: 0 0 5px;}
+
+#privacy article dt { padding: 5px 0;}
+#privacy article dd { padding: 0 10px;}
+
+#privacy article div { margin: 20px 0 10px; overflow: auto;}
+#privacy article table { width: 800px; text-align: center; table-layout: fixed;}
+#privacy article table caption { text-align: left;}
+#privacy article th,
+#privacy article td { border: 1px solid #ccc;}
+#privacy article th { background: #eee; font-weight: normal;}
+#privacy article p.ver_sp { display: none; padding: 5px 0 10px; font-size: 12px;}
+
+
+/*
+
+------------------------------------------------------ */

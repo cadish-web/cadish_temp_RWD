@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* ---------------------------------------------------
+	slick　/　カルーセルスライダー
+------------------------------------------------------ */
+#slick_area{ width: 100%; max-width: 100%; position: relative;}
+#slick_area h2,
+#slick_area p{ margin: 0 auto 25px; max-width: 1000px;}
+
+.slick_item{ position: relative; z-index: 100;}
+.slick_item:after{
+	clear: both; display: block; content: ".";
+	height: 0px; font-size: 0; visibility: hidden;
+}
+.slick_item .slick-slide    { text-align: center; }
+.slick_item .slick-slide img{ display: block; margin: 0 auto; text-align: center;}
+
+/* IE7 */
+#slick_area    { /height: auto; }
+.slick_item div{ /float: left; /margin: 0;}
+
+

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+<!--[if lt IE 9]>
+<script src="../../base_temp/common/js/html5shiv.js"></script>
+<script src="../../base_temp/common/js/selectivizr.js"></script>
+<script src="../../base_temp/common/js/css3-mediaqueries.js"></script>
+<![endif]-->
+
+
+<!-- ▽ jquery.easyResponsiveTabs.js / レスポンシブ対応タブ切り替え（タブ→アコーディオン） / セットCSS有 / 共通要素ここから▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.easyResponsiveTabs.js"></script>
+<link rel="stylesheet" href="common/css/jquery.easy-responsive-tabs.css" />
+<link rel="stylesheet" href="common/css/style.css" />
+<!-- △jquery.easyResponsiveTabs.js・共通要素ここまで△ -->
+
+
+<!-- ▽横並び・ここから▽ -->
+<script>
+$(document).ready(function() {
+	$('.acc_tab_block').easyResponsiveTabs({
+		type: 'default',
+		width: 'auto',
+		fit: true,
+		tabidentify: 'acc_tab',
+		closed: 'accordion',
+		activate: function(event) { // Callback function if tab is switched
+			var $tab = $(this);
+			var $info = $('#nested-tabInfo');
+			var $name = $('span', $info);
+			$name.text($tab.text());
+			$info.show();
+		}
+	});
+});
+</script>
+<!-- △横並び・ここまで△ -->
+
+
+<!-- ▽縦並び・ここから▽ -->
+<script>
+$(document).ready(function() {
+	$('.acc_tab_block_ver').easyResponsiveTabs({
+		type: 'vertical',
+		width: 'auto',
+		fit: true,
+		tabidentify: 'acc_tab_ver',
+		activate: function(event) { // Callback function if tab is switched
+			var $tab = $(this);
+			var $info = $('#nested-tabInfo');
+			var $name = $('span', $info);
+			$name.text($tab.text());
+			$info.show();
+		}
+	});
+});
+</script>
+<!-- △縦並び・ここまで△ -->
+
+
+<!-- ▽複合タイプ・ここから▽ -->
+<script>
+$(document).ready(function() {
+	// 親タブ
+	$('.acc_tab_block_parent').easyResponsiveTabs({
+		type: 'default',
+		width: 'auto',
+		fit: true,
+		tabidentify: 'acc_tab_group',
+		activate: function(event) { // Callback function if tab is switched
+			var $tab = $(this);
+			var $info = $('#nested-tabInfo');
+			var $name = $('span', $info);
+			$name.text($tab.text());
+			$info.show();
+		}
+	});
+
+	// 子タブ
+	$('.acc_tab_block_child').easyResponsiveTabs({
+		type: 'vertical',
+		width: 'auto',
+		fit: true,
+		tabidentify: 'acc_tab_ver1',
+	});
+});
+</script>
+<!-- △複合タイプ・ここまで△ -->
+
+
+</head>
+<body>
+<article>
+
+	<section>
+		<h1>タブ切り替え＆アコーディオン機能：jquery.easyResponsiveTabs.js</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>特徴：　同一ページ内複数設置可・レスポンシブ対応（768px以上 タブ → 768px以下 アコーディオン）</dd>
+		</dl>
+		<dl>
+			<dt>参考サイト</dt>
+			<dd>
+			<ul>
+				<li><a href="http://web-pc.net/jquery013" target="_blank">ブラウザ幅（ブレイクポイント）でタブメニューからアコーディオンメニューに切り替えるjQuery｜ WPC</a></li>
+				<li><a href="http://morobrand.net/mororeco/jquery/easyresponsivetabs/" target="_blank">マルチデバイスに対応してタブからアコーディオン表示に切り替える「Easy Responsive Tabs to Accordion」｜ mororeco</a></li>
+				<li><a href="http://coliss.com/articles/build-websites/operation/javascript/jquery-plugin-easy-responsive-tabs-to-accordion.html" target="_blank">[JS]コンテンツをデスクトップ時はタブに、タブレット・スマフォ時はアコーディオンにするスクリプト｜ coliss</a></li>
+			</ul>
+			</dd>
+		</dl>
+	</section>
+
+	<section>
+		<p><a href="index_02.html">アコーディオンを開きっぱなしにしたい場合はこちら　→</a></p>
+		<p><a href="index_03.html">googlemap併用サンプルはこちら　→</a></p>
+	</section>
+
+	<section>
+		<h2>横並びバージョン</h2>
+		<div class="acc_tab_block">
+			<ul class="resp-tabs-list acc_tab">
+				<li>タブ見出し1</li>
+				<li>タブ見出し2</li>
+				<li>タブ見出し3</li>
+			</ul>
+			<div class="resp-tabs-container acc_tab">
+				<div>
+					<p>タブ1のコンテンツ</p>
+					<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+					これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+				</div>
+				<div>
+					<p>タブ2のコンテンツ</p>
+					<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+					これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+				</div>
+				<div>
+					<p>タブ3のコンテンツ</p>
+					<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+					これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<h2>縦並びバージョン</h2>
+		<div class="acc_tab_block_ver">
+			<ul class="resp-tabs-list acc_tab_ver">
+				<li>タブ見出し1</li>
+				<li>タブ見出し2</li>
+				<li>タブ見出し3</li>
+			</ul>
+			<div class="resp-tabs-container acc_tab_ver">
+				<div>
+					<p>タブ1のコンテンツ</p>
+					<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+						これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+				</div>
+				<div>
+					<p>タブ2のコンテンツ</p>
+					<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+						これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+				</div>
+				<div>
+					<p>タブ3のコンテンツ</p>
+					<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+						これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section>
+		<h2>複合バージョン</h2>
+	<div class="acc_tab_block_parent">
+			<ul class="resp-tabs-list acc_tab_group">
+				<li>親タブ見出し1</li>
+				<li>親タブ見出し2</li>
+				<li>親タブ見出し3</li>
+			</ul>
+			<div class="resp-tabs-container acc_tab_group">
+				<div>
+					<p>親タブ1のコンテンツ</p>
+					<!-- ▽ 子タブ切り替え ▽ -->
+					<div class="acc_tab_block_child">
+						<ul class="resp-tabs-list acc_tab_ver1">
+							<li>子タブ　見出し1</li>
+							<li>子タブ　見出し2</li>
+							<li>子タブ　見出し3</li>
+						</ul>
+						<div class="resp-tabs-container acc_tab_ver1">
+							<div>
+								<p>子タブ1のコンテンツ</p>
+								<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+								これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+							</div>
+							<div>
+								<p>子タブ2のコンテンツ</p>
+								<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+								これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+							</div>
+							<div>
+								<p>子タブ3のコンテンツ</p>
+								<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+								これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+							</div>
+						</div>
+					</div>
+					<!-- △ 子タブ切り替え △ -->
+				</div>
+				<div>
+					<p>親タブ2のコンテンツ</p>
+					<!-- ▽ 子タブ切り替え ▽ -->
+					<div class="acc_tab_block_child">
+						<ul class="resp-tabs-list acc_tab_ver1">
+							<li>子タブ　見出し1</li>
+							<li>子タブ　見出し2</li>
+							<li>子タブ　見出し3</li>
+						</ul>
+						<div class="resp-tabs-container acc_tab_ver1">
+							<div>
+								<p>子タブ1のコンテンツ</p>
+								<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+								これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+							</div>
+							<div>
+								<p>子タブ2のコンテンツ</p>
+								<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+								これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+							</div>
+							<div>
+								<p>子タブ3のコンテンツ</p>
+								<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+								これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+							</div>
+						</div>
+					</div>
+					<!-- △ 子タブ切り替え △ -->
+				</div>
+				<div>
+					<p>親タブ3のコンテンツ</p>
+					<!-- ▽ 子タブ切り替え ▽ -->
+					<div class="acc_tab_block_child">
+						<ul class="resp-tabs-list acc_tab_ver1">
+							<li>子タブ　見出し1</li>
+							<li>子タブ　見出し2</li>
+							<li>子タブ　見出し3</li>
+						</ul>
+						<div class="resp-tabs-container acc_tab_ver1">
+							<div>
+								<p>子タブ1のコンテンツ</p>
+								<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+								これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+							</div>
+							<div>
+								<p>子タブ2のコンテンツ</p>
+								<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+								これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+							</div>
+							<div>
+								<p>子タブ3のコンテンツ</p>
+								<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+								これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+							</div>
+						</div>
+					</div>
+					<!-- △ 子タブ切り替え △ -->
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+</article>
+</body>
+</html>

@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* ===================================================
+◇　js & jQuery Style CSS　◇
+====================================================== */
+/* ---------------------------------------------------
+	jquery.yuga.js
+------------------------------------------------------ */
+/* 予約番自動書き出し＆タブ切り替え
+------------------------------------------------------ */
+#recommend_tab{ margin: 0 auto 25px; width: 100%; max-width: 1100px;}
+
+#navi_menu_489ban{ width: 35%; float: left; padding: 15px 0;}
+.tabNav_489ban    { margin: 0; padding: 0;}
+.tabNav_489ban li { margin: 0 0 5px; }
+.tabNav_489ban   a{ display: block; padding: 10px; color: #555; line-height: 1.4;}
+
+.tabNav_489ban a:hover,
+.tabNav_489ban a.active {
+	color: #fff;
+	background: #8b0000;
+}
+
+.tab_489ban {
+	width: 63%; float:right;
+	margin:0 0 35px; padding: 15px;
+	background: #fff; border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+.tab_489ban .PlanView {
+	clear:both;
+	padding: 5px 0;
+	width: 100%;
+	border-bottom:1px dotted #ccc;
+}
+.tab_489ban .PlanView:last-child{ border-bottom: 0;}
+
+.tab_489ban .picture { width: 150px; float:left; }
+.tab_489ban .main_picture,
+.tab_489ban .main_picture img { width: 100%;}
+
+.tab_489ban .explan{ margin: 0 0 0 160px; }
+.tab_489ban .plan  { margin: 0 0 15px; }
+.tab_489ban .comment  { display:none;}
+.tab_489ban .pblist a {
+	color: #4a700c; padding: 5px 20px 5px 0; font-size: 12px; font-weight: bold;
+	background: url(../img/icon_arrow_g.gif) no-repeat right center;
+}
+
+#recommend_tab:after,
+.tab_489ban .PlanView:after{
+	clear: both; content: "."; display: block; height: 0;
+	font-size: 0; visibility: hidden;
+}
+
+
+@media screen and (max-width: 1100px) {
+	#recommend_tab{ width: 100%;}
+	.tabNav_489ban{ margin: 0 0 0 15px;}
+	.tab_489ban .PlanView { padding: 5px 15px 5px 0; box-sizing: border-box;}
+}
+@media screen and (max-width: 768px) {
+	#navi_menu_489ban,
+	.tab_489ban{ clear: both; width: 96%; float: none; margin: 0 auto 15px; padding: 0;}
+	#navi_menu_489ban{ border-bottom:1px dotted #333;}
+	.tabNav_489ban,
+	.tab_489ban .PlanView{ margin: 0; padding: 5px 0; width: 100%;}
+}
+@media screen and (max-width: 640px) {
+	.tab_489ban .picture,
+	.tab_489ban .explan{ clear: both; margin: 0 auto 15px; width: 96%; float: none; }
+}
+
