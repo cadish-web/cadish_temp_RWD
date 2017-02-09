@@ -5,5 +5,7 @@ $(function() {
 		return false;
 	});
 	//わざと1つ目を表示させておくことができます
-	$('#tabs a[href^="#panel"]:eq(0)').trigger('click');
+	//$('#tabs a[href^="#panel"]:eq(0)').trigger('click');
+	$("#tabs .panel").hide();
+	$("#tabs #panel1").show();
 })
