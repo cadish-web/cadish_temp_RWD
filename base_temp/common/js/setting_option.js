@@ -188,7 +188,13 @@ $(window).on('load',function(){
 //	var id = location.href.indexOf("?id=");
 //	if( id !== -1 ) {
 //		var target = $('#' + location.href.slice(id+4));
-//		var position = target.offset().top - 120;
+//		var position = target.offset().top - 120; //ナビの高さ分をマイナスする
+//
+//		//以下はレスポンシブ時ナビを格納する場合の処理です　必要ない場合は削除してください
+//		if ( winWidth <= 1050 ) { //1050 の箇所はナビが格納される数値を入れてください
+//			position += 120; //120 の箇所は上で入れたナビの高さと同じ数値を入れてください
+//		}
+//
 //		$("html, body").animate({scrollTop:position}, speed, "swing");
 //	}
 
