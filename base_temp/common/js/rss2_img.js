@@ -11,10 +11,10 @@ $(function () {
 
 			var insert = '';
 
-			//no image画像の設定（hogehoge.gif箇所を適宜変更してください）
-			var photo = ("<img src='hogehoge.gif' />");
+			//no image画像の設定（img/hogehoge.gif箇所を適宜変更してください）
+			var photo = ("<img src='img/hogehoge.gif' />");
 
-			insert += '<ul>';
+
 			for (var i = 0; i < getCount; i++) {
 				var thisItem = $('channel', data).children('item').eq(i);
 				var dd = new Date(thisItem.children('pubDate').text());
@@ -36,26 +36,33 @@ $(function () {
 					eimg += photo;
 				}
 
-				insert += '<li>';
+				insert += '<dl>';
 
+				// 画像の挿入
+				insert += '<dt>';
+				insert += '<a href="' + thisItem.children('link').text() + '">';
+				insert += eimg;
+				insert += '</a>';
+				insert += '</dt>';
+
+				insert += '<dd>';
 				// 日時の挿入
-				insert += '<p class="pubDate">';
+				insert += '<span class="date">';
 				insert += date;
-				insert += '</p>';
-
+				insert += '</span>';
 				// タイトルの挿入
-				insert += '<p class="title">';
 				insert += '<a href="' + thisItem.children('link').text() + '">';
 				insert += thisItem.children('title').text();
 				insert += '</a>';
-				insert += eimg;
-				insert += '</p>';
-
-				insert += '</li>';
+				// 本文の挿入
+				insert += '<span class="post">';
+				insert += thisItem.children('description').text();
+				insert += '</span>';
+				insert += '</dd>';
+				insert += '</dl>';
 			}
-			insert += '</ul>';
 
-			$("#feed_01").append(insert);
+			$("#feed").append(insert);
 		}
 	});
 });

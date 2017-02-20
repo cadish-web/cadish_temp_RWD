@@ -25,22 +25,25 @@ $(function () {
 				insert += '<li>';
 
 				// 日時の挿入
-				insert += '<p class="pubDate">';
+				insert += '<span class="date">';
 				insert += date;
-				insert += '</p>';
+				insert += '</span>';
 
 				// タイトルの挿入
-				insert += '<p class="title">';
 				insert += '<a href="' + thisItem.children('link').text() + '">';
 				insert += thisItem.children('title').text();
 				insert += '</a>';
-				insert += '</p>';
+
+				// 本文の挿入
+				insert += '<span class="post">';
+				insert += thisItem.children('description').text();
+				insert += '</span>';
 
 				insert += '</li>';
 			}
 			insert += '</ul>';
 
-			$("#feed_01").append(insert);
+			$("#feed").append(insert);
 		}
 	});
 });
