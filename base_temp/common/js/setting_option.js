@@ -63,28 +63,26 @@ $(document).ready(function() {
 			imgSize();
 		});
 
-
-		/* スムーススクロール＆ページ内リンクでナビの高さ分だけずらす
+		/* スムーススクロール
 		-------------------------------------------------------- */
-		$('a[href^=#]').click(function() {
+		$('a[href^=#]').click(function(){
 			var speed = 500;
 			var href= $(this).attr("href");
 			var target = $(href == "#" || href == "" ? 'html' : href);
-			var headerHeight = 100; //固定ヘッダーの高さ
-			var position = target.offset().top - headerHeight; //ターゲットの座標からヘッダの高さ分引く
-			$('body,html').animate({scrollTop:position}, speed, 'swing');
+			var position = target.offset().top;
+			$("html, body").animate({scrollTop:position}, speed, "swing");
 			return false;
 		});
 
-
-		/* スムーススクロールのみ
+		/* スムーススクロール＆同一ページ内リンクでナビの高さ分だけずらす
 		-------------------------------------------------------- */
-		// $('a[href^=#]').click(function(){
+		// $('a[href^=#]').click(function() {
 		// 	var speed = 500;
 		// 	var href= $(this).attr("href");
 		// 	var target = $(href == "#" || href == "" ? 'html' : href);
-		// 	var position = target.offset().top;
-		// 	$("html, body").animate({scrollTop:position}, speed, "swing");
+		// 	var headerHeight = 100; //固定ヘッダーの高さ
+		// 	var position = target.offset().top - headerHeight; //ターゲットの座標からヘッダの高さ分引く
+		// 	$('body,html').animate({scrollTop:position}, speed, 'swing');
 		// 	return false;
 		// });
 
@@ -107,11 +105,9 @@ $(window).on('load',function(){
 	if($('#home').length){
 		fade_pos = 1000;
 	}
-
 	if ($(this).scrollTop()+$(window).height() <= fade_pos) {
 		$("#page_top").css({"display":"none"});
 	}
-
 	$(window).on('scroll',function() {
 		if ($(this).scrollTop()+$(window).height() > fade_pos) {
 			$('#page_top').fadeIn(500);
