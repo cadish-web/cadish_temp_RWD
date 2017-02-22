@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* ===================================================
+Sidebar CSS / サイドバー（ウィジェット対応）
+====================================================== */
+/* ---------------------------------------------------
+	Side Block & Widget box
+------------------------------------------------------ */
+.side_block,
+.widget_box  { margin: 0 0 25px; padding: 0; max-width: 100%;}
+
+.side_block h3,
+.widget_box h3{
+	clear: both; margin: 0 0 15px; padding: 3px 0 3px 10px;
+	border-left: 5px solid #787878; border-top: 0; border-bottom:0; background:none;
+}
+
+.side_block p, .widget_box p  { margin: 0 10px 10px; line-height: 1.6;}
+.side_block ul, .widget_box ul{ margin: 0 0 10px; padding: 0; color: #787878; font-size: 13px; line-height: 1.6;}
+
+.side_block ul li,
+.widget_box ul li{
+	margin: 0 0 3px; padding: 5px 5px 5px 15px;
+	background: url(../img/icon_arrow_g.gif) no-repeat 0 12px; border-bottom: 1px dotted #aaa;
+}
+
+.side_block ul li ul li,
+.widget_box ul li ul li{ margin: 0; border: none;}
+
+.side_block:after,
+.widget_box:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
+
+
+/* ------------------------------------------------------
+	Searchform
+------------------------------------------------------ */
+.side_block #searchform label{ display: none;}
+.side_block #searchform input { margin: 0; padding: 0 1%; height: 25px; line-height: 25px; letter-spacing: 1px;}
+
+.side_block #searchform input[type="text"]{
+	margin: 0 auto 10px;
+	width: 98%;
+	max-width: 98%;
+	border: 1px solid #ddd;
+}
+.side_block #searchform input[type="submit"]{
+	width: 25%;
+	max-width: 25%;
+	height: 27px;
+	line-height: 27px;
+}
+
+
+/* ------------------------------------------------------
+	Calendar
+------------------------------------------------------ */
+#calendar_wrap{}
+#wp-calendar{ margin: 0; width: 100%; text-align: center;}
+#wp-calendar caption{ padding: 0 0 10px;}
+#wp-calendar th, #wp-calendar td{ padding: 5px 0;}
+
+#wp-calendar td a{}
+#wp-calendar #today{ background: #f0f0f0;}
+#wp-calendar #prev { text-align: left;}
+#wp-calendar #next { text-align: right;}

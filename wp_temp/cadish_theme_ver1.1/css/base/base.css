@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* ===================================================
+Base CSS / ヘッダー・Gナビ・フッター用CSS
+====================================================== */
+/* ---------------------------------------------------
+	Base Layout
+------------------------------------------------------ */
+#header_wrap,
+#nav_wrap,
+#contents_wrap,
+#footer_wrap{ margin: 0; padding: 0; width: 100%;}
+
+
+/* ---------------------------------------------------
+	Header
+------------------------------------------------------ */
+#header_wrap{ background: #000;}
+#header     { margin: 0 auto; padding: 15px 0; width: 1000px;}
+
+#header h1 {
+	padding: 10px; color: #fff; font-size: 11px; font-weight: normal;
+	line-height: 1.4; text-align: left;
+}
+#head_logo{ width: 250px; float: left;}
+
+#header #head_nav{ width: auto; padding: 10px 0 0; text-align: right;}
+#header #head_nav li{ display: inline-block; margin: 0 0 0 10px;}
+#header #head_nav li a{ display: block;}
+#header #head_nav li a:hover{ opacity: 0.75; filter: alpha(opacity=75); -moz-opacity: 0.75;}
+
+
+/* ---------------------------------------------------
+	G-nav
+------------------------------------------------------ */
+#nav_wrap{ background: #ccc;}
+#gnav{ margin: 0 auto; width: 1000px;}
+#gnav li{ width: 20%; float: left;}
+#gnav li#gn_01{ display: none;}
+#gnav a{ display:block; text-align: center;}
+#gnav a:hover{ background: #555;}
+
+
+/* ---------------------------------------------------
+	Footer
+------------------------------------------------------ */
+#backtop  { display: block; padding: 5px 0; background: #787878;}
+#backtop a{ display: block; margin: 0 auto; padding: 0; width: 1000px; font-size: 13px; line-height: 1.4; color: #fff; text-align: right;}
+
+#footer_wrap { background: #000;}
+#footer      { margin: 0 auto; padding: 25px 0; width: 1000px; color: #f3f3f3; font-size: 12px;}
+
+#footer address{ width: 300px; float: left; font-style: normal; line-height: 1.6;}
+#footer address img{ display: block; margin: 0 0 10px;}
+#footer address span{ display: block;}
+
+#fnav{ padding: 15px 0 0; text-align: right;}
+#fnav li{ display: inline-block; margin: 0 0 10px; padding: 0 0 0 12px; background: url(../img/icon_arrow_g.gif) no-repeat left center;}
+
+#copyright{ clear: both; padding: 25px 0; text-align: center; line-height: 1.6;}
+
+#footer a:link, #footer a:visited { color: #ccc; text-decoration: none;}
+#footer a:hover, #footer a:active { color: #f3f3f3; text-decoration: underline;}
+
+
+/* ---------------------------------------------------
+	clear
+------------------------------------------------------ */
+#header_wrap:after,
+#header:after,
+#nav_wrap:after,
+#gnav:after,
+#footer_wrap:after,
+#footer:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}

@@ -1,0 +1,181 @@
+@charset "utf-8";
+/* ===================================================
+Article CSS / 記事＆固定ページ用CSS
+====================================================== */
+/* ---------------------------------------------------
+	記事内共通要素
+------------------------------------------------------ */
+#main_area section{ margin: 0 0 35px;}
+#main_area .post_body{ margin: 0 0 15px; line-height: 1.6;}
+#main_area .postmeta_txt{
+	margin: 0; padding: 5px 10px; font-size: 13px;
+	text-align: right; color: #787878;
+	border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;
+}
+
+#main_area section:after,
+#main_area .post_body:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
+
+
+/* ---------------------------------------------------
+	見出し
+------------------------------------------------------ */
+#main_area section h2,
+#main_area section h3,
+#main_area section h4,
+#main_area section h5,
+#main_area section h6{ clear: both; font-weight: 400; line-height: 1.4;}
+
+#main_area section h2{ margin: 0 0 20px; padding: 10px; font-size: 20px; background: #f0f0f0;}
+#main_area section h3{ margin: 20px 0; padding: 5px 10px; font-size: 18px; border-left: 5px solid #787878;}
+#main_area section h4{ margin: 15px 0; padding: 3px 10px; font-size: 16px; border-left: 5px solid #ccc;}
+#main_area section h5,
+#main_area section h6{ margin: 15px 0; ont-size: 16px;}
+
+
+/* ---------------------------------------------------
+	画像
+------------------------------------------------------ */
+.post_body img{ margin: 0 0 10px; max-width: 100%;}
+.post_body img.alignnone  { display: block; margin: 0 0 10px;}
+.post_body img.aligncenter{ display: block; margin: 0 auto 10px; text-align: center;}
+.post_body img.alignleft  { display: block; margin: 0 10px 10px 0; float: left;}
+.post_body img.alignright { display: block; margin: 0 0 10px 10px; float: right;}
+
+@media screen and (max-width: 768px) {
+	.post_body img,
+	.post_body img.aligennone,
+	.post_body img.aligncenter,
+	.post_body img.alignleft,
+	.post_body img.alignright { clear: both; float: none; margin: 0 auto 15px; max-width: 100%;}
+}
+@media screen and (max-width: 640px) {
+	.post_body img,
+	.post_body img.aligennone,
+	.post_body img.aligncenter,
+	.post_body img.alignleft,
+	.post_body img.alignright { width: 100%;}
+}
+
+
+/* ---------------------------------------------------
+	段落・リスト・水平線
+------------------------------------------------------ */
+.post_body p { clear:both; margin: 0 10px 15px;}
+
+.post_body ul   { clear:both; margin: 15px 10px 25px;}
+.post_body ul li{ margin: 0 ; padding: 0 0 0 15px; line-height: 1.6; background: url(../img/icon_arrow_g.gif) no-repeat 0 8px;}
+.post_body ul li ul{ margin: 0 0 15px;}
+
+.post_body ol   { clear:both; margin: 10px 10px 15px 30px; list-style: decimal;}
+.post_body ol li{ margin: 0 0 3px; padding: 0; line-height: 1.6; background: none;}
+
+.post_body hr {
+	clear: both; display: block; padding: 10px 0;
+	border-top: 1px dotted #eee; border-bottom: 1px solid #fff;
+}
+
+.post_body p:after,
+.post_body ul:after,
+.post_body ol:after
+.post_body hr:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
+
+
+/* ---------------------------------------------------
+	引用文
+------------------------------------------------------ */
+.post_body blockquote{
+	clear:both; margin: 15px 10px; padding: 10px; border: 1px solid #eee; background: #f5f5f5;
+	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
+}
+.post_body blockquote p{ margin: 0;}
+
+
+/* ---------------------------------------------------
+	定義リスト
+------------------------------------------------------ */
+.post_body dl{ clear:both; margin: 15px 10px 25px; line-height: 1.6;}
+.post_body dt{ margin: 0; padding: 0 10px; font-weight: 400; line-height: 2; border-left: 5px solid #ccc; background: #f5f5f5;}
+.post_body dd{ margin: 0 0 10px; padding: 10px;}
+.post_body dd p  { margin: 0;}
+.post_body dd ul { margin: 5px 0 10px;}
+.post_body dd ol { margin: 5px 0 10px 20px;}
+
+
+/* ---------------------------------------------------
+	テーブル
+------------------------------------------------------ */
+.post_body table{
+	clear:both; margin: 15px auto 25px; width: 98%; line-height: 1.6;
+	border-collapse: collapse; border-spacing: 0; border: solid 1px #ccc;
+}
+.post_body table th{ padding: 5px; border: solid 1px #ccc; background: #f5f5f5;}
+.post_body table td{ padding: 5px; border: solid 1px #ccc;}
+
+
+/* ---------------------------------------------------
+	コメント ※使わない場合は削除して下さい。
+------------------------------------------------------ */
+#comments{ clear: both; margin: 0; padding: 25px 0;}
+
+#comments ol { margin: 10px 10px 35px; list-style: none;}
+#comments ol li { padding: 1px 0; border-bottom: 1px dotted #ccc;}
+#comments ol li .comment-body { padding:15px 10px 15px 80px; position: relative;}
+#comments ol.children { margin: 10px; border-top: 1px dotted #ccc;}
+#comments ol.children .comment-body { margin: 1px 0; background: #f5f5f5;}
+
+#comments img.avatar { top: 10px; left: 10px; position: absolute;}
+#comments .comment-author,
+#comments .comment-meta,
+#comments .commentmetadata,
+#comments p{ margin: 0 0 10px;}
+
+#commentform{ margin: 0 10px 25px; padding: 15px;}
+#commentform p    { margin: 0 15px 15px;}
+#commentform label{ display: block; margin: 0 0 10px;}
+
+#comments ol li:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
+#commentform input, #commentform textarea{ margin:0 auto; padding: 5px 3px; width: 98%; max-width: 98%; border: 1px solid #ddd; box-sizing:border-box;}
+
+@media screen and (max-width: 768px) {
+	#commentform input,
+	#commentform textarea{ width: 100%; max-width: 100%;}
+}
+@media screen and (max-width: 640px) {
+	#commentform   { margin: 0 0 25px; padding: 10px 0;}
+	#commentform p { margin: 0 auto 15px; width: 96%;}
+}
+
+
+/* ---------------------------------------------------
+	記事リスト
+------------------------------------------------------ */
+.post_list{ margin: 15px 0 35px; width: 100%;}
+.post_list li{
+	margin: 0 0 3px; padding: 5px 10px 5px 25px; color: #787878; line-height: 1.6;
+	background: url(../img/icon_arrow_g.gif) no-repeat 10px 12px; border-bottom: 1px dotted #aaa;
+}
+
+
+/* ---------------------------------------------------
+	記事ナビ（記事詳細ページ内 / 前後の記事へのリンク）
+------------------------------------------------------ */
+.article_nav       { margin: 15px 0 30px; width: 100%; color: #999; font-size: 13px; line-height: 1.6; overflow: hidden;}
+.article_nav:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
+
+.article_nav ul { list-style: none;}
+.article_nav li.prev { width: 45%; float: left; text-align:left; background: none;}
+.article_nav li.next { width: 45%; float: right; text-align:right; background: none;}
+
+
+/* ---------------------------------------------------
+	ページナビ（プラグイン）
+------------------------------------------------------ */
+.pagenavi_area       { clear: both; margin: 0 0 25px; padding: 0; width: 100%; font-size: 13px;}
+.pagenavi_area:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
+
+.wp-pagenavi { clear: both;}
+.wp-pagenavi span { display: block; float: left; margin: 2px; padding: 5px; text-decoration: none; border: 1px solid #fff;}
+.wp-pagenavi a    { display: block; float: left; margin: 2px; padding: 5px; color: #555; text-decoration: none; background: #f5f5f5; border: 1px solid #f5f5f5;}
+.wp-pagenavi a:hover { color: #4d5aaf; text-decoration: none; background: #f5f5f5; border: 1px solid #4d5aaf;}
+.wp-pagenavi span.current { color: #fff; background: #4d5aaf; border: 1px solid #4d5aaf;}

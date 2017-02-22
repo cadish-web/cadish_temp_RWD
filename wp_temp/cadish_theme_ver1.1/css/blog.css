@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* ===================================================
+Blog CSS / ブログ専用CSS
+====================================================== */
+
+ul{ list-style: none;}
+ul li, div, p{ word-wrap: break-word;}
+pre, span    { word-wrap: break-word; white-space: pre-wrap;}
+img{ max-width: 100%; height: auto; width: auto\9; /* ie8 */ border:0; vertical-align:bottom;}
+
+body {
+	color: #393e46; font-size: 14px; font-weight: normal; line-height: 1; background: #fff;
+	font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3","Hiragino Kaku GothicPro","Osaka","Verdana","Helvetica","Arial","ＭＳ Ｐゴシック", sans-serif;
+	-webkit-text-size-adjust: 100%;
+}
+
+input, select, textarea { font-size: 13px;}
+a:link, a:visited { color: #4d5aaf; text-decoration: none;}
+a:hover, a:active { color: #4d5aaf; text-decoration: underline;}
+a:hover img{ opacity: 0.75; filter: alpha(opacity=75); -moz-opacity: 0.75;}
+
+
+/* ---------------------------------------------------
+	Contents
+------------------------------------------------------ */
+#contents_wrap  { padding: 0 0 55px;}
+#contents       { clear: both; margin: 0 auto; width: 1000px;}
+
+/* breadcrumb */
+#breadcrumb{ margin: 15px auto 25px; padding: 0; width: 1000px; font-size: 13px; text-align: right;}
+#breadcrumb li{ display: inline; margin: 0; padding: 0; line-height: 1.6; background: none;}
+#breadcrumb li:before{ display: inline-block; margin: 0 10px; content: ">";}
+#breadcrumb li:first-child:before{ display: none;}
+
+/* main&side */
+#main_area{ width: 730px; float: left;}
+#side_area{ width: 230px; float: right;}
+
+#main_area article>p{ margin: 0 0 20px; font-size: 20px; font-weight: 400;}
+
+
+/* ---------------------------------------------------
+	clear
+------------------------------------------------------ */
+#contents_wrap:after,
+#contents:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
