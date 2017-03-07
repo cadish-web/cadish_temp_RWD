@@ -1,5 +1,6 @@
+var currentInfoWindow = null;//最後に出したウィンドウ
+
 var Map_Action = function() {
-	this.currentInfoWindow = null;//最後に出したウィンドウ																													
 	this.keyArray = {};
 
 	this.defaultNumber = 1; // 最初にオープンするウィンドウ
@@ -15,8 +16,8 @@ var Map_Action = function() {
 	this.keyArray[2] = { point : new google.maps.LatLng(36.0557259243218, 136.355438232421), contents : '<div style="width: 285px; overflow: hidden; color:#333333; text-align:left;"><p><span style="font-weight: bold; font-size:1.1em;">永平寺</span><br /><br />〒910-1228　福井県吉田郡永平寺町志比5-15<br />TEL：0776-63-3102</p></div>', flag : 'flag3' };
 	this.keyArray[3] = { point : new google.maps.LatLng(36.2507573, 136.1761575), contents : '<div style="width: 285px; overflow: hidden; color:#333333; text-align:left;"><p><span style="font-weight: bold; font-size:1.1em;">芝政ワールド</span><br />〒913-0005　福井県坂井市三国町浜地45-1<br />TEL：0776-81-2110<br />FAX：0776-81-2118</p></div>', flag : 'flag2' };
 	this.keyArray[4] = { point : new google.maps.LatLng(36.083346, 136.506639), contents : '<div style="width: 285px; overflow: hidden; color:#333333; text-align:left;"><p><span style="font-weight: bold; font-size:1.1em;">恐竜博物館</span><br /><br />〒911-8601　福井県勝山市村岡町寺尾51-11<br />TEL：0779-88-0001　FAX：0779-88-8700</p></div>', flag : 'flag1' };
-	
-	
+
+
 	//google map 初期設定
 	this.initialize = function() {
 		this.mapdiv = document.getElementById('map_canvas03'); //マップ出したいとこのid名
@@ -27,7 +28,7 @@ var Map_Action = function() {
 				scaleControl: true
 		};
 		this.map = new google.maps.Map(this.mapdiv, myOptions);
-		
+
 		var j = 0;
 		for( var i in this.keyArray)	{
 			if(this.keyArray.hasOwnProperty(i)){
@@ -43,46 +44,46 @@ var Map_Action = function() {
 
 	};
 
-	this.createMarker = function(point,htmlData,flag, WindowOpenflg) 
+	this.createMarker = function(point,htmlData,flag, WindowOpenflg)
 	{
 		var MarkerSetting = null;
 		var MakerImg = new google.maps.MarkerImage();
-		
+
 		MakerImg.url = "common/js/mapimage3/" + flag +".png"; //パスは適宜変更
 		MakerImg.size = new google.maps.Size(27, 40);
 		MakerImg.iconAnchor = new google.maps.Point(10, 34);
-		
+
 		var MarkerSetting = {
 				icon: MakerImg,
 				map: this.map
 		};
-	
-			
+
+
 		var marker = new google.maps.Marker();
 		marker.setPosition(point);
 		marker.setOptions(MarkerSetting);
 		google.maps.event.addListener(marker, 'click', function() {
-		
-		if (this.currentInfoWindow) {
-				this.currentInfoWindow.close();
+
+		if (currentInfoWindow) {
+				currentInfoWindow.close();
 			}
 			var infowindow = new google.maps.InfoWindow({content:htmlData});
 			infowindow.open(this.map,marker);
-			this.currentInfoWindow = infowindow;
+			currentInfoWindow = infowindow;
 		});
-		
+
 		if (WindowOpenflg) {
-			if (this.currentInfoWindow) {
-				this.currentInfoWindow.close();
-			} 
+			if (currentInfoWindow) {
+				currentInfoWindow.close();
+			}
 			var infowindow = new google.maps.InfoWindow({content:htmlData});
 			infowindow.open(this.map,marker);
-			this.currentInfoWindow = infowindow;
+			currentInfoWindow = infowindow;
 		}
-	
+
 		return marker;
 	};
-	
+
 
 	this.myclick = function(HtmlCnt) {
 		this.createMarker(this.keyArray[HtmlCnt].point, this.keyArray[HtmlCnt].contents, this.keyArray[HtmlCnt].flag , true);
