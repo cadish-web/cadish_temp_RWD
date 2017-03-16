@@ -9,7 +9,7 @@ if(-d $config{'dir.cart'} && $_GET{'callback'}){
 	}
 	
 	## Update Cart
-	if($_GET{'item'} ne $null){
+	if($_GET{'item'} ne $null && &_SECSTR($_GET{'item'})){
 		## Add Cart
 		if($_GET{'qty'} eq $null || $_GET{'qty'} eq 'undefined' || $_GET{'qty'} =~ /[^0-9]/i){
 			$_GET{'qty'} = 1;
@@ -49,7 +49,7 @@ if(-d $config{'dir.cart'} && $_GET{'callback'}){
 	my @ucart = ();
 	my @json = ();
 	@cart = sort { (split(/\t/,$a))[0] cmp (split(/\t/,$b))[0]} @cart;
-	for(my($cnt)=0;$cnt<@cart;$cnt++){
+	for(my $cnt=0;$cnt<@cart;$cnt++){
 		($id,$qty,$price,$name) = split(/\t/,$cart[$cnt]);
 		if($qty > 0){
 			push @ucart,$cart[$cnt];
@@ -65,4 +65,4 @@ if(-d $config{'dir.cart'} && $_GET{'callback'}){
 		unlink "$config{'dir.cart'}$_COOKIE{'SES'}.cgi";
 	}
 }
-$about = 'process';
+1;

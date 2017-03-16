@@ -7,5 +7,4 @@ else {
 	@db = grep(!/^$_POST{'email'}\t/,@db);
 }
 &_SAVE($config{"file.regist.db"},join("\n",@db));
-
 1;

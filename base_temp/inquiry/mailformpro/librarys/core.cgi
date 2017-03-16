@@ -1,10 +1,13 @@
-$config{'Version'} = 'Mailform Pro 4.2.0 / 2014-10-18';
+$config{'Version'} = 'Mailform Pro 4.2.3 / 2016-11-01';
 
 $ENV{'TZ'} = 'JST-9';
 
 ($sec,$min,$hour,$day,$mon,$year) = localtime(time);
 $_ENV{'mfp_date'} = sprintf("%04d-%02d-%02d %02d:%02d:%02d",$year+1900,$mon+1,$day,$hour,$min,$sec);
+$_ENV{'mfp_day'} = sprintf("%04d-%02d-%02d",$year+1900,$mon+1,$day);
+%_ElementsList = ();
 $dateStr = sprintf("%04d%02d%02d",$year+1900,$mon+1,$day);
+$replyTo = "";
 
 @_ENV = ('mfp_date','mfp_serial','mfp_pageview','mfp_uniqueuser','mfp_cvr','mfp_dropcount','mfp_droprate','mfp_input_time','mfp_input_time_avg','mfp_confirm_time','mfp_confirm_time_avg','mfp_hostname','mfp_ipaddress','mfp_useragent','mfp_errorlog','mfp_jssemantics','mfp_domain','mfp_referrer','mfp_formreferrer','mfp_uri','mfp_script','mfp_elementsQty','mfp_requiredElementsQty','mfp_elementsArch','mfp_timeline','mfp_cart','mfp_cartprice','mfp_testmode');
 
@@ -78,19 +81,24 @@ sub _MAINPROCESS {
 		&_SENDMAIL($config{'mailto'},$config{'mailfrom'},$config{'fromname'},$config{"ReturnSubject"},$_TEXT{'responder'},join('',@ResAttachedFiles),$_HTML{'HTMLMail'});
 	}
 	if($config{'fixed'}){
-		$config{'mailto'} = $mailto[0];
-		$config{'mailtoName'} = $mailto[0];
+		$replyTo = $config{'mailto'};
+		$config{'mailto'} = $config{'mailfrom'};
+		$config{'mailtoName'} = $config{'mailfrom'};
 	}
 	
 	if(!$config{'mailtoName'}){
 		$config{'mailtoName'} = $config{'mailto'};
 	}
-	for(my($cnt)=0;$cnt<@mailto;$cnt++){
+	for(my $cnt=0;$cnt<@mailto;$cnt++){
 		&_SENDMAIL($mailto[$cnt],$config{'mailto'},$config{'mailtoName'},$config{'subject'},$_TEXT{'posted'},join('',@AttachedFiles),$_HTML{'HTMLMailAdmin'});
 	}
+	&_RunModule('finish');
 }
 sub _RESULT {
-	if($_RESULT{'html'}){
+	if($_RESULT{'error'}){
+		&_Error(500);
+	}
+	elsif($_RESULT{'html'}){
 		print "Content-type: text/html;charset=UTF-8\n";
 		&_SET_COOKIE;
 		print $_RESULT{'html'};
@@ -156,6 +164,13 @@ sub _CheckProcess {
 		$config{'mailto'} = $value;
 		$config{'mailto'} =~ s/ //ig;
 	}
+	if($name =~ /mfp_(.*?)_checkobj$/si){
+		my $label = $1;
+		if(!$_POST{$label} && !$_ElementsList{$label}){
+			$_ElementsList{$label} = 1;
+			push @ELEMENTS,$label;
+		}
+	}
 }
 sub _EmailCheck {
 	my($email) = @_;
@@ -196,7 +211,7 @@ sub _CSVCRYPT {
 	my($str) = @_;
 	@key = split(//,$config{'CryptKey'});
 	$str = &encodeURI($str);
-	for(my($i)=0;$i<@key;$i++){
+	for(my $i=0;$i<@key;$i++){
 		$str =~ s/([^<])$CryptStrings[$i]([^>])/$1<$key[$i]>$2/g;
 		$str =~ s/([^<])$CryptStrings[$i]([^>])/$1<$key[$i]>$2/g;
 	}
@@ -207,7 +222,7 @@ sub _CSVCRYPT {
 sub _CSVDECRYPT {
 	my($str) = @_;
 	@key = split(//,$config{'CryptKey'});
-	for(my($i)=0;$i<@key;$i++){
+	for(my $i=0;$i<@key;$i++){
 		$str =~ s/([^<])${key[$i]}([^>])/$1<$CryptStrings[$i]>$2/g;
 		$str =~ s/([^<])${key[$i]}([^>])/$1<$CryptStrings[$i]>$2/g;
 	}
@@ -233,14 +248,14 @@ sub _Error {
 }
 sub _RunModule {
 	my($method) = @_;
-	for(my($cnt)=0;$cnt<@Modules;$cnt++){
+	for(my $cnt=0;$cnt<@Modules;$cnt++){
 		if(-f "./librarys/${Modules[$cnt]}/${method}.cgi"){
 			require "./librarys/${Modules[$cnt]}/${method}.cgi";
 		}
 	}
 }
 sub _ModuleLoadConfigs {
-	for(my($cnt)=0;$cnt<@Modules;$cnt++){
+	for(my $cnt=0;$cnt<@Modules;$cnt++){
 		if(-f "./configs/${Modules[$cnt]}.cgi"){
 			require "./configs/${Modules[$cnt]}.cgi";
 		}
@@ -306,7 +321,7 @@ sub _SETENV {
 	## Timeline
 	@timeline = split(/<>/,$_POST{'mfp_timeline'});
 	$timeline = "";
-	for(my($cnt)=0;$cnt<@timeline;$cnt++){
+	for(my $cnt=0;$cnt<@timeline;$cnt++){
 		($sec,$name,$action,$elapsed) = split(/\,/,$timeline[$cnt]);
 		if($elapsed){
 			$elapsed = " ( ${elapsed} sec )";
@@ -333,7 +348,7 @@ sub _SETENV {
 	$_ENV{'mfp_cart'} =~ s/\|\|/\n/ig;
 	
 	my($env) = "";
-	for(my($i)=0;$i<@_ENV;$i++){
+	for(my $i=0;$i<@_ENV;$i++){
 		if($_ENV{$_ENV[$i]} ne $null || $config{'blankfield'}){
 			$value = &_VALUE($_ENV[$i],$_ENV{$_ENV[$i]});
 			$name = &_NAME($_ENV[$i]);
@@ -348,9 +363,9 @@ sub _SETENV {
 }
 
 sub _GETHOST {
-	my($ip_address) = $ENV{'REMOTE_ADDR'};
-	my(@addr) = split(/\./, $ip_address);
-	my($packed_addr) = pack("C4", $addr[0], $addr[1], $addr[2], $addr[3]);
+	my $ip_address = $ENV{'REMOTE_ADDR'};
+	my @addr = split(/\./, $ip_address);
+	my $packed_addr = pack("C4", $addr[0], $addr[1], $addr[2], $addr[3]);
 	my($name, $aliases, $addrtype, $length, @addrs);
 	($name, $aliases, $addrtype, $length, @addrs) = gethostbyaddr($packed_addr, 2);
 	return $name;
@@ -402,13 +417,16 @@ sub _MAILHEADER {
 		$str .= "Content-Type: multipart/alternative; boundary=\"$config{'Boundary'}\"\n";
 	}
 	$str .= "To: ${to}\n";
-	if($config{'bcc'} ne $null && $config{'bcc'} ne $mailto){
+	if($config{'bcc'} ne $null && $config{'bcc'} ne $to){
 		$str .= "Bcc: $config{'bcc'}\n";
+	}
+	if($replyTo ne $null && $to ne $replyTo){
+		$str .= "Reply-To: ${replyTo}\n";
 	}
 	if($config{'Notification'}){
 		$str .= "Disposition-Notification-To: $config{'Notification'}\n";
 	}
-	$str .= "MIME-Version: 1.0\n";
+	$str .= "MIME-Version: 1.0\n\n";
 	$str .= "--$config{'Boundary'}\n";
 	$str .= "Content-Type: text/plain; charset=\"UTF-8\"\n";
 	$str .= "Content-Transfer-Encoding: Base64\n";
@@ -420,17 +438,28 @@ sub _MAILHEADER {
 }
 sub _SENDMAIL {
 	my($to,$from,$name,$subject,$body,$attached,$htmlmail) = @_;
+	my $sendmailcmd = "| $config{'sendmail'} -f ${from} -t";
 	if($config{'sendmail_advanced'}){
-		$sendmail = $config{'sendmail_advanced'};
+		my $sendmail = $config{'sendmail_advanced'};
 		$sendmail =~ s/\$email/$from/ig;
-		open(MAIL,"| ${sendmail}");
+		$sendmailcmd = "| ${sendmail}";
+	}
+	if(!open(MAIL, $sendmailcmd)){
+		&_SENDMAIL_ERROR('sendmail process error');
+		close(MAIL);
 	}
 	else {
-		open(MAIL,"| $config{'sendmail'} -f ${from} -t");
-	}
 		print MAIL &_MAILHEADER($to,$from,$name,$subject,$body,$attached,$htmlmail);
-	close(MAIL);
-	sleep($config{'seek'});
+		close(MAIL);
+		sleep($config{'seek'});
+	}
+}
+sub _SENDMAIL_ERROR {
+	my($str) = @_;
+	$_RESULT{'error'} = 1;
+	my @error = ($_ENV{'mfp_date'},$_ENV{'mfp_serial'},$str);
+	&_ADDSAVE("$config{'data.dir'}dat.error.log.cgi",join("\t",@error));
+	&_SAVE("$config{'data.dir'}error/$_ENV{'mfp_serial'}.cgi","$_ENV{'mfp_date'} SEND ERROR\n\n$config{'buffer'}");
 }
 sub _MIME {
 	my($str,$charset) = @_;
@@ -534,7 +563,7 @@ sub mfpjs {
 		$cacheDate = (stat $config{'file.cache'})[9];
 		@js = ("./configs/$config{'lang'}.js",'./configs/config.js','./librarys/core.js');
 		##
-		for(my($cnt)=0;$cnt<@AddOns;$cnt++){
+		for(my $cnt=0;$cnt<@AddOns;$cnt++){
 			$AddOns[$cnt] = "$config{'dir.AddOns'}${AddOns[$cnt]}";
 		}
 		##
@@ -553,18 +582,18 @@ sub mfpjs {
 		}
 		else {
 			$js = $lang{'jslibrary'} . "\n";
-			for(my($cnt)=0;$cnt<@js;$cnt++){
+			for(my $cnt=0;$cnt<@js;$cnt++){
 				$js .= &_LOAD($js[$cnt]) . "\n";
 			}
 			@WarningCodes = ();
-			for(my($cnt)=1;$cnt<8;$cnt++){
+			for(my $cnt=1;$cnt<8;$cnt++){
 				push @WarningCodes,$lang{"ErrorCode${cnt}"};
 			}
 			$WarningCodes = "'" . join("',\n'",@WarningCodes) . "'\n";
 			$js =~ s/_%%WarningCode%%_/$WarningCodes/ig;
 			
 			## 20131103 v4.1.3
-			for(my($cnt)=0;$cnt<@_ERRMSG;$cnt++){
+			for(my $cnt=0;$cnt<@_ERRMSG;$cnt++){
 				if($_ERRMSG[$cnt] ne $null){
 					push @AddWarningCode,"mfpLang['WarningCode'][${cnt}] = '${_ERRMSG[$cnt]}';";
 				}
@@ -634,7 +663,7 @@ sub _LOAD {
 }
 sub _DB {
 	my($path) = @_;
-	my(@loader) = ();
+	my @loader = ();
 	flock(FH, LOCK_EX);
 		open(FH,$path);
 			@loader = <FH>;
@@ -669,7 +698,7 @@ sub _TIMESTR {
 	}
 }
 sub _COOKIE_PATH {
-	my(@cookie_path) = split(/\//,$ENV{'SCRIPT_NAME'});
+	my @cookie_path = split(/\//,$ENV{'SCRIPT_NAME'});
 	$cookie_path[-1] = "";
 	return join('/',@cookie_path);
 }
@@ -680,19 +709,28 @@ sub _SET_COOKIE {
 			push @cookie,"${key}=" . &encodeURI($_COOKIE{$key});
 		}
 	}
-	print "Set-Cookie: $config{'prefix'}=\|" . join("&",@cookie) . "\|; path=" . &_COOKIE_PATH . "; expires=Mon, 30 Dec 2030 23:59:59 GMT\n\n";
+	print "Set-Cookie: $config{'prefix'}=\|" . join("&",@cookie) . "\|; path=" . &_COOKIE_PATH . "; expires=Mon, 30 Dec 2030 23:59:59 GMT;$config{'secure'}\n\n";
 }
 sub _COOKIE {
 	if($ENV{'HTTP_COOKIE'} =~ /$config{'prefix'}=\|(.*?)\|/si){
 		$cookie = $1;
-		my(@cookies) = split(/\&/,$cookie);
-		for(my($cnt)=0;$cnt<@cookies;$cnt++){
+		my @cookies = split(/\&/,$cookie);
+		for(my $cnt=0;$cnt<@cookies;$cnt++){
 			my($name, $value) = split(/=/,$cookies[$cnt]);
 			$_COOKIE{$name} = &decodeURI($value);
 		}
 		if($_COOKIE{'SES'}){
 			$_COOKIE{'SES'} = &_SECPATH($_COOKIE{'SES'});
 		}
+	}
+}
+sub _SECSTR {
+	my($str) = @_;
+	if(!($str =~ /[^0-9a-zA-z\-\_]/si)){
+		return 1;
+	}
+	else {
+		return 0;
 	}
 }
 sub _SECPATH {
@@ -742,6 +780,7 @@ sub _SANITIZING {
 	$str =~ s/\,/&#x2c;/g;
 	$str =~ s/\t/&nbsp;&nbsp;/g;
 	$str =~ s/\r\n/\n/g;
+	$str =~ s/\r//g;
 	$str =~ s/\n/<br \/>/g;
 	return $str;
 }
@@ -792,14 +831,18 @@ sub _POST {
 		}
 		else {
 			$_POST{$name} = $value;
-			push @ELEMENTS,$name;
+			if(!$_ElementsList{$name}){
+				$_ElementsList{$name} = 1;
+				push @ELEMENTS,$name;
+			}
 		}
 	}
+	&_RunModule('post');
 	&_POST_REBUILD;
 }
 sub _POST_REBUILD {
 	$count = 0;
-	for(my($cnt)=0;$cnt<@ELEMENTS;$cnt++){
+	for(my $cnt=0;$cnt<@ELEMENTS;$cnt++){
 		$name = $ELEMENTS[$cnt];
 		$value = $_POST{$ELEMENTS[$cnt]};
 		if(!($name =~ /^mfp_/si) && $name ne $null && ($value ne $null || $config{'blankfield'})){
@@ -830,7 +873,12 @@ sub _POST_REBUILD {
 			$resbodyHTML .= sprintf($_HTMLMAIL{'line'},$style,$name,$SafeValue);
 			$count++;
 		}
-		elsif($name =~ /^mfp_/si){
+		elsif($name =~ /^mfp_separator/si && $config{$name} ne $null){
+			$value = $config{$name};
+			$value =~ s/\\n/\n/ig;
+			$_POST{'resbody'} .= $value;
+		}
+		elsif($name =~ /^mfp_/si && !($name =~ /^mfp_.*?_checkobj$/si)){
 			$_ENV{$name} = $value;
 		}
 	}

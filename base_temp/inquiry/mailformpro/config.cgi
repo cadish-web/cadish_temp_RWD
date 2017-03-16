@@ -1,4 +1,4 @@
-$config{'about'} = 'Mailform Pro 4.2.0';
+$config{'about'} = 'Mailform Pro 4.2.3';
 
 ## 確認画面のタイプ
 ## 0: オーバーレイ / 1:フラット / 2: システムダイアログ / 3:確認なし
@@ -9,19 +9,21 @@ $config{'ConfirmationMode'} = 0;
 $config{'sendmail'} = '/usr/sbin/sendmail';
 
 ## フォームの送信先
-#push @mailto,'support@synck.com';
+#push @mailto,'web_ml@cadish.co.jp';
 
 ## 自動返信メールの差出人名
-$config{'fromname'} = 'シンクグラフィカ';
+$config{'fromname'} = '株式会社キャディッシュ';
 
 ## 自動返信メールの差出人メールアドレス
 $config{'mailfrom'} = $mailto[0];
 
 ## 念のためBCC送信宛先 (解除する場合は下記1行をコメントアウト)
-$config{'bcc'} = $mailto[0];
+## 以下をコメントアウトしていない場合は自動返信メールの控えが届きます。
+#$config{'bcc'} = $mailto[0];
 
 ## メールの差出人を固定 (0:無効 / 1:固定)
-$config{'fixed'} = 0;
+## 固定にした場合、Reply-Toにお客様のアドレスがセットされます。
+$config{'fixed'} = 1;
 
 ## 通し番号の書式
 $config{'SerialFormat'} = '<date>%04d';
@@ -50,14 +52,12 @@ $_TEXT{'posted'} = <<'__posted_body__';
 <_resbody_>
 ──────────────────────────
 
-<_mfp_env_>
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 　※この署名はサンプルです。必ず変更してください※　
-　シンクグラフィカ / SYNCKGRAPHICA
-　〒005-0007 札幌市南区澄川2条2丁目4番1号
-　TEL / 050-3390-0450　FAX / 011-887-0450
-　http://www.synck.com
+　株式会社キャディッシュ
+　〒506-0045 岐阜県高山市赤保木町1169-7
+　TEL / 0577-36-3604　FAX / 0577-35-0202
+　http://www.cadish.co.jp
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 __posted_body__
 
@@ -65,15 +65,21 @@ __posted_body__
 ## 自動返信メールの件名 (有効にする場合は下記の行頭#を外してください。)
 ## ※※※！！！※※※！！！※※※！！！※※※！！！※※※！！！※※※
 
-#$config{"ReturnSubject"} = '[ %s ] お問い合せありがとうございました';
+$config{"ReturnSubject"} = '【施設名】お問い合せありがとうございました';
 
 ## 自動返信メールの本文
 $_TEXT{'responder'} = <<'__return_body__';
-<_姓_> 様
+<_お名前_> 様
 ──────────────────────────
 
 この度はお問い合せ頂き誠にありがとうございました。
 改めて担当者よりご連絡をさせていただきます。
+
+ご返答にはお時間をいただく可能性がございます。
+お急ぎの場合はお手数ではございますが、
+お電話にてご連絡ください。
+
+TEL: 0577-36-3604
 
 ─ご送信内容の確認─────────────────
 受付番号：<_mfp_serial_>
@@ -87,13 +93,20 @@ $_TEXT{'responder'} = <<'__return_body__';
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 　※この署名はサンプルです。必ず変更してください※　
-　シンクグラフィカ / SYNCKGRAPHICA
-　〒005-0007 札幌市南区澄川2条2丁目4番1号
-　TEL / 050-3390-0450　FAX / 011-887-0450
-　http://www.synck.com
+　株式会社キャディッシュ
+　〒506-0045 岐阜県高山市赤保木町1169-7
+　TEL / 0577-36-3604　FAX / 0577-35-0202
+　http://www.cadish.co.jp
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 __return_body__
 
+
+####################################################
+## セパレーターの設定
+####################################################
+## 改行を入れる場合は\nを挿入してください。
+$config{'mfp_separator_1'} = "【送信者情報】\n";
+$config{'mfp_separator_2'} = "\n【お問い合わせ内容】\n";
 
 
 ####################################################
@@ -138,33 +151,48 @@ $config{'DisableURI'} = 0;
 $config{'dir.AddOns'} = './add-ons/';
 
 @AddOns = ();
-push @AddOns,'OperationCheck.js';		## 動作チェック
+push @AddOns,'OperationCheck.js';		## 動作チェック ※本番では消してください
 push @AddOns,'charactercheck.js';		## 文字校正
-#push @AddOns,'prefcode/prefcode.js';	## 郵便番号からの住所入力
-push @AddOns,'prefcodeadv/prefcode.js';	## 郵便番号からの住所入力(高機能・高負荷)
+push @AddOns,'prefcode/prefcode.js';	## 郵便番号からの住所入力
+#push @AddOns,'prefcodeadv/prefcode.js';## 郵便番号からの住所入力(高機能・高負荷)
 push @AddOns,'furigana.js';				## フリガナ(Firefox非対応)
-#push @AddOns,'charformat.js';			## テキスト整形(Xperia非対応)
+#push @AddOns,'datelist.js';				## 日付リストの生成機能 [Update]
+push @AddOns,'ok.js';					## OKアドオン [New]
+push @AddOns,'nospace.js';				## スペースのみの入力を無効
+#push @AddOns,'toggle.js';				## 入力欄の可変
 #push @AddOns,'cart/cart.js';			## ショッピングカート機能
+#push @AddOns,'request/request.js';		## [New] リクエスト機能
 #push @AddOns,'phase.js';				## 段階的入力機能
 #push @AddOns,'drilldown.js';			## ドリルダウン機能
-push @AddOns,'datelist.js';				## 日付リストの生成機能 [Update]
+#push @AddOns,'charformat.js';			## テキスト整形(Xperia非対応)
 #push @AddOns,'noresume.js';			## 入力された内容をレジュームしない
 #push @AddOns,'switching.js';			## スイッチング機能サンプル
 #push @AddOns,'prevention.js';			## イタズラ防止
 #push @AddOns,'wellcome.js';			## (技術デモ)ウェルカムメッセージ
 #push @AddOns,'speechAPI.js';			## (技術デモ)音声入力
 #push @AddOns,'WadaVoiceDemo.js';		## (技術デモ)音声ガイダンス
-#push @AddOns,'ResponsiveWeb.js';		## レスポンシブWeb対応(要カスタマイズ)
 #push @AddOns,'progress.js';			## プログレスバー表示
 #push @AddOns,'WTKConnect.js';			## WebsiteToolKit.jsとの連動
-#push @AddOns,'submitdisabled.js';		## エラー時に送信無効
+#push @AddOns,'submitdisabled.js';		## エラー時に送信ボタンを無効化
 #push @AddOns,'sizeajustdisabled.js';	## 入力欄の自動調整機能を無効化
 #push @AddOns,'defaultValue.js';		## 初期値を無効
 #push @AddOns,'estimate.js';			## 見積計算(ベータ版)
 #push @AddOns,'beforeunload.js';		## ページを離脱する際のアラート(ベータ版)
-#push @AddOns,'errorScroll.js';		## エラー時に対象エレメントまでスクロール(ベータ版)
-#push @AddOns,'reserve.js';		## 予約受付 [New]
-push @AddOns,'ok.js';		## OKアドオン [New]
+#push @AddOns,'setValue.js';			## 初期値をセット
+#push @AddOns,'errorScroll.js';			## エラー時に対象エレメントまでスクロール(ベータ版)
+#push @AddOns,'reserve.js';				## 予約受付 [New]
+#push @AddOns,'taboowords/taboowords.js';## 禁止ワードの指定 [New]
+#push @AddOns,'pricefactor.js';			## 人数分の料金掛け算
+#push @AddOns,'tax.js';					## 消費税計算 [New]
+#push @AddOns,'email.js';				## メールアドレスのチェック(やや厳格)
+#push @AddOns,'confirm.js';				## [New] 確認用エレメント
+#push @AddOns,'record.js';				## [New] 記録用
+#push @AddOns,'birthday.js';			## [New] 生年月日選択補助
+#push @AddOns,'unchecked.js';			## [New] radioのチェック解除
+push @AddOns,'mobileScrollFix.js';		## [New] モバイル端末エラー時のスクロール調整
+#push @AddOns,'bpm.js';		## [New] BPMクレジット決済
+#push @AddOns,'attachedfiles.js';		## 添付ファイル機能(有償)
+#push @AddOns,'coupon/coupon.js';
 
 ####################################################
 ## モジュール(CGIの追加機能)
@@ -172,9 +200,11 @@ push @AddOns,'ok.js';		## OKアドオン [New]
 
 @Modules = ();
 #push @Modules,'MultiConfig';	## 複数の設定ファイルを分岐させる
-push @Modules,'check';			## CGI動作環境チェック
-#push @Modules,'thanks';		## サンクスページへの引き継ぎ
+push @Modules,'check';			## CGI動作環境チェック ※本番では消してください
+push @Modules,'logger';			## アクセス解析ログモジュール
+#push @Modules,'thanks';			## サンクスページへの引き継ぎ
 #push @Modules,'cart';			## ショッピングカート機能
+#push @Modules,'request';		## リクエスト機能
 #push @Modules,'ISO-2022-JP';	## メールをJISで送信
 #push @Modules,'HTMLMail';		## 自動返信メールにHTMLメールを追加
 #push @Modules,'HTMLMailAdmin';	## 管理者宛メールにHTMLメールを追加
@@ -185,16 +215,25 @@ push @Modules,'check';			## CGI動作環境チェック
 #push @Modules,'IPLogs';		## IPログトラッキング機能
 #push @Modules,'PayPal';		## PayPal決済
 #push @Modules,'SMTP';			## SMTP送信
+#push @Modules,'SMTPS';			## [New] SMTPS送信
+#push @Modules,'SimpleMailHead';## [New] シンプルメールヘッダ
+#push @Modules,'MAILHEAD';		## メールヘッダのカスタマイズ
 #push @Modules,'mailauth';		## メールアドレス認証
 #push @Modules,'reqonce';		## 一度きりの送信
 #push @Modules,'questionnaire';	## アンケート集計モジュール
 #push @Modules,'GmailSMTP';		## GmailのSMTPを使う場合
 #push @Modules,'regist';		## メールアドレスの登録・解除
-#push @Modules,'ReplyTime';		## 応答時間計測 [New]
-push @Modules,'logger';			## アクセス解析ログモジュール [New]
-#push @Modules,'count';			## 集計モジュール [New]
-#push @Modules,'reserve';		## 予約管理モジュール [New]
-#push @Modules,'demo';		## デモ
+#push @Modules,'ReplyTime';		## 応答時間計測
+#push @Modules,'count';			## 集計モジュール
+#push @Modules,'reserve';		## 予約管理モジュール
+#push @Modules,'taboowords';	## 禁止ワードの指定 [New]
+#push @Modules,'stress';		## ストレスチェック判定モジュール
+#push @Modules,'csvatt';		## CSV添付機能
+#push @Modules,'bpm';		## [New] BPMクレジット決済
+
+#push @Modules,'MFPOrderConnect'; ## MFP Order Connect API
+#push @Modules,'MFPAddressConnect'; ## MFP Address Connect API
+#push @Modules,'demo';			## デモ
 
 
 ####################################################
@@ -215,6 +254,9 @@ $config{'blankfield'} = 0;
 
 ## 連続送信対応
 $config{'seek'} = 0;
+
+## SSL環境下でのみCookie使う場合有効にしてください
+#$config{'secure'} = ' secure';
 
 ## メールの改行コード
 #$config{'breakcode'} = "\r\n";

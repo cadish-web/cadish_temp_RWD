@@ -6,3 +6,4 @@ $sth = $db->prepare($_HTML{'SQL'});
 $sth->execute;
 $sth->finish;
 $db->disconnect;
+1;

@@ -24,5 +24,4 @@ sub _SENDMAIL {
 	$SMTP->dataend();
 	$SMTP->quit;
 }
-
-$about = 'process';
+1;

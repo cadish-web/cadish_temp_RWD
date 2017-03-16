@@ -1,49 +1,81 @@
 #!/usr/bin/perl
+## 
+%_ENV = ();
+&_ENV;
 
-$logfile = './iplogs.dat.cgi';
-$domain = $ENV{'SERVER_NAME'};
+## set Uri
+my %uri = ();
+$uri{'test'} = 'https://www.synck.com/index.html';
 
-$uri = '//' . $ENV{'SERVER_NAME'} . $ENV{'SCRIPT_NAME'};
+## File Size Limit Bytes
+## 1MB = 1048576 Byte
+$_ENV{'size'} = 1048576;
 
-## File Size Limit Bytes / 1MB = 1048576 Byte
-$maxfilesize = 1048576;
-
-($sec,$min,$hour,$day,$mon,$year) = localtime(time);
-$year += 1900;$mon++;
-$stmp = sprintf("%04d-%02d-%02d %02d:%02d:%02d",$year,$mon,$day,$hour,$min,$sec);
-$today = sprintf("%04d-%02d-%02d",$year,$mon,$day);
-
-$yesterday = time - (60*60*24);
-($sec,$min,$hour,$day,$mon,$year) = localtime($yesterday);
-$yesterday = sprintf("%04d-%02d-%02d",$year += 1900,$mon+1,$day);
-
-if($ENV{'QUERY_STRING'} && index($ENV{'HTTP_REFERER'},$domain) > -1){
-	@log = ($stmp,$ENV{'REMOTE_ADDR'},$ENV{'QUERY_STRING'});
-	if((-s $logfile) > $maxfilesize && ($maxfilesize)){
-		@iplogs = &_LOAD($logfile);
-		@today = grep(/^${today}/,@iplogs);
-		@yesterday = grep(/^${yesterday}/,@iplogs);
-		@iplogs = (@yesterday,@today);
-		push @iplogs,join("\t",@log);
-		&_SAVE($logfile,join("\n",@iplogs));
+if($_ENV{'query'}){
+	if($uri{$_ENV{'query'}}){
+		my @log = ($_ENV{'date'},$_ENV{'ip'},"$_ENV{'query'} Click");
+		&_LOG(join("\t",@log));
+		print "Location: $uri{$_ENV{'query'}}\n\n";
+	}
+	elsif(index($_ENV{'referer'},$_ENV{'domain'}) > -1){
+		my @log = ($_ENV{'date'},$_ENV{'ip'},$_ENV{'query'});
+		&_LOG(join("\t",@log));
+		open(IMG,"iplogs.img.gif");
+		my $byte = -s "iplogs.img.gif";
+		print "Content-type: image/gif\n";
+		print "Content-length: $byte\n\n";
+		print <IMG>;
+		close(IMG);
 	}
 	else {
-		&_ADDSAVE($logfile,join("\t",@log));
+		print "Content-type: text/html; charset=UTF-8\n\n";
 	}
-	open(IMG,"iplogs.img.gif");
-	$byte = -s "iplogs.img.gif";
-	print "Content-type: image/gif\n";
-	print "Content-length: $byte\n\n";
-	print <IMG>;
-	close(IMG);
 }
 else {
 	print "Pragma: no-cache\n";
 	print "Cache-Control: no-cache\n";
-	print "Content-type: text/plain; charset=UTF-8\n\n";
-	print "if(document.referrer) document.write('<img src=\"${uri}?'+document.referrer+'\" />');";
+	print "Content-type: text/javascript; charset=UTF-8\n\n";
+	print "if(document.referrer) document.write('<img src=\"$_ENV{'uri'}?'+document.referrer+'\" style=\"position: absolute;\">');";
 }
 exit;
+sub _ENV {
+	$_ENV{'file'} = './iplogs.dat.cgi';
+	$_ENV{'domain'} = $ENV{'SERVER_NAME'};
+	$_ENV{'uri'} = '//' . $ENV{'SERVER_NAME'} . $ENV{'SCRIPT_NAME'};
+	$_ENV{'referer'} = $ENV{'HTTP_REFERER'};
+	$_ENV{'ip'} = $ENV{'REMOTE_ADDR'};
+	my($protocol,$referer) = split(/\/\//,$ENV{'QUERY_STRING'});
+	$referer =~ s/^$_ENV{'domain'}\//\//ig;
+	$referer =~ s/\n//ig;
+	$referer =~ s/\t//ig;
+	if($referer){
+		$_ENV{'query'} = $referer;
+	}
+	else {
+		$_ENV{'query'} = $ENV{'QUERY_STRING'};
+	}
+	
+	my($sec,$min,$hour,$day,$mon,$year) = localtime(time);
+	$_ENV{'date'} = sprintf("%04d-%02d-%02d %02d:%02d:%02d",$year+1900,$mon+1,$day,$hour,$min,$sec);
+	$_ENV{'day'} = sprintf("%04d-%02d-%02d",$year+1900,$mon+1,$day);
+	
+	($sec,$min,$hour,$day,$mon,$year) = localtime(time - (60*60*24));
+	$_ENV{'yesterday'} = sprintf("%04d-%02d-%02d",$year+1900,$mon+1,$day);
+}
+sub _LOG {
+	my($log) = @_;
+	if((-s $_ENV{'file'}) > $_ENV{'size'} && ($_ENV{'size'})){
+		my @logs = &_LOAD($_ENV{'file'});
+		my @l1 = grep(/^$_ENV{'day'}/,@logs);
+		my @l2 = grep(/^$_ENV{'yesterday'}/,@logs);
+		@logs = (@l1,@l2);
+		push @logs,$log;
+		&_SAVE($_ENV{'file'},join("\n",@logs));
+	}
+	else {
+		&_ADDSAVE($_ENV{'file'},$log);
+	}
+}
 sub _ADDSAVE {
 	my($path,$str) = @_;
 	chmod 0777,$path;
@@ -56,24 +88,25 @@ sub _ADDSAVE {
 }
 sub _LOAD {
 	my($path) = @_;
-	my(@loader) = ();
+	my @str = ();
 	flock(FH, LOCK_EX);
 		open(FH,$path);
-			@loader = <FH>;
+			@str = <FH>;
 		close(FH);
 	flock(FH, LOCK_NB);
-	$loader = join('',@loader);
-	$loader =~ s/\r//ig;
-	@loader = split(/\n/,$loader);
-	return @loader;
+	my $str = join('',@str);
+	$str =~ s/\r//ig;
+	return split(/\n/,$str);
 }
 sub _SAVE {
 	my($path,$str) = @_;
 	chmod 0777,$path;
-	flock(FH, LOCK_EX);
-		open(FH,">${path}");
-			print FH $str;
-		close(FH);
-	flock(FH, LOCK_NB);
+	open(FH,"+< ${path}");
+		flock(FH,2);
+		seek(FH,0,0);
+		print FH $str . "\n";;
+		truncate(FH,tell(FH));
+	close(FH);
 	chmod 0600,$path;
 }
+1;

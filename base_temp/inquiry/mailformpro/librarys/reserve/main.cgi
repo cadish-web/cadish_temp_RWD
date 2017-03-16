@@ -70,7 +70,7 @@ if($config{"reserve.password"} ne $null && $config{"reserve.password"} eq $_POST
 		&_Error(0);
 	}
 }
-elsif($_GET{'type'} eq 'json'){
+elsif($_GET{'t'} eq 'json'){
 	my($s,$min,$h,$d,$m,$y) = localtime(time + (60 * 60 * 24 * $config{"reserve.dayafter"}));
 	my $active_date = sprintf("%04d-%02d-%02d",$y+1900,$m+1,$d);
 	my $item = join("','",@item);
@@ -110,6 +110,14 @@ elsif($_GET{'type'} eq 'json'){
 	}
 	my $date = join(",",@date);
 	push @json,"date\: \[${date}\]";
+	if($config{'reserve.select'}){
+		push @json,"select\: true";
+		push @json,"selectQty\: $config{'reserve.selectQty'}";
+	}
+	else {
+		push @json,"select\: false";
+		push @json,"selectQty\: 0";
+	}
 	my @monthly = ();
 	my $year = "";
 	for(my($cnt)=0;$cnt<@month;$cnt++){
@@ -194,9 +202,9 @@ sub _CAL {
 	$html = "\n<!--putCalender-->\n";
 	$html .= "<table class=\"calebdar\">\n";
 	$html .= "\t<tr align=\"left\" valign=\"middle\">\n";
-	$html .= "\t\t<form method=\"post\" action=\"?module=reserve&year=$_GET{'prev_year'}&month=$_GET{'prev_month'}\"><td colspan=\"2\" class=\"prev\">${pw}<button type=\"submit\">&lt; $_GET{'prev_year'}年$_GET{'prev_month'}月</button></td></form>\n";
+	$html .= "\t\t<form method=\"post\" action=\"?type=$_GET{'type'}&module=reserve&year=$_GET{'prev_year'}&month=$_GET{'prev_month'}\"><td colspan=\"2\" class=\"prev\">${pw}<button type=\"submit\">&lt; $_GET{'prev_year'}年$_GET{'prev_month'}月</button></td></form>\n";
 	$html .= "\t\t<td colspan=\"3\"><strong>${year}年${mon}月</strong></td>\n";
-	$html .= "\t\t<form method=\"post\" action=\"?module=reserve&year=$_GET{'next_year'}&month=$_GET{'next_month'}\"><td colspan=\"2\" class=\"next\">${pw}<button type=\"submit\">$_GET{'next_year'}年$_GET{'next_month'}月 &gt;</button></td></form>\n";
+	$html .= "\t\t<form method=\"post\" action=\"?type=$_GET{'type'}&module=reserve&year=$_GET{'next_year'}&month=$_GET{'next_month'}\"><td colspan=\"2\" class=\"next\">${pw}<button type=\"submit\">$_GET{'next_year'}年$_GET{'next_month'}月 &gt;</button></td></form>\n";
 	$html .= "\t</tr>\n";
 	$html .= "\t<form method=\"post\">${pw}\n";
 	$html .= "\t<tr align=\"center\" valign=\"middle\">\n";

@@ -31,12 +31,13 @@ function mfpPhaseNextButton(){
 		if(document.getElementById(mfpPhase[mfpPhaseCurrent]+'_label'))
 			document.getElementById(mfpPhase[mfpPhaseCurrent]+'_label').className = 'mfp_active_phase';
 		//scrollTo(0,mfp.$(mfpPhase[mfpPhaseCurrent]).offsetTop);
-		scrollTo(0,mfp.$("mfp_phase_stat").offsetTop);
+		//scrollTo(0,mfp.$("mfp_phase_stat").offsetTop);
+		mfp.jump('mfp_phase_stat');
 	}
 	else {
 		err.focus();
-		//scrollTo(0,mfp.$("mfp_phase_stat").offsetTop);
-	}
+		mfp.jump(err.id);
+	};
 }
 function mfpPhasePrevButton(){
 	mfp.$(mfpPhase[mfpPhaseCurrent]).style.display = "none";
@@ -47,7 +48,8 @@ function mfpPhasePrevButton(){
 	if(document.getElementById(mfpPhase[mfpPhaseCurrent]+'_label'))
 		document.getElementById(mfpPhase[mfpPhaseCurrent]+'_label').className = 'mfp_active_phase';
 	//scrollTo(0,mfp.$(mfpPhase[mfpPhaseCurrent]).offsetTop);
-	scrollTo(0,mfp.$("mfp_phase_stat").offsetTop);
+	//scrollTo(0,mfp.$("mfp_phase_stat").offsetTop);
+	mfp.jump('mfp_phase_stat');
 }
 mfp.extend.event('confirm',
 	function(){
@@ -125,13 +127,13 @@ mfp.extend.event('ready',
 			var bNext = false;
 			var bPrev = false;
 			for(var ii=0;ii<bObj.length;ii++){
-				if(bObj[ii].className == 'mfp_prev'){
+				if(bObj[ii].className.indexOf('mfp_prev') > -1){
 					bPrev = true;
 					bObj[ii].onclick = function(){
 						mfpPhasePrevButton();
 					}
 				}
-				if(bObj[ii].className == 'mfp_next'){
+				if(bObj[ii].className.indexOf('mfp_next') > -1){
 					bNext = true;
 					bObj[ii].onclick = function(){
 						mfpPhaseNextButton()

@@ -70,29 +70,82 @@ function mfpReserveDataReady(json){
 		for(var ii=0;ii<json["date"].length;ii++){
 			var td = document.createElement('td');
 			td.style.textAlign = 'center';
-			var label = '○';
-			if(json["stock"][i][ii]){
-				if(json["stock"][i][ii]["qty"] == 0 || json["stock"][i][ii]["qty"] == null){
+			if(json["select"]){
+				var select = document.createElement('select');
+				select.id = 'mfp_reserve_item-'+i+'-'+ii;
+				select.name = json["item"][i]+'_'+json["date"][ii];
+				select.onchange = function(){
+					mfp.calc();
+					mfp.extend.run('change',this);
+				}
+				mfp.Names.unshift(select.name);
+				mfp.Elements[select.name] = new Object();
+				mfp.Elements[select.name].group = new Array(select.id);
+				mfp.Elements[select.name].type = 'select-one';
+				
+				var option = document.createElement('option');
+				option.value = "";
+				var label = '○';
+				var max = 0;
+				if(json["stock"][i][ii]){
+					if(json["stock"][i][ii]["qty"] == 0 || json["stock"][i][ii]["qty"] == null){
+						label = '×';
+						td.className = 'mfp_reserve_disabled';
+					}
+					else if(json["stock"][i][ii]["qty"] < mfpReserveData["warning"]){
+						label = '△';
+						td.className = 'mfp_reserve_warning';
+						max = json["stock"][i][ii]["qty"];
+						mfp.Items[select.id] = new Object();
+						mfp.Items[select.id].price = json["stock"][i][ii]["price"];
+					}
+					else {
+						td.className = 'mfp_reserve_active';
+						max = json["stock"][i][ii]["qty"];
+						mfp.Items[select.id] = new Object();
+						mfp.Items[select.id].price = json["stock"][i][ii]["price"];
+					}
+				}
+				else {
 					label = '×';
 					td.className = 'mfp_reserve_disabled';
 				}
-				else if(json["stock"][i][ii]["qty"] < mfpReserveData["warning"]){
-					label = '△';
-					td.className = 'mfp_reserve_warning';
-					td.id = 'mfp_reserve_item-'+i+'-'+ii;
-					td.onclick = mfpReserveSelected;
+				option.text = label;
+				select.appendChild(option);
+				for(var iii=1;iii<=max && iii<json["selectQty"];iii++){
+					var option = document.createElement('option');
+					option.value = iii;
+					option.text = iii;
+					select.appendChild(option);
 				}
-				else {
-					td.className = 'mfp_reserve_active';
-					td.id = 'mfp_reserve_item-'+i+'-'+ii;
-					td.onclick = mfpReserveSelected;
-				}
+				
+				td.appendChild(select);
 			}
 			else {
-				label = '×';
-				td.className = 'mfp_reserve_disabled';
+				var label = '○';
+				if(json["stock"][i][ii]){
+					if(json["stock"][i][ii]["qty"] == 0 || json["stock"][i][ii]["qty"] == null){
+						label = '×';
+						td.className = 'mfp_reserve_disabled';
+					}
+					else if(json["stock"][i][ii]["qty"] < mfpReserveData["warning"]){
+						label = '△';
+						td.className = 'mfp_reserve_warning';
+						td.id = 'mfp_reserve_item-'+i+'-'+ii;
+						td.onclick = mfpReserveSelected;
+					}
+					else {
+						td.className = 'mfp_reserve_active';
+						td.id = 'mfp_reserve_item-'+i+'-'+ii;
+						td.onclick = mfpReserveSelected;
+					}
+				}
+				else {
+					label = '×';
+					td.className = 'mfp_reserve_disabled';
+				}
+				td.innerHTML = label;
 			}
-			td.innerHTML = label;
 			tr.appendChild(td);
 			if(i == 0){
 				td = document.createElement('td');
@@ -132,6 +185,6 @@ mfp.extend.event('calc',
 mfp.extend.event('startup',
 	function(){
 		if(mfp.$('mfp_reserve_wrapper'))
-			mfp.call(mfp.$('mfpjs').src,'module=reserve&type=json&callback=mfpReserveDataReady');
+			mfp.call(mfp.$('mfpjs').src,'module=reserve&t=json&callback=mfpReserveDataReady');
 	}
 );

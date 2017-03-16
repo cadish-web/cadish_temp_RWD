@@ -14,3 +14,14 @@ mfp.extend.event('focus',
 		}
 	}
 );
+
+mfp.extend.event('send',
+	function(){
+		for(var i=0;i<mfp.Mfp.length;i++){
+			var elm = mfp.Mfp.elements[i];
+			if((elm.type == 'text' || elm.type == 'textarea' || elm.type == 'email' || elm.type == 'number' || elm.type == 'tel') && elm.value == elm.defaultValue){
+				elm.value = '';
+			};
+		};
+	}
+);

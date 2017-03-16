@@ -53,4 +53,5 @@ $lang{'ErrorCode5'} = '許可されていないドメインからの送信はで
 $lang{'ErrorCode6'} = '送信数の制限を超えたため、送信できません。<br />Exceeds the limit.';
 $lang{'ErrorCode7'} = '受付期間外のため、送信できません。<br />Is outside the booking period.';
 $lang{'ErrorCode10'} = '設定ファイルが正しく設定されていません。<br />設定が間違っています。';
+$lang{'ErrorCode500'} = 'メールの送信に失敗しました。<br>It failed to send mail.';
 $lang{'Return'} = '<a href="%s">&lt;&lt; Return</a>';

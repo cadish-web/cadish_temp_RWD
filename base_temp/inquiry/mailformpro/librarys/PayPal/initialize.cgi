@@ -11,5 +11,4 @@ sub _PAYPAL_RESPONSE {
 		$_PAYPAL_RESPONSE_VAL .= $name . " : " . $value . "\n";
 	}
 }
-
-$about = 'process';
+1;

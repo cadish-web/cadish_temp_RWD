@@ -17,6 +17,9 @@ mfpConfigs['weekColors'] = new Array('#FEE','#FFF','#FFF','#FFF','#FFF','#FFF','
 // data-dayexc="2014-12-24,2015-01-01"
 // 2014年12月24日と2015年01月01日は非表示
 
+// data-dayexcon="2014-12-25,2015-01-02"
+// 2014年12月25日と2015年01月02日は表示
+
 // data-weekexc="1,0,0,0,0,0,0"
 // 日・月・火・水・木・金・土 で非表示は1
 // 上記の例では日曜日は非表示
@@ -36,24 +39,27 @@ mfp.extend.event('init',
 			var excweek = new Array();
 			var excdates = new Array();
 			var excday = "";
+			var excdayon = "";
 			if(obj.getAttribute('data-weekexc'))
 				excweek = obj.getAttribute('data-weekexc').split(',');
 			if(obj.getAttribute('data-dayexc'))
 				excday = obj.getAttribute('data-dayexc');
+			if(obj.getAttribute('data-dayexcon'))
+				excdayon = obj.getAttribute('data-dayexcon');
 			var daycount = 0;
 			var optgroup = "";
 			while(daycount < daymax){
 				var t = (Number(mfpConfigs['Time']) + ((daystart + daycount) * 86400))  * 1000;
 				var dayDate = new Date(t);
-				if(excweek[dayDate.getDay()] == undefined || excweek[dayDate.getDay()] == 0){
-					var num = obj.length;
-					var y = dayDate.getFullYear();
-					var m = dayDate.getMonth() + 1;
-					var d = dayDate.getDate();
-					var w = dayDate.getDay();
-					if(m < 10) m = '0'+m;
-					if(d < 10) d = '0'+d;
-					var daystr = y+"-"+m+"-"+d;
+				var num = obj.length;
+				var y = dayDate.getFullYear();
+				var m = dayDate.getMonth() + 1;
+				var d = dayDate.getDate();
+				var w = dayDate.getDay();
+				if(m < 10) m = '0'+m;
+				if(d < 10) d = '0'+d;
+				var daystr = y+"-"+m+"-"+d;
+				if(excweek[dayDate.getDay()] == undefined || excweek[dayDate.getDay()] == 0 || excdayon.indexOf(daystr) > -1){
 					if(excday.indexOf(daystr) == -1){
 						if(navigator.userAgent.indexOf("MSIE") == -1) {
 							if(optgroup != (obj.id+'-'+y+'-'+m)){
@@ -65,7 +71,7 @@ mfp.extend.event('init',
 							}
 							var elm = mfp.d.createElement('option');
 							elm.text = mfpDayFormat(y,m,d,mfpLang['week'][w],mfpLang['dayText']);
-							elm.value = mfpDayFormat(y,m,d,w,mfpLang['dayValue']);
+							elm.value = mfpDayFormat(y,m,d,mfpLang['week'][w],mfpLang['dayValue']);
 							elm.style.backgroundColor = mfpConfigs['weekColors'][w];
 							mfp.$(optgroup).appendChild(elm);
 						}

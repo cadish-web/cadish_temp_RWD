@@ -5,7 +5,8 @@ $config{'CSVDownloadName'} = sprintf("%04d-%02d-%02d.csv",$year+1900,$mon+1,$day
 
 if($config{"password"} ne $null && $config{"password"} eq $_POST{'password'} && ($config{'CSVDownloadURIPassCode'} eq $null || $config{'CSVDownloadURIPassCode'} eq $_GET{'key'})){
 	$HostName = &_GETHOST;
-	if(($config{'CSVDownloadHostName'} eq $HostName || $config{'CSVDownloadHostName'} eq $null) && ($config{'CSVDownloadIPAddress'} eq $ENV{'REMOTE_ADDR'} || $config{'CSVDownloadIPAddress'} eq $null)){
+	
+	if(($config{'CSVDownloadHostName'} eq $HostName || $config{'CSVDownloadHostName'} eq $null) && (grep(/^$ENV{'REMOTE_ADDR'}$/,(split(/\,/,$config{'CSVDownloadIPAddress'}))) > 0 || $config{'CSVDownloadIPAddress'} eq $null)){
 		if($_POST{'method'} eq 'download'){
 			if(-f $config{"file.csv"}){
 				$size = -s $config{"file.csv"};
@@ -17,7 +18,8 @@ if($config{"password"} ne $null && $config{"password"} eq $_POST{'password'} && 
 				Encode::from_to($csv,'utf8','cp932');
 				print "Content-type:application/octet-stream;charset=Shift_JIS; name=\"$config{'CSVDownloadName'}\"\n";
 				print "Content-Disposition: attachment; filename=\"$config{'CSVDownloadName'}\"\n";
-				print "Content-length: ${size}\n\n";
+				print "Accept-Ranges: bytes\n\n";
+				#print "Content-length: ${size}\n\n";
 				print $csv;
 			}
 			else {

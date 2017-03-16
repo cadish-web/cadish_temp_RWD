@@ -25,3 +25,5 @@ $config{"file.csv"} = "$config{'data.dir'}dat.postlog.csv.cgi";
 
 ## 以下、言語設定
 $lang{'CSVManager'} = 'CSV管理';
+
+1;

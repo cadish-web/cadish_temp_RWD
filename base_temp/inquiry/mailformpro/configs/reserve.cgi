@@ -37,4 +37,12 @@ $config{"reserve.password"} = 'xRiD3VNxpjpw0BIAkaqH';
 ## 以下、言語設定
 $lang{'reserve.manager'} = '予約状況管理';
 
+## 以下、開発中の設定のため、意味なしです
+
+## 予約数select [ 4.2.2 latter ] ( 1: On / 0: Off)
+#$config{'reserve.select'} = 1;
+
+## 予約数select 上限値 [ 4.2.2 latter ]
+#$config{'reserve.selectQty'} = 9;
+
 1;

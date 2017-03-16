@@ -16,4 +16,4 @@ $_HTMLMAIL{'line'} = <<'__HTML__';
 	</tr>
 __HTML__
 
-$config{'about'} = 'vCard attached Module';
+1;

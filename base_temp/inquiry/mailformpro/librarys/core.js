@@ -1,4 +1,60 @@
 function MailformPro(){
+	this.affterEffect = function(e){
+		if(e.type == 'select-one'){
+			if(mfp.GET[e.name]){
+				e.value = mfp.GET[e.name];
+			}
+			else if(mfp.Resume[mfp.Index.length-1] && !mfpConfigs['ResumeCancel']){
+				mfp.sandbox(function(){
+					e.selectedIndex = mfp.Resume[mfp.Index.length-1];
+				});
+			};
+			mfp.sizeajust(e);
+		}
+		else if(e.type == 'select-multiple'){
+			mfp.sizeajust(e);
+		}
+		else if(e.type == 'checkbox' || e.type == 'radio'){
+			if(e.name && !mfp.$('mfp_'+e.name+'_checkobj')){
+				var elm = document.createElement('input');
+				elm.type = 'hidden';
+				elm.name = 'mfp_'+e.name+'_checkobj';
+				elm.id = elm.name;
+				elm.value = 1;
+				if(e.nextSibling === null){
+					e.parentNode.appendChild(elm);
+				}
+				else {
+					e.parentNode.insertBefore(elm, e.nextSibling);
+				};
+			};
+			if(mfp.GET[e.name] == e.value){
+				e.checked = true;
+			}
+			else if(mfp.Resume[mfp.Index.length-1] == 1 && !mfpConfigs['ResumeCancel']){
+				mfp.sandbox(function(){e.checked = true;});
+			}
+			else if(mfp.Resume[mfp.Index.length-1] == 0 && !mfpConfigs['ResumeCancel']){
+				mfp.sandbox(function(){e.checked = false;});
+			};
+			mfp.setlabel(e);
+		}
+		else {
+			if(e.type != "text" && e.type != "textarea"){
+				e.style.imeMode = 'disabled';
+			};
+			if(mfp.GET[e.name]){
+				e.value = mfp.GET[e.name];
+				mfp.setresume(e);
+			}
+			else if(mfp.Resume[mfp.Index.length-1] && !mfpConfigs['ResumeCancel']){
+				mfp.sandbox(function(){
+					e.value = unescape(mfp.Resume[mfp.Index.length-1]);
+				});
+			};
+			mfp.sizeajust(e);
+		};
+	};
 	this.initialize = function(){
 		for(var i=0;i<mfp.Mfp.length;i++){
 			var e = mfp.Mfp[i];
@@ -46,7 +102,7 @@ function MailformPro(){
 						var elm = mfp.d.createElement('div');
 						elm.className = "mfp_err";
 						elm.id = err;
-						elm.innerHTML = type;
+						//elm.innerHTML = type;
 						e.parentNode.appendChild(elm);
 					}
 					var _this = e;
@@ -55,15 +111,16 @@ function MailformPro(){
 						mfp.addtimeline(this.name,'Focus');
 						mfp.LastFocus = this.name;
 						mfp.extend.run('focus',this);
+						mfp.removeClassName(this,"mfp_defaultValue");
 					};
 					e.onchange = function(){
 						mfp.calc();
 						//mfp.addtimeline(this.name,'Change');
 						mfp.extend.run('change',this);
-						//if(this.type == "select-one")
+						//if(this.type == "checkbox" || this.type == "radio")
 						//	this.blur();
 					};
-					// ‚±‚±‚Åapply
+					// ã“ã“ã§apply
 					e.onblur = function(){
 						mfp.check(this);
 						mfp.DisableSubmit = true;
@@ -93,6 +150,7 @@ function MailformPro(){
 					mfp.Elements[e.name] = new Object();
 					mfp.Elements[e.name].group = new Array(e.id);
 					mfp.Elements[e.name].type = type;
+					mfp.Elements[e.name].check = false;
 					mfp.Elements[e.name].required = required;
 					mfp.Elements[e.name].err = mfp.$(err);
 					mfp.Elements[e.name].min = e.getAttribute('data-min');
@@ -107,46 +165,18 @@ function MailformPro(){
 				}
 				
 				// type of
-				if(e.type == 'select-one'){
-					if(mfp.GET[e.name])
-						e.value = mfp.GET[e.name];
-					else if(mfp.Resume[mfp.Index.length-1])
-						mfp.sandbox(function(){e.selectedIndex = mfp.Resume[mfp.Index.length-1];});
-					mfp.sizeajust(e);
-				}
-				else if(e.type == 'select-multiple'){
-					mfp.sizeajust(e);
-				}
-				else if(e.type == 'checkbox' || e.type == 'radio'){
-					if(mfp.GET[e.name] == e.value)
-						e.checked = true;
-					else if(mfp.Resume[mfp.Index.length-1] == 1)
-						mfp.sandbox(function(){e.checked = true;});
-					else if(mfp.Resume[mfp.Index.length-1] == 0)
-						mfp.sandbox(function(){e.checked = false;});
-					mfp.setlabel(e);
+				if(e.type == 'checkbox' || e.type == 'radio'){
 					e.onclick = function(){
+						mfp.extend.run('click',this);
 						mfp.CurrentElement = mfp.IndexName[this.id];
 						mfp.check(this);
 						mfp.addtimeline(this.name,'Click');
 						mfp.calc();
-						//this.blur();
-					}
-				}
-				else {
-					if(type != "text" && type != "textarea")
-						e.style.imeMode = 'disabled';
-					//else
-					//	e.style.imeMode = 'active';
-					if(mfp.GET[e.name]){
-						e.value = mfp.GET[e.name];
-						mfp.setresume(e);
-					}
-					else if(mfp.Resume[mfp.Index.length-1])
-						mfp.sandbox(function(){e.value = unescape(mfp.Resume[mfp.Index.length-1]);});
-					mfp.sizeajust(e);
-				}
+						this.blur();
+					};
+				};
 				mfp.extend.run('init',e);
+				mfp.affterEffect(e);
 			}
 			else if(e.type == 'reset'){
 				e.onclick = function(){
@@ -215,6 +245,8 @@ function MailformPro(){
 		
 		mfp.addtimeline('Mailform Pro','Open');
 		mfp.buffer();
+		mfp.checkall();
+		mfp.Ready = true;
 		mfp.extend.run('ready');
 		mfp.calc();
 	}
@@ -236,6 +268,21 @@ function MailformPro(){
 			return document.getElementById(obj);
 		else
 			return obj;
+	};
+	this.byClassName = function(parentNode,className){
+		try {
+			return parentNode.getElementsByClassName(className);
+		}
+		catch(e){
+			var classNames = [];
+			var elements = parentNode.getElementsByTagName('*');
+			for(var i=0;i<elements.length;i++){
+				if(mfp.className(elements[i],className)){
+					classNames.push(elements[i]);
+				};
+			};
+			return classNames;
+		};
 	};
 	this.className = function(obj,name,reg){
 		obj = mfp.obj(obj);
@@ -288,7 +335,18 @@ function MailformPro(){
 			elm.value = value;
 			mfp.$('mfp_hidden').appendChild(elm);
 		}
-	}
+	};
+	this.addhiddenObject = function(id,value,name){
+		if(!mfp.$('mfp_'+id)){
+			if(!name) name = 'mfp_' + id;
+			var elm = mfp.d.createElement('textarea');
+			elm.style.display = 'none';
+			elm.id = 'mfp_' + id;
+			elm.name = name;
+			elm.value = value;
+			mfp.$('mfp_hidden').appendChild(elm);
+		}
+	};
 	this.removeClassName = function(obj,name){
 		var classNames = [];
 		classNames = obj.className.split(' ');
@@ -324,22 +382,32 @@ function MailformPro(){
 	this.calc = function(){
 		if(mfp.$('mfp_price')){
 			mfp.Price = 0;
+			mfp.Cost = 0;
 			mfp.Cart = new Array();
 			mfp.CartText = "";
 			for(var prop in mfp.Items){
 				if(mfp.$(prop).tagName.toLowerCase() == 'option' && mfp.$(prop).selected && !mfp.$(prop).disabled && !mfp.$(prop).parentNode.disabled && !mfp.$(prop).parentNode.parentNode.disabled){
 					mfp.Price += mfp.Items[prop].price;
+					if(mfp.$(prop).getAttribute('data-cost')){
+						mfp.Cost += mfp.Items[prop].price;
+					};
 					mfp.addcart(mfp.$(prop).value,prop,mfp.Items[prop].price,1);
 				}
 				else if((mfp.$(prop).type == 'radio' || mfp.$(prop).type == 'checkbox') && mfp.$(prop).checked && !mfp.$(prop).disabled){
 					mfp.Price += mfp.Items[prop].price;
+					if(mfp.$(prop).getAttribute('data-cost')){
+						mfp.Cost += mfp.Items[prop].price;
+					};
 					mfp.addcart(mfp.$(prop).value,prop,mfp.Items[prop].price,1);
 				}
 				else if(!mfp.$(prop).value.match(/[^0-9]/) && Number(mfp.$(prop).value) > 0 && !mfp.$(prop).disabled){
 					mfp.Price += (mfp.Items[prop].price * Number(mfp.$(prop).value));
+					if(mfp.$(prop).getAttribute('data-cost')){
+						mfp.Cost += (mfp.Items[prop].price * Number(mfp.$(prop).value));
+					};
 					mfp.addcart(mfp.$(prop).name,prop,mfp.Items[prop].price,Number(mfp.$(prop).value));
-				}
-			}
+				};
+			};
 			mfp.extend.run('calc');
 			
 			mfp.$('mfp_cart').value = mfp.Cart.join('||');
@@ -386,12 +454,45 @@ function MailformPro(){
 			else
 				tObj[i].disabled = false;
 		}
-		if(!hide && flag)
-			mfp.$(id).style.display = "none";
-		else if(!hide && block)
-			mfp.$(id).style.display = block;
-		else if(!hide)
-			mfp.$(id).style.display = "block";
+		if(!hide && flag){
+			if(mfp.$(id).className.indexOf('accordion') > -1){
+				try {
+					$("#"+id).slideUp();
+				}
+				catch(e){
+					mfp.$(id).style.display = "none";
+				};
+			}
+			else {
+				mfp.$(id).style.display = "none";
+			};
+		}
+		else if(!hide && block){
+			if(mfp.$(id).className.indexOf('accordion') > -1){
+				try {
+					$("#"+id).slideDown();
+				}
+				catch(e){
+					mfp.$(id).style.display = block;
+				};
+			}
+			else {
+				mfp.$(id).style.display = block;
+			};
+		}
+		else if(!hide){
+			if(mfp.$(id).className.indexOf('accordion') > -1){
+				try {
+					$("#"+id).slideDown();
+				}
+				catch(e){
+					mfp.$(id).style.display = "block";
+				};
+			}
+			else {
+				mfp.$(id).style.display = "block";
+			};
+		};
 	}
 	this.addcart = function(name,id,price,qty){
 		if(!mfp.Cart[id]){
@@ -435,32 +536,38 @@ function MailformPro(){
 		}
 	}
 	this.problem = function(obj,msg){
-		mfp.ErrorLog.push(obj.name);
-		if(obj.type != "radio" && obj.type != "checkbox" && obj.type != "file" && !mfpConfigs['NoClassChange'])
-			this.attachClass(obj,'problem');
-			//obj.className = mfp.ElementsClassName[obj.id]+'problem';
-		var elmName = mfpLang['ReservedWord'][obj.name] || obj.name;
-		msg = msg.replace('$name',elmName);
-		mfp.Elements[obj.name].err.innerHTML = msg;
-		mfp.Elements[obj.name].err.style.display = "block";
-		if(mfp.Elements[obj.name].parent)
-			mfp.Elements[obj.name].parent.className = 'mfp_parent_error';
-		mfp.setresume(obj);
-		mfp.extend.run('problem',obj);
-		mfp.extend.run('problem'+obj.name,obj);
+		if(mfp.Ready){
+			mfp.ErrorLog.push(obj.name);
+			if(obj.type != "radio" && obj.type != "checkbox" && obj.type != "file" && !mfpConfigs['NoClassChange'])
+				this.attachClass(obj,'problem');
+				//obj.className = mfp.ElementsClassName[obj.id]+'problem';
+			var elmName = obj.getAttribute('data-display-label') || mfpLang['ReservedWord'][obj.name] || obj.name;
+			msg = msg.replace('$name',elmName);
+			mfp.Elements[obj.name].err.innerHTML = msg.replace(/\_/ig,' ');
+			mfp.Elements[obj.name].err.style.display = "block";
+			if(mfp.Elements[obj.name].parent)
+				mfp.Elements[obj.name].parent.className = 'mfp_parent_error';
+			mfp.setresume(obj);
+			mfp.extend.run('problem',obj);
+			mfp.extend.run('problem'+obj.name,obj);
+		};
+		mfp.Elements[obj.name].check = false;
 		return true;
 	}
 	this.noproblem = function(obj){
-		for(var i=0;i<mfp.Elements[obj.name].group.length;i++)
-			this.removeClass(obj,'problem');
-			//mfp.$(mfp.Elements[obj.name].group[i]).className = mfp.ElementsClassName[mfp.Elements[obj.name].group[i]];
-		if(mfp.Elements[obj.name].err)
-			mfp.Elements[obj.name].err.style.display = "none";
-		if(mfp.Elements[obj.name].parent)
-			mfp.Elements[obj.name].parent.className = mfp.Elements[obj.name].parentClassName;
-		mfp.setresume(obj);
-		mfp.extend.run('noproblem',obj);
-		mfp.extend.run('noproblem'+obj.name,obj);
+		if(mfp.Ready){
+			for(var i=0;i<mfp.Elements[obj.name].group.length;i++)
+				this.removeClass(obj,'problem');
+				//mfp.$(mfp.Elements[obj.name].group[i]).className = mfp.ElementsClassName[mfp.Elements[obj.name].group[i]];
+			if(mfp.Elements[obj.name].err)
+				mfp.Elements[obj.name].err.style.display = "none";
+			if(mfp.Elements[obj.name].parent)
+				mfp.Elements[obj.name].parent.className = mfp.Elements[obj.name].parentClassName;
+			mfp.setresume(obj);
+			mfp.extend.run('noproblem',obj);
+			mfp.extend.run('noproblem'+obj.name,obj);
+		}
+		mfp.Elements[obj.name].check = true;
 		return false;
 	}
 	this.attachClass = function(obj,className){
@@ -505,10 +612,21 @@ function MailformPro(){
 		return mfp.d.getElementById(id);
 	}
 	this.check = function(obj){
+		if(obj.type == ('text' || 'textarea' || 'tel' || 'email' || 'number')){
+			if(obj.value == obj.defaultValue)
+				mfp.addClassName(obj,'mfp_defaultValue');
+			else
+				mfp.removeClassName(obj,"mfp_defaultValue");
+		};
 		mfp.ExtendErrorMsg = "";
-		mfp.extend.run('check',obj);
+		if(obj.name){
+			mfp.extend.run('check',obj);
+		};
 		if(mfp.ExtendErrorMsg != ""){
 			return mfp.problem(obj,mfp.ExtendErrorMsg);
+		}
+		else if(obj.getAttribute('data-error') && obj.getAttribute('data-error-text') && !obj.disabled){
+			return mfp.problem(obj,obj.getAttribute('data-error-text'));
 		}
 		else if(!obj.disabled && obj.type != "hidden" && obj.name != ""){
 			if(Number(mfpConfigs['DisableURI']) && (obj.value.match(/http:/i) || obj.value.match(/https:/i)))
@@ -545,12 +663,14 @@ function MailformPro(){
 					return mfp.noproblem(obj);
 			}
 			else if(mfp.Elements[obj.name].required && (obj.value == obj.defaultValue || obj.value == "")){
-				if(mfp.Elements[obj.name].type == "select-one" || mfp.Elements[obj.name].type == "select-multiple" || mfp.Elements[obj.name].type == "file")
+				if(mfp.Elements[obj.name].type == "select-one" || mfp.Elements[obj.name].type == "select-multiple")
 					return mfp.problem(obj,mfpLang['ErrorSelectFieldType1']);
+				else if(mfp.Elements[obj.name].type == "file")
+					return mfp.problem(obj,mfpLang['ErrorFileFieldType1']);
 				else
 					return mfp.problem(obj,mfpLang['ErrorTextFieldType1']);
 			}
-			else if(mfp.Elements[obj.name].type == "text" || mfp.Elements[obj.name].type == "textarea" || mfp.Elements[obj.name].type == "email"){
+			else if(mfp.Elements[obj.name].type == "text" || mfp.Elements[obj.name].type == "textarea" || mfp.Elements[obj.name].type == "email" || mfp.Elements[obj.name].type == "password"){
 				if(mfp.Elements[obj.name].type == "email" && !obj.value.match(/.+@.+\..+/) && obj.value != obj.defaultValue){
 					return mfp.problem(obj,mfpLang['ErrorTextFieldType2']);
 				}
@@ -665,6 +785,11 @@ function MailformPro(){
 				return mfp.noproblem(obj);
 			}
 		}
+		mfp.ExtendErrorMsg = "";
+		mfp.extend.run('checkafter',obj);
+		if(mfp.ExtendErrorMsg != ""){
+			return mfp.problem(obj,mfp.ExtendErrorMsg);
+		}
 	}
 	this.val = function(id){
 		var e = mfp.$(id);
@@ -673,9 +798,15 @@ function MailformPro(){
 		else if(e.type == 'checkbox' || e.type == 'radio'){
 			var values = new Array();
 			for(var i=0;i<mfp.Elements[e.name].group.length;i++){
-				if(mfp.$(mfp.Elements[e.name].group[i]).checked && !e.disabled)
-					values.push(mfp.$(mfp.Elements[e.name].group[i]).value);
-			}
+				if(mfp.$(mfp.Elements[e.name].group[i]).checked && !e.disabled){
+					if(mfp.$(mfp.Elements[e.name].group[i]).getAttribute('data-display-value')){
+						values.push(mfp.$(mfp.Elements[e.name].group[i]).getAttribute('data-display-value'));
+					}
+					else{
+						values.push(mfp.$(mfp.Elements[e.name].group[i]).value);
+					};
+				};
+			};
 			return values.join('<br />');
 		}
 		else if(e.type == 'file' && !e.disabled){
@@ -689,8 +820,13 @@ function MailformPro(){
 				return mfp.sanitizing(mfp.$(id).value.replace(/\\n/g,'<br />'));
 			}
 		}
-		else if(!e.disabled && e.value != e.defaultValue)
-			return mfp.sanitizing(mfp.$(id).value.replace(/\\n/g,'<br />'));
+		else if(!e.disabled && e.value != e.defaultValue){
+			var val = mfp.sanitizing(mfp.$(id).value);
+			val = val.replace(/\\n/g,'<br />');
+			val = val.replace(/\n/g,'<br />');
+			//return mfp.sanitizing(mfp.$(id).value.replace(/\\n/g,'<br />').replace(/\\n/g,'<br />'));
+			return val;
+		}
 		else
 			return '';
 	}
@@ -712,7 +848,7 @@ function MailformPro(){
 			if(mfp.check(e))
 				errors.push(e.id);
 			else {
-				var elmName = mfpLang['ReservedWord'][mfp.Names[i]] || mfp.Names[i];
+				var elmName = e.getAttribute('data-display-label') || mfpLang['ReservedWord'][mfp.Names[i]] || mfp.Names[i];
 				var val = "";
 				// 2013-05-28 hotfix
 				if((mfp.Elements[mfp.Names[i]].type == 'join' || mfp.Elements[mfp.Names[i]].type == 'unjoin') && !mfp.Elements[mfp.Names[i]].disabled){
@@ -749,6 +885,7 @@ function MailformPro(){
 					if(val != "" && mfp.Names[i].indexOf('mfp_') == -1 && !e.getAttribute('data-post-disable')){
 						var className = 'mfp_colored';
 						if(s % 2 == 0) className = 'mfp_achroma';
+						elmName = elmName.replace(/\_/ig, " ");
 						mfp.ConfirmHTML += '<tr class="'+className+'"><th>'+elmName+'</th><td>'+val+'</td>';
 						s++;
 					}
@@ -756,14 +893,17 @@ function MailformPro(){
 			}
 		}
 		if(errors.length > 0){
-			mfp.$(errors[0]).focus();
+			if(mfp.Ready){
+				if(!mfpConfigs['ErrorFocusDisabled']){
+					mfp.$(errors[0]).focus();
+				};
+			};
 			mfp.extend.run('elementError',mfp.$(errors[0]));
-			//scrollTo(0,mfp.$(errors[0]).parentNode.offsetTop-50);
 			return false;
 		}
-		else
+		else {
 			return true;
-		//alert(errors);
+		};
 	}
 	this.sizeajust = function(obj){
 		if(mfpConfigs['SizeAjustPx'] != null){
@@ -784,13 +924,56 @@ function MailformPro(){
 				}
 			});
 		}
-	}
+	};
+	this.pos = function(id){
+		var obj = mfp.$(id);
+		var left = 0,top = 0;
+		while(obj.parentNode){
+			left += obj.offsetLeft;
+			top += obj.offsetTop;
+			obj = obj.parentNode;
+		};
+		return {"left" : left, "top" : top};
+	},
+	this.jump = function(id){
+		mfp.$(id).focus();
+		mfp.scroll(id);
+	};
+	this.scroll = function(id){
+		setTimeout(function(){
+			var top = [];
+			var ajust = 100;
+			top.push(mfp.$(id).offsetTop);
+			if(mfp.$(id).getBoundingClientRect()){
+				top.push(mfp.$(id).getBoundingClientRect().top - mfp.$(id).offsetParent.getBoundingClientRect().top);
+			};
+			try {
+				top.push($("#"+id).offset().top);
+			}
+			catch(e){};
+			top.sort(function(a,b){
+				if( a > b ) return -1;
+				if( a < b ) return 1;
+				return 0;
+			});
+			if(top[0] > 50){
+				scrollTo(0,top[0] - ajust);
+			}
+			else {
+				scrollTo(0,mfp.pos(id).top - ajust);
+			};
+			setTimeout(function(){
+				mfp.$(id).focus();
+			},100);
+		},10);
+	};
 	this.cancel = function(){
 		mfp.SendFlag = false;
 		if(mfpConfigs['ConfirmationMode'] == 1){
 			mfp.$('mfp_phase_confirm').style.display = "none";
 			mfp.$('mfp_phase_confirm_inner').innerHTML = "";
-			scrollTo(0,mfp.Mfp.offsetTop);
+			//scrollTo(0,mfp.Mfp.offsetTop);
+			mfp.jump('mailformpro');
 		}
 		else if(mfpConfigs['ConfirmationMode'] == 0){
 			setTimeout(function(){
@@ -835,6 +1018,7 @@ function MailformPro(){
 					e.disabled = true;
 			}
 			//
+			mfp.SendBusy = false;
 			mfp.extend.run('send');
 			if(mfpConfigs['LoadingScreen']){
 				mfp.$('mfp_loading').style.display = 'block';
@@ -848,7 +1032,8 @@ function MailformPro(){
 			catch(e){
 				window.detachEvent("onbeforeunload", mfp.unload);
 			}
-			mfp.Mfp.submit();
+			if(!mfp.SendBusy)
+				mfp.Mfp.submit();
 		}
 		else {
 			mfp.DisableSubmit = false;
@@ -874,7 +1059,8 @@ function MailformPro(){
 					mfp.Mfp.style.display = "none";
 					mfp.$('mfp_phase_confirm_inner').innerHTML = mfpLang['ConfirmTitle']+'<table id="mfp_confirm_table">' + mfp.ConfirmHTML + '</table>' + mfpButtons;
 					mfp.$('mfp_phase_confirm').style.display = "block";
-					scrollTo(0,mfp.$('mfp_phase_confirm').offsetTop);
+					//scrollTo(0,mfp.$('mfp_phase_confirm').offsetTop);
+					mfp.jump('mfp_phase_confirm');
 				}
 				else if(mfpConfigs['ConfirmationMode'] == 0){
 					var mfpButtons = "";
@@ -999,6 +1185,7 @@ function MailformPro(){
 		this.Height = nHeight;
 		this.Top = nTop;
 		this.Left = nLeft;
+		mfp.extend.run('size');
 	}
 	function easing(t,b,c,d){
 		if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
@@ -1092,6 +1279,7 @@ function MailformPro(){
 	this.error = function(msg){
 		mfp.Mfp.style.display = "none";
 		mfp.$('mfp_error').style.display = "block";
+		msg = msg.replace(/\_/ig,' ');
 		mfp.$('mfp_error').innerHTML += msg;
 		mfp.extend.run('senderror');
 	};
@@ -1132,10 +1320,13 @@ function MailformPro(){
 		this.charset = document.charset || document.characterSet;
 		if(this.charset.toLowerCase() != 'utf-8')
 			alert(mfpLang['SelfEvaluateType02'].replace('$1',this.charset));
-		if(mfp.$('mailformpro'))
+		if(mfp.$('mailformpro')){
 			this.Mfp = mfp.$('mailformpro');
-		else
+		}
+		else {
 			alert(mfpLang['SelfEvaluateType01']);
+		};
+		
 		// Overlay object
 		if(!mfp.$('mfp_overlay')){
 			var bodyObj = document.body;
@@ -1206,6 +1397,7 @@ function MailformPro(){
 		});
 		this.FocusTime = 0;
 		this.Index = new Array();
+		this.Ready = false;
 		this.IndexName = new Object();
 		this.Names = new Array();
 		this.Required = new Object();
@@ -1220,6 +1412,7 @@ function MailformPro(){
 		this.Items = new Object();
 		this.Cart = new Array();
 		this.Price = 0;
+		this.Cost = 0;
 		this.UnloadEvent = false;
 		this.DisableSubmit = true;
 		this.LastFocus = null;
@@ -1262,6 +1455,9 @@ function MailformPro(){
 			var WarningCode = Number(location.hash.substring(12,14)) - 1;
 			if(mfpLang['WarningCode'][WarningCode])
 				mfp.warning(mfpLang['WarningCode'][WarningCode]);
+			// setTimeout(function(){
+			// 	mfp.$('mfp_warning').style.display = "none";
+			// },3000);
 		}
 		
 		//if(mfpConfigs['OpenDate'] != ''){

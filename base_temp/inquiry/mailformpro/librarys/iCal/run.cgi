@@ -1,4 +1,3 @@
-
 $_HTML{'iCal.Summary'} =~ s/<br \/>/\\n/ig;
 $_HTML{'iCal.Summary'} =~ s/\://ig;
 $_HTML{'iCal.Summary'} =~ s/\;//ig;
@@ -50,3 +49,4 @@ $iCal .= "END:STANDARD\n";
 $iCal .= "END:VTIMEZONE\n";
 $iCal .= "END:VCALENDAR\n";
 &_SAVE($config{'file.iCal.ics.path'},$iCal);
+1;

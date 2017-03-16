@@ -85,7 +85,8 @@ mfp.extend.event('calc',
 );
 mfp.extend.event('startup',
 	function(){
-		mfp.addhiddenElement('shopping_cart_value','',mfpLang['cart']['cart']);
+		if(!mfp.$('shopping_cart_value'))
+			mfp.addhiddenObject('shopping_cart_value','',mfpLang['cart']['cart']);
 		if(!document.getElementById('mfp_shopping_cart')){
 			var elm = mfp.d.createElement('div');
 			elm.id = 'mfp_shopping_cart';
@@ -96,5 +97,12 @@ mfp.extend.event('startup',
 			mfp.call(mfp.$('mfpjs').src,'addon=cart/cart.js&item=' + mfp.GET['item'] + '&qty=' + mfp.GET['qty'] + '&price=' + mfp.GET['price'] + '&name=' + mfp.GET['name'] + '&callback=getCart');
 		else // call cart
 			mfp.call(mfp.$('mfpjs').src,'addon=cart/cart.js&callback=getCart');
+	}
+);
+mfp.extend.event('check',
+	function(obj){
+		if(obj.name == 'ご注文商品' && obj.value == ""){
+			mfp.ExtendErrorMsg = 'ショッピングカートに商品が登録されていません';
+		}
 	}
 );

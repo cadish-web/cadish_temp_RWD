@@ -4,4 +4,4 @@ if(-d $config{'dir.cart'}){
 		unlink $cartpath;
 	}
 }
-$about = "process";
+1;

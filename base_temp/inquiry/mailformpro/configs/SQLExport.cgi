@@ -12,4 +12,4 @@ $config{'SQLpasswd'} = '******';
 ## SQL File
 $config{'file.sql'} = './configs/SQLExportTemplate.sql.cgi';
 
-$config{'about'} = 'SQL Export Module';
+1;

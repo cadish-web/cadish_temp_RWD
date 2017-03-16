@@ -73,5 +73,4 @@ if($_POST{'mfp_paypal'}){
 		flock(FH, LOCK_NB);
 	}
 }
-
-$about = "process";
+1;

@@ -28,3 +28,5 @@ $config{'iCal.TimeZone'} = 'Asia/Tokyo';
 
 ## iCalendar グリニッジ標準時
 $config{'iCal.GMT'} = '+0900';
+
+1;

@@ -1,4 +1,3 @@
-
 sub _MAILHEADER {
 	my($to,$from,$name,$subject,$body,$attached,$htmlmail) = @_;
 	my $str;
@@ -35,5 +34,4 @@ sub _MAILHEADER {
 	$str .= "--$config{'Boundary'}--\n";
 	return $str;
 }
-
-$about = 'process';
+1;

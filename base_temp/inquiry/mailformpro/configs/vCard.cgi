@@ -5,4 +5,4 @@ $config{"vCard_sjis"} = 0;
 ## vCardのテンプレートファイル
 $config{'vCard.template'} = './configs/vCardTemplate.vcf.cgi';
 
-$config{'about'} = 'vCard attached Module';
+1;

@@ -1,4 +1,3 @@
-
 ## SMTP Server
 $config{'SMTPserver'} = 'smtp.example.com';
 
@@ -11,5 +10,7 @@ $config{'SMTPserver'} = 'smtp.example.com';
 #$config{'SMTPuser'} = 'username';
 #$config{'SMTPpasswd'} = 'password';
 
+## SMTP Port
+#$config{'SMTPport'} = '25';
 
-$config{'about'} = 'SMTP Sending Module';
+1;

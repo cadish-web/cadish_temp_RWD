@@ -12,11 +12,13 @@ var mfpConfigs = {
 	'OpenDate': '_%%OpenDate%%_',
 	'CloseDate': '_%%CloseDate%%_',
 	'DisableURI': '_%%DisableURI%%_',
+	'ResumeCancel': false,
 	'ConfirmationMode': '_%%ConfirmationMode%%_',
 	'ResumeExpire': '',
 	'OverlayOpacity': 0.8,
 	'NoClassChange': false,
 	'LoadingScreen': true,
+	'ErrorFocusDisabled': false,
 	'LoadingImage': {
 		'width': 40,
 		'height': 40

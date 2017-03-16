@@ -39,5 +39,4 @@ $_PAYPAL{'result_body'} = <<'__return_body__';
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 __return_body__
 
-
-$config{'about'} = 'PayPal Module';
+1;

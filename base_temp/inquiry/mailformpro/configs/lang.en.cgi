@@ -45,4 +45,5 @@ $lang{'ErrorCode5'} = 'Sending domain is not allowed.';
 $lang{'ErrorCode6'} = 'Exceeds the limit.';
 $lang{'ErrorCode7'} = 'Is outside the booking period.';
 $lang{'ErrorCode10'} = 'Misconfiguration';
+$lang{'ErrorCode500'} = 'It failed to send mail.';
 $lang{'Return'} = '<a href="%s">&lt;&lt; Return</a>';
