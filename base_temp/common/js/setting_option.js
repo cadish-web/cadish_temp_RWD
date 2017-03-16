@@ -19,13 +19,19 @@ $(document).ready(function() {
 	var con = $('#contents_wrap'); // コンテンツ領域の名前
 	var navTop = nav.offset().top; // 固定するナビまでの高さを算出
 	var navHeight = $("#gnav").height(); // nav_wrap の高さを取得
-	if( $(this).scrollTop() >= navTop ) {
+	var storeNav = 1100; //gnavが格納される幅
+	if( $(this).scrollTop() >= navTop && $(window).width() >= storeNav) {
 		nav.addClass('fixed');
 		con.css('padding-top', navHeight+'px');
 	}
+	//リサイズしたらナビの位置を再取得
+	$(window).on('resize', function() {
+		navTop = nav.offset().top;
+	});
+	//スクロール時の処理
 	$(window).scroll(function () {
 		var winTop = $(this).scrollTop();
-		if (winTop >= navTop) {
+		if (winTop >= navTop && $(window).width() >= storeNav ) {
 			nav.addClass('fixed').css('top','0');
 			con.css( 'padding-top', navHeight+'px');
 			//PC用は下記1行を追記してください
@@ -80,7 +86,7 @@ $(document).ready(function() {
 		// 	var speed = 500;
 		// 	var href= $(this).attr("href");
 		// 	var target = $(href == "#" || href == "" ? 'html' : href);
-		// 	var headerHeight = 100; //固定ヘッダーの高さ
+		// 	var hHeight = $('#h_wrap').height(); //固定ヘッダーの高さ
 		// 	var position = target.offset().top - headerHeight; //ターゲットの座標からヘッダの高さ分引く
 		// 	$('body,html').animate({scrollTop:position}, speed, 'swing');
 		// 	return false;
@@ -154,6 +160,14 @@ $(window).on('load',function(){
 
 			// リサイズ前のウインドウ幅とリサイズ後のウインドウ幅が異なる場合
 			if ( winWidth !== winWidth_resized ) {
+				//facebook用の処理
+				// boxWidth=$('#fb_col').width();
+				// currentWidth=$('#fb_col .fb-page').attr('data-width');
+				// if(boxWidth != currentWidth){
+				// 	$('#fb_col .fb-page').attr('data-width', boxWidth);
+				// 	FB.XFBML.parse(document.getElementById('fb_col'));
+				// }
+
 				// ここにやりたい処理書く
 				if($('.acc_tit').hasClass('active')){
 					$('.acc_tit').removeClass('active');
@@ -187,12 +201,14 @@ $(window).on('load',function(){
 //		var position = target.offset().top - 120; //ナビの高さ分をマイナスする
 //
 //		//以下はレスポンシブ時ナビを格納する場合の処理です　必要ない場合は削除してください
-//		if ( winWidth <= 1050 ) { //1050 の箇所はナビが格納される数値を入れてください
+//		if ( winWidth <= 1100 ) { //1050 の箇所はナビが格納される数値を入れてください
 //			position += 120; //120 の箇所は上で入れたナビの高さと同じ数値を入れてください
 //		}
 //
 //		$("html, body").animate({scrollTop:position}, speed, "swing");
 //	}
+
+
 
 /* ----- Setting End ----------------------------------- */
 });

@@ -6,9 +6,9 @@
 ====================================================== */
 @media screen and (max-width: 1100px) {
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
 	#privacy article div { margin-bottom: 0;}
 	#privacy article p.ver_sp { display: block;}
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 600px) {
 }

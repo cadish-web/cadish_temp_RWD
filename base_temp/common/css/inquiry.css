@@ -11,19 +11,19 @@ layout ※余白やらアイコンやらは施設に合わせて変えてくだ�
 
 
 #inquiry #form_area dl{
-	margin: 0 2%; padding: 0 10px 5px; width: 100%;
+	display: table; width: 100%; padding: 0 10px 5px; table-layout: fixed;
 	border-bottom: 1px dashed #ddd;box-sizing: border-box;
 }
-#inquiry #form_area dl:after {
+/*#inquiry #form_area dl:after {
 	content: "."; display: block; clear: both;
 	height: 0; font-size: 0; visibility: hidden;
-}
+}*/
 
 #inquiry #form_area dt,
-#inquiry #form_area dd{ margin: 0; padding: 5px 10px; box-sizing: border-box;}
+#inquiry #form_area dd { display: table-cell; margin: 0; padding: 5px 10px; box-sizing: border-box;}
 
-#inquiry #form_area dt{ width: 30%; float: left; text-align: left;}
-#inquiry #form_area dd{ width: 69%; float: right;}
+#inquiry #form_area dt{ width: 30%; text-align: left;}
+#inquiry #form_area dd{ width: 69%;}
 
 
 

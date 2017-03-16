@@ -41,7 +41,7 @@ div#mfp_thanks strong {
 form#mailformpro {
 	padding: 10px 0px;
 }
-form#mailformpro dl dt {
+/*form#mailformpro dl dt {
 	float: left;
 	width: 160px;
 	clear: both;
@@ -58,7 +58,7 @@ form#mailformpro dl dd {
 	font-size: 12px;
 	line-height: 1.5em;
 	text-align: left;
-}
+}*/
 form#mailformpro dl dd ul,form#mailformpro dl dd ol {
 	margin: 0px;
 	padding: 0px;
@@ -697,7 +697,7 @@ span.mfp_tips em {
 	font-weight: bold;
 }
 @media screen and (max-width: 800px) {
-	form#mailformpro dl dt {
+	/*form#mailformpro dl dt {
 		float: none;
 		width: auto;
 		font-size: 12px;
@@ -710,7 +710,7 @@ span.mfp_tips em {
 		padding: 5px 15px;
 		font-size: 12px;
 		line-height: 1.5em;
-	}
+	}*/
 	div.mfp_buttons button {
 		font-size: 14px;
 	}

@@ -65,9 +65,9 @@
 
 	#gnav a:hover{ display: block; text-decoration: none; background-color: rgba(204,204,204,0.25);}
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 600px) {
 	#header h1{ clear: both; width: 100%; float: none; text-align: center;}
 	#head_nav { clear: both; width: 100%; padding: 0; float: none;}
 	#head_nav li{ padding: 0 1%;}
@@ -80,9 +80,9 @@
 @media screen and (max-width: 1100px) {
 	#contents { width: 96%;}
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 600px) {
 
 }
 
@@ -96,7 +96,7 @@
 	#f_logo{ width: 27%;}
 	#fnav{ width: 72%;}
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
 	#f_logo,
 	#fnav{ clear: both; float: none; margin: 0 auto 15px; width: 100%;}
 	#f_logo{ text-align: center;}
@@ -104,7 +104,7 @@
 	#f_logo address span{ display: inline-block; margin: 0 15px 0 0;}
 	#fnav{ text-align: center;}
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 600px) {
 	#fnav .acc_tit{
 		display: block; margin: 0 auto 15px; padding: 10px; width: 98%;
 		background: #353535 url(../img/arrow_off.png) no-repeat 98% 50%;
