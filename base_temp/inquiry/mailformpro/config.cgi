@@ -9,10 +9,10 @@ $config{'ConfirmationMode'} = 0;
 $config{'sendmail'} = '/usr/sbin/sendmail';
 
 ## フォームの送信先
-push @mailto,'support@synck.com';
+#push @mailto,'web_ml@cadish.co.jp';
 
 ## 自動返信メールの差出人名
-$config{'fromname'} = 'シンクグラフィカ';
+$config{'fromname'} = '株式会社キャディッシュ';
 
 ## 自動返信メールの差出人メールアドレス
 $config{'mailfrom'} = $mailto[0];
@@ -52,14 +52,12 @@ $_TEXT{'posted'} = <<'__posted_body__';
 <_resbody_>
 ──────────────────────────
 
-<_mfp_env_>
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 　※この署名はサンプルです。必ず変更してください※　
-　シンクグラフィカ / SYNCKGRAPHICA
-　〒005-0007 札幌市南区澄川2条2丁目4番1号
-　TEL / 050-3390-0450　FAX / 011-887-0450
-　http://www.synck.com
+　株式会社キャディッシュ
+　〒506-0045 岐阜県高山市赤保木町1169-7
+　TEL / 0577-36-3604　FAX / 0577-35-0202
+　http://www.cadish.co.jp
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 __posted_body__
 
@@ -67,15 +65,21 @@ __posted_body__
 ## 自動返信メールの件名 (有効にする場合は下記の行頭#を外してください。)
 ## ※※※！！！※※※！！！※※※！！！※※※！！！※※※！！！※※※
 
-$config{"ReturnSubject"} = '[ %s ] お問い合せありがとうございました';
+$config{"ReturnSubject"} = '【施設名】お問い合せありがとうございました';
 
 ## 自動返信メールの本文
 $_TEXT{'responder'} = <<'__return_body__';
-<_姓_> 様
+<_お名前_> 様
 ──────────────────────────
 
 この度はお問い合せ頂き誠にありがとうございました。
 改めて担当者よりご連絡をさせていただきます。
+
+ご返答にはお時間をいただく可能性がございます。
+お急ぎの場合はお手数ではございますが、
+お電話にてご連絡ください。
+
+TEL: 0577-36-3604
 
 ─ご送信内容の確認─────────────────
 受付番号：<_mfp_serial_>
@@ -89,10 +93,10 @@ $_TEXT{'responder'} = <<'__return_body__';
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 　※この署名はサンプルです。必ず変更してください※　
-　シンクグラフィカ / SYNCKGRAPHICA
-　〒005-0007 札幌市南区澄川2条2丁目4番1号
-　TEL / 050-3390-0450　FAX / 011-887-0450
-　http://www.synck.com
+　株式会社キャディッシュ
+　〒506-0045 岐阜県高山市赤保木町1169-7
+　TEL / 0577-36-3604　FAX / 0577-35-0202
+　http://www.cadish.co.jp
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 __return_body__
 
@@ -147,15 +151,15 @@ $config{'DisableURI'} = 0;
 $config{'dir.AddOns'} = './add-ons/';
 
 @AddOns = ();
-#push @AddOns,'OperationCheck.js';		## 動作チェック ※本番では消してください
+push @AddOns,'OperationCheck.js';		## 動作チェック ※本番では消してください
 push @AddOns,'charactercheck.js';		## 文字校正
 push @AddOns,'prefcode/prefcode.js';	## 郵便番号からの住所入力
 #push @AddOns,'prefcodeadv/prefcode.js';## 郵便番号からの住所入力(高機能・高負荷)
 push @AddOns,'furigana.js';				## フリガナ(Firefox非対応)
-push @AddOns,'datelist.js';				## 日付リストの生成機能 [Update]
+#push @AddOns,'datelist.js';				## 日付リストの生成機能 [Update]
 push @AddOns,'ok.js';					## OKアドオン [New]
 push @AddOns,'nospace.js';				## スペースのみの入力を無効
-push @AddOns,'toggle.js';				## 入力欄の可変
+#push @AddOns,'toggle.js';				## 入力欄の可変
 #push @AddOns,'cart/cart.js';			## ショッピングカート機能
 #push @AddOns,'request/request.js';		## [New] リクエスト機能
 #push @AddOns,'phase.js';				## 段階的入力機能
