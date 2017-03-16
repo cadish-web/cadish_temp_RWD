@@ -1,7 +1,4 @@
 @charset "UTF-8";
-/*
-	./_cart.css/default/cart.css
-*/
 
 form.mfpcart {
 }
@@ -24,7 +21,7 @@ form.mfpcart button span {
 	background-color: #CCC;
 	text-shadow: 0px 1px 0px #EEE;
 }
-form.mfpcart button span: hover {
+form.mfpcart button span:hover {
 	background-color: #DDD;
 }
 a.gocart {
@@ -34,7 +31,7 @@ a.gocart {
 	background-color: #CCC;
 	text-decoration: none;
 }
-a.gocart: hover {
+a.gocart:hover {
 	background-color: #DDD;
 }
 a.gocart span {

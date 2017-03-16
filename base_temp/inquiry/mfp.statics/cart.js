@@ -5,7 +5,12 @@ function mfpCartAdd(obj){
 	var arr = new Array();
 	for(var i=0;i<obj.length;i++){
 		if(obj.elements[i].name != ""){
-			arr.push(obj.elements[i].name+'='+obj.elements[i].value);
+			if((obj.elements[i].type == 'checkbox' || obj.elements[i].type == 'radio') && obj.elements[i].checked){
+				arr.push(obj.elements[i].name+'='+obj.elements[i].value);
+			}
+			else if(obj.elements[i].type != 'checkbox' && obj.elements[i].type != 'radio'){
+				arr.push(obj.elements[i].name+'='+obj.elements[i].value);
+			};
 		};
 		if(obj.elements[i].type == "submit"){
 			obj.elements[i].disabled = true;
