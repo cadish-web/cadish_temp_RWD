@@ -108,7 +108,7 @@
 	#f_logo address span{ display: inline-block; margin: 0 15px 0 0;}
 	#fnav{ text-align: center;}
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
 	#fnav .acc_tit{
 		display: block; margin: 0 auto 15px; padding: 10px; width: 98%;
 		background: #353535 url(../img/arrow_off.png) no-repeat 98% 50%;
