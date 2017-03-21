@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* ===================================================
-◇ Base CSS ◇
+	Base CSS
 ====================================================== */
 body {
 	color: #000; font-size: 14px; font-weight: normal; line-height: 1.5; background: #fff;
@@ -34,9 +34,8 @@ iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;
 #header_wrap  { }
 #header       { margin: 0 auto; padding: 15px 0 5px; width: 1100px;}
 
-#header h1{ width: 500px; float: left;}
-#header h1 span{ font-size: 12px;}
-#header h1 a{ display: block;}
+#header h1{ font-size: 12px;}
+#header #logo{ width: 500px; float: left;}
 
 #head_nav   { width: 500px; float: right;}
 #head_nav li{ width: 50%; padding: 0 0 0 1%; float: left; box-sizing: border-box;}
