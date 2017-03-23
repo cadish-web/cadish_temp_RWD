@@ -141,14 +141,19 @@ add_action('widgets_init', create_function('', 'return register_widget("MyWidget
 	▽エディタ関係
 ----------------------------------------------------- */
 function custom_editor_settings( $initArray ){
-	// エディタ用に [ editor-area ] クラスを追加する
-	$initArray['body_class'] = 'editor-area';
-	// エディターでh1とh2を使用不可にする
-	$initArray['theme_advanced_blockformats'] = 'p,address,pre,code,h3,h4,h5,h6';
-	return $initArray;
+    // WordPress3.X
+    //$initArray['theme_advanced_blockformats'] = 'h4,h5,h6,p,address,pre,code,h4,h5,h6';
+    // WordPress4.X
+    $initArray['block_formats'] = "見出し4=h4; 見出し5=h5; 見出し6=h6; 段落=p; グループ=div;";
+    return $initArray;
 }
 add_filter( 'tiny_mce_before_init', 'custom_editor_settings' );
 
+
+// エディタ用に [ editor-area ] クラスを追加する
+// function custom_editor_settings( $initArray ){
+// 	$initArray['body_class'] = 'editor-area';
+// }
 // エディタ用のスタイルシートを使用する
 // add_editor_style('css/editor-style.css');
 
