@@ -62,8 +62,10 @@ if (is_single()){
 	echo '<meta property="og:url" content="'; echo $canonical_url; echo '">';echo "\n";
 	echo '<meta property="og:type" content="blog">';echo "\n";
 }
-$str = $post->post_content;
-$searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
+if( !(is_home()) and !( is_search()) and !( is_404()) ) {
+	$str = $post->post_content;
+	$searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
+}
 if (is_single()){
 	if (has_post_thumbnail()){
 		$image_id = get_post_thumbnail_id();
