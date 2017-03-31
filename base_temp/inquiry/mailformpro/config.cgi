@@ -1,4 +1,5 @@
 $config{'about'} = 'Mailform Pro 4.2.3';
+##修正が必要な箇所は'!'を先頭につけています
 
 ## 確認画面のタイプ
 ## 0: オーバーレイ / 1:フラット / 2: システムダイアログ / 3:確認なし
@@ -8,10 +9,10 @@ $config{'ConfirmationMode'} = 0;
 #$config{'sendmail'} = 'C:\sendmail\sendmail.exe';
 $config{'sendmail'} = '/usr/sbin/sendmail';
 
-## フォームの送信先
+## !フォームの送信先
 #push @mailto,'web_ml@cadish.co.jp';
 
-## 自動返信メールの差出人名
+## !自動返信メールの差出人名
 $config{'fromname'} = '株式会社キャディッシュ';
 
 ## 自動返信メールの差出人メールアドレス
@@ -34,10 +35,10 @@ $config{'SerialBoost'} = 0;
 ## サンクスページのURL(URLかsend.cgiから見た相対パス)
 $config{'ThanksPage'} = '../thanks.html?no=%s';
 
-## 設置者に届くメールの件名
+## !設置者に届くメールの件名
 $config{'subject'} = '[ %s ] お問い合せフォームから';
 
-## 設置者に届くメールの本文整形
+## !設置者に届くメールの本文整形
 $_TEXT{'posted'} = <<'__posted_body__';
 <_mfp_jssemantics_>
 <_mfp_date_>
@@ -62,12 +63,12 @@ $_TEXT{'posted'} = <<'__posted_body__';
 __posted_body__
 
 ## ※※※！！！※※※！！！※※※！！！※※※！！！※※※！！！※※※
-## 自動返信メールの件名 (有効にする場合は下記の行頭#を外してください。)
+## !自動返信メールの件名 (有効にする場合は下記の行頭#を外してください。)
 ## ※※※！！！※※※！！！※※※！！！※※※！！！※※※！！！※※※
 
 $config{"ReturnSubject"} = '【施設名】お問い合せありがとうございました';
 
-## 自動返信メールの本文
+## !自動返信メールの本文
 $_TEXT{'responder'} = <<'__return_body__';
 <_お名前_> 様
 ──────────────────────────
@@ -117,7 +118,7 @@ $config{'mfp_separator_2'} = "\n【お問い合わせ内容】\n";
 $config{'DisabledJs'} = 0;
 
 ## リファラードメインチェック / 有効にする場合は行頭の#を削除
-#$config{'PostDomain'} = $ENV{'HTTP_HOST'};
+$config{'PostDomain'} = $ENV{'HTTP_HOST'};
 
 ## 全文英語のスパム候補を除外(1:除外 / 0:除外しない)
 $config{'EnglishSpamBlock'} = 1;
@@ -150,6 +151,7 @@ $config{'DisableURI'} = 0;
 
 $config{'dir.AddOns'} = './add-ons/';
 
+## !不要なアドオン等は先頭に'#'をつけて無効にしてください
 @AddOns = ();
 push @AddOns,'OperationCheck.js';		## 動作チェック ※本番では消してください
 push @AddOns,'charactercheck.js';		## 文字校正
@@ -198,6 +200,7 @@ push @AddOns,'mobileScrollFix.js';		## [New] モバイル端末エラー時の�
 ## モジュール(CGIの追加機能)
 ####################################################
 
+## !不要なモジュールは先頭に'#'をつけて無効にしてください
 @Modules = ();
 #push @Modules,'MultiConfig';	## 複数の設定ファイルを分岐させる
 push @Modules,'check';			## CGI動作環境チェック ※本番では消してください
