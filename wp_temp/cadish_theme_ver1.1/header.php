@@ -62,9 +62,9 @@ if (is_single()){
 	echo '<meta property="og:url" content="'; echo $canonical_url; echo '">';echo "\n";
 	echo '<meta property="og:type" content="blog">';echo "\n";
 }
-$str = $post->post_content;
-$searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
 if (is_single()){
+	$str = $post->post_content;
+	$searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
 	if (has_post_thumbnail()){
 		$image_id = get_post_thumbnail_id();
 		$image = wp_get_attachment_image_src( $image_id, 'full');
