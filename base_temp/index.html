@@ -53,6 +53,15 @@ hreflangに文字コードを指定し、URLをページごとに変えてくだ
 
 <!-- ▽各ページ個別▽ -->
 <script src="common/js/rss.js"></script>
+<script>
+// iPhoneまたは、Androidの場合は振り分けを判断
+if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
+    if(confirm('施設名の公式サイトへようこそ。このサイトにはスマートフォン用のサイトがあります。表示しますか？')) {
+				//urlは各ページに合わせて修正すること
+        location.href = 'http://施設ドメイン/sp/';
+    }
+}
+</script>
 <!-- △各ページ個別△ -->
 
 <!--[if lt IE 9]>
