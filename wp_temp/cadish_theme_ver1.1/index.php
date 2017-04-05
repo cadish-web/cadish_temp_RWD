@@ -1,9 +1,8 @@
 <?php get_header(); ?>
 <!-- ============ contents_wrap GO ============= -->
 <div id="contents_wrap">
-<?php breadcrumb(); ?>
-
 <div id="contents">
+<?php breadcrumb(); ?>
 
 <!-- ============ main_area GO ============= -->
 <div id="main_area">

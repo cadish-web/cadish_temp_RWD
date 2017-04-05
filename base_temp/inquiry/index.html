@@ -6,7 +6,11 @@
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
-<title>お問い合わせ | 施設タイトル</title>
+<title>【公式】施設タイトル | お問い合わせ</title>
+
+<link rel="stylesheet" href="../common/css/import.css" media="all" />
+<link rel="stylesheet" href="../common/css/re_import.css" media="all" />
+<link rel="stylesheet" href="mfp.statics/mailformpro.css" media="all" />
 
 <!-- ▽ 施設様情報 ▽ -->
 <meta name="description" content="施設の特徴、ページの売り等80〜100文字くらい">
@@ -14,15 +18,11 @@
 <meta name="author" content="サイト名">
 
 <!-- ▽ OGPタグ ▽ -->
-<meta property="og:title" content="お問い合わせ | 施設タイトル">
+<meta property="og:title" content="【公式】施設タイトル | お問い合わせ">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://施設ドメイン/inquiry/">
-<meta property="og:image" content="http://施設ドメイン/common/img/ogp.jpg">
-<link rel="canonical" href="http://施設ドメイン"/>
-
-<link rel="stylesheet" href="../common/css/import.css" media="all" />
-<link rel="stylesheet" href="../common/css/re_import.css" media="all" />
-<link rel="stylesheet" href="mfp.statics/mailformpro.css" media="all" />
+<meta property="og:url" content="http://www.施設ドメイン/inquiry/">
+<meta property="og:image" content="http://www.施設ドメイン/common/img/ogp.jpg">
+<link rel="canonical" href="http://www.施設ドメイン"/>
 
 <!-- ▽全ページ共通▽ -->
 <script src="../common/js/jquery.min.js"></script>
@@ -78,6 +78,23 @@
 <h2>お問い合わせ</h2>
 
 <div id="contents">
+<!-- ▽ パンくず ▽ -->
+<ol id="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+	<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+		<a href="../" itemscope itemtype="http://schema.org/Thing" itemprop="item">
+			<span itemprop="name">トップページ</span>
+		</a>
+		<meta itemprop="position" content="1" />
+	</li>
+	<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+		<a href="./" itemscope itemtype="http://schema.org/Thing" itemprop="item">
+			<span itemprop="name">お問い合わせ</span>
+		</a>
+		<meta itemprop="position" content="2" />
+	</li>
+</ol>
+<!-- △ パンくず △ -->
+
 <article>
 
 <section id="form_area">

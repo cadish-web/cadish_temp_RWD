@@ -27,10 +27,11 @@ a:hover img{ opacity: 0.75; filter: alpha(opacity=75); -moz-opacity: 0.75;}
 #contents       { clear: both; margin: 0 auto; width: 1000px;}
 
 /* breadcrumb */
-#breadcrumb{ margin: 15px auto 25px; padding: 0; width: 1000px; font-size: 13px; text-align: right;}
+#breadcrumb{ margin: 5px auto 25px; padding: 0; width: 100% font-size: 12px; text-align: right;}
 #breadcrumb li{ display: inline; margin: 0; padding: 0; line-height: 1.6; background: none;}
-#breadcrumb li:before{ display: inline-block; margin: 0 10px; content: ">";}
+#breadcrumb li:before{ display: inline-block; margin: 0 5px; content: ">";}
 #breadcrumb li:first-child:before{ display: none;}
+
 
 /* main&side */
 #main_area{ width: 730px; float: left;}

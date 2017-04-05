@@ -8,7 +8,10 @@
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
-<title>ここに施設名や各ページタイトルが入ります | 施設タイトル</title>
+<title>【公式】施設タイトル | ここに施設名や各ページタイトルが入ります。</title>
+
+<link rel="stylesheet" href="common/css/import.css" media="all" />
+<link rel="stylesheet" href="common/css/re_import.css" media="all" />
 
 <!-- ▽ 施設様情報 ▽ -->
 <meta name="description" content="施設の特徴、ページの売り等80〜100文字くらい">
@@ -26,23 +29,29 @@ ogpタグの確認 ( 記述が間違っていないかなど )
 https://developers.facebook.com/tools/debug/og/object/
 ↑のテキストエリアにサイトのURLを入力し「Fetch new scrape information」をクリック
 -->
-<meta property="og:title" content="ここに施設名や各ページタイトルが入ります | 施設タイトル">
+<meta property="og:title" content="【公式】施設タイトル | ここに施設名や各ページタイトルが入ります。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://施設ドメイン/">
-<meta property="og:image" content="http://施設ドメイン/common/img/ogp.jpg">
-<link rel="canonical" href="http://施設ドメイン"/>
+<meta property="og:url" content="http://www.施設ドメイン/">
+<meta property="og:image" content="http://www.施設ドメイン/common/img/ogp.jpg">
 
-
-<link rel="stylesheet" href="common/css/import.css" media="all" />
-<link rel="stylesheet" href="common/css/re_import.css" media="all" />
+<!-- ▽ 重複ページ ▽ -->
+<!--
+コンテンツが重複するページがある場合、どのページ（URL）が大切かGoogleに伝えるタグです。
+「最も大切なURL」=「正規ページ」です。正規ページを（canonicalタグで）正しく決めてあげることを「URL正規化」と言います。
+-->
+<!-- ▽ スマホサイトがない場合 ▽ -->
+<link rel="canonical" href="http://www.施設ドメイン/" />
+<!-- ▽ スマホサイトがある場合はスマホサイトにも下記の1行目を記述する ▽ -->
+<link rel="canonical" href="http://www.施設ドメイン/" />
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://sp.施設ドメイン/" />
 
 <!-- ▽ 他言語ページ ▽ -->
 <!--
 繁体字、簡体字など複数の言語ページがある場合は下記タグも複数記述してください 。
 hreflangに文字コードを指定し、URLをページごとに変えてください。
 -->
-<link rel="alternate" hreflang="ja-jp" href="http://en.example.com/" /><!--日本語サイト-->
-<link rel="alternate" hreflang="en-us" href="http://en.example.com/lg_en/" /><!--英語サイト-->
+<link rel="alternate" hreflang="ja-jp" href="http://en.施設ドメイン/" /><!--日本語サイト-->
+<link rel="alternate" hreflang="en-us" href="http://en.施設ドメイン/lg_en/" /><!--英語サイト-->
 
 <!-- ▽全ページ共通▽ -->
 <script src="common/js/jquery.min.js"></script>
@@ -56,10 +65,10 @@ hreflangに文字コードを指定し、URLをページごとに変えてくだ
 <script>
 // iPhoneまたは、Androidの場合は振り分けを判断
 if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
-    if(confirm('施設名の公式サイトへようこそ。このサイトにはスマートフォン用のサイトがあります。表示しますか？')) {
-				//urlは各ページに合わせて修正すること
-        location.href = 'http://施設ドメイン/sp/';
-    }
+if(confirm('施設名の公式サイトへようこそ。このサイトにはスマートフォン用のサイトがあります。表示しますか？')) {
+//urlは各ページに合わせて修正すること
+location.href = 'http://www.施設ドメイン/sp/';
+}
 }
 </script>
 <!-- △各ページ個別△ -->

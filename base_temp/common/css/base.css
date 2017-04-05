@@ -82,8 +82,10 @@ iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;
 #contents_wrap h2 { padding: 50px 0; font-size: 24px; text-align: center;}
 
 /* breadcrumb */
-#breadcrumb{ margin: 10px auto 25px; width: 100%; text-align: right;}
-#breadcrumb a{ margin: 0 5px 0 0;}
+#breadcrumb{ margin: 5px auto 25px; padding: 0; width: 100% font-size: 12px; text-align: right;}
+#breadcrumb li{ display: inline; margin: 0; padding: 0; line-height: 1.6; background: none;}
+#breadcrumb li:before{ display: inline-block; margin: 0 5px; content: ">";}
+#breadcrumb li:first-child:before{ display: none;}
 
 
 /* ---------------------------------------------------
