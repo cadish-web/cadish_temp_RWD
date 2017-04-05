@@ -171,10 +171,10 @@ Article CSS / 記事＆固定ページ用CSS
 /* ---------------------------------------------------
 	ページナビ（プラグイン）
 ------------------------------------------------------ */
-.pagenavi_area       { clear: both; margin: 0 0 25px; padding: 0; width: 100%; font-size: 13px;}
+.pagenavi_area       { clear: both; margin: 0 0 25px; padding: 0; width: 100%; font-size: 13px; text-align: center;}
 .pagenavi_area:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
 
-.wp-pagenavi { clear: both;}
+.wp-pagenavi { clear: both; display: inline-block;}
 .wp-pagenavi span { display: block; float: left; margin: 2px; padding: 5px; text-decoration: none; border: 1px solid #fff;}
 .wp-pagenavi a    { display: block; float: left; margin: 2px; padding: 5px; color: #555; text-decoration: none; background: #f5f5f5; border: 1px solid #f5f5f5;}
 .wp-pagenavi a:hover { color: #4d5aaf; text-decoration: none; background: #f5f5f5; border: 1px solid #4d5aaf;}
