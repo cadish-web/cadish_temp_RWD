@@ -9,7 +9,7 @@
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
-<title><?php bloginfo('name'); wp_title(' '); if (wp_title(' ', false)) echo '｜'; ?></title>
+<title><?php bloginfo('name'); echo '｜'; wp_title(' '); if (wp_title(' ', false)); ?></title>
 <meta name="Keywords" content="<?php wp_title('', true, 'right'); ?>,<?php bloginfo('name'); ?>" />
 <meta name="Description" content="<?php bloginfo('description'); ?>" />
 <?php
