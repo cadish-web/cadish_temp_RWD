@@ -31,8 +31,8 @@ https://developers.facebook.com/tools/debug/og/object/
 -->
 <meta property="og:title" content="【公式】施設タイトル | ここに施設名や各ページタイトルが入ります。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://www.施設ドメイン/">
-<meta property="og:image" content="http://www.施設ドメイン/common/img/ogp.jpg">
+<meta property="og:url" content="http://www.example.com/">
+<meta property="og:image" content="http://www.example.com/common/img/ogp.jpg">
 
 <!-- ▽ 重複ページ ▽ -->
 <!--
@@ -40,9 +40,9 @@ https://developers.facebook.com/tools/debug/og/object/
 「最も大切なURL」=「正規ページ」です。正規ページを（canonicalタグで）正しく決めてあげることを「URL正規化」と言います。
 -->
 <!-- ▽ スマホサイトがない場合 ▽ -->
-<link rel="canonical" href="http://www.施設ドメイン/" />
+<link rel="canonical" href="http://www.example.com/" />
 <!-- ▽ スマホサイトがある場合はスマホサイトにも下記の1行目を記述する ▽ -->
-<link rel="canonical" href="http://www.施設ドメイン/" />
+<link rel="canonical" href="http://www.example.com/" />
 <link rel="alternate" media="only screen and (max-width: 640px)" href="http://sp.施設ドメイン/" />
 
 <!-- ▽ 他言語ページ ▽ -->
@@ -67,7 +67,7 @@ hreflangに文字コードを指定し、URLをページごとに変えてくだ
 if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
 if(confirm('施設名の公式サイトへようこそ。このサイトにはスマートフォン用のサイトがあります。表示しますか？')) {
 //urlは各ページに合わせて修正すること
-location.href = 'http://www.施設ドメイン/sp/';
+location.href = 'http://www.example.com/sp/';
 }
 }
 </script>
