@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+<!--[if lt IE 9]>
+<script src="../../base_temp/common/js/html5shiv.js"></script>
+<script src="../../base_temp/common/js/selectivizr.js"></script>
+<script src="../../base_temp/common/js/css3-mediaqueries.js"></script>
+<![endif]-->
+
+<title>Slide Panel</title>
+
+<!-- ▽ jquery.slide panel ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.slide_panel.js"></script>
+<link href="common/css/style.css" rel="stylesheet">
+<!-- △ jquery.slide panel △ -->
+</head>
+<body>
+<article>
+
+	<section>
+		<h1>超シンプルなスライドパネル jquery.slide_panel.js</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>同一ページ内複数設置可・CSSでレスポンシブ対応。<br>
+			クリックイベントで該当するIDの要素をスライドしながら開く＆同時に片割れ閉じる、の動きしか設定していません。<br>
+			実装する場合はID名を適時変更してお使い下さい。RWD対応する場合はCSSでお好きにどうぞ。</dd>
+		</dl>
+	</section>
+
+<section id="slide_area">
+	<h2>サンプル</h2>
+
+	<div id="tit_area">
+		<ul>
+			<li id="tit_01"><span>お料理</span></li>
+			<li id="tit_02"><span>お風呂</span></li>
+		</ul>
+	</div>
+
+	<div id="content_area">
+		<div id="contents_01" class="acc_contents">
+			<h3>お料理</h3>
+			<img src="../common/img/sample_cuisine.jpg" alt="" />
+			<p>大自然に囲まれた当館では、一年を通して新鮮な食材をご用意しております。
+			四季折々の食材と、新鮮な海の幸をふんだんに使った懐石料理を是非ご賞味下さい。</p>
+			<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+			これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+		</div>
+		<div id="contents_02" class="acc_contents">
+			<h3>お風呂</h3>
+			<img src="../common/img/sample_spa.jpg" alt="" />
+			<p>四季折々の景観を存分にお愉しみ頂ける、豊かな自然に囲まれた広々とした露天風呂。
+			広々とした作りで、ゆっくりとお湯に浸かって頂けます。</p>
+			<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+			これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+		</div>
+	</div>
+
+</section>
+
+</article>
+</body>
+</html>
