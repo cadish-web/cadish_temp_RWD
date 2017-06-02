@@ -86,7 +86,7 @@ $(document).ready(function() {
 		// 	var speed = 500;
 		// 	var href= $(this).attr("href");
 		// 	var target = $(href == "#" || href == "" ? 'html' : href);
-		// 	var hHeight = $('#h_wrap').height(); //固定ヘッダーの高さ
+		// 	var hHeight = $('#h_wrap').height(); //固定ヘッダーの高さ（ #h_wrap の箇所は固定ヘッダーのid名に合わせてください ）
 		// 	var position = target.offset().top - headerHeight; //ターゲットの座標からヘッダの高さ分引く
 		// 	$('body,html').animate({scrollTop:position}, speed, 'swing');
 		// 	return false;
@@ -192,17 +192,20 @@ $(window).on('load',function(){
 		}, 200);
 	});
 
-//	/* 別ページから特定ID名箇所へ移動するときの処理
+//	/* 別ページから特定ID箇所へ移動するときの処理
+//	 * aタグのリンクを下記のように修正してください。
+//	 * <a href="hoge/?id=id名">hogehoge</a>
 //	-------------------------------------------------------- */
 //	var speed = 500;
 //	var id = location.href.indexOf("?id=");
 //	if( id !== -1 ) {
 //		var target = $('#' + location.href.slice(id+4));
-//		var position = target.offset().top - 120; //ナビの高さ分をマイナスする
+//		//固定ヘッダーの高さ分をマイナス（ #h_wrap の箇所は固定ヘッダーのid名に合わせてください）
+//		var position = target.offset().top - $('#h_wrap').height();
 //
-//		//以下はレスポンシブ時ナビを格納する場合の処理です　必要ない場合は削除してください
-//		if ( winWidth <= 1100 ) { //1050 の箇所はナビが格納される数値を入れてください
-//			position += 120; //120 の箇所は上で入れたナビの高さと同じ数値を入れてください
+//		//以下はレスポンシブ時固定ヘッダーが無くなる時の処理です　必要ない場合は削除
+//		if ( winWidth <= 1100 ) { //1100 の箇所は固定ヘッダーが無くなるウィンドウサイズを入れてください
+//			position = target.offset().top; //固定ヘッダーの高さ分マイナスしたのを元に戻す
 //		}
 //
 //		$("html, body").animate({scrollTop:position}, speed, "swing");
