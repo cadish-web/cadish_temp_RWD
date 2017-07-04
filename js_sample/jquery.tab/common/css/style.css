@@ -18,6 +18,7 @@
 	display: block; margin: 0 1px; padding: 0; line-height: 50px;
 	color: #555; text-align: center; background: #dedede; cursor: pointer;
 }
+#tabs li a.active,
 #tabs li a:hover{ cursor: default; color: #fff; background: #8b0000;}
 
 
