@@ -17,8 +17,8 @@
 
 <!-- ▽ jquery.tab panel ▽ -->
 <script src="../../base_temp/common/js/jquery.min.js"></script>
-<script src="common/js/jquery.tab.js"></script>
-<link href="common/css/style.css" rel="stylesheet">
+<script src="common/js/jquery.tab2.js"></script>
+<link href="common/css/style2.css" rel="stylesheet">
 <!-- △jquery.tab panel △ -->
 
 <script>
@@ -58,12 +58,11 @@
 	<section id="tab_area">
 	<div id="tabs">
 		<ul>
-			<!-- いちばん最初に表示させたいタブのaタグにhtml側で class="active" をつけるようにしてください -->
-			<li><a href="#panel1" class="active">お料理</a></li>
-			<li><a href="#panel2">お風呂</a></li>
-			<li><a href="#panel3">お部屋</a></li>
-			<li><a href="#panel4">周辺観光</a></li>
-			<li><a href="mailto:test&#64;example.com">お問い合わせ</a></li>
+			<!-- いちばん最初に表示させたいタブのimgタグはon画像を入れるようにしてください。 -->
+			<li><a href="#panel1" class="active"><img src="img/tab1_on.gif" alt="春"></a></li>
+			<li><a href="#panel2"><img src="img/tab2_off.gif" alt="夏"></a></li>
+			<li><a href="#panel3"><img src="img/tab3_off.gif" alt="秋"></a></li>
+			<li><a href="#panel4"><img src="img/tab4_off.gif" alt="冬"></a></li>
 		</ul>
 
 		<div id="panel1" class="panel">
@@ -102,7 +101,7 @@
 			これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
 		</div>
 	</div>
-	<p class="link"><a href="index2.html">タブ画像のon,offをjsで切り替えたいときはこちら &gt;&gt;</a></p>
+	<p class="link"><a href="index.html">タブ内がテキストの場合はこちら &gt;&gt;</a></p>
 	</section>
 
 </article>
