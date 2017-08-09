@@ -1,12 +1,13 @@
 /*!--------------------------------------------------------------------------*
- *  
+ *
  *  jquery.heightLine.js
- *  
- *  MIT-style license. 
- *  
- *  2013 Kazuma Nishihata 
+ *
+ *  MIT-style license.
+ *  http://opensource.org/licenses/MIT
+ *
+ *  2013 Kazuma Nishihata
  *  http://www.to-r.net
- *  
+ *
  *--------------------------------------------------------------------------*/
 ;(function($){
 	$.fn.heightLine = function(){
@@ -57,7 +58,7 @@
 			target.trigger("refresh");
 		}else{
 			heightLineObj["create"](arguments[0]);
-			
+
 			$(window).on("resize."+windowResizeId,function(){
 				heightLineObj["refresh"]();
 			});
@@ -70,7 +71,7 @@
 			});
 
 			if(heightLineObj.op.fontSizeCheck){
-				
+
 				if($("#fontSizeChange").length<=0){
 					var fontSizeChange = $("<span id='fontSizeChange'></span>").css({
 						width:0,

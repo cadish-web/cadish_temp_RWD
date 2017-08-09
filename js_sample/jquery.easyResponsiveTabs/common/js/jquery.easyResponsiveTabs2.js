@@ -1,5 +1,8 @@
 // Easy Responsive Tabs Plugin
-// Author: Samson.Onna <Email : samson3d@gmail.com> 
+// Author: Samson.Onna <Email : samson3d@gmail.com>
+// Copyright (c) 2013, Samson Onna
+// http://webtrendset.com
+// Licensed under MIT (http://opensource.org/licenses/MIT)
 (function ($) {
     $.fn.extend({
         easyResponsiveTabs: function (options) {
@@ -217,7 +220,7 @@
 
                 });
 
-                //Window resize function                   
+                //Window resize function
                 $(window).resize(function () {
                     $respTabs.find('.resp-accordion-closed').removeAttr('style');
                 });
