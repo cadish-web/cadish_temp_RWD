@@ -49,9 +49,14 @@ https://developers.facebook.com/tools/debug/og/object/
 <!--
 繁体字、簡体字など複数の言語ページがある場合は下記タグも複数記述してください 。
 hreflangに文字コードを指定し、URLをページごとに変えてください。
+全言語に同じ数だけタグを記述してください。
+例）日本語サイト、英語サイト、簡体字サイトで言語展開を行なっている場合、
+　　下記の3つのタグをどの言語にも記述する。
+　　日本語サイトで下記1行目のタグを省くなどはNG。
 -->
-<link rel="alternate" hreflang="ja-jp" href="http://en.施設ドメイン/" /><!--日本語サイト-->
-<link rel="alternate" hreflang="en-us" href="http://en.施設ドメイン/lg_en/" /><!--英語サイト-->
+<link rel="alternate" hreflang="ja-jp" href="http://施設ドメイン/" /><!--日本語サイト-->
+<link rel="alternate" hreflang="en-us" href="http://施設ドメイン/lg_en/" /><!--英語サイト-->
+<link rel="alternate" hreflang="zh-cn" href="http://施設ドメイン/lg_cn/" /><!--簡体字サイト-->
 
 <!-- ▽全ページ共通▽ -->
 <script src="common/js/jquery.min.js"></script>
