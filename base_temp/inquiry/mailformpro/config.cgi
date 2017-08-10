@@ -1,5 +1,5 @@
 $config{'about'} = 'Mailform Pro 4.2.3';
-##修正が必要な箇所は'!'を先頭につけています
+## コメントの先頭に!の付いている箇所を編集してください。
 
 ## 確認画面のタイプ
 ## 0: オーバーレイ / 1:フラット / 2: システムダイアログ / 3:確認なし
@@ -32,7 +32,7 @@ $config{'SerialFormat'} = '<date>%04d';
 ## 通し番号への加算値
 $config{'SerialBoost'} = 0;
 
-## サンクスページのURL(URLかsend.cgiから見た相対パス)
+## !サンクスページのURL(URLかsend.cgiから見た相対パス)
 $config{'ThanksPage'} = '../thanks.html?no=%s';
 
 ## !設置者に届くメールの件名
