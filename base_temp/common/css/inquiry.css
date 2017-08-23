@@ -30,6 +30,7 @@ layout ※余白やらアイコンやらは施設に合わせて変えてくだ�
 /* ---------------------------------------------------
 フォーム内レイアウト　※デザイン的なCSSは上に書いて下さい。
 ------------------------------------------------------ */
+
 #inquiry #form_area ul,
 #inquiry #form_area ol { margin: 0 1%; padding: 0 0 5px; max-width: 98%;}
 #inquiry #form_area ul li,
@@ -40,12 +41,12 @@ layout ※余白やらアイコンやらは施設に合わせて変えてくだ�
 
 #inquiry #form_area input[type="text"],
 #inquiry #form_area input[type="email"]{
-	margin: 5px auto 0; padding: 5px 3px; max-width: 100%;
+	margin: 5px auto 0; padding: 5px 3px; max-width: 98%;
 	border: 1px solid #ddd; box-sizing:border-box;
 }
 
 #inquiry #form_area select  { margin: 5px 0 0; padding: 2px 1px; border: 1px solid #ddd;}
-#inquiry #form_area textarea{ margin: 5px 0 0; padding: 2px 3px; width: 100%; border: 1px solid #ddd; box-sizing: border-box;}
+#inquiry #form_area textarea{ margin: 5px 0 0; padding: 2px 3px; width: 98%; border: 1px solid #ddd; box-sizing: border-box;}
 
 #inquiry #form_area .must              { margin: 0 5px; color: #fb223f;}
 #inquiry #form_area .mfp_buttons       { margin: 15px 2% 20px; width: 96%; text-align: right;}
