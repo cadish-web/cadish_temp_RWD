@@ -32,7 +32,7 @@ $config{'SerialFormat'} = '<date>%04d';
 ## 通し番号への加算値
 $config{'SerialBoost'} = 0;
 
-## !サンクスページのURL(URLかsend.cgiから見た相対パス)
+## !サンクスページのURL(URLかmailformpro.cgiから見た相対パス)
 $config{'ThanksPage'} = '../thanks.html?no=%s';
 
 ## !設置者に届くメールの件名
@@ -48,10 +48,12 @@ $_TEXT{'posted'} = <<'__posted_body__';
 入力時間：<_mfp_input_time_>
 確認時間：<_mfp_confirm_time_>
 　送信元：<_mfp_referrer_>
-支払金額：<_mfp_cartprice_>
 
 <_resbody_>
+
 ──────────────────────────
+
+<_mfp_env_>
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 　※この署名はサンプルです。必ず変更してください※　
