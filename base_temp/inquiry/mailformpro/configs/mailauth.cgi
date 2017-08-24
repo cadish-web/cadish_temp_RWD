@@ -17,16 +17,18 @@ $config{'mailauth.uri'} = "http://$ENV{'HTTP_HOST'}$ENV{'REQUEST_URI'}";
 $config{'mailauth.thanks'} = '../add_check.html';
 
 ## !メールアドレス確認メールの件名
-$config{'mailauth.subject'} = '【施設名】お問い合わせありがとうございました';
+$config{'mailauth.subject'} = '【施設名】メールアドレス確認';
 
 ## !メールアドレス確認メールの本文
 $config{'mailauth.body'} = <<'__return_body__';
-お問い合わせありがとうございました。
+【お問い合わせは、完了しておりません】
+
+お問い合わせありがとうございます。
 メールアドレス確認のため、以下のURLにアクセスしてください。
 
 <_mailauth_uri_>
 
-URLへアクセス後に正式な送信となります。
+上記URLへアクセスいただいた後、お問い合わせ完了となります。
 お手数をお掛けしますが、よろしくお願い致します。
 
 ※このメールにお心当たりのない方は、
