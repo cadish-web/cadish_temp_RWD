@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+<title>ヘッダー固定テーブル</title>
+
+<!-- ▽ footable / bootstrap用css / ※reset.cssよりも前に読み込んでください ▽ -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<!-- △ footable・bootstrap用cssここまで△ -->
+
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+<!--[if lt IE 9]>
+<script src="../base_temp/common/js/html5shiv.js"></script>
+<script src="../base_temp/common/js/selectivizr.js"></script>
+<script src="../base_temp/common/js/css3-mediaqueries.js"></script>
+<![endif]-->
+
+<!-- ▽ レスポンシブ対応テーブル用js・css修正必要あり / 共通要素ここから▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/hammer.min.js"></script>
+<script src="common/js/jquery.hammer.js"></script>
+<script src="common/js/table.scroll.js"></script>
+<link rel="stylesheet" href="common/css/style.css" />
+<!-- △ footable・共通要素ここまで△ -->
+
+<!-- ▽ 以下はサンプル用CSSです。実際に使用する場合は削除してください。 ▽ -->
+<style>
+@media screen and (min-width: 641px) {
+	.table_wrap table { width: 100%;}
+	.table_wrap th,
+	.table_wrap td { width: 20%;}
+}
+.table_wrap table { table-layout: fixed;}
+.table_wrap th,
+.table_wrap td { padding: 5px; border: 1px solid #aaa;}
+.table_wrap th { background: #ccc;}
+</style>
+
+</head>
+<body>
+<article>
+
+	<section>
+		<h1>レスポンシブ対応　ヘッダー固定テーブル</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>
+				cssを使用して、テーブルの行数が多い場合にヘッダーを固定し、縦スクロールができるようにしています。<br>
+				各セル横幅のpx指定必須。<br>
+				タッチデバイスでの閲覧時の横スクロールの挙動はhammer.jsを使用して調整。
+			</dd>
+		</dl>
+		<dl>
+			<dt>参考サイト</dt>
+			<dd>
+			<ul>
+				<li><a href="https://so-zou.jp/web-app/tech/css/sample/fixed-header.htm" target="_blank">ヘッダを固定してスクロールする方法 | CSS解説</a></li>
+				<li><a href="http://hammerjs.github.io" target="_blank">Hammer.JS - Hammer.js</a>　hammer.js 配布元</li>
+			</ul>
+			</dd>
+		</dl>
+	</section>
+
+
+	<section>
+		<p>640px以下で縦横にスクロールします。</p>
+		<div class="table_wrap">
+			<table>
+				<thead>
+				<tr>
+					<th>見出し</th>
+					<th>項目1</th>
+					<th>項目2</th>
+					<th>項目3</th>
+					<th>項目4</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>アイテム1</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム2</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム3</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム4</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム5</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム6</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム7</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム8</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム9</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム10</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム11</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム12</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム13</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム14</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				<tr>
+					<td>アイテム15</td>
+					<td>ダミーテキスト</td>
+					<td>ダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキスト</td>
+					<td>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+</article>
+</body>
+</html>

@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+@media screen and (max-width: 640px) {
+	/* 以下のcssをヘッダー固定したいテーブルの箇所に記述してください */
+	.table_wrap { width: 100%; overflow: scroll; overflow-y: hidden; overflow-x: scroll;}
+	.table_wrap table { width: 640px;/* テーブルの固定幅 px指定 */ position: relative;}
+	.table_wrap thead,
+	.table_wrap tbody { display: block;}
+	.table_wrap tbody {
+		max-height: 60vh;/* 縦幅の最大値 tbodyの高さがこの値を越えると縦スクロールします */
+		overflow-y: scroll;
+	}
+	.table_wrap tbody tr:first-child td { border-top: none;}
+	.table_wrap th,
+	.table_wrap td { width: 128px;/* セルの固定幅 px指定 */}
+}
+
+
