@@ -13,36 +13,6 @@ $(document).ready(function() {
 		});
 	}
 
-	/* グローバルナビ上部固定
-	-------------------------------------------------------- */
-	var nav = $('#gnav');      // 固定するナビ領域の名前
-	var con = $('#contents_wrap'); // コンテンツ領域の名前
-	var navTop = nav.offset().top; // 固定するナビまでの高さを算出
-	var navHeight = $("#gnav").height(); // nav_wrap の高さを取得
-	var storeNav = 1100; //gnavが格納される幅
-	if( $(this).scrollTop() >= navTop && $(window).width() >= storeNav) {
-		nav.addClass('fixed');
-		con.css('padding-top', navHeight+'px');
-	}
-	//リサイズしたらナビの位置を再取得
-	$(window).on('resize', function() {
-		navTop = nav.offset().top;
-	});
-	//スクロール時の処理
-	$(window).scroll(function () {
-		var winTop = $(this).scrollTop();
-		if (winTop >= navTop && $(window).width() >= storeNav ) {
-			nav.addClass('fixed').css('top','0');
-			con.css( 'padding-top', navHeight+'px');
-			//PC用は下記1行を追記してください
-			//nav.css("left", -$(window).scrollLeft());
-		} else if (winTop < navTop) {
-			nav.removeClass('fixed').css('top','');
-			con.css('padding-top','');
-		}
-	});
-
-
 	/* ウィンドウサイズによって読み込む画像を切り替え
 	▼画像：2パターン用意し、PC用に「_pc」タブレット＆スマホ用に「_sp」を追加。
 	▼HTML：下記クラス+データサイズを該当する画像のimgタグに追加
@@ -102,6 +72,35 @@ $(window).on('load',function(){
 	/* 指定した要素の高さを揃える
 	-------------------------------------------------------- */
 	$(".item").lineUp();
+
+	/* グローバルナビ途中から上部固定にする
+	-------------------------------------------------------- */
+	var nav = $('#gnav');      // 固定するナビ領域の名前
+	var con = $('#contents_wrap'); // コンテンツ領域の名前
+	var navTop = nav.offset().top; // 固定するナビまでの高さを算出
+	var navHeight = $("#gnav").height(); // nav_wrap の高さを取得
+	var storeNav = 1100; //gnavが格納される幅
+	if( $(this).scrollTop() >= navTop && $(window).width() >= storeNav) {
+		nav.addClass('fixed');
+		con.css('padding-top', navHeight+'px');
+	}
+	//リサイズしたらナビの位置を再取得
+	$(window).on('resize', function() {
+		navTop = nav.offset().top;
+	});
+	//スクロール時の処理
+	$(window).scroll(function () {
+		var winTop = $(this).scrollTop();
+		if (winTop >= navTop && $(window).width() >= storeNav ) {
+			nav.addClass('fixed').css('top','0');
+			con.css( 'padding-top', navHeight+'px');
+			//PC用は下記1行を追記してください
+			//nav.css("left", -$(window).scrollLeft());
+		} else if (winTop < navTop) {
+			nav.removeClass('fixed').css('top','');
+			con.css('padding-top','');
+		}
+	});
 
 	/* ページトップへ戻る / fadein & fadeout
 	-------------------------------------------------------- */
