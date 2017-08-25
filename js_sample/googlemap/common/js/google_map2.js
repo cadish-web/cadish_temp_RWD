@@ -1,6 +1,6 @@
-var currentInfoWindow = null;//最後に出したウィンドウ
-
 var Map_Action = function() {
+	var currentInfoWindow = null;//最後に出したウィンドウ
+
 	this.point = new Array();//座標配列
 	this.contents = new Array();//内容配列
 

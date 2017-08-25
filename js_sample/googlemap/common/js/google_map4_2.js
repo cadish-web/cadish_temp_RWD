@@ -1,4 +1,4 @@
-var Map_Action = function() {
+var Map_Action2 = function() {
 	var currentInfoWindow = null;//最後に出したウィンドウ
 
 	this.keyArray = {};
@@ -20,7 +20,7 @@ var Map_Action = function() {
 
 	//google map 初期設定
 	this.initialize = function() {
-		this.mapdiv = document.getElementById('map_canvas03'); //マップ出したいとこのid名
+		this.mapdiv = document.getElementById('map_canvas02'); //マップ出したいとこのid名
 		var myOptions = {
 				zoom: 10,//zoom率
 				center: new google.maps.LatLng(36.2234172, 136.1910285), //真ん中の位置
@@ -90,5 +90,4 @@ var Map_Action = function() {
 	};
 
 };
-
-var objMap_Action = new Map_Action();
+var objMap_Action2 = new Map_Action2();

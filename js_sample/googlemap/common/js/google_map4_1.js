@@ -1,4 +1,4 @@
-var Map_Action = function() {
+var Map_Action1 = function() {
 	var currentInfoWindow = null;//最後に出したウィンドウ
 
 	this.point = new Array();//座標配列
@@ -97,4 +97,4 @@ var Map_Action = function() {
 	};
 
 }
-var objMap_Action = new Map_Action();
+var objMap_Action1 = new Map_Action1();

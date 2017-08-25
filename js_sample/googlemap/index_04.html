@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+<title>google map 書き出し：複数設置</title>
+
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+<!--[if lt IE 9]>
+<script src="../base_temp/common/js/html5shiv.js"></script>
+<script src="../base_temp/common/js/selectivizr.js"></script>
+<script src="../base_temp/common/js/css3-mediaqueries.js"></script>
+<![endif]-->
+
+<!-- ▽ GoogleMap ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="http://maps.google.com/maps/api/js"></script>
+<script src="common/js/google_map4_1.js"></script>
+<script src="common/js/google_map4_2.js"></script>
+<link rel="stylesheet" href="common/css/style.css" />
+<script>
+	// 各js内 1行目と最後の行の Map_Action〜 及び objMap_Action〜 を被らないように変更する
+	// ↓のobjMap_Action〜 をjs内のものと同じ名前に変更する
+	$(window).on('load', function(){
+		objMap_Action1.initialize();
+		objMap_Action2.initialize();
+	});
+</script>
+
+</head>
+<body>
+<article>
+
+	<section>
+		<h1>Map書き出し：サンプル04<br>（同一ページに複数設置）</h1>
+		<div class="map_area">
+			<div id="map_canvas01" class="map_block"></div>
+			<ul>
+				<li><a onkeypress="javascript:objMap_Action1.myclick(0);" onclick="javascript:objMap_Action1.myclick(0);" href="#map_canvas01">株式会社キャディッシュ</a></li>
+				<li><a onkeypress="javascript:objMap_Action1.myclick(1);" onclick="javascript:objMap_Action1.myclick(1);" href="#map_canvas01">久美愛厚生病院</a></li>
+				<li><a onkeypress="javascript:objMap_Action1.myclick(2);" onclick="javascript:objMap_Action1.myclick(2);" href="#map_canvas01">飛騨高山ビッグアリーナ</a></li>
+				<li><a onkeypress="javascript:objMap_Action1.myclick(3);" onclick="javascript:objMap_Action1.myclick(3);" href="#map_canvas01">高山市役所</a></li>
+				<li><a onkeypress="javascript:objMap_Action1.myclick(4);" onclick="javascript:objMap_Action1.myclick(4);" href="#map_canvas01">飛騨の里</a></li>
+			</ul>
+
+			<div id="map_canvas02" class="map_block"></div>
+			<ul>
+				<li><a onkeypress="javascript:objMap_Action2.myclick(0);" onclick="javascript:objMap_Action2.myclick(0);" href="#map_canvas02">清風荘</a></li>
+				<li><a onkeypress="javascript:objMap_Action2.myclick(1);" onclick="javascript:objMap_Action2.myclick(1);" href="#map_canvas02">東尋坊</a></li>
+				<li><a onkeypress="javascript:objMap_Action2.myclick(2);" onclick="javascript:objMap_Action2.myclick(2);" href="#map_canvas02">永平寺</a></li>
+				<li><a onkeypress="javascript:objMap_Action2.myclick(3);" onclick="javascript:objMap_Action2.myclick(3);" href="#map_canvas02">芝政ワールド</a></li>
+				<li><a onkeypress="javascript:objMap_Action2.myclick(4);" onclick="javascript:objMap_Action2.myclick(4);" href="#map_canvas02">恐竜博物館</a></li>
+			</ul>
+		</div>
+		<p><a href="index.html">画像が一種類の時のサンプルはこちら　→</a></p>
+		<p><a href="index_02.html">画像を個別に設定したい時のサンプルはこちら　→</a></p>
+		<p><a href="index_03.html">画像を任意で設定したい時のサンプルはこちら　→</a></p>
+	</section>
+
+</article>
+
+</body>
+</html>
