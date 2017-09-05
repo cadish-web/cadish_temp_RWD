@@ -29,6 +29,21 @@ Base CSS / ヘッダー・Gナビ・フッター用CSS
 #header #head_nav li a:hover{ opacity: 0.75; filter: alpha(opacity=75); -moz-opacity: 0.75;}
 
 
+@media screen and (max-width: 1100px) {
+	#header{ padding: 15px 1%; width: 98%;}
+}
+@media screen and (max-width: 900px) {
+}
+@media screen and (max-width: 768px) {
+	#header h1{ text-align: center;}
+	#header #head_logo{ width: 100%; float: none; text-align: center;}
+	#header #head_nav{ text-align: center;}
+	#header #head_nav li{ width: 48%; float: left; margin: 0; padding: 0 1%;}
+}
+@media screen and (max-width: 600px) {
+}
+
+
 /* ---------------------------------------------------
 	G-nav
 ------------------------------------------------------ */
@@ -38,6 +53,21 @@ Base CSS / ヘッダー・Gナビ・フッター用CSS
 #gnav li#gn_01{ display: none;}
 #gnav a{ display:block; text-align: center;}
 #gnav a:hover{ background: #555;}
+
+
+@media screen and (max-width: 1100px) {
+	#gnav { width: 100%;}
+}
+@media screen and (max-width: 900px) {
+	#gnav li{ width: 50%; float: left;}
+}
+@media screen and (max-width: 768px) {
+	#gnav li{ width: 33.3%; float: left;}
+	#gnav li#gn_home{ display: block;}
+}
+@media screen and (max-width: 600px) {
+	#gnav li{ width: 50%; float: left;}
+}
 
 
 /* ---------------------------------------------------
@@ -62,12 +92,32 @@ Base CSS / ヘッダー・Gナビ・フッター用CSS
 #footer a:hover, #footer a:active { color: #f3f3f3; text-decoration: underline;}
 
 
+@media screen and (max-width: 1100px) {
+	#backtop a{ padding: 0 1%; width: 98%;}
+	#footer   { padding: 25px 1%; width: 98%;}
+}
+@media screen and (max-width: 900px) {
+}
+@media screen and (max-width: 768px) {
+	#footer address{ margin: 0 0 10px; width: 100%; float: none; text-align: center;}
+	#footer address img{ display: inline-block; margin: 0 20px 0 0;}
+	#footer address span,
+	#footer address .tel-link{ display: inline-block; margin: 0 10px 0 0; line-height: 30px; vertical-align: top;}
+	#fnav{ clear: both; text-align: center;}
+}
+@media screen and (max-width: 600px) {
+	#footer address img{ display: block; margin: 0 auto 10px;}
+	#footer address span,
+	#footer address .tel-link{ line-height: 1.6;}
+}
+
+
 /* ---------------------------------------------------
 	clear
 ------------------------------------------------------ */
 #header_wrap:after,
 #header:after,
+#head_nav:after,
 #nav_wrap:after,
-#gnav:after,
 #footer_wrap:after,
 #footer:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}

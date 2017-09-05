@@ -1,11 +1,9 @@
 /* --------------------------------------------------------
-	[Setting Option] ※全ページに関わるものだけ記載
+	[Setting Option] ※全体に関わるものだけ記載
 -------------------------------------------------------- */
 jQuery(document).ready(function() {
 
 	/* 電話番号へのリンク指定
-	   PC     →  「span」で囲む (リンクにしない)
-	   スマホ  →  「class="tel-link"」をつけたリンク
 	-------------------------------------------------------- */
 	if(!navigator.userAgent.match(/(iPhone|iPad|Android)/)){
 		jQuery("a.tel-link").each(function(){

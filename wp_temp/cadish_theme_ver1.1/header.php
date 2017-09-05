@@ -86,7 +86,6 @@ if (is_single()){
 
 <?php /* CSSの読み込み 公式サイトで読み込んでいるCSSを使う場合は絶対パスで読み込む */ ?>
 <link rel="stylesheet" href="http://www.example.com/common/css/base.css" media="all" />
-<link rel="stylesheet" href="http://www.example.com/common/css/re_base.css" media="all" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css" media="all" />
 
 <?php /* jsの読み込み 公式サイトで読み込んでいるjsを使う場合は絶対パスで読み込む */ ?>
@@ -98,11 +97,6 @@ if (is_single()){
 <?php /* テーマ内で読み込む場合や、WordPressのjQueryを使う場合はこっち↓ */ ?>
 <?php /* wp_enqueue_script('js_name', get_bloginfo('template_directory').'/js/js_name.js', array('jquery')); */ ?>
 
-<!--[if lt IE 9]>
-<script src="http://www.example.com/common/js/html5shiv.js"></script>
-<script src="http://www.example.com/common/js/selectivizr.js"></script>
-<script src="http://www.example.com/common/js/css3-mediaqueries.js"></script>
-<![endif]-->
 
 <!-- ▽ Googleアナリティクスタグ ▽ -->
 <!-- △ Googleアナリティクスタグ △ -->

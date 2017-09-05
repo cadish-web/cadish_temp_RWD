@@ -42,6 +42,7 @@ Article CSS / 記事＆固定ページ用CSS
 .post_body img.alignleft  { display: block; margin: 0 10px 10px 0; float: left;}
 .post_body img.alignright { display: block; margin: 0 0 10px 10px; float: right;}
 
+
 @media screen and (max-width: 768px) {
 	.post_body img,
 	.post_body img.aligennone,
@@ -49,7 +50,7 @@ Article CSS / 記事＆固定ページ用CSS
 	.post_body img.alignleft,
 	.post_body img.alignright { clear: both; float: none; margin: 0 auto 15px; max-width: 100%;}
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 600px) {
 	.post_body img,
 	.post_body img.aligennone,
 	.post_body img.aligncenter,
@@ -137,11 +138,12 @@ Article CSS / 記事＆固定ページ用CSS
 #comments ol li:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
 #commentform input, #commentform textarea{ margin:0 auto; padding: 5px 3px; width: 98%; max-width: 98%; border: 1px solid #ddd; box-sizing:border-box;}
 
+
 @media screen and (max-width: 768px) {
 	#commentform input,
 	#commentform textarea{ width: 100%; max-width: 100%;}
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 600px) {
 	#commentform   { margin: 0 0 25px; padding: 10px 0;}
 	#commentform p { margin: 0 auto 15px; width: 96%;}
 }

@@ -213,7 +213,7 @@
 	#form_area dl dd{ margin: 0 0 10px; width: 100%; float: none;}
 	#form_area #sendcheck  {text-align: center;}
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 600px) {
 	#form_area img.ajax-loader{ width: auto!important;}
 	#form_area input[type="text"],
 	#form_area input[type="email"]{ height: 25px; line-height: 25px;}
