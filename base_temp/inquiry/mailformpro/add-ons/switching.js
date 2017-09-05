@@ -7,7 +7,7 @@
 // mfp.sw(［ true(無効) or false(有効) ］,[ ID ],［ true(隠さない) or false(隠す)］);
 // 
 
-function swElementsExample( {
+function swElementsExample(){
 	if(mfp.$('yamato').checked)
 		mfp.sw(false,'deliveryTime');
 	else
@@ -15,19 +15,19 @@ function swElementsExample( {
 }
 
 mfp.extend.event('ready',
-	function(obj {
+	function(obj){
 		swElementsExample();
 	}
 );
 
 mfp.extend.event('blur',
-	function(obj {
+	function(obj){
 		swElementsExample();
 	}
 );
 
 mfp.extend.event('change',
-	function(obj {
+	function(obj){
 		swElementsExample();
 	}
 );

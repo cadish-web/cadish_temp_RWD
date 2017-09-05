@@ -14,4 +14,8 @@ $config{'bpm.CardCVV.elementName'} = 'セキュリティコード';
 $config{'bpm.Phone.elementName'} = '電話番号';
 $config{'bpm.Email.elementName'} = 'email';
 $config{'bpm.ItemType'} = 0;
+
+## ホスト名の検証をしない場合、以下のコメント欄を解除してください
+# $ENV{'PERL_LWP_SSL_VERIFY_HOSTNAME'} = 0;
+
 1;

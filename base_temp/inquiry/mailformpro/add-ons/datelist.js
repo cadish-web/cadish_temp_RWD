@@ -24,7 +24,7 @@ mfpConfigs['weekColors'] = new Array('#FEE','#FFF','#FFF','#FFF','#FFF','#FFF','
 // 日・月・火・水・木・金・土 で非表示は1
 // 上記の例では日曜日は非表示
 
-function mfpDayFormat(y,m,d,w,str {
+function mfpDayFormat(y,m,d,w,str){
 	str = str.replace('$y',y);
 	str = str.replace('$m',m);
 	str = str.replace('$d',d);
@@ -32,8 +32,8 @@ function mfpDayFormat(y,m,d,w,str {
 	return str;
 }
 mfp.extend.event('init',
-	function(obj {
-		if(obj.getAttribute('data-daystart') && obj.getAttribute('data-daymax') {
+	function(obj){
+		if(obj.getAttribute('data-daystart') && obj.getAttribute('data-daymax')){
 			var daymax = Number(obj.getAttribute('data-daymax'));
 			var daystart = Number(obj.getAttribute('data-daystart'));
 			var excweek = new Array();
@@ -48,7 +48,7 @@ mfp.extend.event('init',
 				excdayon = obj.getAttribute('data-dayexcon');
 			var daycount = 0;
 			var optgroup = "";
-			while(daycount < daymax {
+			while(daycount < daymax){
 				var t = (Number(mfpConfigs['Time']) + ((daystart + daycount) * 86400))  * 1000;
 				var dayDate = new Date(t);
 				var num = obj.length;
@@ -59,10 +59,10 @@ mfp.extend.event('init',
 				if(m < 10) m = '0'+m;
 				if(d < 10) d = '0'+d;
 				var daystr = y+"-"+m+"-"+d;
-				if(excweek[dayDate.getDay()] == undefined || excweek[dayDate.getDay()] == 0 || excdayon.indexOf(daystr) > -1 {
-					if(excday.indexOf(daystr) == -1 {
-						if(navigator.userAgent.indexOf("MSIE") == -1 {
-							if(optgroup != (obj.id+'-'+y+'-'+m) {
+				if(excweek[dayDate.getDay()] == undefined || excweek[dayDate.getDay()] == 0 || excdayon.indexOf(daystr) > -1){
+					if(excday.indexOf(daystr) == -1){
+						if(navigator.userAgent.indexOf("MSIE") == -1) {
+							if(optgroup != (obj.id+'-'+y+'-'+m)){
 								var elm = mfp.d.createElement('optgroup');
 								elm.label = mfpDayFormat(y,m,d,w,mfpLang['dayOptgroup']);
 								elm.id = (obj.id+'-'+y+'-'+m);
@@ -75,7 +75,7 @@ mfp.extend.event('init',
 							elm.style.backgroundColor = mfpConfigs['weekColors'][w];
 							mfp.$(optgroup).appendChild(elm);
 						}
-						else{
+						else {
 							obj.length++;
 							obj.options[num].text = mfpDayFormat(y,m,d,mfpLang['week'][w],mfpLang['dayText']);
 							obj.options[num].value = mfpDayFormat(y,m,d,w,mfpLang['dayValue']);

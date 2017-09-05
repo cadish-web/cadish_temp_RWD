@@ -3,7 +3,7 @@
 // mailformpro language file
 // 2014-04-10 ver 4.1.3
 //
-var mfpLang ={
+var mfpLang = {
 	'ResetConfirm': 'Are you sure you want to reset ?',
 	'Price': '<span>$</span> $1',
 	'PostPrice': '$ $1',
@@ -52,7 +52,7 @@ var mfpLang ={
 	'WarningCode': [
 		_%%WarningCode%%_
 	],
-	'ReservedWord':{
+	'ReservedWord': {
 		'email': 'E-mail',
 		'confirm_email': 'Confirmation',
 		'price': 'Price',

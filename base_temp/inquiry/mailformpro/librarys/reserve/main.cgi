@@ -1,19 +1,19 @@
 &_POST;
 $html = &_LOAD("./librarys/reserve/template.tpl");
 my($sec,$min,$hour,$day,$mon,$year) = localtime(time);
-if(!$_GET{'year'} {
+if(!$_GET{'year'}){
 	$_GET{'year'} = $year + 1900;
 	$_GET{'month'} = $mon + 1;
 }
 $_GET{'prev_year'} = $_GET{'year'};
 $_GET{'prev_month'} = $_GET{'month'} - 1;
-if($_GET{'prev_month'} < 1 {
+if($_GET{'prev_month'} < 1){
 	$_GET{'prev_year'}--;
 	$_GET{'prev_month'} = 12;
 }
 $_GET{'next_year'} = $_GET{'year'};
 $_GET{'next_month'} = $_GET{'month'} + 1;
-if($_GET{'next_month'} > 12 {
+if($_GET{'next_month'} > 12){
 	$_GET{'next_year'}++;
 	$_GET{'next_month'} = 1;
 }
@@ -23,32 +23,32 @@ my(@reservedata) = &_DB($config{"file.reserve"});
 my(@activedate) = split(/\,/,$config{"reserve.active"});
 #my(@hour) = split(/\,/,$config{"reserve.hour"});
 
-if($config{"reserve.password"} ne $null && $config{"reserve.password"} eq $_POST{'password'} {
+if($config{"reserve.password"} ne $null && $config{"reserve.password"} eq $_POST{'password'}){
 	$HostName = &_GETHOST;
-	if(($config{'reserve.HostName'} eq $HostName || $config{'reserve.HostName'} eq $null) && ($config{'reserve.IPAddress'} eq $ENV{'REMOTE_ADDR'} || $config{'reserve.IPAddress'} eq $null) {
+	if(($config{'reserve.HostName'} eq $HostName || $config{'reserve.HostName'} eq $null) && ($config{'reserve.IPAddress'} eq $ENV{'REMOTE_ADDR'} || $config{'reserve.IPAddress'} eq $null)){
 		$pw = "<input type=\"hidden\" name=\"password\" value=\"$_POST{'password'}\" />";
-		if($_POST{'method'} eq 'save' {
+		if($_POST{'method'} eq 'save'){
 			$save = "<div id=\"stat\">Save Complate</div>";
 			@date = split(/\n/,$_POST{'date'});
-			for(my($cnt)=0;$cnt<@date;$cnt++ {
-				for(my($i)=0;$i<@item;$i++ {
+			for(my($cnt)=0;$cnt<@date;$cnt++){
+				for(my($i)=0;$i<@item;$i++){
 					my $id = "${date[$cnt]}\t${item[$i]}\t";
 					@reservedata = grep(!/^${id}/,@reservedata);
 					my @day = ($date[$cnt],$item[$i],$_POST{"${date[$cnt]}_${item[$i]}_qty"},$_POST{"${date[$cnt]}_${item[$i]}_price"});
-					if(!($day[2] =~ /[^0-9]/si) && !($day[3] =~ /[^0-9]/si) {
+					if(!($day[2] =~ /[^0-9]/si) && !($day[3] =~ /[^0-9]/si)){
 						push @reservedata,join("\t",@day);
 					}
 				}
 			}
 			my($s,$min,$h,$d,$m,$y) = localtime(time + (60 * 60 * 24 * $config{"reserve.dayafter"}));
 			my $active_date = sprintf("%04d-%02d-%02d",$y+1900,$m+1,$d);
-			for(my($cnt)=0;$cnt<@reservedata;$cnt++ {
+			for(my($cnt)=0;$cnt<@reservedata;$cnt++){
 				@r = split(/\t/,$reservedata[$cnt]);
-				if($r[0] ge $active_date {
+				if($r[0] ge $active_date){
 					push @savedata,$reservedata[$cnt];
 				}
 			}
-			@savedata = sort{ (split(/\t/,$a))[0] cmp (split(/\t/,$b))[0]} @savedata;
+			@savedata = sort { (split(/\t/,$a))[0] cmp (split(/\t/,$b))[0]} @savedata;
 			&_SAVE($config{"file.reserve"},join("\n",@savedata));
 			@reservedata = @savedata;
 		}
@@ -66,11 +66,11 @@ if($config{"reserve.password"} ne $null && $config{"reserve.password"} eq $_POST
 		print "Content-type: text/html; charset=UTF-8\n\n";
 		print $html;
 	}
-	else{
+	else {
 		&_Error(0);
 	}
 }
-elsif($_GET{'t'} eq 'json' {
+elsif($_GET{'t'} eq 'json'){
 	my($s,$min,$h,$d,$m,$y) = localtime(time + (60 * 60 * 24 * $config{"reserve.dayafter"}));
 	my $active_date = sprintf("%04d-%02d-%02d",$y+1900,$m+1,$d);
 	my $item = join("','",@item);
@@ -80,26 +80,26 @@ elsif($_GET{'t'} eq 'json' {
 	my @date = ();
 	my @month = ();
 	my %month = ();
-	for(my($i)=0;$i<@item;$i++ {
+	for(my($i)=0;$i<@item;$i++){
 		my @data = grep(/\t${item[$i]}\t/,@reservedata);
 		my @stock = ();
-		for(my($cnt)=0;$cnt<@data;$cnt++ {
+		for(my($cnt)=0;$cnt<@data;$cnt++){
 			my @child = ();
 			my($day,$name,$qty,$price) = split(/\t/,$data[$cnt]);
-			if($day ge $active_date {
+			if($day ge $active_date){
 				my($y,$m,$d) = split(/\-/,$day);
-				if($i == 0 {
-					if(!$month{"${y}-${m}"} {
+				if($i == 0){
+					if(!$month{"${y}-${m}"}){
 						push @month,"${y}-${m}";
 					}
 					$month{"${y}-${m}"}++;
 					push @date,"\"${day}\"";
 				}
-				if($qty eq $null {
+				if($qty eq $null){
 					$qty = 'null';
 				}
 				push @child,"qty\: ${qty}";
-				if($price ne $null {
+				if($price ne $null){
 					push @child,"price\: ${price}";
 				}
 				my $child = join("\,",@child);
@@ -110,20 +110,20 @@ elsif($_GET{'t'} eq 'json' {
 	}
 	my $date = join(",",@date);
 	push @json,"date\: \[${date}\]";
-	if($config{'reserve.select'} {
+	if($config{'reserve.select'}){
 		push @json,"select\: true";
 		push @json,"selectQty\: $config{'reserve.selectQty'}";
 	}
-	else{
+	else {
 		push @json,"select\: false";
 		push @json,"selectQty\: 0";
 	}
 	my @monthly = ();
 	my $year = "";
-	for(my($cnt)=0;$cnt<@month;$cnt++ {
+	for(my($cnt)=0;$cnt<@month;$cnt++){
 		($y,$m) = split(/\-/,$month[$cnt]);
 		my $label = sprintf("%02d月",$m);
-		if($y ne $year {
+		if($y ne $year){
 			#$label = sprintf("%04d年%02d月",$y,$m);
 			$year = $y;
 		}
@@ -140,8 +140,8 @@ elsif($_GET{'t'} eq 'json' {
 	print "Content-type: text/javascript; charset=UTF-8\n\n";
 	print "$_GET{'callback'}(\{${json}\});";
 }
-else{
-	if($config{"reserve.password"} ne $null {
+else {
+	if($config{"reserve.password"} ne $null){
 		## Display Process
 		$HostName = &_GETHOST;
 		my($parts) = <<"		__HTML__";
@@ -167,12 +167,12 @@ else{
 		print "Content-type: text/html; charset=UTF-8\n\n";
 		print $html;
 	}
-	else{
+	else {
 		&_Error(0);
 	}
 }
 exit;
-sub _CAL{
+sub _CAL {
 	my($year,$mon) = @_;
 	$afterday = time;
 	my($s,$min,$h,$d,$m,$y) = localtime(time + (60 * 60 * 24 * $config{"reserve.dayafter"}));
@@ -182,15 +182,15 @@ sub _CAL{
 	my(@week) = ("日","月","火","水","木","金","土");
 	my $html = "";
 	my $flag = 0;
-	if($year % 100 == 0 || $year % 4 != 0 {
-		if($year % 400 != 0 {
+	if($year % 100 == 0 || $year % 4 != 0){
+		if($year % 400 != 0){
 			$flag = 0;
 		}
 		else{
 			$flag = 1;
 		}
 	}
-	elsif($year % 4 == 0 {
+	elsif($year % 4 == 0){
 		$flag = 1;
 	}
 	else{
@@ -208,30 +208,30 @@ sub _CAL{
 	$html .= "\t</tr>\n";
 	$html .= "\t<form method=\"post\">${pw}\n";
 	$html .= "\t<tr align=\"center\" valign=\"middle\">\n";
-	for(my $cnt=0;$cnt<@week;$cnt++ {
+	for(my $cnt=0;$cnt<@week;$cnt++){
 		$html .= "\t\t<th>${week[$cnt]}</th>\n";
 	}
 	$html .= "\t</tr>\n";
 	$html .= "\t<tr align=\"center\" valign=\"middle\">\n";
-	for(my $cnt=0;$cnt < $today;$cnt++ {
+	for(my $cnt=0;$cnt < $today;$cnt++){
 		$html .= "\t\t<td class=\"blank\">&nbsp;</td>\n";
 	}
-	for(my $cnt=1;$cnt <= $calendar[$mon];$cnt++ {
+	for(my $cnt=1;$cnt <= $calendar[$mon];$cnt++){
 		$name = sprintf("%04d-%02d-%02d",$year,$mon,$cnt);
-		if($active_date gt $name || !$activedate[$today] {
+		if($active_date gt $name || !$activedate[$today]){
 			$html .= "\t\t<td class=\"blank\">\n";
 			$html .= "\t\t<span class=\"day\">${cnt}</span>\n";
 			$html .= "\t\t</td>\n";
 		}
-		else{
+		else {
 			$html .= "\t\t<td>\n";
 			$html .= "\t\t<span class=\"day\">${cnt}</span>\n";
-			for(my $i=0;$i<@item;$i++ {
+			for(my $i=0;$i<@item;$i++){
 				$html .= "<div><h3>${item[$i]}</h3><input type=\"hidden\" name=\"date\" value=\"${name}\">";
 				my $id = "${name}\t${item[$i]}\t";
 				($id,$item,$qty,$price) = split(/\t/,(grep(/^${id}/,@reservedata))[0]);
 				my $complate = " complate";
-				if($item eq $null {
+				if($item eq $null){
 					$complate = " incomplate";
 					$qty = $config{"reserve.qty"};
 					$price = $config{"reserve.price"};
@@ -241,18 +241,18 @@ sub _CAL{
 			}
 			$html .= "\t\t</td>\n";
 		}
-		if($today == 6 {
+		if($today == 6){
 			$html .= "\t</tr>\n";
-			if($cnt < $calendar[$mon] {$html .= "\t<tr align=\"center\" valign=\"middle\">\n";}
+			if($cnt < $calendar[$mon]){$html .= "\t<tr align=\"center\" valign=\"middle\">\n";}
 			$today = 0;
 		}
 		else{
 			$today++;
 		}
 	}
-	while($today <= 6 && $today != 0 {
+	while($today <= 6 && $today != 0){
 		$html .= "\t\t<td class=\"blank\">&nbsp;</td>\n";
-		if($today == 6 {
+		if($today == 6){
 			$html .= "\t</tr>\n";
 		}
 		$today++;
@@ -262,9 +262,9 @@ sub _CAL{
 	$html .= "</table>";
 	return $html;
 }
-sub _WEEK{
+sub _WEEK {
 	my($year,$month,$day) = @_;
-	if ($month == 1 || $month == 2 {
+	if ($month == 1 || $month == 2) {
 		$year--;
 		$month += 12;
 	}

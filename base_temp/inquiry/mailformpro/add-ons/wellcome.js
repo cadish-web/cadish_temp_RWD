@@ -9,7 +9,7 @@ mfpLang['WellcomeMessage'][4] = 'ようこそ！気軽にお問い合わせし�
 mfpLang['WellcomeMessage'][5] = 'はじめまして！ぜひ何かしらを送信していってね！';
 
 mfp.extend.event('startup',
-	function( {
+	function(){
 		var elm = mfp.d.createElement('div');
 		elm.id = 'mfp_wellcome';
 		mfp.Mfp.parentNode.insertBefore(elm,mfp.$('mfp_warning'));
@@ -17,18 +17,18 @@ mfp.extend.event('startup',
 );
 
 mfp.extend.event('ready',
-	function( {
+	function(){
 		var pv = Number(mfpConfigs['PageView']);
-		for(var i=0;i<WellcomeMessageChart.length;i++ {
-			if(pv > WellcomeMessageChart[i] && mfp.$('mfp_wellcome') {
+		for(var i=0;i<WellcomeMessageChart.length;i++){
+			if(pv > WellcomeMessageChart[i] && mfp.$('mfp_wellcome')){
 				mfp.$('mfp_wellcome').innerHTML = mfpLang['WellcomeMessage'][i].replace('$1',pv);
 				break;
 			}
 		}
-		if(mfpConfigs['InputTimeAVG'] {
+		if(mfpConfigs['InputTimeAVG']){
 			var avgtime = "";
 			var sands = mfpConfigs['InputTimeAVG'];
-			if(sands > 0 {
+			if(sands > 0){
 				if(sands > (60*60*24))
 					avgtime = mfpLang['TimeDay'].replace('$1',Math.floor(sands/(60*60*24)));
 				else if(sands > (60*60))

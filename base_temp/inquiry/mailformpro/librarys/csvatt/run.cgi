@@ -1,12 +1,12 @@
 use Encode;
-if($_CSV {
-	foreach $key (keys(%_POST) {
+if($_CSV){
+	foreach $key (keys(%_POST)){
 		$value = $_POST{$key};
 		$value =~ s/\"/\'/ig;
 		$value =~ s/\,/，/ig;
 		$_CSV =~ s/<_${key}_>/$value/ig;
 	}
-	foreach $key (keys(%_ENV) {
+	foreach $key (keys(%_ENV)){
 		$value = $_ENV{$key};
 		$value =~ s/\"/\'/ig;
 		$value =~ s/\,/，/ig;

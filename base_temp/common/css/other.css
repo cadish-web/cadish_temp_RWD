@@ -8,16 +8,17 @@ Inquiry
 #inquiry #form_area{ margin: 5px auto 15px; max-width: 90%;}
 #inquiry #form_area h3{ margin: 0 auto 15px; font-size: 16px; text-align: center;}
 #inquiry #form_area p{ margin: 0 auto 15px; width: 80%; line-height: 1.6; text-align: center;}
+#inquiry #form_area form{ margin: 0 auto; width: 80%;}
 
 #inquiry #form_area dl{
 	display: table; table-layout: fixed;
-	width: 100%; padding: 0 10px 5px;
-	border-bottom: 1px dashed #ddd;box-sizing: border-box;
+	width: 100%; padding: 10px 0;
+	border-bottom: 1px dashed #ddd; box-sizing: border-box;
 }
 #inquiry #form_area dt,
-#inquiry #form_area dd{ display: table-cell; margin: 0; padding: 5px 10px; box-sizing: border-box;}
+#inquiry #form_area dd{ display: table-cell; margin: 0; padding: 0; box-sizing: border-box;}
 
-#inquiry #form_area dt{ width: 30%; text-align: left;}
+#inquiry #form_area dt{ width: 30%; float: none !important; text-align: left;}
 #inquiry #form_area dd{ width: 69%;}
 
 
@@ -39,10 +40,13 @@ Inquiry
 }
 
 #inquiry #form_area select  { margin: 5px 0 0; padding: 2px 1px; border: 1px solid #ddd;}
-#inquiry #form_area textarea{ margin: 5px 0 0; padding: 2px 3px; width: 98%; border: 1px solid #ddd; box-sizing: border-box;}
+#inquiry #form_area textarea{
+	margin: 5px 0 0; padding: 2px 3px; width: 98% !important; max-width: 98%;
+	height: 150px !important; border: 1px solid #ddd; box-sizing: border-box;
+}
 
 #inquiry #form_area .must       { margin: 0 5px; color: #fb223f;}
-#inquiry #form_area .mfp_buttons{ margin: 15px 2% 20px; width: 96%; text-align: right;}
+#inquiry #form_area .mfp_buttons{ margin: 15px 2% 20px; width: 96%;}
 #inquiry #form_area .mfp_buttons button{ width: 31%; padding: 2px 0; letter-spacing: 3px; line-height: 25px; text-align: center;}
 
 
@@ -54,7 +58,13 @@ Inquiry
 	font-size: 16px; text-shadow: none; border: none;
 	background: none; border-radius: 0; box-shadow: none;
 }
-
+#inquiry #form_area .mfp_colored { background-color: none !important;}
+#inquiry #form_area .mfp_not_checked,
+#inquiry #form_area .mfp_checked,
+#inquiry #form_area .mfp_colored {
+	margin: 7px 10px 0 0 !important; padding: 0;
+	background: none !important; box-shadow: none; border: none;
+}
 
 @media screen and (max-width: 1100px) {
 }

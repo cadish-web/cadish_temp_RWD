@@ -1,66 +1,66 @@
-function MailformPro( {
-	this.affterEffect = function(e {
-		if(e.type == 'select-one' {
-			if(mfp.GET[e.name] {
+function MailformPro(){
+	this.affterEffect = function(e){
+		if(e.type == 'select-one'){
+			if(mfp.GET[e.name]){
 				e.value = mfp.GET[e.name];
 			}
-			else if(mfp.Resume[mfp.Index.length-1] && !mfpConfigs['ResumeCancel'] {
-				mfp.sandbox(function( {
+			else if(mfp.Resume[mfp.Index.length-1] && !mfpConfigs['ResumeCancel']){
+				mfp.sandbox(function(){
 					e.selectedIndex = mfp.Resume[mfp.Index.length-1];
 				});
 			};
 			mfp.sizeajust(e);
 		}
-		else if(e.type == 'select-multiple' {
+		else if(e.type == 'select-multiple'){
 			mfp.sizeajust(e);
 		}
-		else if(e.type == 'checkbox' || e.type == 'radio' {
-			if(e.name && !mfp.$('mfp_'+e.name+'_checkobj') {
+		else if(e.type == 'checkbox' || e.type == 'radio'){
+			if(e.name && !mfp.$('mfp_'+e.name+'_checkobj')){
 				var elm = document.createElement('input');
 				elm.type = 'hidden';
 				elm.name = 'mfp_'+e.name+'_checkobj';
 				elm.id = elm.name;
 				elm.value = 1;
-				if(e.nextSibling === null {
+				if(e.nextSibling === null){
 					e.parentNode.appendChild(elm);
 				}
-				else{
+				else {
 					e.parentNode.insertBefore(elm, e.nextSibling);
 				};
 			};
-			if(mfp.GET[e.name] == e.value {
+			if(mfp.GET[e.name] == e.value){
 				e.checked = true;
 			}
-			else if(mfp.Resume[mfp.Index.length-1] == 1 && !mfpConfigs['ResumeCancel'] {
-				mfp.sandbox(function( {e.checked = true;});
+			else if(mfp.Resume[mfp.Index.length-1] == 1 && !mfpConfigs['ResumeCancel']){
+				mfp.sandbox(function(){e.checked = true;});
 			}
-			else if(mfp.Resume[mfp.Index.length-1] == 0 && !mfpConfigs['ResumeCancel'] {
-				mfp.sandbox(function( {e.checked = false;});
+			else if(mfp.Resume[mfp.Index.length-1] == 0 && !mfpConfigs['ResumeCancel']){
+				mfp.sandbox(function(){e.checked = false;});
 			};
 			mfp.setlabel(e);
 		}
-		else{
-			if(e.type != "text" && e.type != "textarea" {
+		else {
+			if(e.type != "text" && e.type != "textarea"){
 				e.style.imeMode = 'disabled';
 			};
-			if(mfp.GET[e.name] {
+			if(mfp.GET[e.name]){
 				e.value = mfp.GET[e.name];
 				mfp.setresume(e);
 			}
-			else if(mfp.Resume[mfp.Index.length-1] && !mfpConfigs['ResumeCancel'] {
-				mfp.sandbox(function( {
+			else if(mfp.Resume[mfp.Index.length-1] && !mfpConfigs['ResumeCancel']){
+				mfp.sandbox(function(){
 					e.value = unescape(mfp.Resume[mfp.Index.length-1]);
 				});
 			};
 			mfp.sizeajust(e);
 		};
 	};
-	this.initialize = function( {
-		for(var i=0;i<mfp.Mfp.length;i++ {
+	this.initialize = function(){
+		for(var i=0;i<mfp.Mfp.length;i++){
 			var e = mfp.Mfp[i];
 			this.addClassName(e,'mfp_element_'+e.type);
 			this.addClassName(e,'mfp_element_all');
-			if(e.name != "" && !e.type.match(/reset|button|submit/) {
+			if(e.name != "" && !e.type.match(/reset|button|submit/)){
 				if(!e.id)
 					e.id = "mfp_element_"+i;
 				mfp.Stat.qty++;
@@ -81,13 +81,13 @@ function MailformPro( {
 				if(e.getAttribute('data-join')) type = 'join';
 				if(e.getAttribute('data-unjoin')) type = 'unjoin';
 				
-				if(price {
+				if(price){
 					mfp.Items[e.id] = new Object();
 					mfp.Items[e.id].price = price;
 				}
-				else if(type == 'select-one' {
-					for(var ii=0;ii<e.length;ii++ {
-						if(e.options[ii].getAttribute('data-price') {
+				else if(type == 'select-one'){
+					for(var ii=0;ii<e.length;ii++){
+						if(e.options[ii].getAttribute('data-price')){
 							mfp.Items[e.options[ii].id] = new Object();
 							mfp.Items[e.options[ii].id].price = Number(e.options[ii].getAttribute('data-price'));
 						}
@@ -97,8 +97,8 @@ function MailformPro( {
 				if(type == 'number' || type == 'date')
 					e.style.textAlign = 'center';
 				
-				if(type != "unjoin" && type != "join" {
-					if(!mfp.$(err) {
+				if(type != "unjoin" && type != "join"){
+					if(!mfp.$(err)){
 						var elm = mfp.d.createElement('div');
 						elm.className = "mfp_err";
 						elm.id = err;
@@ -106,14 +106,14 @@ function MailformPro( {
 						e.parentNode.appendChild(elm);
 					}
 					var _this = e;
-					e.onfocus = function( {
+					e.onfocus = function(){
 						mfp.CurrentElement = mfp.IndexName[this.id];
 						mfp.addtimeline(this.name,'Focus');
 						mfp.LastFocus = this.name;
 						mfp.extend.run('focus',this);
 						mfp.removeClassName(this,"mfp_defaultValue");
 					};
-					e.onchange = function( {
+					e.onchange = function(){
 						mfp.calc();
 						//mfp.addtimeline(this.name,'Change');
 						mfp.extend.run('change',this);
@@ -121,14 +121,14 @@ function MailformPro( {
 						//	this.blur();
 					};
 					// ここでapply
-					e.onblur = function( {
+					e.onblur = function(){
 						mfp.check(this);
 						mfp.DisableSubmit = true;
 						mfp.calc();
 						mfp.addtimeline(this.name,'Blur');
 						if(this.value != this.defaultValue)
 							mfp.DropFlag = true;
-						if(!mfp.UnloadEvent && mfp.beforeunload {
+						if(!mfp.UnloadEvent && mfp.beforeunload){
 							mfp.add(window,"beforeunload",mfp.unload);
 							mfp.UnloadEvent = true;
 						}
@@ -137,8 +137,8 @@ function MailformPro( {
 					};
 				}
 				
-				if(!mfp.Elements[e.name] {
-					if(e.type != "hidden" {
+				if(!mfp.Elements[e.name]){
+					if(e.type != "hidden"){
 						this.Analytics.qty++;
 						if(required)
 							this.Analytics.requiredQty++;
@@ -155,18 +155,18 @@ function MailformPro( {
 					mfp.Elements[e.name].err = mfp.$(err);
 					mfp.Elements[e.name].min = e.getAttribute('data-min');
 					mfp.Elements[e.name].max = e.getAttribute('data-max');
-					if(mfp.$(e.getAttribute('data-parent')) {
+					if(mfp.$(e.getAttribute('data-parent'))){
 						mfp.Elements[e.name].parent = mfp.$(e.getAttribute('data-parent'));
 						mfp.Elements[e.name].parentClassName = mfp.Elements[e.name].parent.className;
 					}
 				}
-				else{
+				else {
 					mfp.Elements[e.name].group.push(e.id);
 				}
 				
 				// type of
-				if(e.type == 'checkbox' || e.type == 'radio' {
-					e.onclick = function( {
+				if(e.type == 'checkbox' || e.type == 'radio'){
+					e.onclick = function(){
 						mfp.extend.run('click',this);
 						mfp.CurrentElement = mfp.IndexName[this.id];
 						mfp.check(this);
@@ -178,9 +178,9 @@ function MailformPro( {
 				mfp.extend.run('init',e);
 				mfp.affterEffect(e);
 			}
-			else if(e.type == 'reset' {
-				e.onclick = function( {
-					if(confirm(mfpLang['ResetConfirm']) {
+			else if(e.type == 'reset'){
+				e.onclick = function(){
+					if(confirm(mfpLang['ResetConfirm'])){
 						mfp.Resume = new Array();
 						mfp.setcookie('_MFP',mfp.Resume.join('|'),mfpConfigs['ResumeExpire']);
 						mfp.addtimeline('Reset Button','Reset');
@@ -188,25 +188,25 @@ function MailformPro( {
 						//location.reload();
 						return true;
 					}
-					else{
+					else {
 						mfp.addtimeline('Reset Button','Reset Cancel');
 						return false;
 					}
 				}
-				e.onmousedown = function( {
+				e.onmousedown = function(){
 					mfp.play('click');
 				}
 			}
-			else if(e.type == 'submit' {
-				e.onclick = function( {
+			else if(e.type == 'submit'){
+				e.onclick = function(){
 					mfp.sendmail();
 				}
-				e.onmousedown = function( {
+				e.onmousedown = function(){
 					mfp.play('click');
 				}
 			}
 		}
-		mfp.Mfp.onsubmit = function( {
+		mfp.Mfp.onsubmit = function(){
 			mfp.submit();
 			return false;
 		}
@@ -235,7 +235,7 @@ function MailformPro( {
 		
 		if(mfp.$('mfpjs').src.indexOf('http') > -1)
 			mfp.addhiddenElement('script',mfp.$('mfpjs').src);
-		else{
+		else {
 			var src = new Array();
 			src = location.href.split('/');
 			src[src.length-1] = mfp.$('mfpjs').src;
@@ -252,43 +252,43 @@ function MailformPro( {
 	}
 	this.extend = new Object();
 	this.extend.fn = new Object();
-	this.extend.event = function(evt,fn {
+	this.extend.event = function(evt,fn){
 		if(!mfp.extend.fn[evt])
 			mfp.extend.fn[evt] = new Array();
 		mfp.extend.fn[evt].push(fn);
 	}
-	this.extend.run = function(evt,prm {
-		if(mfp.extend.fn[evt] {
+	this.extend.run = function(evt,prm){
+		if(mfp.extend.fn[evt]){
 			for(var i=0;i<mfp.extend.fn[evt].length;i++)
 				mfp.extend.fn[evt][i](prm);
 		}
 	}
-	this.obj = function(obj {
+	this.obj = function(obj){
 		if(typeof obj == 'string')
 			return document.getElementById(obj);
 		else
 			return obj;
 	};
-	this.byClassName = function(parentNode,className {
-		try{
+	this.byClassName = function(parentNode,className){
+		try {
 			return parentNode.getElementsByClassName(className);
 		}
-		catch(e {
+		catch(e){
 			var classNames = [];
 			var elements = parentNode.getElementsByTagName('*');
-			for(var i=0;i<elements.length;i++ {
-				if(mfp.className(elements[i],className) {
+			for(var i=0;i<elements.length;i++){
+				if(mfp.className(elements[i],className)){
 					classNames.push(elements[i]);
 				};
 			};
 			return classNames;
 		};
 	};
-	this.className = function(obj,name,reg {
+	this.className = function(obj,name,reg){
 		obj = mfp.obj(obj);
 		var classNames = new Array();
 		classNames = obj.className.split(' ');
-		if(!reg {
+		if(!reg){
 			var className = new Object();
 			for(var i=0;i<classNames.length;i++)
 				className[classNames[i]] = true;
@@ -297,36 +297,36 @@ function MailformPro( {
 			else
 				return className;
 		}
-		else{
+		else {
 			var className = null;
-			for(var i=0;i<classNames.length;i++ {
+			for(var i=0;i<classNames.length;i++){
 				if(classNames[i].match(reg))
 					return classNames[i];
 			};
 			return className;
 		};
 	};
-	this.toggleClassName = function(obj,enableClassName,disableClassName {
+	this.toggleClassName = function(obj,enableClassName,disableClassName){
 		mfp.addClassName(obj,enableClassName);
 		mfp.removeClassName(obj,disableClassName);
 	}
-	this.addClassName = function(obj,name {
-		if(!mfp.className(obj,name) {
+	this.addClassName = function(obj,name){
+		if(!mfp.className(obj,name)){
 			obj.className += ' '+name;
 		};
 	}
-	this.removeClassName = function(obj,name {
+	this.removeClassName = function(obj,name){
 		var classNames = [];
 		classNames = obj.className.split(' ');
 		var setClassName = [];
-		for(var i=0;i<classNames.length;i++ {
+		for(var i=0;i<classNames.length;i++){
 			if(classNames[i] != name)
 				setClassName.push(classNames[i]);
 		};
 		obj.className = setClassName.join(' ');
 	};
-	this.addhiddenElement = function(id,value,name {
-		if(!mfp.$('mfp_'+id) {
+	this.addhiddenElement = function(id,value,name){
+		if(!mfp.$('mfp_'+id)){
 			if(!name) name = 'mfp_' + id;
 			var elm = mfp.d.createElement('input');
 			elm.type = 'hidden';
@@ -336,8 +336,8 @@ function MailformPro( {
 			mfp.$('mfp_hidden').appendChild(elm);
 		}
 	};
-	this.addhiddenObject = function(id,value,name {
-		if(!mfp.$('mfp_'+id) {
+	this.addhiddenObject = function(id,value,name){
+		if(!mfp.$('mfp_'+id)){
 			if(!name) name = 'mfp_' + id;
 			var elm = mfp.d.createElement('textarea');
 			elm.style.display = 'none';
@@ -347,17 +347,17 @@ function MailformPro( {
 			mfp.$('mfp_hidden').appendChild(elm);
 		}
 	};
-	this.removeClassName = function(obj,name {
+	this.removeClassName = function(obj,name){
 		var classNames = [];
 		classNames = obj.className.split(' ');
 		var setClassName = [];
-		for(var i=0;i<classNames.length;i++ {
+		for(var i=0;i<classNames.length;i++){
 			if(classNames[i] != name)
 				setClassName.push(classNames[i]);
 		};
 		obj.className = setClassName.join(' ');
 	};
-	this.json = function(src {
+	this.json = function(src){
 		var script = document.createElement('script');
 		script.async = false;
 		script.type = 'text/javascript';
@@ -365,10 +365,10 @@ function MailformPro( {
 		script.charset = 'UTF-8';
 		document.body.appendChild(script);
 	};
-	this.gettime = function( {
+	this.gettime = function(){
 		return new Date() - 0;
 	}
-	this.addtimeline = function(name,action {
+	this.addtimeline = function(name,action){
 		name = mfpLang['ReservedWord'][name] || name;
 		var time = Math.floor(((new Date() - 0) - mfp.Stat.dateClient.getTime()) / 1000);
 		var elapsed = "";
@@ -379,30 +379,30 @@ function MailformPro( {
 		var line = new Array(time,name,action,elapsed);
 		mfp.Timeline.push(line.join(','));
 	}
-	this.calc = function( {
-		if(mfp.$('mfp_price') {
+	this.calc = function(){
+		if(mfp.$('mfp_price')){
 			mfp.Price = 0;
 			mfp.Cost = 0;
 			mfp.Cart = new Array();
 			mfp.CartText = "";
-			for(var prop in mfp.Items {
-				if(mfp.$(prop).tagName.toLowerCase() == 'option' && mfp.$(prop).selected && !mfp.$(prop).disabled && !mfp.$(prop).parentNode.disabled && !mfp.$(prop).parentNode.parentNode.disabled {
+			for(var prop in mfp.Items){
+				if(mfp.$(prop).tagName.toLowerCase() == 'option' && mfp.$(prop).selected && !mfp.$(prop).disabled && !mfp.$(prop).parentNode.disabled && !mfp.$(prop).parentNode.parentNode.disabled){
 					mfp.Price += mfp.Items[prop].price;
-					if(mfp.$(prop).getAttribute('data-cost') {
+					if(mfp.$(prop).getAttribute('data-cost')){
 						mfp.Cost += mfp.Items[prop].price;
 					};
 					mfp.addcart(mfp.$(prop).value,prop,mfp.Items[prop].price,1);
 				}
-				else if((mfp.$(prop).type == 'radio' || mfp.$(prop).type == 'checkbox') && mfp.$(prop).checked && !mfp.$(prop).disabled {
+				else if((mfp.$(prop).type == 'radio' || mfp.$(prop).type == 'checkbox') && mfp.$(prop).checked && !mfp.$(prop).disabled){
 					mfp.Price += mfp.Items[prop].price;
-					if(mfp.$(prop).getAttribute('data-cost') {
+					if(mfp.$(prop).getAttribute('data-cost')){
 						mfp.Cost += mfp.Items[prop].price;
 					};
 					mfp.addcart(mfp.$(prop).value,prop,mfp.Items[prop].price,1);
 				}
-				else if(!mfp.$(prop).value.match(/[^0-9]/) && Number(mfp.$(prop).value) > 0 && !mfp.$(prop).disabled {
+				else if(!mfp.$(prop).value.match(/[^0-9]/) && Number(mfp.$(prop).value) > 0 && !mfp.$(prop).disabled){
 					mfp.Price += (mfp.Items[prop].price * Number(mfp.$(prop).value));
-					if(mfp.$(prop).getAttribute('data-cost') {
+					if(mfp.$(prop).getAttribute('data-cost')){
 						mfp.Cost += (mfp.Items[prop].price * Number(mfp.$(prop).value));
 					};
 					mfp.addcart(mfp.$(prop).name,prop,mfp.Items[prop].price,Number(mfp.$(prop).value));
@@ -411,7 +411,7 @@ function MailformPro( {
 			mfp.extend.run('calc');
 			
 			mfp.$('mfp_cart').value = mfp.Cart.join('||');
-			if(document.getElementById('mfp_paypal_payment') {
+			if(document.getElementById('mfp_paypal_payment')){
 				if(mfp.$('mfp_paypal_payment').checked)
 					mfp.$('mfp_paypal').value = 1;
 				else
@@ -424,10 +424,10 @@ function MailformPro( {
 			mfp.$('mfp_price').innerHTML = mfpLang['Price'].replace('$1',mfp.cm(mfp.Price))+mfp.CartText;
 		}
 	}
-	this.sw = function(flag,id,hide,block {
+	this.sw = function(flag,id,hide,block){
 		var tObj = mfp.$(id).getElementsByTagName("input");
-		for(var i=0;i<tObj.length;i++ {
-			if(flag {
+		for(var i=0;i<tObj.length;i++){
+			if(flag){
 				tObj[i].disabled = true;
 				mfp.noproblem(tObj[i]);
 				if(tObj[i].checked)
@@ -437,8 +437,8 @@ function MailformPro( {
 				tObj[i].disabled = false;
 		}
 		var tObj = mfp.$(id).getElementsByTagName("select");
-		for(var i=0;i<tObj.length;i++ {
-			if(flag {
+		for(var i=0;i<tObj.length;i++){
+			if(flag){
 				tObj[i].disabled = true;
 				mfp.noproblem(tObj[i]);
 			}
@@ -446,71 +446,71 @@ function MailformPro( {
 				tObj[i].disabled = false;
 		}
 		var tObj = mfp.$(id).getElementsByTagName("textarea");
-		for(var i=0;i<tObj.length;i++ {
-			if(flag {
+		for(var i=0;i<tObj.length;i++){
+			if(flag){
 				tObj[i].disabled = true;
 				mfp.noproblem(tObj[i]);
 			}
 			else
 				tObj[i].disabled = false;
 		}
-		if(!hide && flag {
-			if(mfp.$(id).className.indexOf('accordion') > -1 {
-				try{
+		if(!hide && flag){
+			if(mfp.$(id).className.indexOf('accordion') > -1){
+				try {
 					$("#"+id).slideUp();
 				}
-				catch(e {
+				catch(e){
 					mfp.$(id).style.display = "none";
 				};
 			}
-			else{
+			else {
 				mfp.$(id).style.display = "none";
 			};
 		}
-		else if(!hide && block {
-			if(mfp.$(id).className.indexOf('accordion') > -1 {
-				try{
+		else if(!hide && block){
+			if(mfp.$(id).className.indexOf('accordion') > -1){
+				try {
 					$("#"+id).slideDown();
 				}
-				catch(e {
+				catch(e){
 					mfp.$(id).style.display = block;
 				};
 			}
-			else{
+			else {
 				mfp.$(id).style.display = block;
 			};
 		}
-		else if(!hide {
-			if(mfp.$(id).className.indexOf('accordion') > -1 {
-				try{
+		else if(!hide){
+			if(mfp.$(id).className.indexOf('accordion') > -1){
+				try {
 					$("#"+id).slideDown();
 				}
-				catch(e {
+				catch(e){
 					mfp.$(id).style.display = "block";
 				};
 			}
-			else{
+			else {
 				mfp.$(id).style.display = "block";
 			};
 		};
 	}
-	this.addcart = function(name,id,price,qty {
-		if(!mfp.Cart[id] {
+	this.addcart = function(name,id,price,qty){
+		if(!mfp.Cart[id]){
 			var item = new Array(name,id,price,qty);
 			mfp.Cart.push(item.join('<->'))
 		}
 	}
-	this.cm = function(str {
+	this.cm = function(str){
 		var num = new String(str).replace(/,/g, "");
 		while(num != (num = num.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
 		return num;
 	}
-	this.stripe = function( {
-		for(var i=0;i<mfpConfigs['Stripe'].length;i++ {
+	this.stripe = function(){
+		for(var i=0;i<mfpConfigs['Stripe'].length;i++){
 			var tObj = document.getElementsByTagName(mfpConfigs['Stripe'][i]);
 			var counter = 0;
-			for(var ii=0;ii<tObj.length;ii++ {
-				if(tObj[ii].className.indexOf("mfp") > -1 {
+			for(var ii=0;ii<tObj.length;ii++){
+				if(tObj[ii].className.indexOf("mfp") > -1){
 					if(counter % 2 != 0)
 						tObj[ii].className += ' mfp_colored';
 					else
@@ -520,23 +520,23 @@ function MailformPro( {
 			}
 		}
 	};
-	this.setlabel = function(obj {
+	this.setlabel = function(obj){
 		var labelObj = obj.id + '_label';
-		if(!mfp.$(labelObj) && obj.parentNode.tagName == "LABEL" {
+		if(!mfp.$(labelObj) && obj.parentNode.tagName == "LABEL"){
 			obj.parentNode.id = labelObj;
 			mfp.$(labelObj).style.cursor = 'pointer';
 		}
-		if(obj.checked && mfp.$(labelObj) {
+		if(obj.checked && mfp.$(labelObj)){
 			//mfp.$(labelObj).className = 'mfp_checked';
 			mfp.toggleClassName(mfp.$(labelObj),'mfp_checked','mfp_not_checked');
 		}
-		else if(mfp.$(labelObj) {
+		else if(mfp.$(labelObj)){
 			//mfp.$(labelObj).className = 'mfp_not_checked';
 			mfp.toggleClassName(mfp.$(labelObj),'mfp_not_checked','mfp_checked');
 		}
 	}
-	this.problem = function(obj,msg {
-		if(mfp.Ready {
+	this.problem = function(obj,msg){
+		if(mfp.Ready){
 			mfp.ErrorLog.push(obj.name);
 			if(obj.type != "radio" && obj.type != "checkbox" && obj.type != "file" && !mfpConfigs['NoClassChange'])
 				this.attachClass(obj,'problem');
@@ -554,8 +554,8 @@ function MailformPro( {
 		mfp.Elements[obj.name].check = false;
 		return true;
 	}
-	this.noproblem = function(obj {
-		if(mfp.Ready {
+	this.noproblem = function(obj){
+		if(mfp.Ready){
 			for(var i=0;i<mfp.Elements[obj.name].group.length;i++)
 				this.removeClass(obj,'problem');
 				//mfp.$(mfp.Elements[obj.name].group[i]).className = mfp.ElementsClassName[mfp.Elements[obj.name].group[i]];
@@ -570,29 +570,29 @@ function MailformPro( {
 		mfp.Elements[obj.name].check = true;
 		return false;
 	}
-	this.attachClass = function(obj,className {
+	this.attachClass = function(obj,className){
 		var classes = new Array();
 		classes = obj.className.split(' ');
 		classes.push(className);
 		obj.className = classes.join(' ');
 	};
-	this.removeClass = function(obj,className {
+	this.removeClass = function(obj,className){
 		var classes = new Array();
 		var newClass = new Array();
 		classes = obj.className.split(' ');
-		for(var i=0;i<classes.length;i++ {
+		for(var i=0;i<classes.length;i++){
 			if(className != classes[i])
 				newClass.push(classes[i]);
 		}
 		obj.className = newClass.join(' ');
 	};
-	this.setresume = function(obj {
+	this.setresume = function(obj){
 		// Resume
-		if(!obj.getAttribute('data-exc') {
+		if(!obj.getAttribute('data-exc')){
 			if(obj.type == 'select-one')
 				mfp.Resume[mfp.IndexName[obj.id]] = obj.selectedIndex;
-			else if(obj.type == 'checkbox' || obj.type == 'radio' {
-				for(var i=0;i<mfp.Elements[obj.name].group.length;i++ {
+			else if(obj.type == 'checkbox' || obj.type == 'radio'){
+				for(var i=0;i<mfp.Elements[obj.name].group.length;i++){
 					if(mfp.$(mfp.Elements[obj.name].group[i]).checked)
 						mfp.Resume[mfp.IndexName[mfp.Elements[obj.name].group[i]]] = 1;
 					else
@@ -608,33 +608,33 @@ function MailformPro( {
 			mfp.Resume[mfp.IndexName[obj.id]] = "";
 		mfp.setcookie('_MFP',mfp.Resume.join('|'),mfpConfigs['ResumeExpire']);
 	}
-	this.$ = function(id {
+	this.$ = function(id){
 		return mfp.d.getElementById(id);
 	}
-	this.check = function(obj {
-		if(obj.type == ('text' || 'textarea' || 'tel' || 'email' || 'number') {
+	this.check = function(obj){
+		if(obj.type == ('text' || 'textarea' || 'tel' || 'email' || 'number')){
 			if(obj.value == obj.defaultValue)
 				mfp.addClassName(obj,'mfp_defaultValue');
 			else
 				mfp.removeClassName(obj,"mfp_defaultValue");
 		};
 		mfp.ExtendErrorMsg = "";
-		if(obj.name {
+		if(obj.name){
 			mfp.extend.run('check',obj);
 		};
-		if(mfp.ExtendErrorMsg != "" {
+		if(mfp.ExtendErrorMsg != ""){
 			return mfp.problem(obj,mfp.ExtendErrorMsg);
 		}
-		else if(obj.getAttribute('data-error') && obj.getAttribute('data-error-text') && !obj.disabled {
+		else if(obj.getAttribute('data-error') && obj.getAttribute('data-error-text') && !obj.disabled){
 			return mfp.problem(obj,obj.getAttribute('data-error-text'));
 		}
-		else if(!obj.disabled && obj.type != "hidden" && obj.name != "" {
+		else if(!obj.disabled && obj.type != "hidden" && obj.name != ""){
 			if(Number(mfpConfigs['DisableURI']) && (obj.value.match(/http:/i) || obj.value.match(/https:/i)))
 				return mfp.problem(obj,mfpLang['SpamBlockError']);
-			else if(mfp.Elements[obj.name].type == 'radio' || mfp.Elements[obj.name].type == 'checkbox' {
+			else if(mfp.Elements[obj.name].type == 'radio' || mfp.Elements[obj.name].type == 'checkbox'){
 				var check_count = 0;
-				for(var i=0;i<mfp.Elements[obj.name].group.length;i++ {
-					if(mfp.$(mfp.Elements[obj.name].group[i]).checked {
+				for(var i=0;i<mfp.Elements[obj.name].group.length;i++){
+					if(mfp.$(mfp.Elements[obj.name].group[i]).checked){
 						if(mfp.$(mfp.Elements[obj.name].group[i]+'_label'))
 							mfp.toggleClassName(mfp.$(mfp.Elements[obj.name].group[i]+'_label'),'mfp_checked','mfp_not_checked');
 							//mfp.$(mfp.Elements[obj.name].group[i]+'_label').className = 'mfp_checked';
@@ -644,16 +644,16 @@ function MailformPro( {
 						mfp.toggleClassName(mfp.$(mfp.Elements[obj.name].group[i]+'_label'),'mfp_not_checked','mfp_checked');
 						//mfp.$(mfp.Elements[obj.name].group[i]+'_label').className = 'mfp_not_checked';
 				}
-				if((mfp.Elements[obj.name].min) && (mfp.Elements[obj.name].max) && (check_count < mfp.Elements[obj.name].min || mfp.Elements[obj.name].max < check_count) {
+				if((mfp.Elements[obj.name].min) && (mfp.Elements[obj.name].max) && (check_count < mfp.Elements[obj.name].min || mfp.Elements[obj.name].max < check_count)){
 					var errmsg = mfpLang['ErrorCheckedType1'].replace('$1',mfp.Elements[obj.name].min);
 					errmsg = errmsg.replace('$2',mfp.Elements[obj.name].max);
 					return mfp.problem(obj,errmsg);
 				}
-				else if((mfp.Elements[obj.name].min) && check_count < mfp.Elements[obj.name].min {
+				else if((mfp.Elements[obj.name].min) && check_count < mfp.Elements[obj.name].min){
 					var errmsg = mfpLang['ErrorCheckedType2'].replace('$1',mfp.Elements[obj.name].min);
 					return mfp.problem(obj,errmsg);
 				}
-				else if((mfp.Elements[obj.name].max) && mfp.Elements[obj.name].max < check_count {
+				else if((mfp.Elements[obj.name].max) && mfp.Elements[obj.name].max < check_count){
 					var errmsg = mfpLang['ErrorCheckedType3'].replace('$1',mfp.Elements[obj.name].max);
 					return mfp.problem(obj,errmsg);
 				}
@@ -662,7 +662,7 @@ function MailformPro( {
 				else
 					return mfp.noproblem(obj);
 			}
-			else if(mfp.Elements[obj.name].required && (obj.value == obj.defaultValue || obj.value == "") {
+			else if(mfp.Elements[obj.name].required && (obj.value == obj.defaultValue || obj.value == "")){
 				if(mfp.Elements[obj.name].type == "select-one" || mfp.Elements[obj.name].type == "select-multiple")
 					return mfp.problem(obj,mfpLang['ErrorSelectFieldType1']);
 				else if(mfp.Elements[obj.name].type == "file")
@@ -670,25 +670,25 @@ function MailformPro( {
 				else
 					return mfp.problem(obj,mfpLang['ErrorTextFieldType1']);
 			}
-			else if(mfp.Elements[obj.name].type == "text" || mfp.Elements[obj.name].type == "textarea" || mfp.Elements[obj.name].type == "email" || mfp.Elements[obj.name].type == "password" {
-				if(mfp.Elements[obj.name].type == "email" && !obj.value.match(/.+@.+\..+/) && obj.value != obj.defaultValue {
+			else if(mfp.Elements[obj.name].type == "text" || mfp.Elements[obj.name].type == "textarea" || mfp.Elements[obj.name].type == "email" || mfp.Elements[obj.name].type == "password"){
+				if(mfp.Elements[obj.name].type == "email" && !obj.value.match(/.+@.+\..+/) && obj.value != obj.defaultValue){
 					return mfp.problem(obj,mfpLang['ErrorTextFieldType2']);
 				}
-				else if(obj.name == 'confirm_email' && mfp.$(mfp.Elements['email'].group[0]).value != obj.value {
+				else if(obj.name == 'confirm_email' && mfp.$(mfp.Elements['email'].group[0]).value != obj.value){
 					return mfp.problem(obj,mfpLang['ErrorTextFieldType3']);
 				}
-				else if((mfp.Elements[obj.name].min) && (mfp.Elements[obj.name].max) && (obj.value.length < mfp.Elements[obj.name].min || mfp.Elements[obj.name].max < obj.value.length) && (obj.value != obj.defaultValue && obj.value != "") {
+				else if((mfp.Elements[obj.name].min) && (mfp.Elements[obj.name].max) && (obj.value.length < mfp.Elements[obj.name].min || mfp.Elements[obj.name].max < obj.value.length) && (obj.value != obj.defaultValue && obj.value != "")){
 					var errmsg = mfpLang['ErrorTextFieldType4'].replace('$1',mfp.Elements[obj.name].min);
 					errmsg = errmsg.replace('$2',mfp.Elements[obj.name].max);
 					errmsg = errmsg.replace('$3',obj.value.length);
 					return mfp.problem(obj,errmsg);
 				}
-				else if((mfp.Elements[obj.name].min) && obj.value.length < mfp.Elements[obj.name].min && (obj.value != obj.defaultValue && obj.value != "") {
+				else if((mfp.Elements[obj.name].min) && obj.value.length < mfp.Elements[obj.name].min && (obj.value != obj.defaultValue && obj.value != "")){
 					var errmsg = mfpLang['ErrorTextFieldType5'].replace('$1',mfp.Elements[obj.name].min);
 					errmsg = errmsg.replace('$2',obj.value.length);
 					return mfp.problem(obj,errmsg);
 				}
-				else if((mfp.Elements[obj.name].max) && mfp.Elements[obj.name].max < obj.value.length && (obj.value != obj.defaultValue && obj.value != "") {
+				else if((mfp.Elements[obj.name].max) && mfp.Elements[obj.name].max < obj.value.length && (obj.value != obj.defaultValue && obj.value != "")){
 					var errmsg = mfpLang['ErrorTextFieldType6'].replace('$1',mfp.Elements[obj.name].max);
 					errmsg = errmsg.replace('$2',obj.value.length);
 					return mfp.problem(obj,errmsg);
@@ -696,40 +696,40 @@ function MailformPro( {
 				else
 					return mfp.noproblem(obj);
 			}
-			else if(mfp.Elements[obj.name].type == "number" && obj.value != obj.defaultValue && obj.value != "" {
+			else if(mfp.Elements[obj.name].type == "number" && obj.value != obj.defaultValue && obj.value != ""){
 				if(obj.value.match(/[^0-9]/))
 					return mfp.problem(obj,mfpLang['ErrorTextFieldType7']);
-				else if((mfp.Elements[obj.name].min) && (mfp.Elements[obj.name].max) && (parseInt(obj.value) < parseInt(mfp.Elements[obj.name].min) || parseInt(mfp.Elements[obj.name].max) < parseInt(obj.value)) && (obj.value != obj.defaultValue && obj.value != "") {
+				else if((mfp.Elements[obj.name].min) && (mfp.Elements[obj.name].max) && (parseInt(obj.value) < parseInt(mfp.Elements[obj.name].min) || parseInt(mfp.Elements[obj.name].max) < parseInt(obj.value)) && (obj.value != obj.defaultValue && obj.value != "")){
 					var errmsg = mfpLang['ErrorNumberFieldType1'].replace('$1',mfp.Elements[obj.name].min);
 					errmsg = errmsg.replace('$2',mfp.Elements[obj.name].max);
 					return mfp.problem(obj,errmsg);
 				}
-				else if((mfp.Elements[obj.name].min) && parseInt(obj.value) < parseInt(mfp.Elements[obj.name].min) && (obj.value != obj.defaultValue && obj.value != "") {
+				else if((mfp.Elements[obj.name].min) && parseInt(obj.value) < parseInt(mfp.Elements[obj.name].min) && (obj.value != obj.defaultValue && obj.value != "")){
 					var errmsg = mfpLang['ErrorNumberFieldType2'].replace('$1',mfp.Elements[obj.name].min);
 					return mfp.problem(obj,errmsg);
 				}
-				else if((mfp.Elements[obj.name].max) && parseInt(mfp.Elements[obj.name].max) < parseInt(obj.value) && (obj.value != obj.defaultValue && obj.value != "") {
+				else if((mfp.Elements[obj.name].max) && parseInt(mfp.Elements[obj.name].max) < parseInt(obj.value) && (obj.value != obj.defaultValue && obj.value != "")){
 					var errmsg = mfpLang['ErrorNumberFieldType3'].replace('$1',mfp.Elements[obj.name].max);
 					return mfp.problem(obj,errmsg);
 				}
 				else
 					return mfp.noproblem(obj);
 			}
-			else if(mfp.Elements[obj.name].type == "tel" && obj.value != obj.defaultValue && obj.value != "" {
+			else if(mfp.Elements[obj.name].type == "tel" && obj.value != obj.defaultValue && obj.value != ""){
 				if(obj.value.match(/[^0-9\-\+]/))
 					return mfp.problem(obj,mfpLang['ErrorTextFieldType8']);
-				else if((mfp.Elements[obj.name].min) && (mfp.Elements[obj.name].max) && (obj.value.length < mfp.Elements[obj.name].min || mfp.Elements[obj.name].max < obj.value.length) && (obj.value != obj.defaultValue && obj.value != "") {
+				else if((mfp.Elements[obj.name].min) && (mfp.Elements[obj.name].max) && (obj.value.length < mfp.Elements[obj.name].min || mfp.Elements[obj.name].max < obj.value.length) && (obj.value != obj.defaultValue && obj.value != "")){
 					var errmsg = mfpLang['ErrorTextFieldType4'].replace('$1',mfp.Elements[obj.name].min);
 					errmsg = errmsg.replace('$2',mfp.Elements[obj.name].max);
 					errmsg = errmsg.replace('$3',obj.value.length);
 					return mfp.problem(obj,errmsg);
 				}
-				else if((mfp.Elements[obj.name].min) && obj.value.length < mfp.Elements[obj.name].min && (obj.value != obj.defaultValue && obj.value != "") {
+				else if((mfp.Elements[obj.name].min) && obj.value.length < mfp.Elements[obj.name].min && (obj.value != obj.defaultValue && obj.value != "")){
 					var errmsg = mfpLang['ErrorTextFieldType5'].replace('$1',mfp.Elements[obj.name].min);
 					errmsg = errmsg.replace('$2',obj.value.length);
 					return mfp.problem(obj,errmsg);
 				}
-				else if((mfp.Elements[obj.name].max) && mfp.Elements[obj.name].max < obj.value.length && (obj.value != obj.defaultValue && obj.value != "") {
+				else if((mfp.Elements[obj.name].max) && mfp.Elements[obj.name].max < obj.value.length && (obj.value != obj.defaultValue && obj.value != "")){
 					var errmsg = mfpLang['ErrorTextFieldType6'].replace('$1',mfp.Elements[obj.name].max);
 					errmsg = errmsg.replace('$2',obj.value.length);
 					return mfp.problem(obj,errmsg);
@@ -737,7 +737,7 @@ function MailformPro( {
 				else
 					return mfp.noproblem(obj);
 			}
-			else if(mfp.Elements[obj.name].type == "date" && obj.value != obj.defaultValue && obj.value != "" {
+			else if(mfp.Elements[obj.name].type == "date" && obj.value != obj.defaultValue && obj.value != ""){
 				var date = new Date(obj.value.replace(/-/ig,'/'));
 				var mon = (date.getMonth()+1);
 				var day = date.getDate();
@@ -746,60 +746,60 @@ function MailformPro( {
 				var dateStr = date.getFullYear() + '-' + mon + '-' + day;
 				if(dateStr.indexOf('NaN') > -1)
 					return mfp.problem(obj,mfpLang['ErrorDateFieldType1']);
-				else if(mfp.Elements[obj.name].max && mfp.Elements[obj.name].min {
+				else if(mfp.Elements[obj.name].max && mfp.Elements[obj.name].min){
 					var dateMax = new Date(mfp.Elements[obj.name].max.replace(/-/ig,'/'));
 					var dateMin = new Date(mfp.Elements[obj.name].min.replace(/-/ig,'/'));
-					if(dateMin.getTime() > date.getTime() || date.getTime() > dateMax.getTime() {
+					if(dateMin.getTime() > date.getTime() || date.getTime() > dateMax.getTime()){
 						var errmsg = mfpLang['ErrorDateFieldType4'].replace('$1',mfp.Elements[obj.name].min);
 						return mfp.problem(obj,errmsg.replace('$2',mfp.Elements[obj.name].max));
 					}
-					else{
+					else {
 						obj.value = dateStr;
 						return mfp.noproblem(obj);
 					}
 				}
-				else if(mfp.Elements[obj.name].max {
+				else if(mfp.Elements[obj.name].max){
 					var dateMax = new Date(mfp.Elements[obj.name].max.replace(/-/ig,'/'));
 					if(date.getTime() > dateMax.getTime())
 						return mfp.problem(obj,mfpLang['ErrorDateFieldType3'].replace('$1',mfp.Elements[obj.name].max));
-					else{
+					else {
 						obj.value = dateStr;
 						return mfp.noproblem(obj);
 					}
 				}
-				else if(mfp.Elements[obj.name].min {
+				else if(mfp.Elements[obj.name].min){
 					var dateMin = new Date(mfp.Elements[obj.name].min.replace(/-/ig,'/'));
 					if(date.getTime() < dateMin.getTime())
 						return mfp.problem(obj,mfpLang['ErrorDateFieldType2'].replace('$1',mfp.Elements[obj.name].min));
-					else{
+					else {
 						obj.value = dateStr;
 						return mfp.noproblem(obj);
 					}
 				}
-				else{
+				else {
 					obj.value = dateStr;
 					return mfp.noproblem(obj);
 				}
 			}
-			else{
+			else {
 				return mfp.noproblem(obj);
 			}
 		}
 		mfp.ExtendErrorMsg = "";
 		mfp.extend.run('checkafter',obj);
-		if(mfp.ExtendErrorMsg != "" {
+		if(mfp.ExtendErrorMsg != ""){
 			return mfp.problem(obj,mfp.ExtendErrorMsg);
 		}
 	}
-	this.val = function(id {
+	this.val = function(id){
 		var e = mfp.$(id);
 		if(e.type == 'select-one' && !e.disabled && e.value != "")
 			return e.options[e.selectedIndex].text;
-		else if(e.type == 'checkbox' || e.type == 'radio' {
+		else if(e.type == 'checkbox' || e.type == 'radio'){
 			var values = new Array();
-			for(var i=0;i<mfp.Elements[e.name].group.length;i++ {
-				if(mfp.$(mfp.Elements[e.name].group[i]).checked && !e.disabled {
-					if(mfp.$(mfp.Elements[e.name].group[i]).getAttribute('data-display-value') {
+			for(var i=0;i<mfp.Elements[e.name].group.length;i++){
+				if(mfp.$(mfp.Elements[e.name].group[i]).checked && !e.disabled){
+					if(mfp.$(mfp.Elements[e.name].group[i]).getAttribute('data-display-value')){
 						values.push(mfp.$(mfp.Elements[e.name].group[i]).getAttribute('data-display-value'));
 					}
 					else{
@@ -809,18 +809,18 @@ function MailformPro( {
 			};
 			return values.join('<br />');
 		}
-		else if(e.type == 'file' && !e.disabled {
-			try{
+		else if(e.type == 'file' && !e.disabled){
+			try {
 				var files = new Array();
 				for(var i=0;i<e.files.length;i++)
 					files.push(e.files[i].name);
 				return mfp.sanitizing(files.join("\n"));
 			}
-			catch(e {
+			catch(e){
 				return mfp.sanitizing(mfp.$(id).value.replace(/\\n/g,'<br />'));
 			}
 		}
-		else if(!e.disabled && e.value != e.defaultValue {
+		else if(!e.disabled && e.value != e.defaultValue){
 			var val = mfp.sanitizing(mfp.$(id).value);
 			val = val.replace(/\\n/g,'<br />');
 			val = val.replace(/\n/g,'<br />');
@@ -830,34 +830,34 @@ function MailformPro( {
 		else
 			return '';
 	}
-	this.sanitizing = function(str {
+	this.sanitizing = function(str){
 		var before = new Array('&','"',"'","<",">","\n","\t","\\n");
 		var after = new Array('&amp;','&quot;','&rsquo;',"&lt;","&gt;","<br />"," ","<br />");
 		for(var i=0;i<before.length;i++)
 			str = str.replace(new RegExp(before[i],'g'), after[i]);
 		return str;
 	}
-	this.checkall = function( {
+	this.checkall = function(){
 		mfp.calc();
 		var errors = new Array();
 		var ElementsFlag = new Object();
 		mfp.ConfirmHTML = "";
 		var s = 0;
-		for(var i=0;i<mfp.Names.length;i++ {
+		for(var i=0;i<mfp.Names.length;i++){
 			var e = mfp.$(mfp.Elements[mfp.Names[i]].group[0]);
 			if(mfp.check(e))
 				errors.push(e.id);
-			else{
+			else {
 				var elmName = e.getAttribute('data-display-label') || mfpLang['ReservedWord'][mfp.Names[i]] || mfp.Names[i];
 				var val = "";
 				// 2013-05-28 hotfix
-				if((mfp.Elements[mfp.Names[i]].type == 'join' || mfp.Elements[mfp.Names[i]].type == 'unjoin') && !mfp.Elements[mfp.Names[i]].disabled {
+				if((mfp.Elements[mfp.Names[i]].type == 'join' || mfp.Elements[mfp.Names[i]].type == 'unjoin') && !mfp.Elements[mfp.Names[i]].disabled){
 					var joinObj = e.getAttribute('data-join') || e.getAttribute('data-unjoin');
 					var joinElements = joinObj.split('+');
 					var joinStr = "";
 					var allDefault = true;
-					for(var ii=0;ii<joinElements.length;ii++ {
-						if(mfp.Elements[joinElements[ii]] {
+					for(var ii=0;ii<joinElements.length;ii++){
+						if(mfp.Elements[joinElements[ii]]){
 							if(mfp.$(mfp.Elements[joinElements[ii]].group[0]).getAttribute('data-format'))
 								joinStr += mfp.$(mfp.Elements[joinElements[ii]].group[0]).getAttribute('data-format').replace('$1',mfp.$(mfp.Elements[joinElements[ii]].group[0]).value);
 							else
@@ -880,9 +880,9 @@ function MailformPro( {
 				if(e.getAttribute('data-format') && val != "")
 					val = e.getAttribute('data-format').replace('$1',val);
 				
-				if(!ElementsFlag[mfp.Names[i]] {
+				if(!ElementsFlag[mfp.Names[i]]){
 					ElementsFlag[mfp.Names[i]] = true;
-					if(val != "" && mfp.Names[i].indexOf('mfp_') == -1 && !e.getAttribute('data-post-disable') {
+					if(val != "" && mfp.Names[i].indexOf('mfp_') == -1 && !e.getAttribute('data-post-disable')){
 						var className = 'mfp_colored';
 						if(s % 2 == 0) className = 'mfp_achroma';
 						elmName = elmName.replace(/\_/ig, " ");
@@ -892,21 +892,21 @@ function MailformPro( {
 				}
 			}
 		}
-		if(errors.length > 0 {
-			if(mfp.Ready {
-				if(!mfpConfigs['ErrorFocusDisabled'] {
+		if(errors.length > 0){
+			if(mfp.Ready){
+				if(!mfpConfigs['ErrorFocusDisabled']){
 					mfp.$(errors[0]).focus();
 				};
 			};
 			mfp.extend.run('elementError',mfp.$(errors[0]));
 			return false;
 		}
-		else{
+		else {
 			return true;
 		};
 	}
-	this.sizeajust = function(obj {
-		if(mfpConfigs['SizeAjustPx'] != null {
+	this.sizeajust = function(obj){
+		if(mfpConfigs['SizeAjustPx'] != null){
 			if(obj.size && obj.size != 20)
 				obj.style.width = (Number(obj.size) * mfpConfigs['SizeAjustPx']) + "px";
 			if(obj.cols)
@@ -915,68 +915,68 @@ function MailformPro( {
 				obj.style.height = (Number(obj.rows) * mfpConfigs['SizeAjustPx']) + "px";
 		}
 	}
-	this.submit = function( {
-		if(mfp.DisableSubmit {
+	this.submit = function(){
+		if(mfp.DisableSubmit){
 			mfp.CurrentElement++;
-			mfp.sandbox(function( {
-				if(mfp.$(mfp.Index[mfp.CurrentElement]) {
+			mfp.sandbox(function(){
+				if(mfp.$(mfp.Index[mfp.CurrentElement])){
 					mfp.$(mfp.Index[mfp.CurrentElement]).focus();
 				}
 			});
 		}
 	};
-	this.pos = function(id {
+	this.pos = function(id){
 		var obj = mfp.$(id);
 		var left = 0,top = 0;
-		while(obj.parentNode {
+		while(obj.parentNode){
 			left += obj.offsetLeft;
 			top += obj.offsetTop;
 			obj = obj.parentNode;
 		};
-		return{"left" : left, "top" : top};
+		return {"left" : left, "top" : top};
 	},
-	this.jump = function(id {
+	this.jump = function(id){
 		mfp.$(id).focus();
 		mfp.scroll(id);
 	};
-	this.scroll = function(id {
-		setTimeout(function( {
+	this.scroll = function(id){
+		setTimeout(function(){
 			var top = [];
 			var ajust = 100;
 			top.push(mfp.$(id).offsetTop);
-			if(mfp.$(id).getBoundingClientRect() {
+			if(mfp.$(id).getBoundingClientRect()){
 				top.push(mfp.$(id).getBoundingClientRect().top - mfp.$(id).offsetParent.getBoundingClientRect().top);
 			};
-			try{
+			try {
 				top.push($("#"+id).offset().top);
 			}
-			catch(e {};
-			top.sort(function(a,b {
+			catch(e){};
+			top.sort(function(a,b){
 				if( a > b ) return -1;
 				if( a < b ) return 1;
 				return 0;
 			});
-			if(top[0] > 50 {
+			if(top[0] > 50){
 				scrollTo(0,top[0] - ajust);
 			}
-			else{
+			else {
 				scrollTo(0,mfp.pos(id).top - ajust);
 			};
-			setTimeout(function( {
+			setTimeout(function(){
 				mfp.$(id).focus();
 			},100);
 		},10);
 	};
-	this.cancel = function( {
+	this.cancel = function(){
 		mfp.SendFlag = false;
-		if(mfpConfigs['ConfirmationMode'] == 1 {
+		if(mfpConfigs['ConfirmationMode'] == 1){
 			mfp.$('mfp_phase_confirm').style.display = "none";
 			mfp.$('mfp_phase_confirm_inner').innerHTML = "";
 			//scrollTo(0,mfp.Mfp.offsetTop);
 			mfp.jump('mailformpro');
 		}
-		else if(mfpConfigs['ConfirmationMode'] == 0 {
-			setTimeout(function( {
+		else if(mfpConfigs['ConfirmationMode'] == 0){
+			setTimeout(function(){
 				mfp.$('mfp_overlay_inner').innerHTML = "";
 			},1000);
 			opacitys('mfp_overlay',1,0,1000);
@@ -986,8 +986,8 @@ function MailformPro( {
 		mfp.addtimeline('Confirm','cancel');
 		mfp.extend.run('cancel');
 	}
-	this.sendmail = function( {
-		if(mfp.SendFlag {
+	this.sendmail = function(){
+		if(mfp.SendFlag){
 			// go sendmail
 			mfp.$('mfp_confirm_time').value = Math.floor(((new Date() - 0) - mfp.Stat.dateConfirm.getTime()) / 1000);
 			mfp.$('mfp_input_time').value = Math.floor(((new Date() - 0) - mfp.Stat.dateClient.getTime()) / 1000);
@@ -998,16 +998,16 @@ function MailformPro( {
 			//
 			
 			// opt
-			for(var i=0;i<mfp.Names.length;i++ {
+			for(var i=0;i<mfp.Names.length;i++){
 				var e = mfp.$(mfp.Elements[mfp.Names[i]].group[0]);
 				if(e.getAttribute('data-format') && e.value != "" && e.type == 'select-one')
 					e.options[e.selectedIndex].value = e.getAttribute('data-format').replace('$1',e.value);
 				else if(e.getAttribute('data-format') && e.value != "")
 					e.value = e.getAttribute('data-format').replace('$1',e.value);
-				if(mfp.Elements[mfp.Names[i]].type == 'join' {
+				if(mfp.Elements[mfp.Names[i]].type == 'join'){
 					var joinObj = e.getAttribute('data-join');
 					var joinElements = joinObj.split('+');
-					for(var ii=0;ii<joinElements.length;ii++ {
+					for(var ii=0;ii<joinElements.length;ii++){
 						if(mfp.Elements[joinElements[ii]])
 							mfp.$(mfp.Elements[joinElements[ii]].group[0]).disabled = true;
 					}
@@ -1020,37 +1020,37 @@ function MailformPro( {
 			//
 			mfp.SendBusy = false;
 			mfp.extend.run('send');
-			if(mfpConfigs['LoadingScreen'] {
+			if(mfpConfigs['LoadingScreen']){
 				mfp.$('mfp_loading').style.display = 'block';
 				mfp.$('mfp_loading_screen').style.display = 'block';
 			}
 			mfp.UnloadEvent = false;
 			mfp.beforeunload = false;
-			try{
+			try {
 				window.removeEventListener("beforeunload",mfp.unload, false);
 			}
-			catch(e {
+			catch(e){
 				window.detachEvent("onbeforeunload", mfp.unload);
 			}
 			if(!mfp.SendBusy)
 				mfp.Mfp.submit();
 		}
-		else{
+		else {
 			mfp.DisableSubmit = false;
-			if(mfp.checkall() {
+			if(mfp.checkall()){
 				mfp.extend.run('confirm');
 				mfp.addtimeline('Confirm','display');
 				mfp.SendFlag = true;
 				mfp.Stat.dateConfirm = new Date();
-				if(mfpConfigs['ConfirmationMode'] == 2 {
+				if(mfpConfigs['ConfirmationMode'] == 2){
 					if(confirm(mfpLang['ConfirmMessage']))
 						mfp.sendmail();
-					else{
+					else {
 						mfp.SendFlag = false;
 						mfp.extend.run('cancel');
 					}
 				}
-				else if(mfpConfigs['ConfirmationMode'] == 1 {
+				else if(mfpConfigs['ConfirmationMode'] == 1){
 					var mfpButtons = "";
 					if(!mfp.$('mfp_button_send') && mfpConfigs['mfpButton'])
 						mfpButtons = mfpConfigs['mfpButton'];
@@ -1062,7 +1062,7 @@ function MailformPro( {
 					//scrollTo(0,mfp.$('mfp_phase_confirm').offsetTop);
 					mfp.jump('mfp_phase_confirm');
 				}
-				else if(mfpConfigs['ConfirmationMode'] == 0 {
+				else if(mfpConfigs['ConfirmationMode'] == 0){
 					var mfpButtons = "";
 					if(!mfp.$('mfp_button_send') && mfpConfigs['mfpButton'])
 						mfpButtons = mfpConfigs['mfpButton'];
@@ -1077,32 +1077,32 @@ function MailformPro( {
 					mfp.sendmail();
 				// confirm process
 			}
-			else{
+			else {
 				mfp.addtimeline('Confirm','error');
 				mfp.extend.run('error');
 			}
 		}
 		return false;
 	}
-	this.sandbox = function(fn {
-		try{
+	this.sandbox = function(fn){
+		try {
 			fn();
 		}
-		catch(e {
+		catch(e){
 			//alert(e);
 		}
 	}
-	this.setcookie = function(name,value,expire {
+	this.setcookie = function(name,value,expire){
 		var current_dir = location.pathname;
 		var current_dirs = new Array();
 		current_dirs = current_dir.split("/");
-		if(current_dirs[current_dirs.length-1] != "" {
+		if(current_dirs[current_dirs.length-1] != ""){
 			current_dirs[current_dirs.length-1] = "";
 			current_dir = current_dirs.join("/");
 		}
 		document.cookie = name + "=" + value + "; path=" + current_dir + "; expires="+expire;
 	}
-	this.size = function( {
+	this.size = function(){
 		var d = window.document;
 		var nWidth, nHeight, nTop, nLeft,scrollAdjust;
 		var ua = navigator.userAgent;
@@ -1113,21 +1113,21 @@ function MailformPro( {
 		
 		//alert(+","+document.body.offsetHeight);
 		
-		if(this.MSIE {
-			if(bVer6 && bStd {
+		if(this.MSIE){
+			if(bVer6 && bStd) {
 				nWidth = d.documentElement.clientWidth;
 				nHeight = d.documentElement.clientHeight;
 				nTop = d.documentElement.scrollTop;
 				nLeft = d.documentElement.scrollLeft;
 			}
-			else{
-				if(typeof d.body.style.maxHeight != "undefined" {
+			else {
+				if(typeof d.body.style.maxHeight != "undefined") {
 					nWidth = d.documentElement.clientWidth;
 					nHeight = d.documentElement.clientHeight;
 					nTop = d.documentElement.scrollTop;
 					nLeft = d.documentElement.scrollLeft;
 				}
-				else{
+				else {
 					nWidth = d.body.clientWidth;
 					nHeight = d.body.clientHeight;
 					nTop = d.body.scrollTop;
@@ -1135,7 +1135,7 @@ function MailformPro( {
 				}
 			}
 		}
-		else{
+		else {
 			nWidth = window.innerWidth;
 			nHeight = window.innerHeight;
 			nTop = d.body.scrollTop  || d.documentElement.scrollTop;
@@ -1154,7 +1154,7 @@ function MailformPro( {
 		var top = "0px";
 		var ltop = ((nHeight - mfpConfigs['LoadingImage']['height']) / 2) + "px";
 		var position = "fixed";
-		if(mfp.MSIELegacy {
+		if(mfp.MSIELegacy){
 			top = nTop+"px";
 			ltop = ((nHeight - mfpConfigs['LoadingImage']['height']) / 2)+nTop + "px";
 			position = "absolute";
@@ -1187,27 +1187,27 @@ function MailformPro( {
 		this.Left = nLeft;
 		mfp.extend.run('size');
 	}
-	function easing(t,b,c,d {
+	function easing(t,b,c,d){
 		if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
 		return -c/2 * ((t-=2)*t*t*t - 2) + b;
 	}
-	function setopacity(id,opacity {
+	function setopacity(id,opacity){
 		if(mfp.MSIELegacy)
 			document.all(id).style.filter = "alpha(opacity="+Math.floor(opacity*100)+")";
 		else
 			mfp.$(id).style.opacity = opacity;
 	}
-	function opacitys(id,cuOpacity,toOpacity,toMsec {
+	function opacitys(id,cuOpacity,toOpacity,toMsec){
 		var begin = new Date() - 0;
 		var opacity = cuOpacity;
 		var moveOpacity = toOpacity - opacity;
 		var duration = toMsec;
 		setopacity(id,cuOpacity);
 		mfp.$(id).style.display = "block";
-		var timer = setInterval(function( {
+		var timer = setInterval(function(){
 			var time = new Date() - begin;
 			var cuOpacity = easing(time, opacity, moveOpacity, duration);
-			if(time > duration {
+			if(time > duration){
 				clearInterval(timer);
 				cuOpacity = toOpacity;
 				if(cuOpacity == 0)
@@ -1221,22 +1221,22 @@ function MailformPro( {
 				mfp.$(id).style.opacity = cuOpacity;
 		},10);
 	}
-	this.css = function(obj,styles {
+	this.css = function(obj,styles){
 		for(var prop in styles)
 			obj.style[prop] = styles[prop];
 	}
-	this.add = function(elm,listener,fn {
-		try{ elm.addEventListener(listener,fn,false);}
-		catch(er { elm.attachEvent("on"+listener,fn);}
+	this.add = function(elm,listener,fn){
+		try { elm.addEventListener(listener,fn,false);}
+		catch(er){ elm.attachEvent("on"+listener,fn);}
 	}
-	this.unload = function(ev {
+	this.unload = function(ev){
 		mfp.call(mfp.$('mfpjs').src,"drop="+encodeURIComponent(mfp.LastFocus)+"&time="+mfp.Stat.date.getTime());
 		if(mfp.beforeunload)
 			ev.returnValue = mfpLang['CloseConfirmMessage'];
 		return mfpLang['CloseConfirmMessage'];
 	}
-	this.onunload = function( {
-		if(mfp.LastFocus != null && mfp.DropFlag {
+	this.onunload = function(){
+		if(mfp.LastFocus != null && mfp.DropFlag){
 			mfp.LastFocus = mfpLang['ReservedWord'][mfp.LastFocus] || mfp.LastFocus;
 			XMLhttpObj = mfp.createXMLHttpRequest();
 			if(mfp.$('mfpjs').src.indexOf('?') > -1)
@@ -1246,7 +1246,7 @@ function MailformPro( {
 			XMLhttpObj.send(null);
 		}
 	}
-	this.call = function(src,query {
+	this.call = function(src,query){
 		var script = document.createElement('script');
 		script.async = false;
 		script.type = 'text/javascript';
@@ -1256,57 +1256,57 @@ function MailformPro( {
 		//document.body.appendChild(script);
 		mfp.Mfp.parentNode.insertBefore(script,mfp.$('mfp_phase_confirm'));
 	}
-	this.createXMLHttpRequest = function( {
+	this.createXMLHttpRequest = function(){
 		var XMLhttpObject = null;
 		try{
 			XMLhttpObject = new XMLHttpRequest();
 		}
-		catch(e {
+		catch(e){
 			try{
 				XMLhttpObject = new ActiveXObject("Msxml2.XMLHTTP");
 			}
-			catch(e {
+			catch(e){
 				try{
 					XMLhttpObject = new ActiveXObject("Microsoft.XMLHTTP");
 				}
-				catch(e {
+				catch(e){
 					return null;
 				}
 			}
 		}
 		return XMLhttpObject;
 	}
-	this.error = function(msg {
+	this.error = function(msg){
 		mfp.Mfp.style.display = "none";
 		mfp.$('mfp_error').style.display = "block";
 		msg = msg.replace(/\_/ig,' ');
 		mfp.$('mfp_error').innerHTML += msg;
 		mfp.extend.run('senderror');
 	};
-	this.warning = function(msg,scroll {
+	this.warning = function(msg,scroll){
 		mfp.$('mfp_warning').style.display = "block";
 		mfp.$('mfp_warning').innerHTML += msg;
-		if(!scroll {
-			setTimeout(function( {
+		if(!scroll){
+			setTimeout(function(){
 				window.scrollTo(0,document.getElementById('mfp_warning').offsetTop);
 			},100);
 		}
 		mfp.extend.run('warning');
 	};
-	this.play = function(id {
-		if(mfp.Audio && mfpConfigs['SoundEffect'] && mfp.SoundEffect[id] {
+	this.play = function(id){
+		if(mfp.Audio && mfpConfigs['SoundEffect'] && mfp.SoundEffect[id]){
 			mfp.SoundEffect[id].currentTime = 0;
 			mfp.SoundEffect[id].play();
 		}
 	}
-	this.buffer = function( {
-		if(mfp.Audio && mfpConfigs["SoundEffect"] {
+	this.buffer = function(){
+		if(mfp.Audio && mfpConfigs["SoundEffect"]){
 			mfp.SoundEffect.audio = new Audio();
 			if(("" != mfp.SoundEffect.audio.canPlayType("audio/ogg")))
 				mfp.AudioType = "ogg";
 			else
 				mfp.AudioType = "mp3";
-			for(var i=0;i<mfpConfigs["SoundEffectPreset"].length;i++ {
+			for(var i=0;i<mfpConfigs["SoundEffectPreset"].length;i++){
 				mfp.SoundEffect[mfpConfigs["SoundEffectPreset"][i]] = new Audio();
 				mfp.SoundEffect[mfpConfigs["SoundEffectPreset"][i]].src = mfpConfigs['SoundEffectDir'] + mfpConfigs["SoundEffectPreset"][i] + "." + mfp.AudioType;
 				mfp.SoundEffect[mfpConfigs["SoundEffectPreset"][i]].autobuffer = true;
@@ -1315,20 +1315,20 @@ function MailformPro( {
 			}
 		}
 	}
-	this.startup = function( {
+	this.startup = function(){
 		this.d = window.document;
 		this.charset = document.charset || document.characterSet;
 		if(this.charset.toLowerCase() != 'utf-8')
 			alert(mfpLang['SelfEvaluateType02'].replace('$1',this.charset));
-		if(mfp.$('mailformpro') {
+		if(mfp.$('mailformpro')){
 			this.Mfp = mfp.$('mailformpro');
 		}
-		else{
+		else {
 			alert(mfpLang['SelfEvaluateType01']);
 		};
 		
 		// Overlay object
-		if(!mfp.$('mfp_overlay') {
+		if(!mfp.$('mfp_overlay')){
 			var bodyObj = document.body;
 			var elm = mfp.d.createElement('div');
 			elm.id = 'mfp_overlay';
@@ -1340,7 +1340,7 @@ function MailformPro( {
 			
 			elm = mfp.d.createElement('div');
 			elm.id = 'mfp_overlay_background';
-			elm.onclick = function( {
+			elm.onclick = function(){
 				mfp.cancel();
 			}
 			bodyObj.insertBefore(elm, bodyObj.firstChild);
@@ -1354,26 +1354,26 @@ function MailformPro( {
 			bodyObj.insertBefore(elm, bodyObj.firstChild);
 		}
 		// Error Object
-		if(!mfp.$('mfp_error') {
+		if(!mfp.$('mfp_error')){
 			var elm = mfp.d.createElement('div');
 			elm.id = 'mfp_error';
 			mfp.Mfp.parentNode.insertBefore(elm,mfp.Mfp);
 		}
 		// Warning Object
-		if(!mfp.$('mfp_warning') {
+		if(!mfp.$('mfp_warning')){
 			var elm = mfp.d.createElement('div');
 			elm.id = 'mfp_warning';
 			mfp.Mfp.parentNode.insertBefore(elm,mfp.Mfp);
 		}
 		
 		// MFP Hidden Object
-		if(!mfp.$('mfp_hidden') {
+		if(!mfp.$('mfp_hidden')){
 			var elm = mfp.d.createElement('div');
 			elm.id = 'mfp_hidden';
 			mfp.Mfp.insertBefore(elm,mfp.Mfp.firstChild);
 		}
 		// Flat confirmation screen
-		if(!mfp.$('mfp_phase_confirm') {
+		if(!mfp.$('mfp_phase_confirm')){
 			var elm = mfp.d.createElement('div');
 			elm.id = 'mfp_phase_confirm';
 			mfp.Mfp.parentNode.insertBefore(elm,mfp.Mfp);
@@ -1392,7 +1392,7 @@ function MailformPro( {
 		this.MSIELegacy = navigator.userAgent.match(/MSIE (5|6|7|8)/);
 		this.Mfp.acceptCharset = 'UTF-8';
 		this.Mfp.action = mfp.$('mfpjs').src;
-		this.sandbox(function( {
+		this.sandbox(function(){
 			mfp.Mfp.noValidate = true;
 		});
 		this.FocusTime = 0;
@@ -1430,50 +1430,50 @@ function MailformPro( {
 		mfpConfigs['ConfirmationMode'] = Number(mfpConfigs['ConfirmationMode']);
 		mfp.stripe();
 		
-		if(document.cookie {
+		if(document.cookie){
 			var cookies = new Array();
 			cookies = document.cookie.split('; ');
-			for(var i=0;i<cookies.length;i++ {
+			for(var i=0;i<cookies.length;i++){
 				var cookie = new Array();
 				cookie = cookies[i].split('=');
 				this.Cookie[cookie[0]] = cookie[1];
 			}
-			if(this.Cookie['_MFP'] {
+			if(this.Cookie['_MFP']){
 				this.Resume = this.Cookie['_MFP'].split('|');
 			}
 		}
-		if(location.search {
+		if(location.search){
 			var gets = new Array();
 			gets = (location.search.substring(1,location.search.length)).split('&');
-			for(var i=0;i<gets.length;i++ {
+			for(var i=0;i<gets.length;i++){
 				var get = new Array();
 				get = gets[i].split('=');
 				this.GET[decodeURI(get[0])] = decodeURI(get[1]);
 			}
 		}
-		if(location.hash.indexOf('#WarningCode') > -1 {
+		if(location.hash.indexOf('#WarningCode') > -1){
 			var WarningCode = Number(location.hash.substring(12,14)) - 1;
 			if(mfpLang['WarningCode'][WarningCode])
 				mfp.warning(mfpLang['WarningCode'][WarningCode]);
-			// setTimeout(function( {
+			// setTimeout(function(){
 			// 	mfp.$('mfp_warning').style.display = "none";
 			// },3000);
 		}
 		
-		//if(mfpConfigs['OpenDate'] != '' {
-		if((new Date(mfpConfigs['OpenDate'].replace(/-/ig,'/'))).getTime() > mfp.Stat.date.getTime() && mfpConfigs['OpenDate'] != '' {
+		//if(mfpConfigs['OpenDate'] != ''){
+		if((new Date(mfpConfigs['OpenDate'].replace(/-/ig,'/'))).getTime() > mfp.Stat.date.getTime() && mfpConfigs['OpenDate'] != ''){
 			mfp.error(mfpLang['ErrorCode3'].replace('$1',mfpConfigs['OpenDate']));
 		}
-		else if((new Date(mfpConfigs['CloseDate'].replace(/-/ig,'/'))).getTime() < mfp.Stat.date.getTime() && mfpConfigs['CloseDate'] != '' {
+		else if((new Date(mfpConfigs['CloseDate'].replace(/-/ig,'/'))).getTime() < mfp.Stat.date.getTime() && mfpConfigs['CloseDate'] != ''){
 			mfp.error(mfpLang['ErrorCode2'].replace('$1',mfpConfigs['CloseDate']));
 		}
-		else if(Number(mfpConfigs['LimitOver']) {
+		else if(Number(mfpConfigs['LimitOver'])){
 			mfp.error(mfpLang['ErrorCode1']);
 		}
-		else{
+		else {
 			if(mfpConfigs['Acceptable'])
 				mfp.warning(mfpLang['WarningCode1'].replace('$1',mfpConfigs['Acceptable']),1);
-			if(mfpConfigs['CloseDate'] {
+			if(mfpConfigs['CloseDate']){
 				var sands = Math.floor(((new Date(mfpConfigs['CloseDate'].replace(/-/ig,'/'))).getTime() - mfp.Stat.date.getTime()) / 1000);
 				var $2;
 				if(sands > (60*60*24))
@@ -1489,9 +1489,9 @@ function MailformPro( {
 				mfp.warning(msg,1);
 			}
 			mfp.size();
-			mfp.add(window,"scroll",function( {mfp.size();});
-			mfp.add(window,"resize",function( {mfp.size();});
-			mfp.add(window,"unload",function( {mfp.onunload();});
+			mfp.add(window,"scroll",function(){mfp.size();});
+			mfp.add(window,"resize",function(){mfp.size();});
+			mfp.add(window,"unload",function(){mfp.onunload();});
 			mfp.extend.run('startup');
 			mfp.initialize();
 		}

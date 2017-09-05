@@ -1,7 +1,7 @@
-if($_GET{'key'} ne $null {
+if($_GET{'key'} ne $null){
 	@ReplyTimes = &_DB($config{"file.ReplyTime"});
 	($ReplyTimeHash,$ReplyTime) = split(/\t/,(grep(/^$_GET{'key'}\t/,@ReplyTimes))[0]);
-	if($ReplyTimeHash ne $null {
+	if($ReplyTimeHash ne $null){
 		@ReplyTimes = grep(!/^$_GET{'key'}\t/,@ReplyTimes);
 		&_SAVE($config{"file.ReplyTime"},join("\n",@ReplyTimes));
 		$different = time - $ReplyTime;
@@ -31,7 +31,7 @@ if($_GET{'key'} ne $null {
 		print "Content-type: text/html; charset=UTF-8\n\n";
 		print $html;
 	}
-	else{
+	else {
 		@ReplyTimes = &_DB($config{"file.ReplyTime.complete"});
 		$avg = int($ReplyTimes[1] / $ReplyTimes[0]);
 		$avg = &_TIMESTR($avg);
@@ -51,7 +51,7 @@ if($_GET{'key'} ne $null {
 		print $html;
 	}
 }
-else{
+else {
 	&_Error(0);
 }
 exit;

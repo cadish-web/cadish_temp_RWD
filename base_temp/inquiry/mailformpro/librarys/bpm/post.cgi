@@ -7,7 +7,7 @@ my $len = length $_POST{$config{'bpm.CardNumber.elementName'}};
 my $s = $len - 4;
 my $n = substr($_POST{$config{'bpm.CardNumber.elementName'}},$s,$len);
 my $t = "";
-for(my $i=0;$i<$s;$i++ {
+for(my $i=0;$i<$s;$i++){
 	$t .= '*';
 }
 $_POST{$config{'bpm.CardNumber.elementName'}} = "${t}${n}";

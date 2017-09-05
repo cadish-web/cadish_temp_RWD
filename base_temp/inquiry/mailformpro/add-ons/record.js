@@ -4,8 +4,8 @@
 // SYNCK GRAPHICA     //
 // www.synck.com      //
 ////////////////////////
-var mfpRec ={
-	Label:{
+var mfpRec = {
+	Label: {
 		'record': '入力内容を記録する',
 		'record_ok': '記録しました',
 		'clear': '記録を消去する',
@@ -16,30 +16,30 @@ var mfpRec ={
 	Prefix: null,
 	Name: [],
 	Objects: [],
-	init: function( {
+	init: function(){
 		var _ = mfpRec;
-		if(!_.Prefix {
+		if(!_.Prefix){
 			var uri = location.pathname.split('/');
 			uri.pop();
 			_.Prefix = uri.join('/');
 		};
-		if(window.localStorage {
+		if(window.localStorage){
 			var s = window.localStorage;
-			if(!document.getElementById('mfp_recorder_record') {
+			if(!document.getElementById('mfp_recorder_record')){
 				var elm = document.createElement('button');
 				elm.id = 'mfp_recorder_record';
 				elm.type = 'button';
 				elm.innerHTML = _.Label['record'];
 				mfp.Mfp.appendChild(elm);
 			};
-			if(!document.getElementById('mfp_recorder_clear') {
+			if(!document.getElementById('mfp_recorder_clear')){
 				var elm = document.createElement('button');
 				elm.id = 'mfp_recorder_clear';
 				elm.type = 'button';
 				elm.innerHTML = _.Label['clear'];
 				mfp.Mfp.appendChild(elm);
 			};
-			if(!document.getElementById('mfp_recorder_restore') {
+			if(!document.getElementById('mfp_recorder_restore')){
 				var elm = document.createElement('button');
 				elm.id = 'mfp_recorder_restore';
 				elm.type = 'button';
@@ -47,55 +47,55 @@ var mfpRec ={
 				mfp.Mfp.insertBefore(elm, mfp.Mfp.firstChild);
 			};
 			_.display();
-			document.getElementById('mfp_recorder_record').onclick = function( {
+			document.getElementById('mfp_recorder_record').onclick = function(){
 				mfpRec.record();
 			};
-			document.getElementById('mfp_recorder_clear').onclick = function( {
+			document.getElementById('mfp_recorder_clear').onclick = function(){
 				mfpRec.clear();
 			};
-			document.getElementById('mfp_recorder_restore').onclick = function( {
+			document.getElementById('mfp_recorder_restore').onclick = function(){
 				mfpRec.restore();
 			};
 		};
 	},
-	display: function(delay {
+	display: function(delay){
 		var interval = delay || 0;
 		var _ = mfpRec;
 		var s = window.localStorage;
-		setTimeout(function( {
-			if(!s[_.Prefix] {
+		setTimeout(function(){
+			if(!s[_.Prefix]){
 				document.getElementById('mfp_recorder_clear').style.display = 'none';
 				document.getElementById('mfp_recorder_restore').style.display = 'none';
-				if(document.getElementById('mfp_recorder_wrap') {
+				if(document.getElementById('mfp_recorder_wrap')){
 					document.getElementById('mfp_recorder_wrap').style.display = 'none';
 				};
 				document.getElementById('mfp_recorder_record').className = '';
 			}
-			else{
+			else {
 				document.getElementById('mfp_recorder_clear').style.display = 'inline-block';
 				document.getElementById('mfp_recorder_restore').style.display = 'inline-block';
-				if(document.getElementById('mfp_recorder_wrap') {
+				if(document.getElementById('mfp_recorder_wrap')){
 					document.getElementById('mfp_recorder_wrap').style.display = 'block';
 				};
 				document.getElementById('mfp_recorder_record').className = 'enabled';
 			};
 		},interval);
 	},
-	record: function( {
+	record: function(){
 		var _ = mfpRec;
 		var s = window.localStorage;
-		for(var i=0;i<_.Objects.length;i++ {
+		for(var i=0;i<_.Objects.length;i++){
 			var n = _.Objects[i].name;
 			var e = mfp.Mfp.elements[n];
 			var v = [];
-			if(e.length && e.type != 'select-one' {
-				for(var ii=0;ii<e.length;ii++ {
-					if(e[ii].checked {
+			if(e.length && e.type != 'select-one'){
+				for(var ii=0;ii<e.length;ii++){
+					if(e[ii].checked){
 						v.push(e[ii].value);
 					};
 				};
 			}
-			else{
+			else {
 				v.push(e.value);
 			};
 			s[_.Prefix+'_'+n] = v.join("\n");
@@ -107,11 +107,11 @@ var mfpRec ={
 		document.getElementById('mfp_recorder_clear').className = '';
 		//alert(mfpRec.Label['record_ok']);
 	},
-	clear: function( {
+	clear: function(){
 		var _ = mfpRec;
 		var s = window.localStorage;
-		for(var prop in s {
-			if(prop.match(new RegExp("^"+_.Prefix+'_')) {
+		for(var prop in s){
+			if(prop.match(new RegExp("^"+_.Prefix+'_'))){
 				s.removeItem(prop);
 			};
 		};
@@ -125,30 +125,30 @@ var mfpRec ={
 		document.getElementById('mfp_recorder_restore').innerHTML = mfpRec.Label['restore'];
 		//alert(mfpRec.Label['clear_ok']);
 	},
-	restore: function( {
+	restore: function(){
 		var _ = mfpRec;
 		var s = window.localStorage;
-		for(var i=0;i<_.Objects.length;i++ {
+		for(var i=0;i<_.Objects.length;i++){
 			var n = _.Objects[i].name;
 			var e = mfp.Mfp.elements[n];
-			if(s[_.Prefix+'_'+n] {
+			if(s[_.Prefix+'_'+n]){
 				var v = s[_.Prefix+'_'+n];
-				if(e.length && e.type != 'select-one' {
+				if(e.length && e.type != 'select-one'){
 					var val = v.split("\n");
-					for(var ii=0;ii<e.length;ii++ {
-						for(var iii=0;iii<val.length;iii++ {
-							if(e[ii].value == val[iii] {
+					for(var ii=0;ii<e.length;ii++){
+						for(var iii=0;iii<val.length;iii++){
+							if(e[ii].value == val[iii]){
 								e[ii].checked = true;
 							};
 						};
 					};
 				}
-				else if(e.type == 'checkbox' || e.type == 'radio' {
-					if(e.value == v {
+				else if(e.type == 'checkbox' || e.type == 'radio'){
+					if(e.value == v){
 						e.checked = true;
 					}
 				}
-				else{
+				else {
 					e.value = v;
 				};
 				mfp.check(_.Objects[i]);
@@ -157,19 +157,19 @@ var mfpRec ={
 		document.getElementById('mfp_recorder_restore').className = 'enabled';
 		document.getElementById('mfp_recorder_restore').innerHTML = mfpRec.Label['restore_ok'];
 	},
-	add: function(obj {
+	add: function(obj){
 		mfpRec.Objects.push(obj);
 	}
 };
 mfp.extend.event('init',
-	function(obj {
-		if(obj.getAttribute('data-record') && !mfpRec.Name[obj.name] {
+	function(obj){
+		if(obj.getAttribute('data-record') && !mfpRec.Name[obj.name]){
 			mfpRec.add(obj);
 		};
 	}
 );
 mfp.extend.event('ready',
-	function(obj {
+	function(obj){
 		mfpRec.init();
 	}
 );

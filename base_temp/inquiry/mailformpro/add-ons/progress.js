@@ -1,5 +1,5 @@
 
-function mfpProgressBar( {
+function mfpProgressBar(){
 	if(!mfp.CurrentElement)
 		mfp.CurrentElement = 1;
 	var width = Math.floor(((mfp.CurrentElement) / (mfp.Index.length-1)) * 100);
@@ -9,7 +9,7 @@ function mfpProgressBar( {
 }
 
 mfp.extend.event('ready',
-	function( {
+	function(){
 		var elm = mfp.d.createElement('div');
 		elm.id = 'mfp_progress';
 		mfp.Mfp.parentNode.insertBefore(elm,mfp.$('mfp_warning'));
@@ -50,19 +50,19 @@ mfp.extend.event('ready',
 			"color": "#FFF",
 			"textAlign": "center"
 		});
-		setTimeout(function( {
+		setTimeout(function(){
 			mfpProgressBar();
 		},1000);
 	}
 );
 
 mfp.extend.event('blur',
-	function( {
+	function(){
 		mfpProgressBar();
 	}
 );
 mfp.extend.event('focus',
-	function( {
+	function(){
 		mfpProgressBar();
 	}
 );

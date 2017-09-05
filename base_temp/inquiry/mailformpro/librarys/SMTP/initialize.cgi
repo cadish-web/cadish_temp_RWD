@@ -1,17 +1,17 @@
 use Net::SMTP;
-if($config{'POPserver'} {
+if($config{'POPserver'}){
 	use Net::POP3;
 }
 
-sub _SENDMAIL{
+sub _SENDMAIL {
 	my($to,$from,$name,$subject,$body,$attached,$htmlmail) = @_;
-	if($config{'POPserver'} {
+	if($config{'POPserver'}){
 		$POP = Net::POP3->new($config{'POPserver'},Timeout => 20);
-		if($POP {
+		if($POP){
 			$POP->login($config{'POPuser'},$config{'POPpasswd'});
 			$POP->quit;
 		}
-		else{
+		else {
 			&_SENDMAIL_ERROR("can't connect pop server");
 		}
 	}
@@ -20,16 +20,16 @@ sub _SENDMAIL{
 	@month = ('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
 	$smtpdate = sprintf("%s, %d %s %04d %02d:%02d:%02d +0900 (JST)",$week[$wday],$mday,$month[$mon],$year+1900,$hour,$min,$sec);
 	my $SMTP;
-	if($config{'SMTPport'} {
+	if($config{'SMTPport'}){
 		$SMTP = Net::SMTP->new($config{'SMTPserver'}, Timeout=>20, Hello=>$config{'SMTPserver'},Port=>$config{'SMTPport'});
 	}
-	else{
+	else {
 		$SMTP = Net::SMTP->new($config{'SMTPserver'}, Timeout=>20, Hello=>$config{'SMTPserver'});
 	}
 	
-	if($SMTP {
-		if($config{'SMTPuser'} ne $null && $config{'SMTPpasswd'} ne $null {
-			if($SMTP->auth($config{'SMTPuser'},$config{'SMTPpasswd'}) {
+	if($SMTP){
+		if($config{'SMTPuser'} ne $null && $config{'SMTPpasswd'} ne $null){
+			if($SMTP->auth($config{'SMTPuser'},$config{'SMTPpasswd'})){
 				$SMTP->mail($from);
 				$SMTP->to($to);
 				$SMTP->data();
@@ -38,11 +38,11 @@ sub _SENDMAIL{
 				$SMTP->dataend();
 				$SMTP->quit;
 			}
-			else{
+			else {
 				&_SENDMAIL_ERROR("can't login smtp server");
 			}
 		}
-		else{
+		else {
 			$SMTP->mail($from);
 			$SMTP->to($to);
 			$SMTP->data();
@@ -52,7 +52,7 @@ sub _SENDMAIL{
 			$SMTP->quit;
 		}
 	}
-	else{
+	else {
 		&_SENDMAIL_ERROR("can't connect smtp server");
 	}
 }

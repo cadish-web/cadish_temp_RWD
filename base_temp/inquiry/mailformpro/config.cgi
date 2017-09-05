@@ -221,7 +221,7 @@ push @Modules,'logger';			## アクセス解析ログモジュール
 #push @Modules,'SMTPS';			## [New] SMTPS送信
 #push @Modules,'SimpleMailHead';## [New] シンプルメールヘッダ
 #push @Modules,'MAILHEAD';		## メールヘッダのカスタマイズ
-#push @Modules,'mailauth';		## メールアドレス認証
+push @Modules,'mailauth';		## メールアドレス認証
 #push @Modules,'reqonce';		## 一度きりの送信
 #push @Modules,'questionnaire';	## アンケート集計モジュール
 #push @Modules,'GmailSMTP';		## GmailのSMTPを使う場合

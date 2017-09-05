@@ -1,11 +1,11 @@
 mfp.extend.event('init',
-	function(obj {
-		if(obj.getAttribute('data-birthday') {
+	function(obj){
+		if(obj.getAttribute('data-birthday')){
 			obj.value = '';
-			if(!obj.getAttribute('data-birthday-show') {
+			if(!obj.getAttribute('data-birthday-show')){
 				obj.style.display = 'none';
 			}
-			else{
+			else {
 				obj.style.display = 'block';
 			};
 			var pref = obj.getAttribute('data-birthday').split(',');
@@ -13,9 +13,9 @@ mfp.extend.event('init',
 			var max = mfp.Stat.date.getFullYear() - pref[1];
 			var selected = parseInt((max - min) / 2);
 			
-			(function( {
+			(function(){
 				var select = document.createElement('select');
-				select.onchange = function( {
+				select.onchange = function(){
 					mfpbd.change(this,true);
 				};
 				select.id = 'mfpBirthdayElement_'+obj.id+'_day';
@@ -25,7 +25,7 @@ mfp.extend.event('init',
 				option.value = '';
 				option.selected = true;
 				select.appendChild(option);
-				for(var i=1;i<32;i++ {
+				for(var i=1;i<32;i++){
 					var option = document.createElement('option');
 					option.text = mfpbd.digit(i) + '日';
 					option.value = i;
@@ -34,9 +34,9 @@ mfp.extend.event('init',
 				obj.parentNode.insertBefore(select,obj.nextSibling);
 			})();
 			
-			(function( {
+			(function(){
 				var select = document.createElement('select');
-				select.onchange = function( {
+				select.onchange = function(){
 					mfpbd.change(this);
 				};
 				select.id = 'mfpBirthdayElement_'+obj.id+'_month';
@@ -46,7 +46,7 @@ mfp.extend.event('init',
 				option.value = '';
 				option.selected = true;
 				select.appendChild(option);
-				for(var i=1;i<13;i++ {
+				for(var i=1;i<13;i++){
 					var option = document.createElement('option');
 					option.text = mfpbd.digit(i) + '月';
 					option.value = i;
@@ -55,19 +55,19 @@ mfp.extend.event('init',
 				obj.parentNode.insertBefore(select,obj.nextSibling);
 			})();
 			
-			(function( {
+			(function(){
 				var select = document.createElement('select');
-				select.onchange = function( {
+				select.onchange = function(){
 					mfpbd.change(this);
 				};
 				select.id = 'mfpBirthdayElement_'+obj.id+'_year';
 				select.setAttribute('data-birthday-parent',obj.id);
-				for(var i=min;i<=max;i++ {
+				for(var i=min;i<=max;i++){
 					var option = document.createElement('option');
 					option.text = i +'年' + mfpbd.convert(i,1);
 					option.value = i;
 					select.appendChild(option);
-					if(i == (min+selected) {
+					if(i == (min+selected)){
 						var option = document.createElement('option');
 						option.text = '年';
 						option.value = '';
@@ -80,78 +80,78 @@ mfp.extend.event('init',
 		};
 	}
 );
-var mfpbd ={
-	change: function(obj,check {
+var mfpbd = {
+	change: function(obj,check){
 		var parent = obj.getAttribute('data-birthday-parent');
 		var j = document.getElementById(parent).getAttribute('data-birthday-jc');
 		var a = document.getElementById(parent).getAttribute('data-birthday-age');
 		var y = document.getElementById('mfpBirthdayElement_'+parent+'_year').value;
 		var m = document.getElementById('mfpBirthdayElement_'+parent+'_month').value;
 		var d = document.getElementById('mfpBirthdayElement_'+parent+'_day').value;
-		if(y && m && d {
+		if(y && m && d){
 			var type = document.getElementById(parent).getAttribute('data-type') || document.getElementById(parent).type;
-			if(type == 'date' {
+			if(type == 'date'){
 				document.getElementById(parent).value = y+'-'+mfpbd.digit(m)+'-'+mfpbd.digit(d);
 			}
-			else{
+			else {
 				var age = "";
-				if(a {
+				if(a){
 					age = mfpbd.age(y,m,d);
 				};
-				if(j {
+				if(j){
 					document.getElementById(parent).value = mfpbd.convert(y) + mfpbd.digit(m)+'月'+mfpbd.digit(d)+'日'+age;
 				}
-				else{
+				else {
 					document.getElementById(parent).value = y+'年' + mfpbd.digit(m)+'月'+mfpbd.digit(d)+'日'+age;
 				};
 			};
 		}
-		else{
+		else {
 			document.getElementById(parent).value = "";
 		};
-		if(check {
+		if(check){
 			mfp.check(document.getElementById(parent));
 		};
 	},
-	age: function(y,m,d {
+	age: function(y,m,d){
 		var age = mfp.Stat.date.getFullYear() - y;
 		var date = new Date(mfp.Stat.date.getFullYear()+'/'+m+'/'+d);
-		if(date.getTime() > mfp.Stat.date.getTime() {
+		if(date.getTime() > mfp.Stat.date.getTime()){
 			age--;
 		};
 		return '（'+age+'才）';
 	},
-	convert: function(y,s {
+	convert: function(y,s){
 		var p = '';
-		if(s {
+		if(s){
 			p = ' / ';
 		};
-		if(y == 1989 {
+		if(y == 1989){
 			return p+'平成元年';
 		}
-		else if(y > 1989 {
+		else if(y > 1989){
 			return p+'平成' + mfpbd.digit(y-1989+1) + '年';
 		}
-		else if(y == 1926 {
+		else if(y == 1926){
 			return p+'昭和元年';
 		}
-		else if(y > 1926 {
+		else if(y > 1926){
 			return p+'昭和' + mfpbd.digit(y-1926+1) + '年';
 		}
-		else if(y == 1912 {
+		else if(y == 1912){
 			return p+'大正元年';
 		}
-		else if(y > 1912 {
+		else if(y > 1912){
 			return p+'大正' + mfpbd.digit(y-1912+1) + '年';
 		}
-		else if(y >= 1873 {
+		else if(y >= 1873){
 			return p+'明治' + mfpbd.digit(y-1873+6) + '年';
 		}
-		else{
+		else {
 			return '';
 		};
 	},
-	digit: function(n {
+	digit: function(n){
 		if(n < 10) n = '0'+n;
 		return n;
 	}

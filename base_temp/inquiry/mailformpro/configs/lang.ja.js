@@ -3,7 +3,7 @@
 // mailformpro language file
 // 2014-04-10 ver 4.1.3
 //
-var mfpLang ={
+var mfpLang = {
 	'ResetConfirm': '入力された内容をリセットしてもよろしいですか？',
 	'Price': '$1 <span>円</span>',
 	'PostPrice': '$1 円',
@@ -52,7 +52,7 @@ var mfpLang ={
 	'WarningCode': [
 		_%%WarningCode%%_
 	],
-	'ReservedWord':{
+	'ReservedWord': {
 		'email': 'メールアドレス',
 		'confirm_email': '確認用',
 		'price': 'お支払い代金',

@@ -2,9 +2,9 @@
 // 2014-11-14
 
 mfp.extend.event('init',
-	function(obj {
+	function(obj){
 		var ok = 'okmsg_' + obj.name;
-		if(!mfp.$(ok) && obj.type != 'hidden' {
+		if(!mfp.$(ok) && obj.type != 'hidden'){
 			var elm = mfp.d.createElement('div');
 			elm.className = "mfp_ok";
 			elm.id = ok;
@@ -15,17 +15,17 @@ mfp.extend.event('init',
 	}
 );
 mfp.extend.event('noproblem',
-	function(obj {
+	function(obj){
 		var okObj = 'okmsg_' + obj.name;
-		if(mfp.$(okObj) && obj.value != obj.defaultValue && obj.value != "" && mfp.Elements[obj.name].required {
+		if(mfp.$(okObj) && obj.value != obj.defaultValue && obj.value != "" && mfp.Elements[obj.name].required){
 			mfp.$(okObj).style.display = 'inline-block';
 		}
 	}
 );
 mfp.extend.event('problem',
-	function(obj {
+	function(obj){
 		var okObj = 'okmsg_' + obj.name;
-		if(mfp.$(okObj) {
+		if(mfp.$(okObj)){
 			mfp.$(okObj).style.display = 'none';
 		}
 	}

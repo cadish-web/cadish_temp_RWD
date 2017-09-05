@@ -12,7 +12,7 @@ mfpReserveData["currentObject"] = [];
 mfpReserveData["selected"] = [];
 mfpReserveData["className"] = null;
 mfpReserveData["price"] = 0;
-function mfpReserveSelected( {
+function mfpReserveSelected(){
 	if(mfpReserveData["current"])
 		mfp.$(mfpReserveData["current"]).className = mfpReserveData["className"];
 	mfpReserveData["className"] = this.className;
@@ -33,13 +33,13 @@ function mfpReserveSelected( {
 	mfpReserveData["current"] = this.id;
 	mfp.calc();
 }
-function mfpReserveDataReady(json {
+function mfpReserveDataReady(json){
 	mfpReserveData["json"] = json;
 	var div = document.createElement('div');
 	div.id = 'mfp_reserve_inner';
 	var tableTH = document.createElement('table');
 	tableTH.className = 'mfp_reserve_table_label';
-	for(var i=0;i<3;i++ {
+	for(var i=0;i<3;i++){
 		var tr = document.createElement('tr');
 		var th = document.createElement('th');
 		th.innerHTML = '&nbsp;';
@@ -50,7 +50,7 @@ function mfpReserveDataReady(json {
 	var tableTD = document.createElement('table');
 	tableTD.className = 'mfp_reserve_table_value';
 	var tr = document.createElement('tr');
-	for(var i=0;i<json["month"].length;i++ {
+	for(var i=0;i<json["month"].length;i++){
 		var th = document.createElement('td');
 		th.colSpan = json["month"][i]["qty"];
 		th.innerHTML = json["month"][i]["label"];
@@ -58,7 +58,7 @@ function mfpReserveDataReady(json {
 	}
 	tableTD.appendChild(tr);
 	
-	for(var i=0;i<json["item"].length;i++ {
+	for(var i=0;i<json["item"].length;i++){
 		var tr = document.createElement('tr');
 		var trDate = document.createElement('tr');
 		var trWeek = document.createElement('tr');
@@ -67,14 +67,14 @@ function mfpReserveDataReady(json {
 		tr.appendChild(th);
 		tableTH.appendChild(tr);
 		var tr = document.createElement('tr');
-		for(var ii=0;ii<json["date"].length;ii++ {
+		for(var ii=0;ii<json["date"].length;ii++){
 			var td = document.createElement('td');
 			td.style.textAlign = 'center';
-			if(json["select"] {
+			if(json["select"]){
 				var select = document.createElement('select');
 				select.id = 'mfp_reserve_item-'+i+'-'+ii;
 				select.name = json["item"][i]+'_'+json["date"][ii];
-				select.onchange = function( {
+				select.onchange = function(){
 					mfp.calc();
 					mfp.extend.run('change',this);
 				}
@@ -87,32 +87,32 @@ function mfpReserveDataReady(json {
 				option.value = "";
 				var label = '○';
 				var max = 0;
-				if(json["stock"][i][ii] {
-					if(json["stock"][i][ii]["qty"] == 0 || json["stock"][i][ii]["qty"] == null {
+				if(json["stock"][i][ii]){
+					if(json["stock"][i][ii]["qty"] == 0 || json["stock"][i][ii]["qty"] == null){
 						label = '×';
 						td.className = 'mfp_reserve_disabled';
 					}
-					else if(json["stock"][i][ii]["qty"] < mfpReserveData["warning"] {
+					else if(json["stock"][i][ii]["qty"] < mfpReserveData["warning"]){
 						label = '△';
 						td.className = 'mfp_reserve_warning';
 						max = json["stock"][i][ii]["qty"];
 						mfp.Items[select.id] = new Object();
 						mfp.Items[select.id].price = json["stock"][i][ii]["price"];
 					}
-					else{
+					else {
 						td.className = 'mfp_reserve_active';
 						max = json["stock"][i][ii]["qty"];
 						mfp.Items[select.id] = new Object();
 						mfp.Items[select.id].price = json["stock"][i][ii]["price"];
 					}
 				}
-				else{
+				else {
 					label = '×';
 					td.className = 'mfp_reserve_disabled';
 				}
 				option.text = label;
 				select.appendChild(option);
-				for(var iii=1;iii<=max && iii<json["selectQty"];iii++ {
+				for(var iii=1;iii<=max && iii<json["selectQty"];iii++){
 					var option = document.createElement('option');
 					option.value = iii;
 					option.text = iii;
@@ -121,33 +121,33 @@ function mfpReserveDataReady(json {
 				
 				td.appendChild(select);
 			}
-			else{
+			else {
 				var label = '○';
-				if(json["stock"][i][ii] {
-					if(json["stock"][i][ii]["qty"] == 0 || json["stock"][i][ii]["qty"] == null {
+				if(json["stock"][i][ii]){
+					if(json["stock"][i][ii]["qty"] == 0 || json["stock"][i][ii]["qty"] == null){
 						label = '×';
 						td.className = 'mfp_reserve_disabled';
 					}
-					else if(json["stock"][i][ii]["qty"] < mfpReserveData["warning"] {
+					else if(json["stock"][i][ii]["qty"] < mfpReserveData["warning"]){
 						label = '△';
 						td.className = 'mfp_reserve_warning';
 						td.id = 'mfp_reserve_item-'+i+'-'+ii;
 						td.onclick = mfpReserveSelected;
 					}
-					else{
+					else {
 						td.className = 'mfp_reserve_active';
 						td.id = 'mfp_reserve_item-'+i+'-'+ii;
 						td.onclick = mfpReserveSelected;
 					}
 				}
-				else{
+				else {
 					label = '×';
 					td.className = 'mfp_reserve_disabled';
 				}
 				td.innerHTML = label;
 			}
 			tr.appendChild(td);
-			if(i == 0 {
+			if(i == 0){
 				td = document.createElement('td');
 				var d = [];
 				d = json["date"][ii].split('-');
@@ -163,7 +163,7 @@ function mfpReserveDataReady(json {
 				trWeek.appendChild(td);
 			}
 		}
-		if(i == 0 {
+		if(i == 0){
 			tableTD.appendChild(trDate);
 			tableTD.appendChild(trWeek);
 		}
@@ -175,15 +175,15 @@ function mfpReserveDataReady(json {
 }
 
 mfp.extend.event('calc',
-	function( {
-		if(mfpReserveData["currentObject"]["price"] {
+	function(){
+		if(mfpReserveData["currentObject"]["price"]){
 			mfp.addcart(mfpReserveData["currentObject"]["item"]+'('+mfpReserveData["currentObject"]["date"]+')','reserve_item',mfpReserveData["currentObject"]["price"],1);
 			mfp.Price += mfpReserveData["currentObject"]["price"];
 		}
 	}
 );
 mfp.extend.event('startup',
-	function( {
+	function(){
 		if(mfp.$('mfp_reserve_wrapper'))
 			mfp.call(mfp.$('mfpjs').src,'module=reserve&t=json&callback=mfpReserveDataReady');
 	}

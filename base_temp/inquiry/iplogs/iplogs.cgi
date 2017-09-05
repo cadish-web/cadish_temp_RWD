@@ -11,13 +11,13 @@ $uri{'test'} = 'https://www.synck.com/index.html';
 ## 1MB = 1048576 Byte
 $_ENV{'size'} = 1048576;
 
-if($_ENV{'query'} {
-	if($uri{$_ENV{'query'}} {
+if($_ENV{'query'}){
+	if($uri{$_ENV{'query'}}){
 		my @log = ($_ENV{'date'},$_ENV{'ip'},"$_ENV{'query'} Click");
 		&_LOG(join("\t",@log));
 		print "Location: $uri{$_ENV{'query'}}\n\n";
 	}
-	elsif(index($_ENV{'referer'},$_ENV{'domain'}) > -1 {
+	elsif(index($_ENV{'referer'},$_ENV{'domain'}) > -1){
 		my @log = ($_ENV{'date'},$_ENV{'ip'},$_ENV{'query'});
 		&_LOG(join("\t",@log));
 		open(IMG,"iplogs.img.gif");
@@ -27,18 +27,18 @@ if($_ENV{'query'} {
 		print <IMG>;
 		close(IMG);
 	}
-	else{
+	else {
 		print "Content-type: text/html; charset=UTF-8\n\n";
 	}
 }
-else{
+else {
 	print "Pragma: no-cache\n";
 	print "Cache-Control: no-cache\n";
 	print "Content-type: text/javascript; charset=UTF-8\n\n";
 	print "if(document.referrer) document.write('<img src=\"$_ENV{'uri'}?'+document.referrer+'\" style=\"position: absolute;\">');";
 }
 exit;
-sub _ENV{
+sub _ENV {
 	$_ENV{'file'} = './iplogs.dat.cgi';
 	$_ENV{'domain'} = $ENV{'SERVER_NAME'};
 	$_ENV{'uri'} = '//' . $ENV{'SERVER_NAME'} . $ENV{'SCRIPT_NAME'};
@@ -48,10 +48,10 @@ sub _ENV{
 	$referer =~ s/^$_ENV{'domain'}\//\//ig;
 	$referer =~ s/\n//ig;
 	$referer =~ s/\t//ig;
-	if($referer {
+	if($referer){
 		$_ENV{'query'} = $referer;
 	}
-	else{
+	else {
 		$_ENV{'query'} = $ENV{'QUERY_STRING'};
 	}
 	
@@ -62,9 +62,9 @@ sub _ENV{
 	($sec,$min,$hour,$day,$mon,$year) = localtime(time - (60*60*24));
 	$_ENV{'yesterday'} = sprintf("%04d-%02d-%02d",$year+1900,$mon+1,$day);
 }
-sub _LOG{
+sub _LOG {
 	my($log) = @_;
-	if((-s $_ENV{'file'}) > $_ENV{'size'} && ($_ENV{'size'}) {
+	if((-s $_ENV{'file'}) > $_ENV{'size'} && ($_ENV{'size'})){
 		my @logs = &_LOAD($_ENV{'file'});
 		my @l1 = grep(/^$_ENV{'day'}/,@logs);
 		my @l2 = grep(/^$_ENV{'yesterday'}/,@logs);
@@ -72,11 +72,11 @@ sub _LOG{
 		push @logs,$log;
 		&_SAVE($_ENV{'file'},join("\n",@logs));
 	}
-	else{
+	else {
 		&_ADDSAVE($_ENV{'file'},$log);
 	}
 }
-sub _ADDSAVE{
+sub _ADDSAVE {
 	my($path,$str) = @_;
 	chmod 0777,$path;
 	flock(FH, LOCK_EX);
@@ -86,7 +86,7 @@ sub _ADDSAVE{
 	flock(FH, LOCK_NB);
 	chmod 0600,$path;
 }
-sub _LOAD{
+sub _LOAD {
 	my($path) = @_;
 	my @str = ();
 	flock(FH, LOCK_EX);
@@ -98,7 +98,7 @@ sub _LOAD{
 	$str =~ s/\r//ig;
 	return split(/\n/,$str);
 }
-sub _SAVE{
+sub _SAVE {
 	my($path,$str) = @_;
 	chmod 0777,$path;
 	open(FH,"+< ${path}");
