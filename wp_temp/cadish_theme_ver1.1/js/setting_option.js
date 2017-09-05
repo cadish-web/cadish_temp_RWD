@@ -10,6 +10,7 @@ jQuery(document).ready(function() {
 			jQuery(this).replaceWith('<span class="tel-link">' + jQuery(this).html() + '</span>');
 		});
 	}
+	
 	/* スムーススクロール
 	-------------------------------------------------------- */
 	jQuery('a[href^=#]').click(function(){

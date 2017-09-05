@@ -198,7 +198,7 @@
 #form_area input[type="email"]{ margin:0 auto; padding: 5px 3px; width: 100%; max-width: 100; border: 1px solid #ddd; box-sizing:border-box;}
 #form_area select    { padding: 2px 1px; border: 1px solid #ddd;}
 #form_area textarea  { margin: 3px 0; padding: 2px 3px; width: 100%; max-width: 100%; border: 1px solid #ddd; box-sizing:border-box;}
-#form_area  span.must{ margin: 0 5px; color: #fb223f;}
+#form_area span.must{ margin: 0 5px; color: #fb223f;}
 
 #form_area #sendcheck      { margin: 15px 2% 20px; width: 96%; text-align: right;}
 #form_area #sendcheck input{ width: 30%; padding: 2px 0; letter-spacing: 3px; text-align: center;}
@@ -214,7 +214,7 @@
 	#form_area #sendcheck  {text-align: center;}
 }
 @media screen and (max-width: 600px) {
-	#form_area img.ajax-loader{ width: auto!important;}
+	#form_area img.ajax-loader{ width: auto !important;}
 	#form_area input[type="text"],
 	#form_area input[type="email"]{ height: 25px; line-height: 25px;}
 	#form_area #sendcheck input  { margin: 0 auto; width: 98%; text-align: center;}
