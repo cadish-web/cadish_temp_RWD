@@ -3,25 +3,25 @@ var mfpPhaseLabel = new Array();
 var mfpPhaseCurrent = 0;
 var mfpPhaseMax = 0;
 
-function mfpPhaseNextButton(){
+function mfpPhaseNextButton( {
 	var err = "";
 	var tObj = mfp.$(mfpPhase[mfpPhaseCurrent]).getElementsByTagName("input");
-	for(var i=0;i<tObj.length;i++){
+	for(var i=0;i<tObj.length;i++ {
 		if(mfp.check(tObj[i]) && !err)
 			err = tObj[i];
 	}
 	var tObj = mfp.$(mfpPhase[mfpPhaseCurrent]).getElementsByTagName("select");
-	for(var i=0;i<tObj.length;i++){
+	for(var i=0;i<tObj.length;i++ {
 		if(mfp.check(tObj[i]) && !err)
 			err = tObj[i];
 	}
 	var tObj = mfp.$(mfpPhase[mfpPhaseCurrent]).getElementsByTagName("textarea");
-	for(var i=0;i<tObj.length;i++){
+	for(var i=0;i<tObj.length;i++ {
 		if(mfp.check(tObj[i]) && !err)
 			err = tObj[i];
 	}
 	
-	if(!err){
+	if(!err {
 		mfp.$(mfpPhase[mfpPhaseCurrent]).style.display = "none";
 		if(document.getElementById(mfpPhase[mfpPhaseCurrent]+'_label'))
 			document.getElementById(mfpPhase[mfpPhaseCurrent]+'_label').className = 'mfp_inactive_phase';
@@ -34,12 +34,12 @@ function mfpPhaseNextButton(){
 		//scrollTo(0,mfp.$("mfp_phase_stat").offsetTop);
 		mfp.jump('mfp_phase_stat');
 	}
-	else {
+	else{
 		err.focus();
 		mfp.jump(err.id);
 	};
 }
-function mfpPhasePrevButton(){
+function mfpPhasePrevButton( {
 	mfp.$(mfpPhase[mfpPhaseCurrent]).style.display = "none";
 	if(document.getElementById(mfpPhase[mfpPhaseCurrent]+'_label'))
 		document.getElementById(mfpPhase[mfpPhaseCurrent]+'_label').className = 'mfp_inactive_phase';
@@ -52,7 +52,7 @@ function mfpPhasePrevButton(){
 	mfp.jump('mfp_phase_stat');
 }
 mfp.extend.event('confirm',
-	function(){
+	function( {
 		if(document.getElementById(mfpPhase[mfpPhaseCurrent]+'_label'))
 			document.getElementById(mfpPhase[mfpPhaseCurrent]+'_label').className = 'mfp_inactive_phase';
 		if(document.getElementById('mfp_phase_confirm_label'))
@@ -60,7 +60,7 @@ mfp.extend.event('confirm',
 	}
 );
 mfp.extend.event('cancel',
-	function(){
+	function( {
 		if(document.getElementById(mfpPhase[mfpPhaseCurrent]+'_label'))
 			document.getElementById(mfpPhase[mfpPhaseCurrent]+'_label').className = 'mfp_active_phase';
 		if(document.getElementById('mfp_phase_confirm_label'))
@@ -70,8 +70,8 @@ mfp.extend.event('cancel',
 
 
 mfp.extend.event('startup',
-	function(){
-		if(!document.getElementById('mfp_phase_stat')){
+	function( {
+		if(!document.getElementById('mfp_phase_stat') {
 			var elm = mfp.d.createElement('ul');
 			elm.id = 'mfp_phase_stat';
 			mfp.Mfp.parentNode.insertBefore(elm,mfp.$('mfp_phase_confirm'));
@@ -80,10 +80,10 @@ mfp.extend.event('startup',
 );
 
 mfp.extend.event('ready',
-	function(){
+	function( {
 		var tObj = document.getElementsByTagName("div");
-		for(var i=0;i<tObj.length;i++){
-			if(tObj[i].className == 'mfp_phase'){
+		for(var i=0;i<tObj.length;i++ {
+			if(tObj[i].className == 'mfp_phase' {
 				if(!tObj[i].id)
 					tObj[i].id = 'mfp_phase_' + mfpPhase.length;
 				tObj[i].style.display = 'none';
@@ -91,7 +91,7 @@ mfp.extend.event('ready',
 				
 				// stat label
 				var labelTEXT = tObj[i].getAttribute('summary') || mfpLang['Phase'].replace('$1',mfpPhase.length);
-				if(!document.getElementById(tObj[i].id+'_label')){
+				if(!document.getElementById(tObj[i].id+'_label') {
 					var elm = mfp.d.createElement('li');
 					elm.id = tObj[i].id+'_label';
 					elm.className = 'mfp_inactive_phase';
@@ -106,7 +106,7 @@ mfp.extend.event('ready',
 				mfpPhaseLabel.push(labelTEXT);
 			}
 		}
-		if(!document.getElementById('mfp_phase_confirm_label')){
+		if(!document.getElementById('mfp_phase_confirm_label') {
 			var elm = mfp.d.createElement('li');
 			elm.id = 'mfp_phase_confirm_label';
 			elm.className = 'mfp_inactive_phase';
@@ -116,8 +116,8 @@ mfp.extend.event('ready',
 		mfpPhaseLabel.push(mfpLang['PhaseConfirm']);
 		var labelHTML = "";
 		mfpPhaseMax = mfpPhase.length-1;
-		for(var i=0;i<mfpPhase.length;i++){
-			if(i == 0){
+		for(var i=0;i<mfpPhase.length;i++ {
+			if(i == 0 {
 				mfp.$(mfpPhase[i]).style.display = 'block';
 				if(document.getElementById(mfpPhase[i]+'_label'))
 					document.getElementById(mfpPhase[i]+'_label').className = 'mfp_active_phase';
@@ -126,35 +126,35 @@ mfp.extend.event('ready',
 			var bObj = mfp.$(mfpPhase[i]).getElementsByTagName("button");
 			var bNext = false;
 			var bPrev = false;
-			for(var ii=0;ii<bObj.length;ii++){
-				if(bObj[ii].className.indexOf('mfp_prev') > -1){
+			for(var ii=0;ii<bObj.length;ii++ {
+				if(bObj[ii].className.indexOf('mfp_prev') > -1 {
 					bPrev = true;
-					bObj[ii].onclick = function(){
+					bObj[ii].onclick = function( {
 						mfpPhasePrevButton();
 					}
 				}
-				if(bObj[ii].className.indexOf('mfp_next') > -1){
+				if(bObj[ii].className.indexOf('mfp_next') > -1 {
 					bNext = true;
-					bObj[ii].onclick = function(){
+					bObj[ii].onclick = function( {
 						mfpPhaseNextButton()
 					}
 				}
 			}
 			
-			if(!bNext && i != (mfpPhase.length-1)){
+			if(!bNext && i != (mfpPhase.length-1) {
 				var elm = mfp.d.createElement('button');
 				elm.className = 'mfp_next';
 				elm.innerHTML = mfpLang['ButtonNext'].replace('$1',mfpPhaseLabel[i+1]);
-				elm.onclick = function(){
+				elm.onclick = function( {
 					mfpPhaseNextButton()
 				}
 				mfp.$(mfpPhase[i]).appendChild(elm);
 			}
-			if(!bPrev && i != 0){
+			if(!bPrev && i != 0 {
 				var elm = mfp.d.createElement('button');
 				elm.className = 'mfp_prev';
 				elm.innerHTML = mfpLang['ButtonPrev'].replace('$1',mfpPhaseLabel[i-1]);
-				elm.onclick = function(){
+				elm.onclick = function( {
 					mfpPhasePrevButton();
 				}
 				mfp.$(mfpPhase[i]).appendChild(elm);

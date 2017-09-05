@@ -1,4 +1,4 @@
-sub _MAILHEADER {
+sub _MAILHEADER{
 	my($to,$from,$name,$subject,$body,$attached,$htmlmail) = @_;
 	my $str;
 	
@@ -13,14 +13,14 @@ sub _MAILHEADER {
 	
 	$str = "Subject: ${subject}\n";
 	$str .= "From: ${from}\n";
-	if($attached ne $null && $htmlmail eq $null){
+	if($attached ne $null && $htmlmail eq $null {
 		$str .= "Content-Type: multipart/mixed; boundary=\"$config{'Boundary'}\"\n";
 	}
-	else {
+	else{
 		$str .= "Content-Type: multipart/alternative; boundary=\"$config{'Boundary'}\"\n";
 	}
 	$str .= "To: ${to}\n";
-	if($config{'bcc'} ne $null && $config{'bcc'} ne $mailto){
+	if($config{'bcc'} ne $null && $config{'bcc'} ne $mailto {
 		$str .= "Bcc: $config{'bcc'}\n";
 	}
 	$str .= "MIME-Version: 1.0\n";

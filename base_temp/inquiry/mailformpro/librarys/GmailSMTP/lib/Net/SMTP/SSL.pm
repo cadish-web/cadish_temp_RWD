@@ -9,10 +9,10 @@ use IO::Socket::SSL;
 use Net::SMTP;
 
 @ISA = ( 'IO::Socket::SSL',
-         grep { $_ ne 'IO::Socket::INET' } @Net::SMTP::ISA );
+         grep{ $_ ne 'IO::Socket::INET' } @Net::SMTP::ISA );
 
 no strict 'refs';
-foreach ( keys %Net::SMTP:: ) {
+foreach ( keys %Net::SMTP::  {
     next unless defined *{$Net::SMTP::{$_}}{CODE};
     *{$_} = \&{"Net::SMTP::$_"};
 }

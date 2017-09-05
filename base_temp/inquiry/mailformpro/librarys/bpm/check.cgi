@@ -1,4 +1,4 @@
-if($_POST{$config{'bpm.PaymentType'}} eq $config{'bpm.PaymentName'}){
+if($_POST{$config{'bpm.PaymentType'}} eq $config{'bpm.PaymentName'} {
 	my($Serial,$InputTime,$ConfirmTime,$UniqueUser) = split(/\,/,&_LOAD($config{'file.data'}));
 	my $orderno += $config{'SerialBoost'};
 	$orderno = sprintf($config{'SerialFormat'},$Serial+1);
@@ -28,17 +28,17 @@ if($_POST{$config{'bpm.PaymentType'}} eq $config{'bpm.PaymentName'}){
 	my $request = POST( $uri, [%_BPM] );
 	my $ua = LWP::UserAgent->new;
 	my $res = $ua->request($request);
-	if($res->code eq '200'){
+	if($res->code eq '200' {
 		my $html = $res->content;
 		$html =~ s/\n//ig;
-		if($html =~ /\"Result\":0/sig){
+		if($html =~ /\"Result\":0/sig {
 			$Error = 15;
 		}
-		else {
+		else{
 			$_BPM{'result'} = 1;
 		}
 	}
-	else {
+	else{
 		$Error = 15;
 	}
 }

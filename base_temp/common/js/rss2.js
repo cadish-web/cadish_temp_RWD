@@ -23,22 +23,18 @@ $(function () {
 				var date =  y + "/" + m + "/" + d;
 
 				insert += '<li>';
-
 				// 日時の挿入
 				insert += '<span class="date">';
 				insert += date;
 				insert += '</span>';
-
 				// タイトルの挿入
 				insert += '<a href="' + thisItem.children('link').text() + '">';
 				insert += thisItem.children('title').text();
 				insert += '</a>';
-
 				// 本文の挿入
 				insert += '<span class="post">';
 				insert += thisItem.children('description').text();
 				insert += '</span>';
-
 				insert += '</li>';
 			}
 			insert += '</ul>';

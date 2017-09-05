@@ -11,9 +11,8 @@ $(function () {
 
 			var insert = '';
 
-			//no image画像の設定（img/hogehoge.gif箇所を適宜変更してください）
-			var photo = ("<img src='img/hogehoge.gif' />");
-
+			//no image画像の設定
+			var photo = ("<img src='img/no_image.gif' />");
 
 			for (var i = 0; i < getCount; i++) {
 				var thisItem = $('channel', data).children('item').eq(i);

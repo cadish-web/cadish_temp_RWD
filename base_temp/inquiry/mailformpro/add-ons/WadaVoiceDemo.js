@@ -9,15 +9,15 @@ mfpConfigs['SoundEffectPreset'].push('demo_email');
 mfpConfigs['SoundEffectPreset'].push('demo_cancel');
 
 mfp.extend.event('ready',
-	function(){
-		setTimeout(function(){
+	function( {
+		setTimeout(function( {
 			mfp.play('demo_wellcome');
 		},1000);
 	}
 );
 
 mfp.extend.event('focus',
-	function(obj){
+	function(obj {
 		if((obj.type == "text" || obj.type == "textarea") && obj.value == obj.defaultValue)
 			mfp.play('demo_text');
 		else if(obj.type == "select-one")
@@ -27,22 +27,22 @@ mfp.extend.event('focus',
 	}
 );
 mfp.extend.event('error',
-	function(obj){
+	function(obj {
 		mfp.play('demo_error');
 	}
 );
 mfp.extend.event('confirm',
-	function(obj){
+	function(obj {
 		mfp.play('demo_confirm');
 	}
 );
 mfp.extend.event('send',
-	function(obj){
+	function(obj {
 		mfp.play('demo_send');
 	}
 );
 mfp.extend.event('cancel',
-	function(obj){
+	function(obj {
 		mfp.play('demo_cancel');
 	}
 );

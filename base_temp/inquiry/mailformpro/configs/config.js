@@ -3,7 +3,7 @@
 // mailformpro config file
 // _%%Version%%_
 //
-var mfpConfigs = {
+var mfpConfigs ={
 	'Time': '_%%Time%%_',
 	'PageView': '_%%PageView%%_',
 	'InputTimeAVG': '_%%InputTimeAVG%%_',
@@ -19,7 +19,7 @@ var mfpConfigs = {
 	'NoClassChange': false,
 	'LoadingScreen': true,
 	'ErrorFocusDisabled': false,
-	'LoadingImage': {
+	'LoadingImage':{
 		'width': 40,
 		'height': 40
 	},

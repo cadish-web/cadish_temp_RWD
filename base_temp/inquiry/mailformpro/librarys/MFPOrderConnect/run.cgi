@@ -21,7 +21,7 @@ $OrderData =~ s/\r//ig;
 
 @OrderItems = split(/\n/,$_ENV{'mfp_cart'});
 $OrderTotalPrice = 0;
-for(my $cnt=0;$cnt<@OrderItems;$cnt++){
+for(my $cnt=0;$cnt<@OrderItems;$cnt++ {
 	($ProductName,$ProductId,$ProductAmt,$ProductQty) = split(/\,/,$OrderItems[$cnt]);
 	$OrderField[21+($cnt*5)] = "${ProductName}(${ProductId})"; #name
 	$OrderField[22+($cnt*5)] = $ProductQty; #qty

@@ -11,20 +11,20 @@ mfpLang['request']['h2'] = '取り消し';
 // $1:ID / $2:名称
 mfpLang['request']['format'] = '[ $1 ] $2';
 
-var requestObject = {
+var requestObject ={
 	List: [],
-	rebuild: function(){
+	rebuild: function( {
 		var _ = requestObject;
-		if(_.List.length > 0){
+		if(_.List.length > 0 {
 			var html = '';
 			var value = '';
-			for(var i=0;i<_.List.length;i++){
+			for(var i=0;i<_.List.length;i++ {
 				var className = 'mfp_colored';
-				if(i % 2 == 0){
+				if(i % 2 == 0 {
 					className = 'mfp_achroma';
 				};
 				var img = '&nbsp;';
-				if(_.List[i]['image']){
+				if(_.List[i]['image'] {
 					img = '<img src="images/'+_.List[i]['id']+'.png">';
 				};
 				html += '<tr class="'+className+'">';
@@ -32,13 +32,13 @@ var requestObject = {
 				html += '<th>&nbsp;'+_.List[i]['name']+'</th>';
 				html += '<td align="center"><button onclick="requestObject.remove(\''+_.List[i]['id']+'\')">'+mfpLang['request']['del']+'</button></td>';
 				html += '</tr>';
-				if(mfpLang['request']['format']){
+				if(mfpLang['request']['format'] {
 					var itemline = mfpLang['request']['format'];
 					itemline = itemline.replace('$1',_.List[i]['id']);
 					itemline = itemline.replace('$2',_.List[i]['name']);
 					value += itemline + "\n";
 				}
-				else {
+				else{
 					value += '[ ' + _.List[i]['id'] + ' ] ' + _.List[i]['name'] + "\n";
 				};
 			};
@@ -47,22 +47,22 @@ var requestObject = {
 			mfp.$('mfp_request_cart').style.display = 'block';
 			mfp.$('mfp_request_cart_value').value = value;
 		}
-		else {
+		else{
 			mfp.$('mfp_request_cart').style.display = 'none';
 		};
 	},
-	remove: function(id){
+	remove: function(id {
 		mfp.call(mfp.$('mfpjs').src,'addon=request/request.js&callback=requestObject.get&remove='+id);
 	},
-	get: function(json){
+	get: function(json {
 		requestObject.List = json;
 		requestObject.rebuild();
 	},
-	initialize: function(){
-		if(!mfp.$('request_cart_value')){
+	initialize: function( {
+		if(!mfp.$('request_cart_value') {
 			mfp.addhiddenObject('request_cart_value','',mfpLang['request']['cart']);
 		};
-		if(!document.getElementById('mfp_request_cart')){
+		if(!document.getElementById('mfp_request_cart') {
 			var elm = mfp.d.createElement('div');
 			elm.id = 'mfp_request_cart';
 			elm.innerHTML = 'Request';
@@ -72,7 +72,7 @@ var requestObject = {
 	}
 };
 mfp.extend.event('startup',
-	function(){
+	function( {
 		requestObject.initialize();
 	}
 );

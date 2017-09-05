@@ -1,13 +1,13 @@
 @charset "UTF-8";
 
-* {
+*{
 	font-family: sans-serif;
 }
-body {
+body{
 	background-color: #EEE;
 	text-align: center;
 }
-div#wrapper {
+div#wrapper{
 	width: 800px;
 	text-align: left;
 	background-color: #FFF;
@@ -16,18 +16,18 @@ div#wrapper {
 	border: solid 1px #999;
 	box-shadow: 0px 0px 10px #666;
 }
-div#wrapper div#header,div#wrapper div#footer {
+div#wrapper div#header,div#wrapper div#footer{
 	border: solid 2px #333;
 	background-color: #333;
 	background-image: url(_images/mfp_header.png);
 	background-size: 100% 100%;
 }
-div#wrapper div#header {
+div#wrapper div#header{
 	margin: 5px;
 	padding: 10px 30px;
 	border-radius: 5px;
 }
-div#wrapper div#header h1 {
+div#wrapper div#header h1{
 	color: #FFF;
 	text-shadow: 0px 0px 10px #000;
 	font-size: 3rem;
@@ -35,16 +35,16 @@ div#wrapper div#header h1 {
 	margin: 0px;
 	font-family: sans-serif;
 }
-div#wrapper div#header p {
+div#wrapper div#header p{
 	padding: 0px;
 	line-height: 1em;
 	color: #FFF;
 	text-shadow: 0px 0px 5px #000;
 }
-div#wrapper div#container {
+div#wrapper div#container{
 	padding: 0px 20px;
 }
-div#wrapper div#footer {
+div#wrapper div#footer{
 	color: #FFF;
 	clear: both;
 	padding: 5px;
@@ -53,23 +53,23 @@ div#wrapper div#footer {
 	text-align: center;
 	font-size: 12px;
 }
-ul.example_pages {
+ul.example_pages{
 	border: solid 1px #CCC;
 	padding: 15px 30px;
 }
-ul.example_pages li {
+ul.example_pages li{
 	padding: 5px 0px;
 }
-div#example_selector {
+div#example_selector{
 	padding: 10px 0px;
 	text-align: left;
 }
-div#example_selector span {
+div#example_selector span{
 	display: block;
 	font-size: 14px;
 	padding: 5px 0px;
 }
-div#example_selector select {
+div#example_selector select{
 	font-size: 18px;
 	border-radius: 3px;
 	border: solid 1px #CCC;
@@ -80,7 +80,7 @@ div#example_selector select {
 	max-width: 100%;
 	outline: none;
 }
-div.tips {
+div.tips{
 	margin: 10px auto;
 	padding: 5px 20px;
 	border: solid 1px #CCC;
@@ -88,24 +88,24 @@ div.tips {
 	box-shadow: 0px 2px 10px #CCC;
 	background: #FEE;
 }
-div.tips p {
+div.tips p{
 	font-size: 14px;
 	line-height: 2em;
 }
-div.tips strong {
+div.tips strong{
 	color: #800040;
 }
-div.tips span {
+div.tips span{
 	display: block;
 	padding: 5px 10px;
 	color: #008080;
 }
-div.tips em {
+div.tips em{
 	font-style: normal;
 	color: #090;
 	font-weight: bold;
 }
-div.tips ol li {
+div.tips ol li{
 	padding: 10px;
 	margin: 15px;
 	font-size: 12px;
@@ -114,21 +114,21 @@ div.tips ol li {
 	border-radius: 5px;
 	background: #FFF;
 }
-div.tips ol li span {
+div.tips ol li span{
 	padding: 0px 10px;
 }
-div.tips ol li img {
+div.tips ol li img{
 	display: block;
 	width: 280px;
 	border: none;
 	margin: 5px auto;
 }
 @media screen and (max-width: 800px) {
-	body {
+	body{
 		padding: 0px;
 		margin: 0px;
 	}
-	div#wrapper {
+	div#wrapper{
 		border-radius: 0px;
 		padding: 0px;
 		margin: 0px;
@@ -136,40 +136,40 @@ div.tips ol li img {
 		box-shadow: none;
 		border: none;
 	}
-	div#wrapper div#header {
+	div#wrapper div#header{
 		border-radius: 0px;
 		padding: 10px;
 	}
-	div#wrapper div#header h1 {
+	div#wrapper div#header h1{
 		font-size: 24px;
 	}
-	form#mailformpro dl dt {
+	form#mailformpro dl dt{
 		float: none;
 		width: auto;
 		font-size: 12px;
 		padding: 5px;
 		text-align: left;
 	}
-	form#mailformpro dl dd {
+	form#mailformpro dl dd{
 		clear: both;
 		border-top: none;
 		padding: 5px 15px;
 		font-size: 12px;
 		line-height: 1.5em;
 	}
-	div.mfp_buttons button {
+	div.mfp_buttons button{
 		font-size: 14px;
 	}
-	table#mfp_confirm_table tr th {
+	table#mfp_confirm_table tr th{
 		white-space: nowrap;
 		width: 100px;
 	}
-	div#mfp_thanks {
+	div#mfp_thanks{
 		text-align: center;
 		font-size: 18px;
 		padding: 20px 0px;
 	}
-	div#mfp_thanks strong {
+	div#mfp_thanks strong{
 		color: #C00;
 		font-size: 24px;
 		display: block;

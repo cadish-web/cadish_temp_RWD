@@ -1,15 +1,15 @@
-function mfp_char1byte(str){
-	for(var i=0;i<str.length;i++){
-		if(escape(str.charAt(i)).length >= 4){
+function mfp_char1byte(str {
+	for(var i=0;i<str.length;i++ {
+		if(escape(str.charAt(i)).length >= 4 {
 			return true;
 			break;
 		};
 	};
 	return false;
 };
-function mfp_char2byte(str){
-	for(var i=0;i<str.length;i++){
-		if(!(escape(str.charAt(i)).length >= 4)){
+function mfp_char2byte(str {
+	for(var i=0;i<str.length;i++ {
+		if(!(escape(str.charAt(i)).length >= 4) {
 			return true;
 			break;
 		};
@@ -18,9 +18,9 @@ function mfp_char2byte(str){
 };
 
 mfp.extend.event('check',
-	function(obj){
-		if(obj.name != ""){
-			if((mfp.Elements[obj.name].type == "text" || mfp.Elements[obj.name].type == "textarea") && obj.getAttribute('data-charcheck') && obj.value != "" && obj.value != obj.defaultValue){
+	function(obj {
+		if(obj.name != "" {
+			if((mfp.Elements[obj.name].type == "text" || mfp.Elements[obj.name].type == "textarea") && obj.getAttribute('data-charcheck') && obj.value != "" && obj.value != obj.defaultValue {
 				// data-charcheck="digit" 数字のみ
 				// data-charcheck="alphabet" 英語のみ
 				// data-charcheck="digit_and_alphabet" 英語と数字のみ(記号含まず)

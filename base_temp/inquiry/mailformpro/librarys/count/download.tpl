@@ -3,26 +3,26 @@
 		<meta name="robots" content="noindex" />
 		<title>Mailform Pro Count Data Manager</title>
 		<style>
-			body {
+			body{
 				background-color: #EEE;
 				padding: 10px;
 				margin: 0px;
 				text-align: center;
 			}
-			h1 {
+			h1{
 				font-size: 24px;
 				padding: 10px 0px;
 				color: #232323;
 				text-shadow: 0px 0px 5px #CCC;
 			}
-			table {
+			table{
 				margin: 0px auto;
 			}
-			table tr th,table tr td {
+			table tr th,table tr td{
 				padding: 5px 10px;
 				font-size: 12px;
 			}
-			form {
+			form{
 				border: solid 1px #CCC;
 				border-radius: 10px;
 				background-color: #FFF;
@@ -31,16 +31,16 @@
 				width: 480px;
 				box-shadow: 0px 0px 10px #CCC;
 			}
-			h2 {
+			h2{
 				margin: 0px auto 10px auto;
 				padding: 0px 0px 10px 0px;
 				border-bottom: solid 1px #CCC;
 				text-shadow: 0px 0px 5px #CCC;
 			}
-			input {
+			input{
 				text-align: center;
 			}
-			div#stat {
+			div#stat{
 				color: #C00;
 				font-size: 36px;
 				font-weight: bolder;
@@ -48,8 +48,8 @@
 			}
 		</style>
 		<script>
-			window.onload = function(){
-				if(location.hash == '#Complete'){
+			window.onload = function( {
+				if(location.hash == '#Complete' {
 					document.getElementById('stat').innerHTML = 'Delete Complete';
 				}
 			}

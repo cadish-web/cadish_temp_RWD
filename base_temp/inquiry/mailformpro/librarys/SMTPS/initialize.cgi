@@ -2,7 +2,7 @@ use lib "librarys/SMTPS/lib";
 use Net::SMTP;
 use Net::SMTP::TLS;
 
-sub _SENDMAIL {
+sub _SENDMAIL{
 	my($to,$from,$name,$subject,$body,$attached,$htmlmail) = @_;
 	my($sec,$min,$hour,$mday,$mon,$year,$wday) = localtime(time);
 	@week = ('Sun','Mon','Tue','Wed','Thu','Fri','Sat');

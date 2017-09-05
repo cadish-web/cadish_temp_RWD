@@ -1,4 +1,4 @@
-if($_POST{'mfp_script'} && &_EmailCheck($_POST{'email'})){
+if($_POST{'mfp_script'} && &_EmailCheck($_POST{'email'}) {
 	$config{'disabled'} = 1;
 	$_RESULT{'uri'} = $config{'mailauth.thanks'};
 	$token = &_HASH(time . "." . $ENV{'REMOTE_ADDR'});
@@ -10,7 +10,7 @@ if($_POST{'mfp_script'} && &_EmailCheck($_POST{'email'})){
 	&_SENDMAIL($_POST{'email'},$config{'mailfrom'},$config{'fromname'},$config{'mailauth.subject'},$config{'mailauth.body'},join('',@ResAttachedFiles),$_HTML{'HTMLMail'});
 	##
 }
-else {
+else{
 	$Error = 1;
 }
 1;

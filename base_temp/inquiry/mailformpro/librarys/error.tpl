@@ -3,13 +3,13 @@
 		<meta name="robots" content="noindex" />
 		<title>_%%ErrorCode%%_</title>
 		<style>
-			body {
+			body{
 				background-color: #EEE;
 				padding: 0px;
 				margin: 0px;
 				text-align: center;
 			}
-			div#container {
+			div#container{
 				border: solid 1px #CCC;
 				border-radius: 10px;
 				background-color: #FFF;
@@ -18,7 +18,7 @@
 				width: 480px;
 				box-shadow: 0px 0px 10px #CCC;
 			}
-			h1 {
+			h1{
 				padding: 0px 0px 10px 0px;
 				margin: 0px;
 				font-size: 30px;
@@ -26,11 +26,11 @@
 				text-shadow: 0px 1px 3px #CCC;
 				border-bottom: solid 1px #CCC;
 			}
-			p {
+			p{
 				font-size: 12px;
 				line-height: 1.7em;
 			}
-			a {
+			a{
 				font-size: 14px;
 				text-decoration: none;
 			}

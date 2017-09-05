@@ -3,20 +3,20 @@
 //
 
 mfpConfigs['priceFactor'] = 'priceFactor';
-function mfp_priceFactor(){
-	if(mfp.$(mfpConfigs['priceFactor'])){
+function mfp_priceFactor( {
+	if(mfp.$(mfpConfigs['priceFactor']) {
 		var fact = parseInt(mfp.$(mfpConfigs['priceFactor']).value);
 		mfp.Price *= fact;
 	};
 };
 
 mfp.extend.event('calc',
-	function(){
+	function( {
 		mfp_priceFactor();
 	}
 );
 mfp.extend.event('startup',
-	function(){
+	function( {
 		mfp_priceFactor();
 	}
 );

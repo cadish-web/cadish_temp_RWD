@@ -1,6 +1,6 @@
-if(-d $config{'dir.cart'}){
+if(-d $config{'dir.cart'} {
 	$cartpath = "$config{'dir.cart'}$_COOKIE{'SES'}.cgi";
-	if(-f $cartpath){
+	if(-f $cartpath {
 		unlink $cartpath;
 	}
 }

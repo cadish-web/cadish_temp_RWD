@@ -1,10 +1,10 @@
 <style type="text/css">
-* {
+*{
 	padding: 0px;
 	margin: 0px;
 	text-shadow: 1px 1px 2px #EEE;
 }
-body {
+body{
 	font-family: 'Lucida Grande', Geneva, Verdana, Arial, Helvetica, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', sans-serif;
 	width: 100% !important;
 	text-rendering: optimizelegibility;
@@ -12,7 +12,7 @@ body {
 	margin: 0px;
 	background-color: #f2f2f2;
 }
-p {
+p{
 	font-family: 'Lucida Grande', Geneva, Verdana, Arial, Helvetica, 'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', sans-serif;
 	font-size: 1.2em;
 	padding: 0.5em 0px;

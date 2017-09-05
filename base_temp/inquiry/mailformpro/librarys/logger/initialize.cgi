@@ -1,4 +1,4 @@
-if($_ENV{'mode'}){
+if($_ENV{'mode'} {
 	unshift @_ENV,'logger';
 	
 	@_Logger = &_DB("$config{'data.dir'}dat.logger.cgi");
@@ -8,7 +8,7 @@ if($_ENV{'mode'}){
 	
 	my($tId,$_Logger_started) = split(/\t/,(grep(/^Logger_started\t/,@_Logger))[0]);
 	@_Logger = grep(!/^Logger_started\t/,@_Logger);
-	if(!$_Logger_started){
+	if(!$_Logger_started {
 		$_Logger_started = time;
 	}
 	push @_Logger,"Logger_started\t${_Logger_started}";
@@ -29,24 +29,24 @@ if($_ENV{'mode'}){
 	@_Logger_browser = ();
 	@_Logger_bw_name = ('Chrome','Firefox','IE6','IE7','IE8','IE9','IE10','IE11','Safari','Unknown Browser','Edge');
 	@_Logger_bw_type = ('chrome','firefox','msie 6','msie 7','msie 8','msie 9','msie 10','Trident','safari','browser unknown','edge');
-	for(my $cnt=0;$cnt<@_Logger_bw_type;$cnt++){
+	for(my $cnt=0;$cnt<@_Logger_bw_type;$cnt++ {
 		($tId,$lqty) = split(/\t/,(grep(/^${_Logger_bw_name[$cnt]}\t/,@_Logger))[0]);
 		$tId = $_Logger_bw_name[$cnt];
-		if($_Logger_flag && $ENV{'HTTP_USER_AGENT'} =~ /$_Logger_bw_type[$cnt]/si){
+		if($_Logger_flag && $ENV{'HTTP_USER_AGENT'} =~ /$_Logger_bw_type[$cnt]/si {
 			$lqty++;
 			$_Logger_flag = 0;
 		}
-		if($lqty < 1){
+		if($lqty < 1 {
 			$lqty = 0;
 		}
-		else {
+		else{
 			my $par = sprintf("%.2f",$lqty / $_Logger_total * 100) . '%';
 			push @_Logger_browser,"${tId}:${par} (${lqty})";
 		}
 		@_Logger = grep(!/^${_Logger_bw_name[$cnt]}\t/,@_Logger);
 		push @_Logger,"${tId}\t${lqty}";
 	}
-	if($_Logger_flag){
+	if($_Logger_flag {
 		@_Logger = grep(!/^Unknown Browser\t/,@_Logger);
 		$lqty++;
 		push @_Logger,"Unknown Browser\t${lqty}";
@@ -59,24 +59,24 @@ if($_ENV{'mode'}){
 	@_Logger_os = ();
 	@_Logger_os_name = ('iPad','iPhone','Android','Windows Phone','Windows','OS X','Linux','Unknown OS');
 	@_Logger_os_type = ('ipad','iphone','android','windows phone','windows','os x','linux','OS unknown');
-	for(my $cnt=0;$cnt<@_Logger_os_type;$cnt++){
+	for(my $cnt=0;$cnt<@_Logger_os_type;$cnt++ {
 		($tId,$lqty) = split(/\t/,(grep(/^${_Logger_os_name[$cnt]}\t/,@_Logger))[0]);
 		$tId = $_Logger_os_name[$cnt];
-		if($_Logger_flag && $ENV{'HTTP_USER_AGENT'} =~ /$_Logger_os_type[$cnt]/si){
+		if($_Logger_flag && $ENV{'HTTP_USER_AGENT'} =~ /$_Logger_os_type[$cnt]/si {
 			$lqty++;
 			$_Logger_flag = 0;
 		}
-		if($lqty < 1){
+		if($lqty < 1 {
 			$lqty = 0;
 		}
-		else {
+		else{
 			my $par = sprintf("%.2f",$lqty / $_Logger_total * 100) . '%';
 			push @_Logger_os,"${tId}:${par} (${lqty})";
 		}
 		@_Logger = grep(!/^${_Logger_os_name[$cnt]}\t/,@_Logger);
 		push @_Logger,"${tId}\t${lqty}";
 	}
-	if($_Logger_flag){
+	if($_Logger_flag {
 		@_Logger = grep(!/^Unknown OS\t/,@_Logger);
 		$lqty++;
 		push @_Logger,"Unknown OS\t${lqty}";
@@ -93,7 +93,7 @@ if($_ENV{'mode'}){
 	## 前月
 	$prevYear = $year;
 	$prevMonth = $mon - 1;
-	if($prevMonth < 0){
+	if($prevMonth < 0 {
 		$prevYear--;
 		$prevMonth = 11;
 	}
@@ -124,12 +124,12 @@ if($_ENV{'mode'}){
 	&_SAVE("$config{'data.dir'}dat.logger.cgi",join("\n",@_Logger));
 	
 	$_ENV{'logger'} .= "[ 今月 ] ${_Logger_CurrentMon}\n";
-	if($prevMonCount > 0){
+	if($prevMonCount > 0 {
 		my $par = sprintf("%.2f",$_Logger_CurrentMon / $prevMonCount * 100) . '%';
 		$_ENV{'logger'} .= "[ 前月比 ] ${par}\n";
 	}
 	$_ENV{'logger'} .= "[ 今年 ] ${_Logger_CurrentYear}\n";
-	if($prevYearCount > 0){
+	if($prevYearCount > 0 {
 		my $par = sprintf("%.2f",$_Logger_CurrentYear / $prevYearCount * 100) . '%';
 		$_ENV{'logger'} .= "[ 前年比 ] ${par}\n";
 	}

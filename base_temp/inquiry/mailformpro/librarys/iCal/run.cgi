@@ -23,13 +23,13 @@ $iCal .= "PRODID:-//SYNCKTECHNICA.//Mailformpro 3.1.3//EN\n";
 $iCal .= "X-APPLE-CALENDAR-COLOR:$config{'iCal.BgColor'}\n";
 $iCal .= "X-WR-TIMEZONE:$config{'iCal.TimeZone'}\n";
 $iCal .= "CALSCALE:GREGORIAN\n";
-for(my($cnt)=0;$cnt<@cals;$cnt++){
+for(my($cnt)=0;$cnt<@cals;$cnt++ {
 	($id,$DATE,$SUMMARY,$DESCRIPTION) = split(/\t/,$cals[$cnt]);
 	$iCal .= "BEGIN:VEVENT\n";
 	$iCal .= "UID:Mailformpro${id}\n";
 	$iCal .= "DTSTART;TZID=$config{'iCal.TimeZone'}:${DATE}\n";
 	$iCal .= "SUMMARY:${SUMMARY}\n";
-	if($DESCRIPTION ne $null){
+	if($DESCRIPTION ne $null {
 		$iCal .= "DESCRIPTION:${DESCRIPTION}\n";
 	}
 	$iCal .= "BEGIN:VALARM\n";

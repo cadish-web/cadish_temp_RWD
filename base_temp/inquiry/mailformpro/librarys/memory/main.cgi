@@ -3,11 +3,11 @@
 ($sec,$min,$hour,$day,$mon,$year) = localtime(time);
 $config{'CountDataDownloadName'} = sprintf("%04d-%02d-%02d.csv",$year+1900,$mon+1,$day,$hour,$min,$sec);
 
-if($config{"count.password"} ne $null && $config{"count.password"} eq $_POST{'password'} && ($config{'count.DownloadURIPassCode'} eq $null || $config{'count.DownloadURIPassCode'} eq $_GET{'key'})){
+if($config{"count.password"} ne $null && $config{"count.password"} eq $_POST{'password'} && ($config{'count.DownloadURIPassCode'} eq $null || $config{'count.DownloadURIPassCode'} eq $_GET{'key'}) {
 	$HostName = &_GETHOST;
-	if(($config{'count.DownloadHostName'} eq $HostName || $config{'count.DownloadHostName'} eq $null) && ($config{'count.DownloadIPAddress'} eq $ENV{'REMOTE_ADDR'} || $config{'count.DownloadIPAddress'} eq $null)){
-		if($_POST{'method'} eq 'download'){
-			if(-f $config{"file.count"}){
+	if(($config{'count.DownloadHostName'} eq $HostName || $config{'count.DownloadHostName'} eq $null) && ($config{'count.DownloadIPAddress'} eq $ENV{'REMOTE_ADDR'} || $config{'count.DownloadIPAddress'} eq $null) {
+		if($_POST{'method'} eq 'download' {
+			if(-f $config{"file.count"} {
 				$size = -s $config{"file.count"};
 				$csv = &_LOAD($config{"file.count"});
 				$csv =~ s/\t/\,/ig;
@@ -18,22 +18,22 @@ if($config{"count.password"} ne $null && $config{"count.password"} eq $_POST{'pa
 				print "Content-length: ${size}\n\n";
 				print $csv;
 			}
-			else {
+			else{
 				&_Error(0);
 			}
 		}
-		elsif($_POST{'method'} eq 'delete'){
+		elsif($_POST{'method'} eq 'delete' {
 			&_SAVE($config{"file.count"},'');
 			print "Location: $ENV{'HTTP_REFERER'}#Complete\n\n";
 		}
 	}
-	else {
+	else{
 		&_Error(0);
 	}
 }
-else {
-	if($config{"count.password"} ne $null){
-		if($config{'count.DownloadURIPassCode'} eq $null || $config{'count.DownloadURIPassCode'} eq $_GET{'key'}){
+else{
+	if($config{"count.password"} ne $null {
+		if($config{'count.DownloadURIPassCode'} eq $null || $config{'count.DownloadURIPassCode'} eq $_GET{'key'} {
 			## Display Process
 			$html = &_LOAD("./librarys/count/download.tpl");
 			$HostName = &_GETHOST;
@@ -44,11 +44,11 @@ else {
 			print "Content-type: text/html; charset=UTF-8\n\n";
 			print $html;
 		}
-		else {
+		else{
 			&_Error(0);
 		}
 	}
-	else {
+	else{
 		&_Error(0);
 	}
 }

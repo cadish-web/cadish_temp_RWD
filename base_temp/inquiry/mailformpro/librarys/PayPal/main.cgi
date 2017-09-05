@@ -1,12 +1,12 @@
 &_POST;
 
-if($_GET{'callback'} eq 'cancel' &&  -f "$config{'dir.paypal'}$_GET{'token'}.cgi"){
+if($_GET{'callback'} eq 'cancel' &&  -f "$config{'dir.paypal'}$_GET{'token'}.cgi" {
 	@token = &_DB("$config{'dir.paypal'}$_GET{'token'}.cgi");
-	for(my($cnt)=0;$cnt<@token;$cnt++){
+	for(my($cnt)=0;$cnt<@token;$cnt++ {
 		($name,$value) = split(/\t/,$token[$cnt]);
 		$value =~ s/<br \/>/\n/ig;
 		$_POST{$name} = $value;
-		if($name eq 'email' && !($value =~ /[^a-zA-Z0-9\.\@\-\_\+]/) && split(/\@/,$value) == 2){
+		if($name eq 'email' && !($value =~ /[^a-zA-Z0-9\.\@\-\_\+]/) && split(/\@/,$value) == 2 {
 			$config{'mailto'} = $value;
 			$config{'mailto'} =~ s/ //ig;
 		}
@@ -16,10 +16,10 @@ if($_GET{'callback'} eq 'cancel' &&  -f "$config{'dir.paypal'}$_GET{'token'}.cgi
 	$_PAYPAL{'result_body'} =~ s/<_paypal_result_>/$_PAYPAL{'ResultStatCancel'}/ig;
 	$_PAYPAL{"result_subject"} = sprintf($_PAYPAL{"result_subject"},$_POST{'mfp_serial'});
 	#unlink "$config{'dir.paypal'}$_GET{'token'}.cgi";
-	if($config{'fixed'} || $config{'mailto'} eq $null){
+	if($config{'fixed'} || $config{'mailto'} eq $null {
 		$config{'mailto'} = $mailto[0];
 	}
-	for(my($cnt)=0;$cnt<@mailto;$cnt++){
+	for(my($cnt)=0;$cnt<@mailto;$cnt++ {
 		&_SENDMAIL($mailto[$cnt],$config{'mailto'},$config{'mailto'},$_PAYPAL{"result_subject"},$_PAYPAL{'result_body'},join('',@AttachedFiles));
 	}
 	$html = &_LOAD("./librarys/PayPal/template.tpl");
@@ -29,13 +29,13 @@ if($_GET{'callback'} eq 'cancel' &&  -f "$config{'dir.paypal'}$_GET{'token'}.cgi
 	print "Content-type: text/html; charset=UTF-8\n\n";
 	print $html;
 }
-elsif($_GET{'callback'} eq 'thanks' && -f "$config{'dir.paypal'}$_GET{'token'}.cgi") {
+elsif($_GET{'callback'} eq 'thanks' && -f "$config{'dir.paypal'}$_GET{'token'}.cgi" {
 	@token = &_DB("$config{'dir.paypal'}$_GET{'token'}.cgi");
-	for(my($cnt)=0;$cnt<@token;$cnt++){
+	for(my($cnt)=0;$cnt<@token;$cnt++ {
 		($name,$value) = split(/\t/,$token[$cnt]);
 		$value =~ s/<br \/>/\n/ig;
 		$_POST{$name} = $value;
-		if($name eq 'email' && !($value =~ /[^a-zA-Z0-9\.\@\-\_\+]/) && split(/\@/,$value) == 2){
+		if($name eq 'email' && !($value =~ /[^a-zA-Z0-9\.\@\-\_\+]/) && split(/\@/,$value) == 2 {
 			$config{'mailto'} = $value;
 			$config{'mailto'} =~ s/ //ig;
 		}
@@ -61,7 +61,7 @@ elsif($_GET{'callback'} eq 'thanks' && -f "$config{'dir.paypal'}$_GET{'token'}.c
 	#&_PAYPAL_RESPONSE($doc);
 	my($buffer) = $doc;
 	@pairs = split(/&/, $buffer);
-	foreach $pair (@pairs) {
+	foreach $pair (@pairs {
 		($name, $value) = split(/=/, $pair);
 		$name =~ tr/+/ /;
 		$name =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
@@ -80,9 +80,9 @@ elsif($_GET{'callback'} eq 'thanks' && -f "$config{'dir.paypal'}$_GET{'token'}.c
 	@items = split(/\n/,$_POST{'mfp_cart'});
 	$ProductCount = 0;
 	$AmtTotal = 0;
-	for(my($cnt)=0;$cnt<@items;$cnt++){
+	for(my($cnt)=0;$cnt<@items;$cnt++ {
 		($ProductName,$ProductId,$ProductAmt,$ProductQty) = split(/\,/,$items[$cnt]);
-		if($ProductQty > 0){
+		if($ProductQty > 0 {
 			$hash = "L_PAYMENTREQUEST_0_NAME${ProductCount}";
 			$formdata{$hash} = $ProductName;
 			$hash = "L_PAYMENTREQUEST_0_NUMBER${ProductCount}";
@@ -113,7 +113,7 @@ elsif($_GET{'callback'} eq 'thanks' && -f "$config{'dir.paypal'}$_GET{'token'}.c
 	
 	my($buffer) = $doc;
 	@pairs = split(/&/, $buffer);
-	foreach $pair (@pairs) {
+	foreach $pair (@pairs {
 		($name, $value) = split(/=/, $pair);
 		$name =~ tr/+/ /;
 		$name =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
@@ -123,27 +123,27 @@ elsif($_GET{'callback'} eq 'thanks' && -f "$config{'dir.paypal'}$_GET{'token'}.c
 		$_PAYPAL_RESPONSE_VAL .= $name . " : " . $value . "\n";
 	}
 	
-	if($_PAYPAL_RESPONSE_VALUE{'ACK'} eq 'Success'){
+	if($_PAYPAL_RESPONSE_VALUE{'ACK'} eq 'Success' {
 		$_PAYPAL{'result_body'} =~ s/<_paypal_result_>/$_PAYPAL{'ResultStatSuccess'}/ig;
 	}
-	else {
+	else{
 		$_PAYPAL{'result_body'} =~ s/<_paypal_result_>/$_PAYPAL{'ResultStatBreak'}/ig;
 	}
 	$_PAYPAL{'result_body'} =~ s/<_paypal_response_>/$_PAYPAL_RESPONSE_VAL/ig;
 	
 	$_PAYPAL{"result_subject"} = sprintf($_PAYPAL{"result_subject"},$_POST{'mfp_serial'});
 	#unlink "$config{'dir.paypal'}$_GET{'token'}.cgi";
-	if($config{'fixed'} || $config{'mailto'} eq $null){
+	if($config{'fixed'} || $config{'mailto'} eq $null {
 		$config{'mailto'} = $mailto[0];
 	}
-	for(my($cnt)=0;$cnt<@mailto;$cnt++){
+	for(my($cnt)=0;$cnt<@mailto;$cnt++ {
 		&_SENDMAIL($mailto[$cnt],$config{'mailto'},$config{'mailto'},$_PAYPAL{"result_subject"},$_PAYPAL{'result_body'},join('',@AttachedFiles));
 	}
 	
 	$config{'ThanksPage'} = sprintf($config{'ThanksPage'},$_POST{'mfp_serial'});
 	&_REDIRECT($config{'ThanksPage'});
 }
-else {
+else{
 	&_Error(0);
 }
 exit;

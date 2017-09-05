@@ -1,12 +1,12 @@
 my @json = ();
-foreach $key ( keys( %_POST ) ) {
+foreach $key ( keys( %_POST )  {
 	my $val = &_SANITIZING($_POST{$key});
-	if(index($key,'mfp_') == -1 && $key ne 'resbody'){
+	if(index($key,'mfp_') == -1 && $key ne 'resbody' {
 		push @json,"\'${key}\': \'${val}\'\n";
 	}
 }
-if($config{'thanks.env'}){
-	foreach $key ( keys( %_ENV ) ) {
+if($config{'thanks.env'} {
+	foreach $key ( keys( %_ENV )  {
 		my $val = &_SANITIZING($_ENV{$key});
 		push @json,"\'${key}\': \'${val}\'\n";
 	}
@@ -17,15 +17,15 @@ my $json = '{' . join(',',@json) . '}';
 ## Remove until expired Files
 my $removeDir = $config{'data.dir'} . 'json/';
 opendir DH, $removeDir;
-while (my $file = readdir DH) {
+while (my $file = readdir DH {
 	next if $file =~ /^\.{1,2}$/;
 	my $path = "${removeDir}${file}";
-	if(!(-d $path)){
+	if(!(-d $path) {
 		my @file = split(/\./,$file);
 		my $type = lc (pop @file);
 		my $name = join('.',@file);
 		my $time = (stat $path)[9];
-		if($type eq 'cgi' && (time - $time) > $config{'thanks.expire'}){
+		if($type eq 'cgi' && (time - $time) > $config{'thanks.expire'} {
 			unlink $path;
 		}
 	}

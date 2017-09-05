@@ -3,26 +3,26 @@
 		<meta name="robots" content="noindex" />
 		<title>Mailform Pro Reserve Data Manager</title>
 		<style>
-			body {
+			body{
 				background-color: #EEE;
 				padding: 10px;
 				margin: 0px;
 				text-align: center;
 			}
-			h1 {
+			h1{
 				font-size: 24px;
 				padding: 10px 0px;
 				color: #232323;
 				text-shadow: 0px 0px 5px #CCC;
 			}
-			table {
+			table{
 				margin: 0px auto;
 			}
-			table tr th,table tr td {
+			table tr th,table tr td{
 				padding: 5px 10px;
 				font-size: 12px;
 			}
-			div#wrapper {
+			div#wrapper{
 				border: solid 1px #CCC;
 				border-radius: 10px;
 				background-color: #FFF;
@@ -31,51 +31,51 @@
 				box-shadow: 0px 0px 10px #CCC;
 				display: inline-block;
 			}
-			h2 {
+			h2{
 				margin: 0px auto 10px auto;
 				padding: 0px 0px 10px 0px;
 				border-bottom: solid 1px #CCC;
 				text-shadow: 0px 0px 5px #CCC;
 			}
-			input {
+			input{
 				text-align: center;
 				border: solid 1px #999;
 			}
-			input.incomplate {
+			input.incomplate{
 				background-color: #FCC;
 			}
-			input.complate {
+			input.complate{
 				background-color: #EFE;
 			}
-			div#stat {
+			div#stat{
 				color: #C00;
 				font-size: 36px;
 				font-weight: bolder;
 				text-shadow: 0px 1px 3px #CCC;
 			}
-			table.calebdar {
+			table.calebdar{
 				border-spacing: 0px;
 				border-collapse: collapse;
 				/*width: 100%;*/
 			}
-			table.calebdar tr td strong {
+			table.calebdar tr td strong{
 				display: block;
 				text-align: center;
 			}
-			table.calebdar tr th,table.calebdar tr td {
+			table.calebdar tr th,table.calebdar tr td{
 				border: solid 1px #999;
 				padding: 5px;
 				/*width: 14%;*/
 			}
-			table.calebdar tr th {
+			table.calebdar tr th{
 				background-color: #EEE;
 			}
-			table.calebdar tr td span {
+			table.calebdar tr td span{
 				font-size: 10px;
 				text-align: left;
 				display: block;
 			}
-			table.calebdar tr td div {
+			table.calebdar tr td div{
 				text-align: left;
 				margin: 3px;
 				border: solid 1px #CCC;
@@ -83,29 +83,29 @@
 				overflow: hidden;
 				width: 90px;
 			}
-			table.calebdar tr td div input.qty {
+			table.calebdar tr td div input.qty{
 				width: 30px;
 			}
-			table.calebdar tr td div input.price {
+			table.calebdar tr td div input.price{
 				width: 50px;
 				text-align: right;
 			}
-			table.calebdar tr td div {
+			table.calebdar tr td div{
 				vertical-align: middle;
 			}
-			table.calebdar tr td div h3 {
+			table.calebdar tr td div h3{
 				padding: 0px;
 				margin: 0px;
 				font-size: 12px;
 				font-weight: normal;
 			}
-			table.calebdar tr td div input {
+			table.calebdar tr td div input{
 				/*max-width: 40%;*/
 			}
-			table.calebdar tr td div em {
+			table.calebdar tr td div em{
 				position: relative;
 			}
-			table.calebdar tr td div em font {
+			table.calebdar tr td div em font{
 				position: absolute;
 				left: 5px;
 				top: 0px;
@@ -113,20 +113,20 @@
 				
 				z-index: 999;
 			}
-			td.prev {
+			td.prev{
 				text-align: left;
 			}
-			td.next {
+			td.next{
 				text-align: right;
 			}
-			td.blank {
+			td.blank{
 				background-color: #CCC;
 			}
 		</style>
 		<script>
-			window.onload = function(){
-				if(document.getElementById('stat')){
-					setTimeout(function(){
+			window.onload = function( {
+				if(document.getElementById('stat') {
+					setTimeout(function( {
 						document.getElementById('stat').style.display = 'none';
 					},2000);
 				}

@@ -1,23 +1,23 @@
 
-if($_GET{'q'} ne $null){
+if($_GET{'q'} ne $null {
 	@db = &_DB("$config{'dir.AddOns'}/prefcodeadv/postcode.db.cgi");
 	$_GET{'q'} =~ s/\-//ig;
 	$_GET{'q'} =~ s/　/ /ig;
 	@z = ('０','１','２','３','４','５','６','７','８','９');
 	@h = ('0','1','2','3','4','5','6','7','8','9');
-	for(my $i=0;$i<@z;$i++){
+	for(my $i=0;$i<@z;$i++ {
 		$_GET{'q'} =~ s/${z[$i]}/${h[$i]}/ig;
 	}
 	@q = split(/ /,$_GET{'q'});
-	for(my $cnt=0;$cnt<@q;$cnt++){
-		if($q[$cnt] =~ /[0-9]/si){
+	for(my $cnt=0;$cnt<@q;$cnt++ {
+		if($q[$cnt] =~ /[0-9]/si {
 			@db = grep(/^$q[$cnt]/,@db);
 		}
-		else {
+		else{
 			@db = grep(/$q[$cnt]/,@db);
 		}
 	}
-	for(my $cnt=0;$cnt<@db;$cnt++){
+	for(my $cnt=0;$cnt<@db;$cnt++ {
 		($zip,$address,$a1,$a2,$a3) = split(/\,/,$db[$cnt]);
 		$r[0] = $zip;
 		$r[1] = substr($address,0,$a1);
@@ -38,7 +38,7 @@ if($_GET{'q'} ne $null){
 	__HTML__
 	#$js = "prefcodeCallback(\{\[${json}\]\});";
 }
-else {
+else{
 	$js = <<"	__HTML__";
 		prefcodeCallback(\{
 			id: "$_GET{'id'}",

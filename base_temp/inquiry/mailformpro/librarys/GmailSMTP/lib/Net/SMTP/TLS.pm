@@ -17,13 +17,13 @@ use IO::Socket::SSL;
 use MIME::Base64 qw[encode_base64 decode_base64];
 use Digest::HMAC_MD5 qw[hmac_md5_hex];
 
-BEGIN {    #set up Net::SSLeay's internals
+BEGIN{    #set up Net::SSLeay's internals
     Net::SSLeay::load_error_strings();
     Net::SSLeay::SSLeay_add_ssl_algorithms();
     Net::SSLeay::randomize();
 }
 
-sub new {
+sub new{
     my $pkg  = shift;
     my $hosts= shift;
     my %args = @_;
@@ -32,7 +32,7 @@ sub new {
     # make the non-SSL socket that will later be transformed
     $hosts = [ $hosts ] if ! 'ARRAY' eq ref $hosts;
     my $host;
-    foreach $host (@$hosts) {
+    foreach $host (@$hosts {
         $args{sock} = new IO::Socket::INET(
             PeerAddr => $host,
             PeerPort => $args{Port} || 25,
@@ -46,12 +46,12 @@ sub new {
 
     # read the line immediately after connecting
     my ( $rsp, $txt, $more ) = $me->_response();
-    if ( not $rsp == 220 ) {
+    if ( not $rsp == 220  {
         croak "Could not connect to SMTP server: $host $txt\n";
     }
 
     # empty the socket of any continuation lines
-    while ( $more eq '-' ) { ( $rsp, $txt, $more ) = $me->_response(); }
+    while ( $more eq '-'  { ( $rsp, $txt, $more ) = $me->_response(); }
 
     $me->hello();    # the first hello, 2nd after starttls
     $me->starttls() if not $args{NoTLS};    # why we're here, after all
@@ -60,7 +60,7 @@ sub new {
 }
 
 # simply print a command to the server
-sub _command {
+sub _command{
     my $me      = shift;
     my $command = shift;
     $me->{sock}->printf( $command . "\015\012" );
@@ -68,7 +68,7 @@ sub _command {
 
 # read a line from the server and parse the
 # CODE SEPERATOR TEXT response format
-sub _response {
+sub _response{
     my $me   = shift;
     my $line = $me->{sock}->getline();
     my @rsp  = ( $line =~ /(\d+)(.)([^\r]*)/ );
@@ -82,18 +82,18 @@ sub _response {
 # issue an EHLO command using the hostname provided to the constructor via
 # the Hello paramter, which defaults to localhost. After that, read
 # all the ESMTP capabilities returned by the server
-sub hello {
+sub hello{
     my $me = shift;
     $me->_command( "EHLO " . $me->{Hello} );
     my ( $num, $txt, $more ) = $me->_response();
-    if ( not $num == 250 ) {
+    if ( not $num == 250  {
         croak "EHLO command failed: $num $txt\n";
     }
     my %features = ();
 
     # SMTP uses the dash to seperate the status code from
     # the response text while there are more lines remaining
-    while ( $more eq '-' ) {
+    while ( $more eq '-'  {
         ( $num, $txt, $more ) = $me->_response();
         $txt =~ s/[\n|\r]//g;
         $txt =~ /(\S+)\s(.*)$/;
@@ -107,19 +107,19 @@ sub hello {
 # the magic! issue the STARTTLS command and
 # use IO::Socket::SSL to transform that no-good
 # plain old socket into an SSL socket
-sub starttls {
+sub starttls{
     my $me = shift;
     $me->_command("STARTTLS");
     my ( $num, $txt ) = $me->_response();
-    if ( not $num == 220 ) {
+    if ( not $num == 220  {
         croak "Invalid response for STARTTLS: $num $txt\n";
     }
     if (not IO::Socket::SSL::socket_to_SSL(
             $me->{sock},
-            { SSL_verify_mode => IO::Socket::SSL::SSL_VERIFY_NONE }
+           { SSL_verify_mode => IO::Socket::SSL::SSL_VERIFY_NONE }
         )
         )
-    {
+   {
         croak "Couldn't start TLS: " . IO::Socket::SSL::errstr . "\n";
     }
     $me->hello();
@@ -127,43 +127,43 @@ sub starttls {
 
 # based on the AUTH line returned in the features after EHLO,
 # determine which type of authentication to perform
-sub login {
+sub login{
     my $me   = shift;
     my $type = $me->{features}->{AUTH};
-    if ( not $type ) {
+    if ( not $type  {
         croak "Server did not return AUTH in capabilities\n";
     }
-    if ( $type =~ /CRAM\-MD5/ ) {
+    if ( $type =~ /CRAM\-MD5/  {
         $me->auth_MD5();
     }
-    elsif ( $type =~ /LOGIN/ ) {
+    elsif ( $type =~ /LOGIN/  {
         $me->auth_LOGIN();
     }
-    elsif ( $type =~ /PLAIN/ ) {
+    elsif ( $type =~ /PLAIN/  {
         $me->auth_PLAIN();
     }
-    else {
+    else{
         croak "Unsupported Authentication mechanism\n";
     }
 }
 
 # perform a LOGIN authentication...
 # works well on my box.
-sub auth_LOGIN {
+sub auth_LOGIN{
     my $me = shift;
     $me->_command("AUTH LOGIN");
     my ( $num, $txt ) = $me->_response();
-    if ( not $num == 334 ) {
+    if ( not $num == 334  {
         croak "Cannot authenticate via LOGIN: $num $txt\n";
     }
     $me->_command( encode_base64( $me->{User}, "" ) );
     ( $num, $txt ) = $me->_response();
-    if ( not $num == 334 ) {
+    if ( not $num == 334  {
         croak "Auth failed: $num $txt\n";
     }
     $me->_command( encode_base64( $me->{Password}, "" ) );
     ( $num, $txt ) = $me->_response();
-    if ( not $num == 235 ) {
+    if ( not $num == 235  {
         croak "Auth failed: $num $txt\n";
     }
 }
@@ -171,11 +171,11 @@ sub auth_LOGIN {
 # use MD5 to login... gets the ticket from the text
 # of the line returned after the auth command is issued.
 # NOTE: untested
-sub auth_MD5 {
+sub auth_MD5{
     my $me = shift;
     $me->_command("AUTH CRAM-MD5");
     my ( $num, $txt ) = $me->_response();
-    if ( not $num == 334 ) {
+    if ( not $num == 334  {
         croak "Cannot authenticate via CRAM-MD5: $num $txt\n";
     }
     my $ticket = decode_base64($txt)
@@ -183,13 +183,13 @@ sub auth_MD5 {
     my $md5_pass = hmac_md5_hex( $ticket, $me->{Password} );
     $me->_command( encode_base64( $me->{User} . " " . $md5_pass, "" ) );
     ( $num, $txt ) = $me->_response();
-    if ( not $num == 235 ) {
+    if ( not $num == 235  {
         croak "Auth failed: $num $txt\n";
     }
 }
 
 # perform plain authentication
-sub auth_PLAIN {
+sub auth_PLAIN{
     my $me   = shift;
     my $user = $me->{User};
     my $pass = $me->{Password};
@@ -199,12 +199,12 @@ sub auth_PLAIN {
         )
     );
     my ( $num, $txt ) = $me->_response();
-    if ( not $num == 235 ) {
+    if ( not $num == 235  {
         croak "Auth failed: $num $txt\n";
     }
 }
 
-sub _addr {
+sub _addr{
     my $addr = shift;
     $addr = "" unless defined $addr;
 
@@ -215,31 +215,31 @@ sub _addr {
 }
 
 # send the MAIL FROM:<addr> command (RFC 5321, 821)
-sub mail {
+sub mail{
     my $me   = shift;
     my $from = shift;
     $me->_command( "MAIL FROM:" . _addr($from) );
     my ( $num, $txt ) = $me->_response();
-    if ( not $num == 250 ) {
+    if ( not $num == 250  {
         croak "Could't set FROM: $num $txt\n";
     }
 }
 
 # send the RCPT TO:<addr> command (RFC 5321, 821)
-sub recipient {
+sub recipient{
     my $me = shift;
 
     my $addr;
-    foreach my $addr (@_) {
+    foreach my $addr (@_ {
         $me->_command( "RCPT TO:" . _addr($addr) );
         my ( $num, $txt ) = $me->_response();
-        if ( not $num == 250 ) {
+        if ( not $num == 250  {
             croak "Couldn't send TO <$addr>: $num $txt\n";
         }
     }
 }
 
-BEGIN {
+BEGIN{
     *to  = \&recipient;
     *cc  = \&recipient;
     *bcc = \&recipient;
@@ -249,17 +249,17 @@ BEGIN {
 # I would probably have designed the public methods of
 # this class differently, but this is to keep with
 # Net::SMTP's API
-sub data {
+sub data{
     my $me = shift;
     $me->_command("DATA");
     my ( $num, $txt ) = $me->_response();
-    if ( not $num == 354 ) {
+    if ( not $num == 354  {
         croak "Data failed: $num $txt\n";
     }
 }
 
 # send stuff over raw (for use as message body)
-sub datasend {
+sub datasend{
     my $cmd  = shift;
     my $arr  = @_ == 1 && ref( $_[0] ) ? $_[0] : \@_;
     my $line = join( "", @$arr );
@@ -275,10 +275,10 @@ sub datasend {
 
     my $first_ch = '';
 
-    if ( $last_ch eq "\015" ) {
+    if ( $last_ch eq "\015"  {
         $first_ch = "\012" if $line =~ s/^\012//;
     }
-    elsif ( $last_ch eq "\012" ) {
+    elsif ( $last_ch eq "\012"  {
         $first_ch = "." if $line =~ /^\./;
     }
 
@@ -296,20 +296,20 @@ sub datasend {
 
     local $SIG{PIPE} = 'IGNORE' unless $^O eq 'MacOS';
 
-    while ($len) {
+    while ($len {
         my $wout;
         if ( select( undef, $wout = $win, undef, $timeout ) > 0
             or -f $cmd->{sock} )    # -f for testing on win32
-        {
+       {
             my $w = syswrite( $cmd->{sock}, $line, $len, $offset );
-            unless ( defined($w) ) {
+            unless ( defined($w)  {
                 carp("Error: $!");
                 return undef;
             }
             $len -= $w;
             $offset += $w;
         }
-        else {
+        else{
             carp("Error: Timeout");
             return undef;
         }
@@ -319,21 +319,21 @@ sub datasend {
 
 # end the message body submission by a line with nothing
 # but a period on it.
-sub dataend {
+sub dataend{
     my $me = shift;
     $me->_command("\015\012.");
     my ( $num, $txt ) = $me->_response();
-    if ( not $num == 250 ) {
+    if ( not $num == 250  {
         croak "Couldn't send mail: $num $txt\n";
     }
 }
 
 # politely disconnect from the SMTP server.
-sub quit {
+sub quit{
     my $me = shift;
     $me->_command("QUIT");
     my ( $num, $txt ) = $me->_response();
-    if ( not $num == 221 ) {
+    if ( not $num == 221  {
         croak
             "An error occurred disconnecting from the mail server: $num $txt\n";
     }
@@ -415,7 +415,7 @@ The AUTH method will depend on the features returned by the server after the EHL
 
 =head2 ERROR HANDLING
 
-This module will croak in the event of an SMTP error. Should you wish to handle this gracefully in your application, you may wrap your mail transmission in an eval {} block and check $@ afterward.
+This module will croak in the event of an SMTP error. Should you wish to handle this gracefully in your application, you may wrap your mail transmission in an eval{} block and check $@ afterward.
 
 =head2 ACKNOWLEDGEMENTS
 

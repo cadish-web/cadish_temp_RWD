@@ -1,5 +1,5 @@
 mfp.extend.event('ready',
-	function(){
+	function( {
 		var elm = mfp.d.createElement('div');
 		elm.id = 'mfp_testsend';
 		mfp.Mfp.parentNode.insertBefore(elm,mfp.$('mfp_warning'));
@@ -22,7 +22,7 @@ mfp.extend.event('ready',
 		});
 	}
 );
-function testmodeCallback(mailto,testmail){
+function testmodeCallback(mailto,testmail {
 	var innerHTML = '<p>現在<strong>【テストモード】</strong>で動作しております。<br />テストモードでは'+testmail+'宛にメールが送信されます。<br />稼働モードでは'+mailto+'宛にメールが送信されます。</p>';
 	mfp.$('mfp_testsend').innerHTML = innerHTML;
 	mfp.addhiddenElement('testmode',1);

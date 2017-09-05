@@ -1,47 +1,47 @@
 @charset "UTF-8";
 
-body {
+body{
 	overflow-x: hidden;
 }
-div#mfp_hidden {
+div#mfp_hidden{
 	overflow: hidden;
 	width: 1px;
 	height: 1px;
 	padding: 0px;
 	margin: 0px;
 }
-div#mfp_hidden input {
+div#mfp_hidden input{
 	margin: 10px;
 }
-div.mfp_thanks {
+div.mfp_thanks{
 	padding: 30px;
 }
-div.mfp_thanks p {
+div.mfp_thanks p{
 	line-height: 1.7em;
 }
-div.mfp_thanks ul.mfp_caution {
+div.mfp_thanks ul.mfp_caution{
 	margin: 0px;
 	padding: 0px;
 }
-div.mfp_thanks ul.mfp_caution li {
+div.mfp_thanks ul.mfp_caution li{
 	display: block;
 	color: #C00;
 	margin: 0px;
 	padding: 5px 0px;
 }
-div#mfp_thanks {
+div#mfp_thanks{
 	text-align: center;
 	font-size: 18px;
 	padding: 20px 0px;
 }
-div#mfp_thanks strong {
+div#mfp_thanks strong{
 	color: #C00;
 	font-size: 24px;
 }
-form#mailformpro {
+form#mailformpro{
 	padding: 10px 0px;
 }
-/*form#mailformpro dl dt {
+/*form#mailformpro dl dt{
 	float: left;
 	width: 160px;
 	clear: both;
@@ -51,7 +51,7 @@ form#mailformpro {
 	border-top: solid 1px #CCC;
 	margin: 0px;
 }
-form#mailformpro dl dd {
+form#mailformpro dl dd{
 	border-top: solid 1px #CCC;
 	margin: 0px;
 	padding: 10px 5px 20px 170px;
@@ -59,16 +59,16 @@ form#mailformpro dl dd {
 	line-height: 1.5em;
 	text-align: left;
 }*/
-form#mailformpro dl dd ul,form#mailformpro dl dd ol {
+form#mailformpro dl dd ul,form#mailformpro dl dd ol{
 	margin: 0px;
 	padding: 0px;
 }
-form#mailformpro dl dd ul li,form#mailformpro dl dd ol li {
+form#mailformpro dl dd ul li,form#mailformpro dl dd ol li{
 	margin: 0px;
 	padding: 0px;
 	list-style: none;
 }
-.must {
+.must{
 	display: block;
 	background-color: #C00;
 	border: solid 2px #C00;
@@ -83,7 +83,7 @@ form#mailformpro dl dd ul li,form#mailformpro dl dd ol li {
 	background-image: url(_images/mfp_header.png);
 	background-size: 100% 100%;
 }
-.optionally {
+.optionally{
 	display: block;
 	background-color: #06C;
 	border: solid 2px #06C;
@@ -98,63 +98,63 @@ form#mailformpro dl dd ul li,form#mailformpro dl dd ol li {
 	background-image: url(_images/mfp_header.png);
 	background-size: 100% 100%;
 }
-form#mailformpro label {
+form#mailformpro label{
 	border-radius: 3px;
 	margin: 3px;
 	display: inline-block;
 	white-space: nowrap;
 }
-form#mailformpro label.mfp_checked {
+form#mailformpro label.mfp_checked{
 	padding: 3px;
 	border: solid 1px #CCC;
 	background-color: #E8EEF9;
 	box-shadow: 0px 1px 3px #CCC inset;
 }
-form#mailformpro label.mfp_not_checked {
+form#mailformpro label.mfp_not_checked{
 	padding: 3px;
 	border: solid 1px #EEE;
 }
-table#mfp_confirm_table {
+table#mfp_confirm_table{
 	border-spacing: 0px;
 	border-collapse: collapse;
 	width: 100%;
 }
-table#mfp_confirm_table tr.mfp_colored {
+table#mfp_confirm_table tr.mfp_colored{
 	background-color: #F6F7F9;
 }
-table#mfp_confirm_table tr.mfp_achroma {
+table#mfp_confirm_table tr.mfp_achroma{
 	background-color: #FFF;
 }
-table#mfp_confirm_table tr th,table#mfp_confirm_table tr td {
+table#mfp_confirm_table tr th,table#mfp_confirm_table tr td{
 	text-align: left;
 	font-size: 12px;
 	border-top: solid 1px #CCC;
 	padding: 5px 10px;
 }
-table#mfp_confirm_table tr th {
+table#mfp_confirm_table tr th{
 	white-space: nowrap;
 	width: 200px;
 }
-table#mfp_confirm_table tr td {
+table#mfp_confirm_table tr td{
 	line-height: 1.5em;
 	word-break: break-all;
 }
-div#mfp_phase_confirm {
+div#mfp_phase_confirm{
 	clear: both;
 }
-div#mfp_phase_confirm h4 {
+div#mfp_phase_confirm h4{
 	font-size: 36px;
 	padding: 10px 0px 0px 0px;
 	text-align: center;
 }
-div#mfp_phase_confirm div#mfp_phase_confirm_inner {
+div#mfp_phase_confirm div#mfp_phase_confirm_inner{
 }
-div#mfp_overlay {
+div#mfp_overlay{
 	position: absolute;
 	display: none;
 	z-index: 10001;
 }
-div#mfp_overlay_inner {
+div#mfp_overlay_inner{
 	background-color: #FFF;
 	padding: 15px;
 	margin: 0px auto;
@@ -163,20 +163,20 @@ div#mfp_overlay_inner {
 	width: 640px;
 	max-width: 90%;
 }
-div#mfp_overlay_background {
+div#mfp_overlay_background{
 	background-color: #000;
 	position: absolute;
 	display: none;
 	z-index: 10000;
 }
-div#mfp_loading_screen {
+div#mfp_loading_screen{
 	z-index: 20000;
 	opacity: 0.8;
 	display: none;
 	background-color: #000;
 	position: absolute;
 }
-div#mfp_loading {
+div#mfp_loading{
 	z-index: 20001;
 	position: absolute;
 	display: none;
@@ -184,13 +184,13 @@ div#mfp_loading {
 	height: 40px;
 	background-image: url(_images/mfp_loading.gif);
 }
-.mfp_colored {
+.mfp_colored{
 	background-color: #F6F7F9;
 }
-.mfp_achroma {
+.mfp_achroma{
 	background-color: #FFF;
 }
-div.mfp_err {
+div.mfp_err{
 	clear: both;
 	display: none;
 	text-align: left;
@@ -203,72 +203,72 @@ div.mfp_err {
 	background-repeat: no-repeat;
 	background-position: 0px 1px;
 }
-.mfp_parent_error {
+.mfp_parent_error{
 	border: solid 2px #F00;
 }
-.problem {
+.problem{
 	background-color: #FCC;
 }
-div#mfp_error {
+div#mfp_error{
 	background-color: #FEE;
 	border: solid 1px #F00;
 	padding: 10px;
 	display: none;
 }
-div#mfp_error p {
+div#mfp_error p{
 	padding: 0px;
 	margin: 0px;
 	font-size: 14px;
 	text-align: center;
 }
-div#mfp_error p strong {
+div#mfp_error p strong{
 	font-size: 18px;
 	color: #F00;
 }
-div#mfp_warning {
+div#mfp_warning{
 	background-color: #FEE;
 	border: solid 1px #F00;
 	padding: 10px;
 	display: none;
 	border-radius: 5px;
 }
-div#mfp_warning p {
+div#mfp_warning p{
 	padding: 0px;
 	margin: 0px;
 	font-size: 14px;
 	text-align: center;
 }
-div#mfp_warning p strong {
+div#mfp_warning p strong{
 	font-size: 18px;
 	color: #F00;
 }
-div#mfp_price {
+div#mfp_price{
 	color: #C00;
 	font-size: 36px;
 	padding: 10px;
 	font-weight: bolder;
 }
-div#mfp_price span {
+div#mfp_price span{
 	color: #666;
 	font-size: 12px;
 	font-weight: normal;
 }
-button.mfp_next,button.mfp_prev {
+button.mfp_next,button.mfp_prev{
 	font-size: 18px;
 	margin: 10px;
 	padding: 5px 10px;
 }
-button.mfp_next {
+button.mfp_next{
 	float: right;
 }
-button.mfp_prev {
+button.mfp_prev{
 	float: left;
 }
-ul#mfp_phase_stat {
+ul#mfp_phase_stat{
 	padding: 10px;
 	text-align: center;
 }
-ul#mfp_phase_stat li {
+ul#mfp_phase_stat li{
 	display: inline-block;
 	padding: 8px 15px;
 	border-radius: 5px;
@@ -276,12 +276,12 @@ ul#mfp_phase_stat li {
 	list-style: none;
 	font-size: 14px;
 }
-ul#mfp_phase_stat li.mfp_phase_arrow {
+ul#mfp_phase_stat li.mfp_phase_arrow{
 	box-shadow: none;
 	color: #999;
 	padding: 8px 0px;
 }
-ul#mfp_phase_stat li.mfp_active_phase {
+ul#mfp_phase_stat li.mfp_active_phase{
 	box-shadow: 0px 1px 6px #000;
 	background-image: url(_images/mfp_header.png);
 	background-size: 100% 100%;
@@ -291,7 +291,7 @@ ul#mfp_phase_stat li.mfp_active_phase {
 	color: #FFF;
 	text-shadow: 0px 1px 3px #000;
 }
-ul#mfp_phase_stat li.mfp_inactive_phase {
+ul#mfp_phase_stat li.mfp_inactive_phase{
 	background-image: url(_images/mfp_header.png);
 	background-size: 100% 100%;
 	background-color: #EEE;
@@ -299,77 +299,77 @@ ul#mfp_phase_stat li.mfp_inactive_phase {
 	color: #999;
 	box-shadow: 0px 1px 6px #CCC;
 }
-div#mfp_shopping_cart {
+div#mfp_shopping_cart{
 	border: solid 1px #CCC;
 	margin: 0px;
 	padding: 0px;
 }
-div#mfp_shopping_cart p {
+div#mfp_shopping_cart p{
 	margin: 0px;
 	text-align: center;
 	padding: 20px 10px;
 	font-size: 12px;
 	background-color: #FEE;
 }
-table.mfp_shoppingcart {
+table.mfp_shoppingcart{
 	border-spacing: 0px;
 	border-collapse: collapse;
 	width: 100%;
 }
-table.mfp_shoppingcart thead tr td {
+table.mfp_shoppingcart thead tr td{
 	background-color: #EEE;
 	border-bottom: solid 1px #CCC;
 	text-align: center;
 	font-size: 12px;
 	padding: 5px;
 }
-table.mfp_shoppingcart tbody tr th,table.mfp_shoppingcart tbody tr td {
+table.mfp_shoppingcart tbody tr th,table.mfp_shoppingcart tbody tr td{
 	font-size: 12px;
 	padding: 5px;
 	border-bottom: solid 1px #CCC;
 }
-table.mfp_shoppingcart tbody tr td select {
+table.mfp_shoppingcart tbody tr td select{
 	display: block;
 	margin: 0px auto;
 	text-align: center;
 }
-table.mfp_shoppingcart tbody tr td select option {
+table.mfp_shoppingcart tbody tr td select option{
 	text-align: center;
 }
-table.mfp_shoppingcart tbody tr th span {
+table.mfp_shoppingcart tbody tr th span{
 	display: block;
 	font-weight: normal;
 	font-size: 10px;
 	color: #666;
 	padding: 3px 0px;
 }
-table.mfp_shoppingcart tfoot tr td {
+table.mfp_shoppingcart tfoot tr td{
 	padding: 5px;
 	font-size: 16px;
 	font-weight: bolder;
 	color: #900;
 }
-td.msc_price {
+td.msc_price{
 	font-size: 12px;
 	text-align: right;
 }
-div.mfp_buttons {
+div.mfp_buttons{
 	clear: both;
 	padding: 10px 0px;
 	text-align: center;
 }
-div.mfp_buttons button#mfp_button_send {
+div.mfp_buttons button#mfp_button_send{
 }
-div.mfp_buttons button#mfp_button_cancel {
+div.mfp_buttons button#mfp_button_cancel{
 }
-.imagebutton {
+.imagebutton{
 	margin: 0px;
 	padding: 0px;
 	border: none;
 	outline: none;
 	background: none;
 }
-.mfp_element_all {
+.mfp_element_all{
 	max-width: 90%;
 }
 .mfp_element_text,
@@ -379,7 +379,7 @@ div.mfp_buttons button#mfp_button_cancel {
 .mfp_element_tel,
 .mfp_element_textarea,
 .mfp_element_date,
-.mfp_element_password {
+.mfp_element_password{
 	border: solid 1px #CCC;
 	border-radius: 3px;
 	box-shadow: 0px 0px 5px #CCC inset;
@@ -388,11 +388,11 @@ div.mfp_buttons button#mfp_button_cancel {
 	vertical-align: middle;
 }
 .mfp_element_checkbox,
-.mfp_element_radio {
+.mfp_element_radio{
 	vertical-align: middle;
 	margin: 0px 2px;
 }
-.mfp_element_file {
+.mfp_element_file{
 	font-size: 12px;
 	display: inline-block;
 	padding: 10px 10px;
@@ -402,7 +402,7 @@ div.mfp_buttons button#mfp_button_cancel {
 	box-shadow: 0px 0px 5px #CCC inset;
 	background: #EEE;
 }
-.mfp_element_submit,.mfp_element_reset,.mfp_element_button,button.mfp_next,button.mfp_prev {
+.mfp_element_submit,.mfp_element_reset,.mfp_element_button,button.mfp_next,button.mfp_prev{
 	border-radius: 5px;
 	padding: 5px 10px;
 	border: solid 1px #CCC;
@@ -415,37 +415,37 @@ div.mfp_buttons button#mfp_button_cancel {
 	cursor: pointer;
 	outline: none;
 }
-.mfp_element_reset {
+.mfp_element_reset{
 	color: #333;
 }
-.mfp_element_submit:hover,.mfp_element_reset:hover,.mfp_element_button:hover,button.mfp_next:hover,button.mfp_prev:hover {
+.mfp_element_submit:hover,.mfp_element_reset:hover,.mfp_element_button:hover,button.mfp_next:hover,button.mfp_prev:hover{
 	background: gradient(linear, center top, center bottom, from(#FFF), to(#CCC));
 	background: -webkit-gradient(linear, center top, center bottom, from(#FFF), to(#CCC));
 	background: -moz-linear-gradient(top, #FFF, #CCC);
 	background: -ms-linear-gradient(top, #FFF 0%, #CCC 100%);
 	box-shadow: 0px 2px 15px #CCC;
 }
-button.mfp_next,button.mfp_prev {
+button.mfp_next,button.mfp_prev{
 	font-size: 14px;
 }
-input#mfp_reserve_item,input#mfp_reserve_date {
+input#mfp_reserve_item,input#mfp_reserve_date{
 	display: none;
 }
-div#mfp_reserve_wrapper {
+div#mfp_reserve_wrapper{
 	position: relative;
 	overflow: hidden;
 	border: solid 1px #CCC;
 }
-div#mfp_reserve_inner {
+div#mfp_reserve_inner{
 	position: relative;
 	padding: 0px 0px 0px 100px;
 	overflow: auto;
 }
-div#mfp_reserve_wrapper table {
+div#mfp_reserve_wrapper table{
 	border-spacing: 0px;
 	border-collapse: collapse;
 }
-div#mfp_reserve_wrapper table.mfp_reserve_table_label {
+div#mfp_reserve_wrapper table.mfp_reserve_table_label{
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -453,28 +453,28 @@ div#mfp_reserve_wrapper table.mfp_reserve_table_label {
 	background-color: #FEE;
 	z-index: 100;
 }
-div#mfp_reserve_wrapper table.mfp_reserve_table_value {
+div#mfp_reserve_wrapper table.mfp_reserve_table_value{
 	padding: 0px 0px 0px 0px;
 }
 div#mfp_reserve_wrapper table.mfp_reserve_table_value tr td.mfp_reserve_active,
-div#mfp_reserve_wrapper table.mfp_reserve_table_value tr td.mfp_reserve_warning {
+div#mfp_reserve_wrapper table.mfp_reserve_table_value tr td.mfp_reserve_warning{
 	cursor: pointer;
 }
 div#mfp_reserve_wrapper table.mfp_reserve_table_value tr td.mfp_reserve_active:hover,
-div#mfp_reserve_wrapper table.mfp_reserve_table_value tr td.mfp_reserve_warning:hover {
+div#mfp_reserve_wrapper table.mfp_reserve_table_value tr td.mfp_reserve_warning:hover{
 	background-color: #E8EEF9;
 }
-div#mfp_reserve_wrapper table.mfp_reserve_table_value tr td.mfp_reserve_current {
+div#mfp_reserve_wrapper table.mfp_reserve_table_value tr td.mfp_reserve_current{
 	background-color: #0068B7;
 	color: #FFF;
 }
-td.mfp_reserve_disabled {
+td.mfp_reserve_disabled{
 	background-color: #CCC;
 }
-td.mfp_reserve_warning {
+td.mfp_reserve_warning{
 	background-color: #FFC;
 }
-div#mfp_reserve_wrapper table tr td,div#mfp_reserve_wrapper table tr th {
+div#mfp_reserve_wrapper table tr td,div#mfp_reserve_wrapper table tr th{
 	border: solid 1px #CCC;
 	padding: 0px 5px;
 	font-size: 12px;
@@ -484,15 +484,15 @@ div#mfp_reserve_wrapper table tr td,div#mfp_reserve_wrapper table tr th {
 	height: 20px;
 	text-align: left;
 }
-td.mfp_reserve_week_0 {
+td.mfp_reserve_week_0{
 	color: #F00;
 	background-color: #FEE;
 }
-td.mfp_reserve_week_6 {
+td.mfp_reserve_week_6{
 	color: #00F;
 	background-color: #EEF;
 }
-div.mfp_ok {
+div.mfp_ok{
 	border-radius: 5px;
 	background-color: #090;
 	border: solid 1px #090;
@@ -506,10 +506,10 @@ div.mfp_ok {
 	background-size: 100% 100%;
 	display: none;
 }
-div.prefcodeWrapper {
+div.prefcodeWrapper{
 	position: relative;
 }
-div.prefcodeResult {
+div.prefcodeResult{
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -519,29 +519,29 @@ div.prefcodeResult {
 	box-shadow: 0px 0px 5px #CCC;
 	display: none;
 }
-div.prefcodeResult div {
+div.prefcodeResult div{
 	cursor: pointer;
 }
-div.prefcodeResult div:hover {
+div.prefcodeResult div:hover{
 	background-color: #C9EBFB;
 }
-div.prefcodeResult div.prefcodeNext {
+div.prefcodeResult div.prefcodeNext{
 	background-color: #EEE;
 	text-align: center;
 }
-div.prefLoading {
+div.prefLoading{
 	padding: 60px 100px;
 	background: url(_images/mfp_zip_loading.gif) no-repeat center center;
 }
-.hidefield {
+.hidefield{
 	height: 0px;
 	overflow: hidden;
 }
-.showfield {
+.showfield{
 	height: auto;
 	overflow: visible;
 }
-div.mfp_attached_thumbnails {
+div.mfp_attached_thumbnails{
 	display: none;
 	padding: 5px;
 	margin: 5px auto;
@@ -550,11 +550,11 @@ div.mfp_attached_thumbnails {
 	box-shadow: 0px 0px 5px #CCC inset;
 	background: #EEE;
 }
-div.mfp_attached_thumbnails ul {
+div.mfp_attached_thumbnails ul{
 	margin: 0px;
 	padding: 0px;
 }
-form#mailformpro dl dd div.mfp_attached_thumbnails ul li {
+form#mailformpro dl dd div.mfp_attached_thumbnails ul li{
 	display: inline-block;
 	vertical-align: top;
 	padding: 0px;
@@ -562,73 +562,73 @@ form#mailformpro dl dd div.mfp_attached_thumbnails ul li {
 	margin: 5px;
 	box-shadow: 0px 2px 5px #999;
 }
-form#mailformpro dl dd div.mfp_attached_thumbnails ul li a {
+form#mailformpro dl dd div.mfp_attached_thumbnails ul li a{
 	display: block;
 	max-height: 100px;
 	overflow: hidden;
 }
-div.mfp_attached_thumbnails ul li a img {
+div.mfp_attached_thumbnails ul li a img{
 	display: block;
 	max-width: 80px;
 }
-button.mfp_attached_reset {
+button.mfp_attached_reset{
 	font-size: 14px;
 }
-div#mfp_OperationCheck {
+div#mfp_OperationCheck{
 }
-div#mfp_OperationCheck div#mfp_OperationCheck_inner {
+div#mfp_OperationCheck div#mfp_OperationCheck_inner{
 	display: none;
 }
-div#mfp_OperationCheck strong {
+div#mfp_OperationCheck strong{
 	background: #090;
 	display: block;
 	color: #222;
 	text-align: center;
 	border-radius: 3px;
 }
-div#mfp_OperationCheck * {
+div#mfp_OperationCheck *{
 	padding: 0px;
 	margin: 0px;
 	font-size: 12px;
 }
-div#mfp_OperationCheck p {
+div#mfp_OperationCheck p{
 	padding: 0px 5px;
 	margin: 0px;
 	font-size: 12px;
 }
-div#mfp_OperationCheck p a {
+div#mfp_OperationCheck p a{
 	color: #0C0;
 	text-decoration: none;
 }
 div#mfp_OperationCheck p a:hover,
-div#mfp_OperationCheck p button:hover {
+div#mfp_OperationCheck p button:hover{
 	text-decoration: underline;
 }
-div#mfp_OperationCheck p button {
+div#mfp_OperationCheck p button{
 	border: none;
 	background: none;
 	color: #0C0;
 	cursor: pointer;
 }
-div#mfp_OperationCheck div#mfp_OperationCheck_inner ul {
+div#mfp_OperationCheck div#mfp_OperationCheck_inner ul{
 }
 div#mfp_OperationCheck ul li,
 div#mfp_OperationCheck ul li label,
-div#mfp_OperationCheck ul li label input {
+div#mfp_OperationCheck ul li label input{
 	line-height: 12px;
 	font-size: 12px;
 	list-style: none;
 	vertical-align: middle;
 }
-div#mfp_OperationCheck ul li {
+div#mfp_OperationCheck ul li{
 	padding: 5px 10px;
 }
-div#mfp_OperationCheck ul li label {
+div#mfp_OperationCheck ul li label{
 	text-decoration: underline;
 }
 button#mfp_recorder_record,
 button#mfp_recorder_clear,
-button#mfp_recorder_restore {
+button#mfp_recorder_restore{
 	border-radius: 5px;
 	padding: 5px 10px 5px 2em;
 	border: solid 1px #CCC;
@@ -643,37 +643,37 @@ button#mfp_recorder_restore {
 	display: inline-block;
 	margin: 5px auto;
 }
-button#mfp_recorder_record {
+button#mfp_recorder_record{
 	background: url(_images/mfp_record_disabled.png) no-repeat 5px center #EEE;
 	background-size: 24px 24px;
 }
-button#mfp_recorder_clear {
+button#mfp_recorder_clear{
 	background: url(_images/mfp_record_remove.png) no-repeat 5px center #EEE;
 	background-size: 24px 24px;
 }
-button#mfp_recorder_restore {
+button#mfp_recorder_restore{
 	background: url(_images/mfp_record_restore.png) no-repeat 5px center #EEE;
 	background-size: 24px 24px;
 }
 button.enabled#mfp_recorder_record,
 button.enabled#mfp_recorder_clear,
-button.enabled#mfp_recorder_restore {
+button.enabled#mfp_recorder_restore{
 	background: url(_images/mfp_record_enabled.png) no-repeat 5px center #EEE;
 	background-size: 24px 24px;
 }
-div#mfp_recorder_wrap {
+div#mfp_recorder_wrap{
 	border: solid 1px #CCC;
 	padding: 10px;
 	text-align: center;
 	margin: 5px auto;
 }
-td.request_image {
+td.request_image{
 	width: 100px;
 }
-td.request_image img {
+td.request_image img{
 	max-width: 100px;
 }
-span.mfp_tips {
+span.mfp_tips{
 	background-image: url(_images/mfp_header.png);
 	background-size: 100% 100%;
 	background-color: #FCC;
@@ -683,45 +683,45 @@ span.mfp_tips {
 	margin: 2px;
 	box-shadow: 0px 2px 10px #999;
 }
-span.mfp_tips strong {
+span.mfp_tips strong{
 	color: #800040;
 }
-span.mfp_tips span {
+span.mfp_tips span{
 	display: block;
 	padding: 10px;
 	color: #008080;
 }
-span.mfp_tips em {
+span.mfp_tips em{
 	font-style: normal;
 	color: #090;
 	font-weight: bold;
 }
 @media screen and (max-width: 800px) {
-	/*form#mailformpro dl dt {
+	/*form#mailformpro dl dt{
 		float: none;
 		width: auto;
 		font-size: 12px;
 		padding: 5px;
 		text-align: left;
 	}
-	form#mailformpro dl dd {
+	form#mailformpro dl dd{
 		clear: both;
 		border-top: none;
 		padding: 5px 15px;
 		font-size: 12px;
 		line-height: 1.5em;
 	}*/
-	div.mfp_buttons button {
+	div.mfp_buttons button{
 		font-size: 14px;
 	}
-	div#mfp_phase_confirm h4 {
+	div#mfp_phase_confirm h4{
 		font-size: 18px;
 	}
-	ul#mfp_phase_stat {
+	ul#mfp_phase_stat{
 		padding: 0px;
 		text-align: left;
 	}
-	ul#mfp_phase_stat li {
+	ul#mfp_phase_stat li{
 		text-align: center;
 		padding: 5px 0px;
 		border-radius: 3px;
@@ -730,24 +730,24 @@ span.mfp_tips em {
 		font-size: 14px;
 		width: 28%;
 	}
-	ul#mfp_phase_stat li.mfp_phase_arrow {
+	ul#mfp_phase_stat li.mfp_phase_arrow{
 		bos-shadow: none;
 		display: none;
 	}
-	ul#mfp_phase_stat li.mfp_active_phase {
+	ul#mfp_phase_stat li.mfp_active_phase{
 	}
-	ul#mfp_phase_stat li.mfp_inactive_phase {
+	ul#mfp_phase_stat li.mfp_inactive_phase{
 	}
-	table#mfp_confirm_table tr th {
+	table#mfp_confirm_table tr th{
 		white-space: nowrap;
 		width: 100px;
 	}
-	div#mfp_thanks {
+	div#mfp_thanks{
 		text-align: center;
 		font-size: 18px;
 		padding: 20px 0px;
 	}
-	div#mfp_thanks strong {
+	div#mfp_thanks strong{
 		color: #C00;
 		font-size: 24px;
 		display: block;

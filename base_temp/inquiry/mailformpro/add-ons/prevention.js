@@ -1,7 +1,7 @@
 mfp.extend.event('check',
-	function(obj){
-		if(obj.name){
-			if(mfp.Elements[obj.name].type == "email"){
+	function(obj {
+		if(obj.name {
+			if(mfp.Elements[obj.name].type == "email" {
 				if(obj.value.match(/example/i))
 					mfp.ExtendErrorMsg = "exampleという文字を含める事はできません。";
 				else if(obj.value.match(/aaa/i))

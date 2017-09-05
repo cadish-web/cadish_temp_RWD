@@ -3,19 +3,19 @@
 //
 var estimateValue = [
 	{
-		elements: {
+		elements:{
 			index: 'element1',
 			x: 'element2',
 			y: 'element3',
 			qty: 'element4', // optional
 		},
-		label: {
+		label:{
 			default: '選択してください',
 			exception: '別途御見積ください'
 		},
 		sheets: [
 			{
-				label: {
+				label:{
 					name: '普通紙',
 					x: ['1枚～4枚','5枚～9枚','10枚～19枚','20枚～29枚','30枚～50枚','51枚以上'],
 					y: ['A0','A1','A2','A3']
@@ -29,7 +29,7 @@ var estimateValue = [
 				]
 			},
 			{
-				label: {
+				label:{
 					name: 'マットコート紙',
 					x: ['1枚～4枚','5枚～9枚','10枚～19枚','20枚～29枚','30枚～50枚','51枚以上'],
 					y: ['A0','A1','A2','A3']
@@ -43,7 +43,7 @@ var estimateValue = [
 				]
 			},
 			{
-				label: {
+				label:{
 					name: '厚手光沢紙',
 					x: ['1枚～4枚','5枚～9枚','10枚～19枚','20枚～29枚','30枚～50枚','51枚以上'],
 					y: ['A0','A1','A2','A3']
@@ -59,19 +59,19 @@ var estimateValue = [
 		]
 	},
 	{
-		elements: {
+		elements:{
 			index: 'element5',
 			x: 'element6',
 			y: 'element7',
 			qty: 'element8', // optional
 		},
-		label: {
+		label:{
 			default: '選択してください',
 			exception: '別途御見積ください'
 		},
 		sheets: [
 			{
-				label: {
+				label:{
 					name: '普通紙',
 					x: ['1枚～4枚','5枚～9枚','10枚～19枚','20枚～29枚','30枚～50枚','51枚以上'],
 					y: ['A0','A1','A2','A3']
@@ -85,7 +85,7 @@ var estimateValue = [
 				]
 			},
 			{
-				label: {
+				label:{
 					name: 'マットコート紙',
 					x: ['1枚～4枚','5枚～9枚','10枚～19枚','20枚～29枚','30枚～50枚','51枚以上'],
 					y: ['A0','A1','A2','A3']
@@ -99,7 +99,7 @@ var estimateValue = [
 				]
 			},
 			{
-				label: {
+				label:{
 					name: '厚手光沢紙',
 					x: ['1枚～4枚','5枚～9枚','10枚～19枚','20枚～29枚','30枚～50枚','51枚以上'],
 					y: ['A0','A1','A2','A3']
@@ -115,53 +115,53 @@ var estimateValue = [
 		]
 	}
 ];
-function estimateAddon(json){
+function estimateAddon(json {
 	var j = json;
 	var price;
 	var stat;
 	var index = mfp.$(j.elements.index);
 	var x = mfp.$(j.elements.x);
 	var y = mfp.$(j.elements.y);
-	var init = function(){
-		if(index){
+	var init = function( {
+		if(index {
 			index.length = j.sheets.length + 1;
-			for(var i=0;i<j.sheets.length;i++){
+			for(var i=0;i<j.sheets.length;i++ {
 				index.options[i+1].text = j.sheets[i].label.name;
 				index.options[i+1].value = j.sheets[i].label.name;
 			}
-			mfp.add(index,"change",(function(){
+			mfp.add(index,"change",(function( {
 				onchange();
 			}));
-			mfp.add(x,"change",(function(){
+			mfp.add(x,"change",(function( {
 				calc();
 			}));
-			mfp.add(y,"change",(function(){
+			mfp.add(y,"change",(function( {
 				calc();
 			}));
 		}
 	};
-	var calc = function(){
-		if(x.selectedIndex > 0 && y.selectedIndex > 0 && index.selectedIndex > 0){
+	var calc = function( {
+		if(x.selectedIndex > 0 && y.selectedIndex > 0 && index.selectedIndex > 0 {
 			var num = index.selectedIndex - 1;
 			price = j.sheets[num].sheet[y.selectedIndex-1][x.selectedIndex-1];
 			stat = true;
 			alert(price);
 		}
-		else {
+		else{
 			price = null;
 			stat = false;
 		}
 	};
-	var onchange = function(obj){
-		if(index.selectedIndex > 0){
+	var onchange = function(obj {
+		if(index.selectedIndex > 0 {
 			var num = index.selectedIndex - 1;
 			y.length = j.sheets[num].label.y.length + 1;
-			for(var i=0;i<j.sheets[num].label.y.length;i++){
+			for(var i=0;i<j.sheets[num].label.y.length;i++ {
 				y.options[i+1].text = j.sheets[num].label.y[i];
 				y.options[i+1].value = j.sheets[num].label.y[i];
 			}
 			x.length = j.sheets[num].label.x.length + 1;
-			for(var i=0;i<j.sheets[num].label.x.length;i++){
+			for(var i=0;i<j.sheets[num].label.x.length;i++ {
 				x.options[i+1].text = j.sheets[num].label.x[i];
 				x.options[i+1].value = j.sheets[num].label.x[i];
 			}
@@ -172,8 +172,8 @@ function estimateAddon(json){
 	init();
 };
 mfp.extend.event('startup',
-	function(){
-		for(var i=0;i<estimateValue.length;i++){
+	function( {
+		for(var i=0;i<estimateValue.length;i++ {
 			new estimateAddon(estimateValue[i]);
 		};
 	}

@@ -1,5 +1,5 @@
 mfp.extend.event('startup',
-	function(){
+	function( {
 		mfp.beforeunload = true;
 	}
 );

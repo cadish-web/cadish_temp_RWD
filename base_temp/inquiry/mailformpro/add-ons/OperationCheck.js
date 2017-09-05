@@ -1,36 +1,36 @@
 var mfpElementsList = new Array();
 var mfpElementsListCheck = new Object();
-function mfpElementsListPrompt(){
+function mfpElementsListPrompt( {
 	prompt('MailformPro Elements List',mfpElementsList.join(','));
 };
-function mfpOperationCheckDetail(obj){
+function mfpOperationCheckDetail(obj {
 	obj.style.display = 'none';
 	mfp.$('mfp_OperationCheck_inner').style.display = 'block';
 };
-function mfpOperationCheckSheet(){
+function mfpOperationCheckSheet( {
 	var tObj = mfp.$('mfpOperationCheckSheet').getElementsByTagName('input');
 	var status = true;
-	for(var i=0;i<tObj.length;i++){
-		if(!tObj[i].checked){
+	for(var i=0;i<tObj.length;i++ {
+		if(!tObj[i].checked {
 			status = false;
 		};
 	};
-	if(status){
-		setTimeout(function(){
+	if(status {
+		setTimeout(function( {
 			alert("確認はバッチリですね！ではconfig.cgiの\npush @AddOns,'OperationCheck.js';\nを削除またはコメントアウトし、この表示を消しましょう。\nたくさんのお問い合わせが来ることを祈っています札幌から！");
 		},100);
 	};
 };
 var mfpOperationCheckObject = [];
 mfp.extend.event('ready',
-	function(){
+	function( {
 		var version = '4.2.3';
 		var elm = mfp.d.createElement('div');
 		elm.id = 'mfp_OperationCheck';
 		mfp.Mfp.parentNode.insertBefore(elm,mfp.$('mfp_warning'));
 		var par = Math.round(mfp.Analytics.requiredQty/mfp.Analytics.qty*10000)/100;
 		var src = mfp.$('mfpjs').src + '?module=check';
-		if(mfp.$('mfpjs').src.indexOf('?') > -1){
+		if(mfp.$('mfpjs').src.indexOf('?') > -1 {
 			src = mfp.$('mfpjs').src + '&module=check';
 		};
 		var innerHTML = '<strong>メールフォームプロ 動作チェック アドオン</strong>';
@@ -40,7 +40,7 @@ mfp.extend.event('ready',
 		innerHTML += '<p>この表示はconfig.cgiの設定により消すことができます。っていうか消して。</p>';
 		innerHTML += '<p>このフォームには'+mfp.Analytics.qty+'個のエレメントが配置されており'+mfp.Analytics.requiredQty+'個('+par+'%)が必須項目です。</p>';
 		var ElementsType = new Array();
-		for(var prop in mfp.Analytics.type){
+		for(var prop in mfp.Analytics.type {
 			ElementsType.push(prop+"/"+mfp.Analytics.type[prop]);
 		};
 		innerHTML += '<p>'+ElementsType.join('、')+'で構成されています。</p>';
@@ -67,8 +67,8 @@ mfp.extend.event('ready',
 	}
 );
 mfp.extend.event('init',
-	function(e){
-		if(e.name && !mfpElementsListCheck[e.name]){
+	function(e {
+		if(e.name && !mfpElementsListCheck[e.name] {
 			mfpElementsList.push(e.name);
 			mfpElementsListCheck[e.name] = true;
 		}

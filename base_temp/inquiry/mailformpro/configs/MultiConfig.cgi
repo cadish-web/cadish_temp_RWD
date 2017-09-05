@@ -7,7 +7,7 @@
 
 &_GET;
 $_GET{'type'} = &_SECPATH($_GET{'type'});
-if(-f "config.$_GET{'type'}.cgi"){
+if(-f "config.$_GET{'type'}.cgi" {
 	@Modules = ();
 	require "config.$_GET{'type'}.cgi";
 	require "./configs/$config{'lang'}.cgi";

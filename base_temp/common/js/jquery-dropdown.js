@@ -2,7 +2,7 @@ $(document).ready(function($){
 	var timer = false;
 	var winWidth = $(window).width();
 	var winWidth_resized;
-	
+
 	$("#open_menu").on("click", function(){
 		if($('#gnav ul').css('display') == 'none'){
 			$("html,body").addClass('pos_fix');
@@ -16,7 +16,7 @@ $(document).ready(function($){
 		$("#gnav ul").slideToggle();
 		$(this).toggleClass("active");
 	});
-	
+
 	//閉じるボタン用　不要な場合は削除してください。
 	$("#close_menu").on("click",function(){
 		$("html,body").removeClass('pos_fix');
@@ -47,19 +47,17 @@ $(document).ready(function($){
 					$("#gnav").unwrap();
 					$("#gnav").css("position","fixed");
 				}
-				
+
 				if( winWidth_resized > 1100) {
 					$('#gnav ul').show();
 					$("#gnav").css("position","");
 				} else {
 					$('#gnav ul').hide();
 				}
-				
+
 				// 次回以降使えるようにリサイズ後の幅をウインドウ幅に設定する
 				winWidth = $(window).width();
 			}
 		}, 200);
 	});
 });
-
-
