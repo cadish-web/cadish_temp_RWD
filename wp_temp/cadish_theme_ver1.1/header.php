@@ -6,12 +6,12 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
 <?php } ?>
 <meta charset="utf-8">
-<meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-
-<title><?php bloginfo('name'); echo '｜'; wp_title(' '); if (wp_title(' ', false)); ?></title>
-<meta name="Keywords" content="<?php wp_title('', true, 'right'); ?>,<?php bloginfo('name'); ?>" />
+<meta name="author" content="<?php bloginfo('name'); ?>" />
 <meta name="Description" content="<?php bloginfo('description'); ?>" />
+<meta name="Keywords" content="<?php wp_title('', true, 'right'); ?>,<?php bloginfo('name'); ?>" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="format-detection" content="telephone=no" />
+
 <?php
 global $page,$paged,$canonical_url;
 if (is_home()) {
@@ -80,12 +80,14 @@ if (is_single()){
 ?>
 <!-- ここまでOGP -->
 
+<title><?php bloginfo('name'); echo '｜'; wp_title(' '); if (wp_title(' ', false)); ?></title>
+
 <link rel="alternate" href="<?php bloginfo('rss2_url'); ?>" type="application/rss+xml" title="RSS 2.0" />
 <link rel="alternate" href="<?php bloginfo('rss_url'); ?>" type="text/xml" title="RSS .92" />
 <link rel="alternate" href="<?php bloginfo('atom_url'); ?>" type="application/atom+xml" title="Atom 0.3" />
 
 <?php /* CSSの読み込み 公式サイトで読み込んでいるCSSを使う場合は絶対パスで読み込む */ ?>
-<link rel="stylesheet" href="http://www.example.com/common/css/base.css" media="all" />
+<link rel="stylesheet" href="http://www.example.com/common/css/import.css" media="all" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css" media="all" />
 
 <?php /* jsの読み込み 公式サイトで読み込んでいるjsを使う場合は絶対パスで読み込む */ ?>
@@ -96,7 +98,6 @@ if (is_single()){
 <script src="http://www.example.com/common/js/setting_option.js"></script>
 <?php /* テーマ内で読み込む場合や、WordPressのjQueryを使う場合はこっち↓ */ ?>
 <?php /* wp_enqueue_script('js_name', get_bloginfo('template_directory').'/js/js_name.js', array('jquery')); */ ?>
-
 
 <!-- ▽ Googleアナリティクスタグ ▽ -->
 <!-- △ Googleアナリティクスタグ △ -->
