@@ -2,6 +2,27 @@
 /* ===================================================
 Base CSS / ヘッダー・Gナビ・フッター用CSS
 ====================================================== */
+body{
+	color: #000; font-size: 14px; font-weight: normal; line-height: 1.5; background: #fff;
+	font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3","Hiragino Kaku GothicPro","Osaka","Verdana","Helvetica","Arial","ＭＳ Ｐゴシック", sans-serif;
+	-webkit-text-size-adjust: 100%;
+}
+
+input, select, textarea{ font-size: 13px;}
+
+a      { color: #555; text-decoration: none;}
+a:hover{ color: #555; text-decoration: underline;}
+a:hover img{ opacity: 0.75; filter: alpha(opacity=75); -moz-opacity: 0.75;}
+
+#lineup-font-size-sampler{ bottom: 0; left: 0;}
+.fixed{ top:0; left: 0; position: fixed; width: 100%; z-index: 999;}
+iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
+
+
+@media screen and (orientation:landscape) {
+	html,body{ width: 100%; }
+}
+
 /* ---------------------------------------------------
 	Base Layout
 ------------------------------------------------------ */
