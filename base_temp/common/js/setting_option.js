@@ -57,7 +57,7 @@ $(document).ready(function() {
 		// 	var href= $(this).attr("href");
 		// 	var target = $(href == "#" || href == "" ? 'html' : href);
 		// 	var hHeight = $('#h_wrap').height(); //固定ヘッダーの高さ（ #h_wrap の箇所は固定ヘッダーのid名に合わせてください ）
-		// 	var position = target.offset().top - headerHeight; //ターゲットの座標からヘッダの高さ分引く
+		// 	var position = target.offset().top - hHeight; //ターゲットの座標からヘッダの高さ分引く
 		// 	$('body,html').animate({scrollTop:position}, speed, 'swing');
 		// 	return false;
 		// });
