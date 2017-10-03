@@ -10,7 +10,8 @@ $lang{'ErrorCode11'} = '認証トークンの有効期限が切れています�
 ## 認証トークンの保存ディレクトリ
 $config{'mailauth.dir'} = "$config{'data.dir'}mailauth/";
 
-## 認証用URL
+## !認証用URL
+## URLが[ https:// 〜 ]の場合は、下記の[http://]を[https://]に変更して下さい。
 $config{'mailauth.uri'} = "http://$ENV{'HTTP_HOST'}$ENV{'REQUEST_URI'}";
 
 ## !認証前のサンクスページURL
