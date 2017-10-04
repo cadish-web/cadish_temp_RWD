@@ -211,7 +211,7 @@ push @Modules,'logger';			## アクセス解析ログモジュール
 #push @Modules,'ISO-2022-JP';	## メールをJISで送信
 #push @Modules,'HTMLMail';		## 自動返信メールにHTMLメールを追加
 #push @Modules,'HTMLMailAdmin';	## 管理者宛メールにHTMLメールを追加
-#push @Modules,'CSVExport';		## CSV保存機能
+push @Modules,'CSVExport';		## CSV保存機能
 #push @Modules,'SQLExport';		## SQL発行機能
 #push @Modules,'vCard';			## vCard機能
 #push @Modules,'iCal';			## iCal連携機能

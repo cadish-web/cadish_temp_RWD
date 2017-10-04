@@ -8,6 +8,7 @@ Inquiry
 #inquiry #form_area{ margin: 5px auto 15px; max-width: 90%;}
 #inquiry #form_area h3{ margin: 0 auto 15px; font-size: 16px; text-align: center;}
 #inquiry #form_area p{ margin: 0 auto 15px; width: 80%; line-height: 1.6; text-align: center;}
+#inquiry #form_area p.attention { color: #f00;}
 #inquiry #form_area form{ margin: 0 auto; width: 80%;}
 
 #inquiry #form_area dl{
