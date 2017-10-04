@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
-<?php if (is_home()) { ?>
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#">
-<?php } else { ?>
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-<?php } ?>
+<?php if (is_home()) { $og_type = 'blog'; } else { $og_type = 'article'; } ?>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# <?php echo $og_type; ?>: http://ogp.me/ns/<?php echo $og_type; ?>#">
 <meta charset="utf-8">
 <meta name="author" content="<?php bloginfo('name'); ?>" />
 <meta name="Description" content="<?php bloginfo('description'); ?>" />
@@ -45,42 +42,29 @@ if ( $paged >= 2 || $page >= 2) {
 <link rel="canonical" href="<?php echo $canonical_url; ?>">
 
 <!-- ここからOGP -->
-<meta property='og:locale' content='ja_JP'>
-<meta property='og:site_name' content='<?php bloginfo('name'); ?>'>
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="<?php bloginfo('name'); ?>">
+<meta property="og:title" content="<?php bloginfo('name'); if(!is_home()){ echo ' | '; } wp_title(' '); if (wp_title(' ', false)); ?>">
+<meta property="og:type" content="<?php echo $og_type; ?>">
+<meta property="og:url" content="<?php echo $canonical_url; ?>">
 <?php
+$str = $post->post_content;
+$searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
+$og_img = 'http://www.example.com/common/img/ogp.jpg';
 if (is_single()){
-	if(have_posts()): while(have_posts()): the_post();
-	echo '<meta property="og:title" content="'; the_title(); echo '">';echo "\n";
-	echo '<meta property="og:description" content="'.mb_substr(get_the_excerpt(), 0, 100).'">';echo "\n";
-	echo '<meta property="og:url" content="'; echo $canonical_url; echo '">';echo "\n";
-	echo '<meta property="og:type" content="article">';echo "\n";
-	echo '<meta property="article:publisher" content="https://www.facebook.com/example">';echo "\n";
-	endwhile; endif;
-} else {
-	echo '<meta property="og:title" content="'; bloginfo('name'); echo '">';echo "\n";
-	echo '<meta property="og:description" content="'; bloginfo('description'); echo '">';echo "\n";
-	echo '<meta property="og:url" content="'; echo $canonical_url; echo '">';echo "\n";
-	echo '<meta property="og:type" content="blog">';echo "\n";
-}
-if (is_single()){
-	$str = $post->post_content;
-	$searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
 	if (has_post_thumbnail()){
 		$image_id = get_post_thumbnail_id();
 		$image = wp_get_attachment_image_src( $image_id, 'full');
-		echo '<meta property="og:image" content="'.$image[0].'">';echo "\n";
+		$og_img = $image[0];
 	} else if ( preg_match( $searchPattern, $str, $imgurl )){
-		echo '<meta property="og:image" content="'.$imgurl[2].'">';echo "\n";
-	} else {
-		echo '<meta property="og:image" content="http://www.example.com/common/img/ogp.jpg">';echo "\n";
+		$og_img = $imgurl[2];
 	}
-} else {
-	echo '<meta property="og:image" content="http://www.example.com/common/img/ogp.jpg">';echo "\n";
 }
 ?>
+<meta property="og:image" content="<? echo $og_img ?>">
 <!-- ここまでOGP -->
 
-<title><?php bloginfo('name'); echo '｜'; wp_title(' '); if (wp_title(' ', false)); ?></title>
+<title><?php bloginfo('name'); if(!is_home()){ echo ' | '; } wp_title(' '); if (wp_title(' ', false)); ?></title>
 
 <link rel="alternate" href="<?php bloginfo('rss2_url'); ?>" type="application/rss+xml" title="RSS 2.0" />
 <link rel="alternate" href="<?php bloginfo('rss_url'); ?>" type="text/xml" title="RSS .92" />
