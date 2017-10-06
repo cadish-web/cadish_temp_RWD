@@ -58,7 +58,7 @@
 <section>
 	<h2><?php the_title(); ?></h2>
 	<div class="post_body"><?php the_content('&raquo;&raquo;　続きを読む '); ?></div>
-	<div class="postmeta_txt"><?php the_time('Y.m.d') ?> l <?php the_category('. ',''); ?></div>
+	<div class="postmeta_txt"><?php the_time('Y.m.d') ?> | <?php the_category('. ',''); ?></div>
 </section>
 
 <div class="article_nav">
@@ -77,7 +77,7 @@
 	<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
 	<div class="post_body"><?php the_content('&raquo;&raquo;　続きを読む '); ?></div>
 	<?php if ( !(is_page()) ) { ?>
-	<div class="postmeta_txt"><?php the_time('Y.m.d') ?> l <?php the_category('. ',''); ?></div>
+	<div class="postmeta_txt"><?php the_time('Y.m.d') ?> | <?php the_category('. ',''); ?></div>
 	<?php } ?>
 </section>
 <?php endwhile; endif; ?>
