@@ -17,12 +17,12 @@ $(document).ready(function() {
 	▼画像：2パターン用意し、PC用に「_pc」タブレット＆スマホ用に「_sp」を追加。
 	▼HTML：下記クラス+データサイズを該当する画像のimgタグに追加
 	768で切り替え → class="switch" data-size="tab"
-	640で切り替え → class="switch" data-size="sp"
+	600で切り替え → class="switch" data-size="sp"
 	-------------------------------------------------------- */
 	var $setElem = $('.switch'),
 		pcName = '_pc',
 		spName = '_sp',
-		replaceWidth = 641,
+		replaceWidth = 601,
 		replaceWidth2 = 769;
 		$setElem.each(function(){
 			var $this = $(this);
