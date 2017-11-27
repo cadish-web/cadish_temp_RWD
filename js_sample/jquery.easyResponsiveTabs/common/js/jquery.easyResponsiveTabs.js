@@ -171,7 +171,10 @@
                                 'border-color': options.active_border_color
                             });
 
-                            $respTabs.find('.resp-tab-content[aria-labelledby = ' + $tabAria + '].' + options.tabidentify).slideDown().addClass('resp-tab-content-active');
+                            $respTabs.find('.resp-tab-content[aria-labelledby = ' + $tabAria + '].' + options.tabidentify).slideDown(function(){
+															var activeTab = $respTabs.find("h2[aria-controls=" + $tabAria + "]");
+															$("html, body").animate({scrollTop:activeTab.offset().top}, 500, "swing");
+														}).addClass('resp-tab-content-active');
                         } else {
                             console.log('here');
                             $respTabs.find('.resp-tab-active.' + options.tabidentify).removeClass('resp-tab-active').css({
