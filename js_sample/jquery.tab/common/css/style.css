@@ -10,7 +10,7 @@
 
 
 /* ナビゲーション部分 */
-.tabs ul{ margin: 0; padding: 0;}
+.tabs ul{ clear: both; margin: 0; padding: 0;}
 .tabs li { margin: 0; padding: 0; width: 20%; float: left;}
 .tabs li:last-child{ margin: 0;}
 

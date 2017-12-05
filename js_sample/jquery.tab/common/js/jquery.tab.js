@@ -1,6 +1,6 @@
 $(function() {
 	$('.tabs a[href^="#panel"]').click(function(){
-		$(this).parents('.tabs').children('.panel').hide();
+		$(this).closest('.tabs').children('.panel').hide();
 
 		// class名の付け外し
 		$(this).parent('li').siblings().find('a').removeClass('active');
