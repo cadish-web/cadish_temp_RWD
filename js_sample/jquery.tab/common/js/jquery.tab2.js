@@ -22,4 +22,4 @@ $(function() {
 	//わざと1つ目を表示させておくことができます
 	$(".tabs .panel").hide();
 	$(".tabs .panel:first-of-type").show();
-})
+});
