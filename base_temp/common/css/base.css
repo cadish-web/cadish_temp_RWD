@@ -51,7 +51,7 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 
 
 @media screen and (max-width: 1100px) {
-	#header{ padding: 15px 1% 5px; width: 98%;}
+	#header{ padding: 15px 1% 5px; width: 96%;}
 	#header h1{ margin-right: 55px;}
 	#header #logo{ width: 48%;}
 	#head_nav{ width: 50%; padding: 0 55px 0 0; box-sizing: border-box;}
@@ -62,6 +62,7 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 @media screen and (max-width: 900px) {
 }
 @media screen and (max-width: 768px) {
+	#header{ padding: 15px 1% 5px; width: 94%;}
 }
 @media screen and (max-width: 600px) {
 	#header h1,
@@ -170,6 +171,7 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 @media screen and (max-width: 900px) {
 }
 @media screen and (max-width: 768px) {
+	#contents{ width: 94%;}
 }
 @media screen and (max-width: 600px) {
 }
@@ -201,7 +203,7 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 
 
 @media screen and (max-width: 1100px) {
-	#footer{ padding: 25px 0; width: 98%; box-sizing: border-box;}
+	#footer{ padding: 25px 0; width: 96%; box-sizing: border-box;}
 	#f_logo{ width: 27%;}
 	#fnav{ width: 72%;}
 }
@@ -214,6 +216,7 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 	#fnav{ text-align: center;}
 }
 @media screen and (max-width: 768px) {
+	#footer{ width: 94%;}
 }
 @media screen and (max-width: 600px) {
 	#fnav .acc_tit{
