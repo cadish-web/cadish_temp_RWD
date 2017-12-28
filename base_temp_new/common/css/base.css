@@ -1,0 +1,270 @@
+@charset "utf-8";
+/* ===================================================
+	Base CSS
+====================================================== */
+body{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-flex-direction: column; /* Safari */
+	flex-direction:         column;
+
+	min-width: 1100px; color: #000; font-size: 14px; font-weight: normal; line-height: 1.5;
+	font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3","Hiragino Kaku GothicPro","Osaka","Verdana","Helvetica","Arial","ＭＳ Ｐゴシック", sans-serif;
+	background: #fff; -webkit-text-size-adjust: 100%;
+}
+@media screen and (max-width: 1100px) {
+	body{ min-width: 0;}
+}
+
+input, select, textarea{ font-size: 13px;}
+
+a      { color: #555; text-decoration: none;}
+a:hover{ color: #555; text-decoration: underline;}
+a:hover img{ opacity: 0.75; filter: alpha(opacity=75); -moz-opacity: 0.75;}
+
+#lineup-font-size-sampler{ bottom: 0; left: 0;}
+.fixed{ top:0; left: 0; position: fixed; width: 100%; z-index: 999;}
+iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
+
+@media screen and (orientation:landscape) {
+	html,body{ width: 100%; }
+}
+
+
+/* ---------------------------------------------------
+	Base Layout
+------------------------------------------------------ */
+#header_wrap,
+#nav_wrap,
+#contents_wrap,
+#footer_wrap{ margin: 0; padding: 0; width: 100%;}
+
+#header,
+#gnav ul,
+#contents_wrap,
+#footer { margin: 0 auto; padding: 0; width: 100%; max-width: 1100px; box-sizing: border-box;}
+
+
+@media screen and (max-width: 1100px) {
+}
+
+@media screen and (max-width: 600px) {
+}
+
+/* ---------------------------------------------------
+	Header
+------------------------------------------------------ */
+#header_wrap { background: #ccc;}
+#header { padding: 15px 0 5px;}
+#header h1{ font-size: 12px;}
+#header #logo{ width: 250px; float: left;}
+
+#h_nav {
+	width: 500px; float: right;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	-webkit-justify-content: flex-end; /* Safari */
+	justify-content:         flex-end;
+
+ }
+#h_nav li{ width: 50%; padding: 0 0 0 1%; box-sizing: border-box;}
+
+#h_nav .tel-link,
+#h_nav .btn{ display: block; height: 40px; padding: 5px; text-align: center;}
+#h_nav .btn{ background: #000;}
+#h_nav .btn:hover{ background: #555;}
+
+
+@media screen and (max-width: 768px) {
+	#header{ padding: 15px 3% 5px; width: 100%; min-width: 0; box-sizing: border-box;}
+	#header h1,
+	#header #logo{ margin: 0 55px;}
+	#header h1{text-align: center;}
+	#header #logo{ clear: both; width: auto; float: none; text-align: center;}
+
+	#h_nav{
+		clear: both; width: auto; max-width: 100%; float: none;
+		-webkit-justify-content: center; /* Safari */
+		justify-content:         center;
+	}
+	#h_nav li{ width: auto; max-width: 50%;}
+}
+@media screen and (max-width: 600px) {
+	#header { padding: 10px 0;}
+	#header h1,
+	#header #logo{ margin: 0 65px;}
+	#h_nav{ margin: 0 65px;}
+	#h_nav li{ padding: 0; max-width: 100%;}
+	#h_nav .btn{ width: 100% !important; max-width: 100% !important; padding: 0;}
+	#h_nav .tel-link{
+		top: 65px; right: 10px; position: absolute; cursor: pointer;
+		width: 44px; height: 44px; padding: 0; background: #000;
+		border: 1px solid #555; z-index: 10;
+	}
+}
+
+
+/* ---------------------------------------------------
+	G-nav
+------------------------------------------------------ */
+#open_menu,
+#close_menu{ display: none;}
+
+#gnav{ clear: both; background: #000;}
+#gnav ul{ }
+#gnav li{
+	width: 20%; height: 50px; float: left;
+	border-right: 1px solid #555; box-sizing: border-box;
+}
+#gnav li:last-child{ border-right:0;}
+#gnav a{ display:block; height: 50px; line-height: 50px; text-indent: -9999px;}
+
+#gn_home{ display: none;}
+#gn_01 a{ background:url(../img/gn_01.png) no-repeat center center;}
+#gn_02 a{ background:url(../img/gn_02.png) no-repeat center center;}
+#gn_03 a{ background:url(../img/gn_03.png) no-repeat center center;}
+#gn_04 a{ background:url(../img/gn_04.png) no-repeat center center;}
+#gn_05 a{ background:url(../img/gn_05.png) no-repeat center center;}
+
+#gnav a:hover{ background-color: rgba( 255,255,255,0.25);}
+
+
+@media screen and (max-width: 768px) {
+	#gnav{ width: 100%; padding: 0; position: fixed; top: 0; left: 0; z-index: 999; background: none;}
+
+	/* jquery-dropdown 用のcss設定です
+		 #gnav_wrap と .pos_fix はjsで自動的に追加される要素です。
+		 別にgnavを囲むwrapper等を使用する場合はid名が被らないようにしてください。
+	*/
+	#gnav_wrap{ width: 100%; height: 100%; top: 0; left: 0; position: fixed; z-index: 10000; overflow: auto;}
+	.pos_fix{ overflow: hidden; /* メニューボタンがfixedじゃない場合は右記を追記 position: fixed; top: 0; width: 100%; */}
+
+	/* jquery-dropdown 用のcss設定です */
+	#open_menu{
+		display: block; top: 15px; right: 10px; position: fixed; cursor: pointer;
+		width: 44px; height: 44px; padding: 0; background: #000; border: 1px solid #555; z-index: 10;
+	}
+	#gnav #close_menu{ padding: 5px 0 !important; text-align: center; position: relative;}
+	#gnav #close_menu span{ width: 15px; position: absolute; top: 13px; right: 10px; line-height: 0; z-index: 0;}
+	#gnav #close_menu img{ width: 100%;}
+
+	#gnav ul{
+		display: none; margin: 75px 10px 20px 10px; padding: 0; width: auto;
+		background-color: #fff; border-radius: 4px; box-sizing: border-box; border: 1px solid #ccc;
+	}
+	#gnav li{
+		display: block; width: 100%; height: auto; padding: 0; font-size: 15px;
+		float: none; line-height: 2; border-bottom: 1px dashed #ccc; border-right: 0;
+	}
+	#gnav li:last-child{ border-bottom: none;}
+
+	#gnav li a{
+		display: block; width: 100%; height: auto; margin: 1px; padding: 5px 20px;
+		color: #000; text-decoration: none; text-align: left; text-indent: 0; line-height: 1.8;
+		white-space: normal; background: none; box-sizing: border-box;
+	}
+	#gnav li:last-child a{ border-radius: 0 0 4px 4px;}
+	#gnav a:hover{ display: block; text-decoration: none; background-color: rgba(204,204,204,0.25);}
+}
+
+
+/* ---------------------------------------------------
+	Main img
+------------------------------------------------------ */
+#main_img{
+	margin: 0 auto 5px; padding: 65px 0; width: 100%;
+	text-align: center; background: #f5f5f5;
+}
+#main_img h2{ font-size: 30px; font-weight: 400;}
+
+
+/* ---------------------------------------------------
+	Contents
+------------------------------------------------------ */
+#contents_wrap{ clear: both; padding: 0 0 55px;}
+
+@media screen and (max-width: 600px) {
+	#contents_wrap{ padding:  25px 0 55px;}
+}
+
+/* breadcrumb */
+#breadcrumb{ margin: 5px auto 25px; padding: 0; width: 100%; font-size: 12px; text-align: right;}
+#breadcrumb li{ display: inline; margin: 0; padding: 0; line-height: 1.6; background: none;}
+#breadcrumb li:before{ display: inline-block; margin: 0 5px; content: ">";}
+#breadcrumb li:first-child:before{ display: none;}
+
+@media screen and (max-width: 1100px) {
+	#breadcrumb{ width: 96%;}
+}
+@media screen and (max-width: 600px) {
+	#breadcrumb{ display: none;}
+}
+
+
+/* section */
+#contents_wrap section{ margin: 0 auto 25px; width: 100%;}
+
+@media screen and (max-width: 768px) {
+	#contents_wrap section{ width: 92%;}
+}
+
+
+/* ---------------------------------------------------
+	Footer
+------------------------------------------------------ */
+#page_top  { display:block; position: fixed; bottom: 10px; right: 10px; z-index: 9999; cursor: pointer;}
+#page_top a{ display: block; width: 48px; height: 48px;}
+
+#footer_wrap { background: #000;}
+#footer { padding: 25px 0; color: #f3f3f3;}
+
+#f_logo{ width: 300px; float: left; font-style: normal; line-height: 1.6;}
+#f_logo img{ display: block; margin: 0 0 10px;}
+#f_logo address span{ display: block;}
+
+#f_nav .acc_tit{ display: none;}
+#f_nav{ padding: 15px 0 0; width: calc( 100% - 320px); max-width: 600px; float: right;}
+
+#fnav{ text-align: right;}
+#fnav li{
+	display: inline-block; margin: 0 10px 10px 0; padding: 0 0 0 12px; line-height: 1.6;
+	background: url(../img/icon_arrow.gif) no-repeat  left center;
+}
+
+#copyright{ clear: both; padding: 15px 0 0; text-align: center; line-height: 1.6;}
+#footer a:link, #footer a:visited{ color: #ccc; text-decoration: none;}
+#footer a:hover, #footer a:active{ color: #f3f3f3; text-decoration: underline;}
+
+@media screen and (max-width: 768px) {
+	#footer{ padding: 25px 3%; box-sizing: border-box;}
+	#f_logo{ width: 100%; float: none; text-align: center;}
+	#f_logo img{ margin: 0 auto 15px;}
+
+	#f_nav{ width: 100%; max-width: 100%; float: none;}
+	#f_nav .acc_tit{
+		display: block; margin: 0 auto 15px; padding: 10px; width: 100%; text-align: center;
+		background: #353535 url(../img/arrow_off.png) no-repeat 98% 50%; box-sizing: border-box;
+	}
+	#f_nav .acc_tit.active{ background-image: url(../img/arrow_on.png);}
+	#fnav{ padding: 0 0 0 10px; text-align: center;}
+}
+
+@media screen and (max-width: 600px) {
+}
+
+
+/* ---------------------------------------------------
+	clear
+------------------------------------------------------ */
+
+#header_wrap:after,
+#header:after,
+#nav_wrap:after,
+#gnav:after,
+#gnav ul:after,
+#contents_wrap:after,
+#contents:after,
+#contents section:after,
+#breadcrumbs:after,
+#footer_wrap:after,
+#footer:after{ content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
