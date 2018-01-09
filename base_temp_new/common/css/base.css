@@ -12,7 +12,7 @@ body{
 	font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3","Hiragino Kaku GothicPro","Osaka","Verdana","Helvetica","Arial","ＭＳ Ｐゴシック", sans-serif;
 	background: #fff; -webkit-text-size-adjust: 100%;
 }
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 768px) {
 	body{ min-width: 0;}
 }
 
@@ -44,11 +44,7 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 #contents_wrap,
 #footer { margin: 0 auto; padding: 0; width: 100%; max-width: 1100px; box-sizing: border-box;}
 
-
-@media screen and (max-width: 1100px) {
-}
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
 }
 
 /* ---------------------------------------------------
@@ -73,7 +69,6 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 #h_nav .btn{ display: block; height: 40px; padding: 5px; text-align: center;}
 #h_nav .btn{ background: #000;}
 #h_nav .btn:hover{ background: #555;}
-
 
 @media screen and (max-width: 768px) {
 	#header{ padding: 15px 3% 5px; width: 100%; min-width: 0; box-sizing: border-box;}
@@ -198,6 +193,9 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 ------------------------------------------------------ */
 #contents_wrap{ clear: both; padding: 0 0 55px;}
 
+@media screen and (max-width: 768px) {
+	#contents_wrap { width: 92%;}
+}
 @media screen and (max-width: 600px) {
 	#contents_wrap{ padding:  25px 0 55px;}
 }
@@ -208,20 +206,13 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 #breadcrumb li:before{ display: inline-block; margin: 0 5px; content: ">";}
 #breadcrumb li:first-child:before{ display: none;}
 
-@media screen and (max-width: 1100px) {
-	#breadcrumb{ width: 96%;}
-}
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
 	#breadcrumb{ display: none;}
 }
 
 
 /* section */
 #contents_wrap section{ margin: 0 auto 25px; width: 100%;}
-
-@media screen and (max-width: 768px) {
-	#contents_wrap section{ width: 92%;}
-}
 
 
 /* ---------------------------------------------------
