@@ -5,7 +5,8 @@
 /* ---------------------------------------------------
 
 ------------------------------------------------------ */
-#home #main_img{ margin: 0 auto 25px; padding: 0;}
+#main_img { padding: 0;}
+#contents_wrap { padding-top: 25px;}
 
 @media screen and (max-width: 768px) {
 }

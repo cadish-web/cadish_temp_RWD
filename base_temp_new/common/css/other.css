@@ -1,59 +1,41 @@
 @charset "utf-8";
 /* ===================================================
 	Other CSS
+	プライバシーポリシーやキャンセルポリシーなど共通部分が多いページや、
+	スタイルが極端に少なくなるページは	このCSSにまとめて記述する。
 ====================================================== */
+
+/* ---------------------------------------------------
+複数ページ共通　適宜調整すること
+------------------------------------------------------ */
+#contents_wrap section { width: 900px; max-width: 100%; margin: 0 auto 50px;}
+
+#contents_wrap h3 { margin: 0 0 10px; font-size: 20px; text-align: center;}
+#contents_wrap h4 { margin: 10px 0; font-size: 16px;}
+#contents_wrap h5 { margin: 0 0 5px;}
+#contents_wrap p { margin: 0 0 15px;}
+
+#contents_wrap li:before { content:'○'; padding: 0 0 5px;}
+
+#contents_wrap dt { padding: 5px 0;}
+#contents_wrap dd { padding: 0 10px;}
+
+@media screen and (max-width: 768px) {
+	#contents_wrap div { margin-bottom: 0;}
+}
+@media screen and (max-width: 600px) {
+}
+
+
 /* ---------------------------------------------------
 Inquiry
+上記共通用スタイルを使用しない場合は inquiry.css として
+ファイルを分けて記述してください。
 ------------------------------------------------------ */
-#inquiry #form_area{ margin: 5px auto 15px; max-width: 100%;}
-#inquiry #form_area h3{ margin: 0 auto 15px; font-size: 16px; text-align: center;}
-#inquiry #form_area p{ margin: 0 auto 15px; width: 100%; line-height: 1.6; text-align: center;}
-#inquiry #form_area p.attention { color: #f00;}
-#inquiry #form_area form{ margin: 0 auto; width: 100%;}
-
-#inquiry #form_area dl{
-	display: table; table-layout: fixed;
-	width: 100%; padding: 10px 0;
-	border-bottom: 1px dashed #ddd; box-sizing: border-box;
-}
+/* ▼ mailform PRO のCSS上書き ▼ */
 #inquiry #form_area dt,
-#inquiry #form_area dd{ display: table-cell; margin: 0; padding: 0; box-sizing: border-box;}
-
-#inquiry #form_area dt{ width: 28%; float: none !important; text-align: right;}
-#inquiry #form_area dd{ width: 72%; padding-left: 20px; box-sizing: border-box;}
-
-
-
-/* フォーム内レイアウト
------------------------------------------------------- */
-#inquiry #form_area ul,
-#inquiry #form_area ol{ margin: 0 1%; padding: 0 0 5px; max-width: 98%;}
-#inquiry #form_area ul li,
-#inquiry #form_area ol li{ margin: 0; padding: 0; list-style: none; display: inline; line-height: 1.8;}
-
-#inquiry #form_area label{ margin: 7px 10px 0 0; display: inline-block;}
-#inquiry #form_area input{ margin: 0 5px 0 0; padding: 0;}
-
-#inquiry #form_area input[type="text"],
-#inquiry #form_area input[type="email"]{
-	margin: 5px auto 0; padding: 5px 3px; max-width: 98%;
-	border: 1px solid #ddd; box-sizing:border-box;
-}
-
-#inquiry #form_area select  { margin: 5px 0 0; padding: 2px 1px; border: 1px solid #ddd;}
-#inquiry #form_area textarea{
-	margin: 5px 0 0; padding: 2px 3px; width: 98% !important; max-width: 98%;
-	height: 150px !important; border: 1px solid #ddd; box-sizing: border-box;
-}
-
-#inquiry #form_area .must       { margin: 0 5px; color: #fb223f;}
-#inquiry #form_area .mfp_buttons{ margin: 15px 2% 20px; width: 96%;}
-#inquiry #form_area .mfp_buttons button{ width: 31%; padding: 2px 0; letter-spacing: 3px; line-height: 25px; text-align: center;}
-
-
-/* mailform PRO のCSS上書き */
-#inquiry #form_area dt,
-#inquiry #form_area dd{ font-size: 14px; border: none;}
+#inquiry #form_area dd { font-size: 14px; border: none;}
+#inquiry #form_area label { white-space: normal;}
 #inquiry #form_area .must{
 	display: inline-block; padding: 0; float: none;
 	font-size: 16px; text-shadow: none; border: none;
@@ -66,62 +48,79 @@ Inquiry
 	margin: 7px 10px 0 0 !important; padding: 0;
 	background: none !important; box-shadow: none; border: none;
 }
+/* ▲ mailform PRO のCSS上書き ▲ */
+
+#inquiry #form_area h3 { text-align: center;}
+#inquiry #form_area p { width: 100%; text-align: center;}
+#inquiry #form_area p.attention { color: #f00;}
+#inquiry #form_area form { margin: 0 auto; width: 100%;}
+
+#inquiry #form_area dl {
+	display: table; table-layout: fixed; width: 100%; padding: 10px 0; border-bottom: 1px dashed #ddd;
+	-webkit-box-sizing: border-box; box-sizing: border-box;
+}
+#inquiry #form_area dt,
+#inquiry #form_area dd {
+	display: table-cell; padding: 0 5px; margin: 0; vertical-align: middle;
+	-webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+#inquiry #form_area dt{ width: 28%; float: none !important; text-align: right;}
+#inquiry #form_area dd{ width: 72%; padding-left: 20px; box-sizing: border-box;}
 
 @media screen and (max-width: 768px) {
-	#inquiry #form_area dl{ margin: 0; padding: 15px 0;}
+	#inquiry #form_area dl,
 	#inquiry #form_area dt,
-	#inquiry #form_area dd{ display: block; width: 100%;}
-	#inquiry #form_area dt{ margin: 0 0 5px; padding: 5px; text-align: left; background: #f5f5f5;}
-	#inquiry #form_area dd{ padding-left: 0;}
-	#inquiry #form_area .mfp_buttons{ text-align: center;}
+	#inquiry #form_area dd { display: block; width: 100%;}
+	#inquiry #form_area dl { padding: 10px 0;}
+	#inquiry #form_area dt { padding: 5px; margin: 0 0 10px; background: #f5f5f5; text-align: left;}
+	#inquiry #form_area dd { padding-left: 5px;}
 }
+
+/* フォーム内レイアウト
+------------------------------------------------------ */
+#inquiry #form_area ul,
+#inquiry #form_area ol { padding: 0 0 5px; margin: 0 1%; max-width: 98%;}
+#inquiry #form_area li { display: inline-block; margin: 0 10px 0 0;}
+#inquiry #form_area li:before { display: none;}
+
+#inquiry #form_area input:not(:last-child),
+#inquiry #form_area select:not(:last-child),
+#inquiry #form_area textarea:not(:last-child) { margin: 0 0 5px;}
+
+#inquiry #form_area input { max-width: 100%; padding: 5px 3px; border: 1px solid #ddd; -webkit-box-sizing: border-box; box-sizing: border-box;}
+
+#inquiry #form_area select  { padding: 2px 1px; border: 1px solid #ddd;}
+#inquiry #form_area textarea{
+	padding: 5px 3px; width: 100%; max-width: 100%; height: 150px; border: 1px solid #ddd;
+	-webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+#inquiry #form_area .must { margin: 0 5px; color: #fb223f;}
+#inquiry #form_area .mfp_buttons { margin: 15px auto 20px; width: 96%;}
+#inquiry #form_area .mfp_buttons button { width: 31%; padding: 6px 0; letter-spacing: 3px; text-align: center;}
 
 
 /* ---------------------------------------------------
-Privacy
+privacy
 ------------------------------------------------------ */
-#privacy #contents h3{ padding: 50px 0 10px; font-size: 20px;}
-#privacy #contents h4{ padding: 10px 0; font-size: 16px;}
-#privacy #contents h5{ padding: 0 0 5px;}
-#privacy #contents p{ padding: 0 0 15px;}
-
-#privacy #contents li:before{ content:'○'; padding: 0 0 5px;}
-
-#privacy #contents dt{ padding: 5px 0;}
-#privacy #contents dd{ padding: 0 10px;}
-
-#privacy #contents div{ margin: 20px 0 10px; overflow: auto;}
-#privacy #contents table{ width: 800px; text-align: center; table-layout: fixed;}
-#privacy #contents table caption{ text-align: left;}
-#privacy #contents th,
-#privacy #contents td{ border: 1px solid #ccc;}
-#privacy #contents th{ background: #eee; font-weight: normal;}
-#privacy #contents p.ver_sp{ display: none; padding: 5px 0 10px; font-size: 12px;}
+#privacy #contents_wrap div { margin: 20px 0 10px; overflow: auto;}
+#privacy #contents_wrap table { width: 800px; text-align: center; table-layout: fixed;}
+#privacy #contents_wrap table caption { text-align: left;}
+#privacy #contents_wrap th,
+#privacy #contents_wrap td { border: 1px solid #ccc;}
+#privacy #contents_wrap th { background: #eee; font-weight: normal;}
+#privacy #contents_wrap p.ver_sp { display: none; padding: 5px 0 10px; font-size: 12px;}
 
 @media screen and (max-width: 768px) {
-	#privacy #contents div{ margin-bottom: 0;}
-	#privacy #contents p.ver_sp{ display: block;}
-}
-@media screen and (max-width: 600px) {
+	#privacy #contents_wrap p.ver_sp { display: block;}
 }
 
 
 /* ---------------------------------------------------
 404
 ------------------------------------------------------ */
-#error section{ margin: 0 auto 50px; width: 60%; text-align: center;}
-#error section h3{ margin: 0 0 25px; font-size: 20px;}
-#error section p{ margin: 0 0 250px; /* サンプル用の数値です。本番環境では適時変更して下さい */ }
-
-@media screen and (max-width: 768px) {
-}
-@media screen and (max-width: 600px) {
-}
-
-
-/* ---------------------------------------------------
-
------------------------------------------------------- */
+#error section { text-align: center;}
 
 @media screen and (max-width: 768px) {
 }
