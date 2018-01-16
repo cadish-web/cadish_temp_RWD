@@ -26,7 +26,7 @@ $(function () {
 				var date =  y + "/" + m + "/" + d;
 
 				//画像の有無をチェック
-				var imgCheck = thisItem.children('content\\:encoded').text().match(/(src="http:){1}[\S_-]+((\.jpg)|(\.JPG)|(\.gif)|(\.GIF)|(\.png)|(\.PNG))/);
+				var imgCheck = thisItem.children('content\\:encoded').text().match(/(src="https?:){1}[\S_-]+((\.jpg)|(\.JPG)|(\.gif)|(\.GIF)|(\.png)|(\.PNG))/);
 				var eimg = '';
 
 				//eimgに画像を代入
