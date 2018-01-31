@@ -1,5 +1,6 @@
 $config{'about'} = 'Mailform Pro 4.2.3';
 ## コメントの先頭に!の付いている箇所を編集してください。
+## メールアドレス認証機能を使用する場合は configs/mailauth.cgi も合わせて修正してください。（デフォルトでは機能を使用する状態になっています。）
 
 ## 確認画面のタイプ
 ## 0: オーバーレイ / 1:フラット / 2: システムダイアログ / 3:確認なし
@@ -11,7 +12,6 @@ $config{'sendmail'} = '/usr/sbin/sendmail';
 
 ## !フォームの送信先
 #push @mailto,'web_ml@cadish.co.jp';
-push @mailto,'saeka@cadish.co.jp';
 
 ## !自動返信メールの差出人名
 $config{'fromname'} = '株式会社キャディッシュ';
@@ -292,3 +292,4 @@ $config{'uri'} = 'http://' . $ENV{'SERVER_NAME'} . $ENV{'SCRIPT_NAME'};
 $config{'prefix'} = '_MFP';
 
 1;
+
