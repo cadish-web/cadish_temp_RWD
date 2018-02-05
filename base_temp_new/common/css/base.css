@@ -302,3 +302,14 @@ iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;
 #gnav ul:after,
 #contents_wrap:after,
 #footer:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
+
+
+
+/* ---------------------------------------------------
+	更新履歴
+------------------------------------------------------
+
+180205_kamiguchi_更新履歴コメントひな形追加
+180228_〇〇_cssを更新したらここに更新履歴を追加していきます。多くなったら上の方は削除。
+
+------------------------------------------------------ */
