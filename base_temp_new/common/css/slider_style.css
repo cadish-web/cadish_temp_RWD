@@ -7,13 +7,13 @@
 .flexslider { margin: 0 auto;}
 
 .slides { margin: 0; width: 100%; position: relative;}
-.slides li{ width: 100%; text-align: center;}
-.slides li img{ width: 1100px; max-width: 100%;}
+.slides li { width: 100%; text-align: center;}
+.slides li img { width: 1100px; max-width: 100%;}
 .flex-control-nav { clear: both; margin: 15px 0 !important;}
 
 @media screen and (max-width: 600px) {
-	.slides li{ overflow: hidden;}
-	.slides li img{ width: 150% !important; max-width: 150% !important;}
+	.slides li { overflow: hidden;}
+	.slides li img { width: 150% !important; max-width: 150% !important;}
 }
 
 /* clead
@@ -33,8 +33,8 @@
 /* サムネイル付き・フェードイン・フェードアウト
 ------------------------------------------------------ */
 /* メイン部分 */
-.flex_thum_fade  { clear: both; margin: 0 auto; width: 100%; max-width: 100%; position: relative;}
-.flex_thum_fade p{ margin: 0 0 15px;}
+.flex_thum_fade { clear: both; margin: 0 auto; width: 100%; max-width: 100%; position: relative;}
+.flex_thum_fade p { margin: 0 0 15px;}
 /* サムネイル部分 */
 .flex_thum_fade .flex-control-thumbs { clear: both; margin: 5px 0 25px;}
 .flex_thum_fade .flex-control-thumbs:after { clear: both; content: "."; display: block; height: 0; font-size: 0; visibility: hidden;}
@@ -47,10 +47,10 @@
 ------------------------------------------------------ */
 /* メイン部分 */
 .flex_thum_slide { clear: both; margin: 0 auto; width: 100%; max-width: 100%; position: relative;}
-.flex_thum_slide p{ margin: 0 0 15px;}
+.flex_thum_slide p { margin: 0 0 15px;}
 /* サムネイル部分 */
 .flex_thum_slide .flex-control-thumbs { clear: both; margin: 5px 0 25px;}
-.flex_thum_slide .flex-control-thumbs:after{ clear: both; content: "."; display: block; height: 0; font-size: 0; visibility: hidden;}
+.flex_thum_slide .flex-control-thumbs:after { clear: both; content: "."; display: block; height: 0; font-size: 0; visibility: hidden;}
 .flex_thum_slide .flex-control-thumbs li { float:left; margin: 0; width: 25%;}
 .flex_thum_slide .flex-control-thumbs img { margin: 0 auto; width:98%; opacity: 0.5;}
 .flex_thum_slide .flex-control-thumbs img.flex-active { opacity: 1;}

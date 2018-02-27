@@ -29,14 +29,14 @@
 
 /* ---------------------------------------------------
 Inquiry
-上記共通用スタイルを使用しない場合は inquiry.css として
+上記共通用スタイルと併用しない場合は inquiry.css として
 ファイルを分けて記述してください。
 ------------------------------------------------------ */
 /* ▼ mailform PRO のCSS上書き ▼ */
 #inquiry #form_area dt,
 #inquiry #form_area dd { font-size: 14px; border: none;}
 #inquiry #form_area label { white-space: normal;}
-#inquiry #form_area .must{
+#inquiry #form_area .must {
 	display: inline-block; padding: 0; float: none;
 	font-size: 16px; text-shadow: none; border: none;
 	background: none; border-radius: 0; box-shadow: none;
@@ -65,8 +65,8 @@ Inquiry
 	-webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
-#inquiry #form_area dt{ width: 28%; float: none !important; text-align: right;}
-#inquiry #form_area dd{ width: 72%; padding-left: 20px; box-sizing: border-box;}
+#inquiry #form_area dt { width: 28%; float: none !important; text-align: right;}
+#inquiry #form_area dd { width: 72%; padding-left: 20px; box-sizing: border-box;}
 
 @media screen and (max-width: 768px) {
 	#inquiry #form_area dl,
@@ -90,8 +90,8 @@ Inquiry
 
 #inquiry #form_area input { max-width: 100%; padding: 5px 3px; border: 1px solid #ddd; -webkit-box-sizing: border-box; box-sizing: border-box;}
 
-#inquiry #form_area select  { padding: 2px 1px; border: 1px solid #ddd;}
-#inquiry #form_area textarea{
+#inquiry #form_area select { padding: 2px 1px; border: 1px solid #ddd;}
+#inquiry #form_area textarea {
 	padding: 5px 3px; width: 100%; max-width: 100%; height: 150px; border: 1px solid #ddd;
 	-webkit-box-sizing: border-box; box-sizing: border-box;
 }

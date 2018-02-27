@@ -5,56 +5,56 @@
 /* ---------------------------------------------------
 Inquiry
 ------------------------------------------------------ */
-#inquiry #form_area{ margin: 5px auto 15px; max-width: 90%;}
-#inquiry #form_area h3{ margin: 0 auto 15px; font-size: 16px; text-align: center;}
-#inquiry #form_area p{ margin: 0 auto 15px; width: 80%; line-height: 1.6; text-align: center;}
+#inquiry #form_area { margin: 5px auto 15px; max-width: 90%;}
+#inquiry #form_area h3 { margin: 0 auto 15px; font-size: 16px; text-align: center;}
+#inquiry #form_area p { margin: 0 auto 15px; width: 80%; line-height: 1.6; text-align: center;}
 #inquiry #form_area p.attention { color: #f00;}
-#inquiry #form_area form{ margin: 0 auto; width: 80%;}
+#inquiry #form_area form { margin: 0 auto; width: 80%;}
 
-#inquiry #form_area dl{
+#inquiry #form_area dl {
 	display: table; table-layout: fixed;
 	width: 100%; padding: 10px 0;
 	border-bottom: 1px dashed #ddd; box-sizing: border-box;
 }
 #inquiry #form_area dt,
-#inquiry #form_area dd{ display: table-cell; margin: 0; padding: 0; box-sizing: border-box;}
+#inquiry #form_area dd { display: table-cell; margin: 0; padding: 0; box-sizing: border-box;}
 
-#inquiry #form_area dt{ width: 30%; float: none !important; text-align: left;}
-#inquiry #form_area dd{ width: 69%;}
+#inquiry #form_area dt { width: 30%; float: none !important; text-align: left;}
+#inquiry #form_area dd { width: 69%;}
 
 
 
 /* フォーム内レイアウト
 ------------------------------------------------------ */
 #inquiry #form_area ul,
-#inquiry #form_area ol{ margin: 0 1%; padding: 0 0 5px; max-width: 98%;}
+#inquiry #form_area ol { margin: 0 1%; padding: 0 0 5px; max-width: 98%;}
 #inquiry #form_area ul li,
-#inquiry #form_area ol li{ margin: 0; padding: 0; list-style: none; display: inline; line-height: 1.8;}
+#inquiry #form_area ol li { margin: 0; padding: 0; list-style: none; display: inline; line-height: 1.8;}
 
-#inquiry #form_area label{ margin: 7px 0 0; display: inline-block;}
-#inquiry #form_area input{ margin: 0 5px 0 0; padding: 0;}
+#inquiry #form_area label { margin: 7px 0 0; display: inline-block;}
+#inquiry #form_area input { margin: 0 5px 0 0; padding: 0;}
 
 #inquiry #form_area input[type="text"],
-#inquiry #form_area input[type="email"]{
+#inquiry #form_area input[type="email"] {
 	margin: 5px auto 0; padding: 5px 3px; max-width: 98%;
 	border: 1px solid #ddd; box-sizing:border-box;
 }
 
-#inquiry #form_area select  { margin: 5px 0 0; padding: 2px 1px; border: 1px solid #ddd;}
-#inquiry #form_area textarea{
+#inquiry #form_area select { margin: 5px 0 0; padding: 2px 1px; border: 1px solid #ddd;}
+#inquiry #form_area textarea {
 	margin: 5px 0 0; padding: 2px 3px; width: 98% !important; max-width: 98%;
 	height: 150px !important; border: 1px solid #ddd; box-sizing: border-box;
 }
 
-#inquiry #form_area .must       { margin: 0 5px; color: #fb223f;}
-#inquiry #form_area .mfp_buttons{ margin: 15px 2% 20px; width: 96%;}
-#inquiry #form_area .mfp_buttons button{ width: 31%; padding: 2px 0; letter-spacing: 3px; line-height: 25px; text-align: center;}
+#inquiry #form_area .must { margin: 0 5px; color: #fb223f;}
+#inquiry #form_area .mfp_buttons { margin: 15px 2% 20px; width: 96%;}
+#inquiry #form_area .mfp_buttons button { width: 31%; padding: 2px 0; letter-spacing: 3px; line-height: 25px; text-align: center;}
 
 
 /* mailform PRO のCSS上書き */
 #inquiry #form_area dt,
-#inquiry #form_area dd{ font-size: 14px; border: none;}
-#inquiry #form_area .must{
+#inquiry #form_area dd { font-size: 14px; border: none;}
+#inquiry #form_area .must {
 	display: inline-block; padding: 0; float: none;
 	font-size: 16px; text-shadow: none; border: none;
 	background: none; border-radius: 0; box-shadow: none;
@@ -70,46 +70,46 @@ Inquiry
 @media screen and (max-width: 1100px) {
 }
 @media screen and (max-width: 900px) {
-	#inquiry #form_area{ max-width: 98%;}
-	#inquiry #form_area dl{ margin: 0 0 20px;}
+	#inquiry #form_area { max-width: 98%;}
+	#inquiry #form_area dl { margin: 0 0 20px;}
 }
 @media screen and (max-width: 768px) {
 }
 @media screen and (max-width: 600px) {
 	#inquiry #form_area dt,
-	#inquiry #form_area dd{ display: block; width: 100%;}
-	#inquiry #form_area dt{ background: #f5f5f5;}
-	#inquiry #form_area .mfp_buttons{ text-align: center;}
+	#inquiry #form_area dd { display: block; width: 100%;}
+	#inquiry #form_area dt { background: #f5f5f5;}
+	#inquiry #form_area .mfp_buttons { text-align: center;}
 }
 
 
 /* ---------------------------------------------------
 Privacy
 ------------------------------------------------------ */
-#privacy article h3{ padding: 50px 0 10px; font-size: 20px;}
-#privacy article h4{ padding: 10px 0; font-size: 16px;}
-#privacy article h5{ padding: 0 0 5px;}
-#privacy article p{ padding: 0 0 15px;}
+#privacy article h3 { padding: 50px 0 10px; font-size: 20px;}
+#privacy article h4 { padding: 10px 0; font-size: 16px;}
+#privacy article h5 { padding: 0 0 5px;}
+#privacy article p { padding: 0 0 15px;}
 
-#privacy article li:before{ content:'○'; padding: 0 0 5px;}
+#privacy article li:before { content:'○'; padding: 0 0 5px;}
 
-#privacy article dt{ padding: 5px 0;}
-#privacy article dd{ padding: 0 10px;}
+#privacy article dt { padding: 5px 0;}
+#privacy article dd { padding: 0 10px;}
 
-#privacy article div{ margin: 20px 0 10px; overflow: auto;}
-#privacy article table{ width: 800px; text-align: center; table-layout: fixed;}
-#privacy article table caption{ text-align: left;}
+#privacy article div { margin: 20px 0 10px; overflow: auto;}
+#privacy article table { width: 800px; text-align: center; table-layout: fixed;}
+#privacy article table caption { text-align: left;}
 #privacy article th,
-#privacy article td{ border: 1px solid #ccc;}
-#privacy article th{ background: #eee; font-weight: normal;}
-#privacy article p.ver_sp{ display: none; padding: 5px 0 10px; font-size: 12px;}
+#privacy article td { border: 1px solid #ccc;}
+#privacy article th { background: #eee; font-weight: normal;}
+#privacy article p.ver_sp { display: none; padding: 5px 0 10px; font-size: 12px;}
 
 
 @media screen and (max-width: 1100px) {
 }
 @media screen and (max-width: 900px) {
-	#privacy article div{ margin-bottom: 0;}
-	#privacy article p.ver_sp{ display: block;}
+	#privacy article div { margin-bottom: 0;}
+	#privacy article p.ver_sp { display: block;}
 }
 @media screen and (max-width: 768px) {
 }
@@ -120,9 +120,9 @@ Privacy
 /* ---------------------------------------------------
 404
 ------------------------------------------------------ */
-#error section{ margin: 0 auto 50px; width: 60%; text-align: center;}
-#error section h3{ margin: 0 0 25px; font-size: 20px;}
-#error section p{ margin: 0 0 250px; /* サンプル用の数値です。本番環境では適時変更して下さい */ }
+#error section { margin: 0 auto 50px; width: 60%; text-align: center;}
+#error section h3 { margin: 0 0 25px; font-size: 20px;}
+#error section p { margin: 0 0 250px; /* サンプル用の数値です。本番環境では適時変更して下さい */ }
 
 
 @media screen and (max-width: 1100px) {

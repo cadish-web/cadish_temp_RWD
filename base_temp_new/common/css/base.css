@@ -24,13 +24,18 @@ a:hover img { opacity: 0.75; filter: alpha(opacity=75); -moz-opacity: 0.75;}
 .fixed { width: 100%; position: fixed; top:0; left: 0; z-index: 999;}
 iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;}
 
-
-@media screen and (max-width: 768px) {
-	body { min-width: 0;}
-}
 @media screen and (orientation:landscape) {
 	html,
 	body { width: 100%;}
+}
+@media screen and (max-width: 768px) {
+	body { min-width: 0;}
+}
+@media screen and (max-width: 600px) {
+	body,
+	input,
+	select,
+	textarea { font-size: 16px;}
 }
 
 
@@ -137,7 +142,7 @@ iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;
 
 
 @media screen and (max-width: 768px) {
-	#gnav{ width: 100%; padding: 0; position: fixed; top: 0; left: 0; z-index: 999; background: none;}
+	#gnav { width: 100%; padding: 0; position: fixed; top: 0; left: 0; z-index: 999; background: none;}
 
 	/* ▼ jquery-dropdown 用のcss設定です ▼
 		#gnav_wrap と .pos_fix はjsで自動的に追加される要素です。
@@ -173,7 +178,7 @@ iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;
 	#gnav #close_bot span:after { margin: -2px 0 0; top: 50%; background: #fff;}
 	/* ▲ jquery-dropdown 用のcss設定です ▲ */
 
-	#gnav ul{
+	#gnav ul {
 		display: none;width: auto; padding: 0; margin: 65px 10px 20px 10px;
 		-webkit-box-sizing: border-box; box-sizing: border-box;
 	}
@@ -185,14 +190,14 @@ iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;
 	#gnav li:first-child { border-top: 1px solid #ccc; border-radius: 4px 4px 0 0;}
 	#gnav li:nth-last-child(2) { border-bottom-style: solid; border-radius: 0 0 4px 4px;}
 
-	#gnav a{
+	#gnav a {
 		height: auto; padding: 5px 20px; color: #000;
 		background: none; line-height: 1.8;
 		-webkit-box-sizing: border-box; box-sizing: border-box;
 	}
 	#gnav a:hover { background: rgba(204,204,204,0.25); text-decoration: none;}
 
-	#gnav li:nth-last-child(2) a{ border-radius: 0 0 4px 4px;}
+	#gnav li:nth-last-child(2) a { border-radius: 0 0 4px 4px;}
 }
 
 
@@ -244,8 +249,8 @@ iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;
 #footer a { color: #f3f3f3;}
 
 #f_logo { width: 300px; float: left; font-style: normal;}
-#f_logo img{ display: block; margin: 0 0 10px;}
-#f_logo address span{ display: block;}
+#f_logo img { display: block; margin: 0 0 10px;}
+#f_logo address span { display: block;}
 
 #f_nav .acc_tit { display: none;}
 #f_nav { padding: 15px 0 0; width: calc( 100% - 320px); max-width: 600px; float: right;}
@@ -263,7 +268,7 @@ iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;
 	#f_logo img { margin: 0 auto 15px;}
 
 	#f_nav { width: 100%; max-width: none; float: none;}
-	#f_nav .acc_tit{
+	#f_nav .acc_tit {
 		display: block; width: 100%; padding: 10px 25px; margin: 0 0 15px;
 		position: relative; background: #353535; text-align: center;
 		-webkit-box-sizing: border-box; box-sizing: border-box;

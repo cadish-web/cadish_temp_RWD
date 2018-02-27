@@ -20,7 +20,10 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 
 
 @media screen and (orientation:landscape) {
-	html,body{ width: 100%; }
+	html,body { width: 100%;}
+}
+@media screen and (max-width: 600px) {
+	body, input, select, textarea{ font-size: 16px;}
 }
 
 
@@ -39,38 +42,38 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 #header_wrap { }
 
 #header   { margin: 0 auto; padding: 15px 0 5px; width: 1100px;}
-#header h1{ font-size: 12px;}
-#header #logo{ width: 500px; float: left;}
+#header h1 { font-size: 12px;}
+#header #logo { width: 500px; float: left;}
 
 #head_nav  { width: 500px; float: right;}
-#head_nav li{ width: 50%; padding: 0 0 0 1%; float: left; box-sizing: border-box;}
+#head_nav li { width: 50%; padding: 0 0 0 1%; float: left; box-sizing: border-box;}
 #head_nav .tel-link,
-#head_nav .btn{ display: block; height: 40px; padding: 5px; text-align: center;}
-#head_nav .btn{ background: #000;}
-#head_nav .btn:hover{ background: #555;}
+#head_nav .btn { display: block; height: 40px; padding: 5px; text-align: center;}
+#head_nav .btn { background: #000;}
+#head_nav .btn:hover { background: #555;}
 
 
 @media screen and (max-width: 1100px) {
-	#header{ padding: 15px 1% 5px; width: 96%;}
-	#header h1{ margin-right: 55px;}
-	#header #logo{ width: 48%;}
-	#head_nav{ width: 50%; padding: 0 55px 0 0; box-sizing: border-box;}
-	#head_nav li{ height: 44px; box-sizing: border-box;}
+	#header { padding: 15px 1% 5px; width: 96%;}
+	#header h1 { margin-right: 55px;}
+	#header #logo { width: 48%;}
+	#head_nav { width: 50%; padding: 0 55px 0 0; box-sizing: border-box;}
+	#head_nav li { height: 44px; box-sizing: border-box;}
 	#head_nav .tel-link,
-	#head_nav .btn{ height: auto;}
+	#head_nav .btn { height: auto;}
 }
 @media screen and (max-width: 900px) {
 }
 @media screen and (max-width: 768px) {
-	#header{ padding: 15px 1% 5px; width: 94%;}
+	#header { padding: 15px 1% 5px; width: 94%;}
 }
 @media screen and (max-width: 600px) {
 	#header h1,
-	#header #logo{ margin: 0 55px;}
-	#header h1{text-align: center;}
-	#header #logo{ clear: both; width: auto; float: none; text-align: center;}
-	#head_nav{ clear: both; width: 100%; padding: 0; float: none;}
-	#head_nav li{ padding: 0 1%;}
+	#header #logo { margin: 0 55px;}
+	#header h1 {text-align: center;}
+	#header #logo { clear: both; width: auto; float: none; text-align: center;}
+	#head_nav { clear: both; width: 100%; padding: 0; float: none;}
+	#head_nav li { padding: 0 1%;}
 }
 
 
@@ -78,36 +81,36 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 	G-nav
 ------------------------------------------------------ */
 #open_menu,
-#close_menu{ display: none;}
+#close_menu { display: none;}
 
-#gnav{ clear: both; background: #000;}
-#gnav ul{ margin: 0 auto; width: 1100px;}
-#gnav li{
+#gnav { clear: both; background: #000;}
+#gnav ul { margin: 0 auto; width: 1100px;}
+#gnav li {
 	width: 20%; height: 50px; float: left;
 	border-right: 1px solid #555; box-sizing: border-box;
 }
-#gnav li:last-child{ border-right:0;}
-#gnav a{ display:block; height: 50px; line-height: 50px; text-indent: -9999px;}
+#gnav li:last-child { border-right:0;}
+#gnav a { display:block; height: 50px; line-height: 50px; text-indent: -9999px;}
 
-#gn_home{ display: none;}
-#gn_01 a{ background:url(../img/gn_01.png) no-repeat center center;}
-#gn_02 a{ background:url(../img/gn_02.png) no-repeat center center;}
-#gn_03 a{ background:url(../img/gn_03.png) no-repeat center center;}
-#gn_04 a{ background:url(../img/gn_04.png) no-repeat center center;}
-#gn_05 a{ background:url(../img/gn_05.png) no-repeat center center;}
+#gn_home { display: none;}
+#gn_01 a { background:url(../img/gn_01.png) no-repeat center center;}
+#gn_02 a { background:url(../img/gn_02.png) no-repeat center center;}
+#gn_03 a { background:url(../img/gn_03.png) no-repeat center center;}
+#gn_04 a { background:url(../img/gn_04.png) no-repeat center center;}
+#gn_05 a { background:url(../img/gn_05.png) no-repeat center center;}
 
-#gnav a:hover{ background-color: rgba( 255,255,255,0.25);}
+#gnav a:hover { background-color: rgba( 255,255,255,0.25);}
 
 
 @media screen and (max-width: 1100px) {
-	#gnav{ width: 100%; padding: 0; position: fixed; top: 0; left: 0; z-index: 999; background: none;}
+	#gnav { width: 100%; padding: 0; position: fixed; top: 0; left: 0; z-index: 999; background: none;}
 
 	/* jquery-dropdown 用のcss設定です
 		 #gnav_wrap と .pos_fix はjsで自動的に追加される要素です。
 		 別にgnavを囲むwrapper等を使用する場合はid名が被らないようにしてください。
 	*/
-	#gnav_wrap{ width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 10000; overflow: auto;}
-	.pos_fix{
+	#gnav_wrap { width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 10000; overflow: auto;}
+	.pos_fix {
 		overflow: hidden;
 		/* メニューボタンがfixedじゃない場合は下記を追記
 		position: fixed; top: 0; width: 100%;
@@ -115,31 +118,31 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 	}
 	/* jquery-dropdown 用のcss設定です */
 
-	#open_menu{
+	#open_menu {
 		display: block; top: 15px; right: 10px; position: fixed; cursor: pointer;
 		width: 44px; height: 44px; padding: 0; background: #000; border: 1px solid #555; z-index: 10;
 	}
-	#gnav #close_menu{ padding: 5px 0 !important; text-align: center; position: relative;}
-	#gnav #close_menu span{ width: 15px; position: absolute; top: 13px; right: 10px; line-height: 0; z-index: 0;}
-	#gnav #close_menu img{ width: 100%;}
+	#gnav #close_menu { padding: 5px 0 !important; text-align: center; position: relative;}
+	#gnav #close_menu span { width: 15px; position: absolute; top: 13px; right: 10px; line-height: 0; z-index: 0;}
+	#gnav #close_menu img { width: 100%;}
 
-	#gnav ul{
+	#gnav ul {
 		display: none; margin: 75px 10px 20px 10px; padding: 0; width: auto;
 		background-color: #fff; border-radius: 4px; box-sizing: border-box; border: 1px solid #ccc;
 	}
-	#gnav li{
+	#gnav li {
 		display: block; width: 100%; height: auto; padding: 0; font-size: 15px;
 		float: none; line-height: 2; border-bottom: 1px dashed #ccc; border-right: 0;
 	}
-	#gnav li:last-child{ border-bottom: none;}
+	#gnav li:last-child { border-bottom: none;}
 
-	#gnav li a{
+	#gnav li a {
 		display: block; width: 100%; height: auto; margin: 1px; padding: 5px 20px;
 		color: #000; text-decoration: none; text-align: left; text-indent: 0; line-height: 1.8;
 		white-space: normal; background: none; box-sizing: border-box;
 	}
-	#gnav li:last-child a{ border-radius: 0 0 4px 4px;}
-	#gnav a:hover{ display: block; text-decoration: none; background-color: rgba(204,204,204,0.25);}
+	#gnav li:last-child a { border-radius: 0 0 4px 4px;}
+	#gnav a:hover { display: block; text-decoration: none; background-color: rgba(204,204,204,0.25);}
 }
 @media screen and (max-width: 900px) {
 }
@@ -152,26 +155,26 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 /* ---------------------------------------------------
 	Contents
 ------------------------------------------------------ */
-#contents_wrap{ padding: 0 0 55px;}
-#contents     { clear: both; margin: 0 auto; width: 1100px;}
+#contents_wrap { padding: 0 0 55px;}
+#contents { clear: both; margin: 0 auto; width: 1100px;}
 
 /* page title */
-#contents_wrap h2{ padding: 50px 0; font-size: 24px; text-align: center;}
+#contents_wrap h2 { padding: 50px 0; font-size: 24px; text-align: center;}
 
 /* breadcrumb */
-#breadcrumb{ margin: 5px auto 25px; padding: 0; width: 100% font-size: 12px; text-align: right;}
-#breadcrumb li{ display: inline; margin: 0; padding: 0; line-height: 1.6; background: none;}
-#breadcrumb li:before{ display: inline-block; margin: 0 5px; content: ">";}
-#breadcrumb li:first-child:before{ display: none;}
+#breadcrumb { margin: 5px auto 25px; padding: 0; width: 100% font-size: 12px; text-align: right;}
+#breadcrumb li { display: inline; margin: 0; padding: 0; line-height: 1.6; background: none;}
+#breadcrumb li:before { display: inline-block; margin: 0 5px; content: ">";}
+#breadcrumb li:first-child:before { display: none;}
 
 
 @media screen and (max-width: 1100px) {
-	#contents{ width: 96%;}
+	#contents { width: 96%;}
 }
 @media screen and (max-width: 900px) {
 }
 @media screen and (max-width: 768px) {
-	#contents{ width: 94%;}
+	#contents { width: 94%;}
 }
 @media screen and (max-width: 600px) {
 }
@@ -180,52 +183,52 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 /* ---------------------------------------------------
 	Footer
 ------------------------------------------------------ */
-#page_top  { display:block; position: fixed; bottom: 10px; right: 10px; z-index: 9999; cursor: pointer;}
-#page_top a{ display: block; width: 48px; height: 48px;}
+#page_top { display:block; position: fixed; bottom: 10px; right: 10px; z-index: 9999; cursor: pointer;}
+#page_top a { display: block; width: 48px; height: 48px;}
 
 #footer_wrap { background: #000;}
-#footer      { margin: 0 auto; padding: 25px 0; width: 1100px; color: #f3f3f3;}
+#footer { margin: 0 auto; padding: 25px 0; width: 1100px; color: #f3f3f3;}
 
-#f_logo{ width: 300px; float: left; font-style: normal; line-height: 1.6;}
-#f_logo img{ display: block; margin: 0 0 10px;}
-#f_logo address span{ display: block;}
+#f_logo { width: 300px; float: left; font-style: normal; line-height: 1.6;}
+#f_logo img { display: block; margin: 0 0 10px;}
+#f_logo address span { display: block;}
 
-#fnav{ padding: 15px 0 0; width: 620px; float: right; text-align: right;}
-#fnav .acc_tit{ display: none;}
-#fnav li{
+#fnav { padding: 15px 0 0; width: 620px; float: right; text-align: right;}
+#fnav .acc_tit { display: none;}
+#fnav li {
 	display: inline-block; margin: 0 15px 10px 0; padding: 0 0 0 12px; line-height: 1.6;
 	background: url(../img/icon_arrow.gif) no-repeat  left center;
 }
 
-#copyright{ clear: both; padding: 15px 0 0; text-align: center; line-height: 1.6;}
-#footer a:link, #footer a:visited{ color: #ccc; text-decoration: none;}
-#footer a:hover, #footer a:active{ color: #f3f3f3; text-decoration: underline;}
+#copyright { clear: both; padding: 15px 0 0; text-align: center; line-height: 1.6;}
+#footer a:link, #footer a:visited { color: #ccc; text-decoration: none;}
+#footer a:hover, #footer a:active { color: #f3f3f3; text-decoration: underline;}
 
 
 @media screen and (max-width: 1100px) {
-	#footer{ padding: 25px 0; width: 96%; box-sizing: border-box;}
-	#f_logo{ width: 27%;}
-	#fnav{ width: 72%;}
+	#footer { padding: 25px 0; width: 96%; box-sizing: border-box;}
+	#f_logo { width: 27%;}
+	#fnav { width: 72%;}
 }
 @media screen and (max-width: 900px) {
 	#f_logo,
-	#fnav{ clear: both; float: none; margin: 0 auto 15px; width: 100%;}
-	#f_logo{ text-align: center;}
-	#f_logo img{ margin: 0 auto 10px;}
-	#f_logo address span{ display: inline-block; margin: 0 15px 0 0;}
-	#fnav{ text-align: center;}
+	#fnav { clear: both; float: none; margin: 0 auto 15px; width: 100%;}
+	#f_logo { text-align: center;}
+	#f_logo img { margin: 0 auto 10px;}
+	#f_logo address span { display: inline-block; margin: 0 15px 0 0;}
+	#fnav { text-align: center;}
 }
 @media screen and (max-width: 768px) {
-	#footer{ width: 94%;}
+	#footer { width: 94%;}
 }
 @media screen and (max-width: 600px) {
-	#fnav .acc_tit{
+	#fnav .acc_tit {
 		display: block; margin: 0 auto 15px; padding: 10px; width: 98%;
 		background: #353535 url(../img/arrow_off.png) no-repeat 98% 50%;
 		box-sizing: border-box;
 	}
-	#fnav .acc_tit.active{ background-image: url(../img/arrow_on.png);}
-	#fnav li{ display: block; margin: 0 15px 10px; text-align: left;}
+	#fnav .acc_tit.active { background-image: url(../img/arrow_on.png);}
+	#fnav li { display: block; margin: 0 15px 10px; text-align: left;}
 }
 
 
@@ -242,7 +245,7 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 #contents section:after,
 #breadcrumbs:after,
 #footer_wrap:after,
-#footer:after{ content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
+#footer:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
 
 
 
