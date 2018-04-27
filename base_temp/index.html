@@ -5,7 +5,7 @@
 <meta name="author" content="施設名">
 <meta name="description" content="施設の特徴、ページの売り等80〜100文字くらい">
 <meta name="keywords" content="検索キーワード MAX5個まで コンマ区切り">
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="format-detection" content="telephone=no" />
 
 <link rel="canonical" href="http://www.example.com/" />
@@ -33,15 +33,33 @@
 <!-- △common△ -->
 
 <!-- ▽each page▽ -->
-<script src="common/js/rss_2.js"></script>
+<script src="common/js/jquery.flexslider-min.js"></script>
+<link rel="stylesheet" href="common/css/jquery.flexslider.css" />
+<link rel="stylesheet" href="common/css/slider_style.css" />
+<script>
+$(document).ready(function() {
+	$('.flex_fade').flexslider({
+		animation: "fade",
+		slideshowSpeed: 5000,
+		animationSpeed: 2500,
+		directionNav: false,
+		controlNav: false,
+		pauseOnAction:false,
+		touch: false
+	});
+});
+</script>
+
+
+<script src="common/js/rss2.js"></script>
 <script>
 // iPhoneまたは、Androidの場合は振り分けを判断
-if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
-if(confirm('施設名の公式サイトへようこそ。このサイトにはスマートフォン用のサイトがあります。表示しますか？')) {
-//urlは各ページに合わせて修正すること
-location.href = 'http://www.example.com/sp/';
-}
-}
+	// if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
+	// 	if(confirm('施設名の公式サイトへようこそ。このサイトにはスマートフォン用のサイトがあります。表示しますか？')) {
+	// 		//urlは各ページに合わせて修正すること
+	// 		location.href = 'http://www.example.com/sp/';
+	// 	}
+	// }
 </script>
 <!-- △each page△ -->
 
@@ -51,52 +69,57 @@ location.href = 'http://www.example.com/sp/';
 <body id="home">
 <!-- ============ header_wrap GO ============ -->
 <div id="header_wrap">
-<header id="header">
-<h1>施設名やディスクリプション等が入ります。</h1>
-<!-- #BeginLibraryItem "/Library/header.lbi" -->
+	<header id="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+	<h1>施設名やディスクリプション等が入ります。</h1><!-- #BeginLibraryItem "/Library/header.lbi" -->
 <div id="logo"><a href="./"><img src="common/img/h_logo.png" alt="施設名"></a></div>
-<ul id="head_nav">
-	<li><a class="tel-link" href="tel:0000000000"><img src="common/img/h_tel.png" alt="TEL.000-000-0000"></a></li>
+<ul id="h_nav">
+	<li><a class="tel-link" href="tel:0000000000"><img src="common/img/h_tel_sp.png" alt="TEL.000-000-0000" class="switch" data-size="sp"></a></li>
 	<li><a class="btn" href="#" target="_blank"><img src="common/img/h_planlist.png" alt="ご予約・プラン一覧"></a></li>
 </ul>
-<!-- #EndLibraryItem -->
-</header>
+<!-- #EndLibraryItem --></header>
 </div>
 <!-- ============ header_wrap END ============ -->
 
 
 <!-- ============ nav_wrap GO ============ --><!-- #BeginLibraryItem "/Library/gnav.lbi" -->
-<nav id="gnav">
+<nav id="gnav" role="navigation" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
 <p id="open_menu"><img src="common/img/icon_menu.png" alt="MENU"></p>
 <ul>
-	<li id="close_menu">MENU<span><img src="common/img/icon_close.png" alt="閉じる"></span></li>
-	<li id="gn_home"><a href="./">トップページ</a></li>
-	<li id="gn_01"><a href="#">温泉</a></li>
-	<li id="gn_02"><a href="#">お料理</a></li>
-	<li id="gn_03"><a href="#">お部屋</a></li>
-	<li id="gn_04"><a href="#">周辺観光</a></li>
-	<li id="gn_05"><a href="#">交通アクセス</a></li>
+	<li id="close_top" class="close_menu">MENU<span>閉じる</span></li>
+	<li itemprop="name" id="gn_home"><a itemprop="URL" href="./">トップページ</a></li>
+	<li itemprop="name" id="gn_01"><a itemprop="URL" href="#">温泉</a></li>
+	<li itemprop="name" id="gn_02"><a itemprop="URL" href="#">お料理</a></li>
+	<li itemprop="name" id="gn_03"><a itemprop="URL" href="#">お部屋</a></li>
+	<li itemprop="name" id="gn_04"><a itemprop="URL" href="#">周辺観光</a></li>
+	<li itemprop="name" id="gn_05"><a itemprop="URL" href="#">交通アクセス</a></li>
+	<li id="close_bot" class="close_menu"><span>閉じる</span></li>
 </ul>
 </nav><!-- #EndLibraryItem --><!-- ============ nav_wrap END ============ -->
 
 
+<!-- ============ main_img GO ============ -->
+<div id="main_img">
+	<div class="flex_fade flexslider">
+		<ul class="slides">
+			<li><img src="img/sample_img01.jpg" alt=""></li>
+			<li><img src="img/sample_img02.jpg" alt=""></li>
+			<li><img src="img/sample_img03.jpg" alt=""></li>
+			<li><img src="img/sample_img04.jpg" alt=""></li>
+		</ul>
+	</div>
+</div>
+<!-- ============ main_img END ============ -->
+
+
 <!-- ============ contents_wrap GO ============= -->
 <div id="contents_wrap">
-<div id="contents">
-<article>
+<main role="main">
 
-
-
-<section style="height:1000px;">
-	<h2>見出し</h2>
-	<p>段落</p>
-	<div id="feed"></div>
+<section style="height:250px;">
+セクション
 </section>
 
-
-
-</article>
-</div>
+</main>
 </div>
 <!-- ============ contents_wrap END ============= -->
 
@@ -104,7 +127,7 @@ location.href = 'http://www.example.com/sp/';
 <!-- ============ footer_wrap GO ============ --><!-- #BeginLibraryItem "/Library/footer.lbi" -->
 <div id="footer_wrap">
 <div id="page_top"><a href="#header_wrap"><img src="common/img/pagetop.png" alt="ページのトップへ戻る"></a></div>
-<footer id="footer">
+<footer id="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
 	<div id="f_logo">
 	<img src="common/img/ft_logo.png" alt="施設名" />
 	<address>
@@ -112,24 +135,25 @@ location.href = 'http://www.example.com/sp/';
 	<a class="tel-link" href="tel:0000000000">TEL.000-000-0000</a>
 	</address>
 	</div>
-	<div id="fnav">
+	<div id="f_nav">
 		<p class="acc_tit">コンテンツメニュー</p>
-		<ul>
-		<li><a href="./">トップページ</a></li>
-		<li><a href="#">温泉</a></li>
-		<li><a href="#">お料理</a></li>
-		<li><a href="#">お部屋</a></li>
-		<li><a href="#">館内案内</a></li>
-		<li><a href="#">周辺観光</a></li>
-		<li><a href="#">交通アクセス</a></li>
-		<li><a href="#">ご予約・プラン一覧</a></li>
-		<li><a href="#">お問い合わせ</a></li>
-		<li><a href="#">プライバシーポリシー</a></li>
-		<li><a href="#">キャンセルポリシー</a></li>
-	</ul>
+		<ul id="fnav" role="navigation" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+			<li itemprop="name"><a itemprop="URL" href="./">トップページ</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">温泉</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">お料理</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">お部屋</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">館内案内</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">周辺観光</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">交通アクセス</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">ご予約・プラン一覧</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">お問い合わせ</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">プライバシーポリシー</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">キャンセルポリシー</a></li>
+		</ul>
 	</div>
-	<p id="copyright">COPYRIGHT &copy; <script type="text/javascript">myDate= new Date();myYear=myDate.getFullYear();document.write(myYear);</script> 施設名. ALL RIGHTS RESERVED</p>
+	<p id="copyright">Copyright &copy; <script type="text/javascript">myDate= new Date();myYear=myDate.getFullYear();document.write(myYear);</script> 施設名. All Rright Reserved</p>
 </footer>
-</div><!-- #EndLibraryItem --><!-- ============ footer_wrap END ============ -->
+</div>
+<!-- #EndLibraryItem --><!-- ============ footer_wrap END ============ -->
 </body>
 </html>

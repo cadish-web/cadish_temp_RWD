@@ -18,7 +18,7 @@ $(document).ready(function($){
 	});
 
 	//閉じるボタン用　不要な場合は削除してください。
-	$("#close_menu").on("click",function(){
+	$(".close_menu").on("click",function(){
 		$("html,body").removeClass('pos_fix');
 		$("#gnav").unwrap();
 		$("#gnav").css("position","fixed");
@@ -48,7 +48,7 @@ $(document).ready(function($){
 					$("#gnav").css("position","fixed");
 				}
 
-				if( winWidth_resized > 1100) {
+				if( winWidth_resized > 768) {
 					$('#gnav ul').show();
 					$("#gnav").css("position","");
 				} else {

@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <div id="logo"><a href=".././/"><img src="../common/img/h_logo.png" alt="施設名"></a></div>
-<ul id="head_nav">
-	<li><a class="tel-link" href="tel:0000000000"><img src="../common/img/h_tel.png" alt="TEL.000-000-0000"></a></li>
+<ul id="h_nav">
+	<li><a class="tel-link" href="tel:0000000000"><img src="../common/img/h_tel_sp.png" alt="TEL.000-000-0000" class="switch" data-size="sp"></a></li>
 	<li><a class="btn" href="#" target="_blank"><img src="../common/img/h_planlist.png" alt="ご予約・プラン一覧"></a></li>
 </ul>

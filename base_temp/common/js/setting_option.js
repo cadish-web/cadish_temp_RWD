@@ -2,7 +2,6 @@
 	[Setting Option] ※全ページに関わるものだけ記載
 -------------------------------------------------------- */
 $(document).ready(function() {
-
 	/* 電話番号へのリンク指定
 	   PC     →  「span」で囲む (リンクにしない)
 	   スマホ  →  「class="tel-link"」をつけたリンク
@@ -22,8 +21,8 @@ $(document).ready(function() {
 	var $setElem = $('.switch'),
 		pcName = '_pc',
 		spName = '_sp',
-		replaceWidth = 601,
-		replaceWidth2 = 769;
+		replaceWidth = 600,
+		replaceWidth2 = 768;
 		$setElem.each(function(){
 			var $this = $(this);
 			function imgSize(){
@@ -56,7 +55,7 @@ $(document).ready(function() {
 		// 	var speed = 500;
 		// 	var href= $(this).attr("href");
 		// 	var target = $(href == "#" || href == "" ? 'html' : href);
-		// 	var hHeight = $('#h_wrap').height(); //固定ヘッダーの高さ（ #h_wrap の箇所は固定ヘッダーのid名に合わせてください ）
+		// 	var hHeight = $('#header_wrap').height(); //固定ヘッダーの高さ（ #header_wrap の箇所は固定ヘッダーのid名に合わせてください ）
 		// 	var position = target.offset().top - hHeight; //ターゲットの座標からヘッダの高さ分引く
 		// 	$('body,html').animate({scrollTop:position}, speed, 'swing');
 		// 	return false;
@@ -79,7 +78,7 @@ $(window).on('load',function(){
 	var con = $('#contents_wrap'); // コンテンツ領域の名前
 	var navTop = nav.offset().top; // 固定するナビまでの高さを算出
 	var navHeight = $("#gnav").height(); // nav_wrap の高さを取得
-	var storeNav = 1100; //gnavが格納される幅
+	var storeNav = 768; //gnavが格納される幅
 	if( $(this).scrollTop() >= navTop && $(window).width() >= storeNav) {
 		nav.addClass('fixed');
 		con.css('padding-top', navHeight+'px');
@@ -126,8 +125,7 @@ $(window).on('load',function(){
 	var timer = false;
 	var winWidth = $(window).width();
 	var winWidth_resized;
-	var tab = 768;
-	var sp = 640;
+	var sp = 768;
 
 	$('.acc_contents').hide();
 	$('.acc_tit').on("click",function(){
@@ -136,14 +134,10 @@ $(window).on('load',function(){
 	});
 
 	if( winWidth <= sp) {
-		//スマホ用
 		$('#footer .acc_tit').next().addClass('acc_contents');
 		$('#footer .acc_contents').hide();
-	} else if ( winWidth <= tab ) {
-		//タブ用
-
 	} else {
-		$('#footer .acc_contents').show();
+		$('#footer .acc_contents').css('display', '');
 		$('#footer .acc_tit').next().removeClass('acc_contents');
 	}
 
@@ -174,14 +168,10 @@ $(window).on('load',function(){
 				}
 
 				if( winWidth_resized <= sp) {
-					//スマホ用
 					$('#footer .acc_tit').next().addClass('acc_contents');
 					$('#footer .acc_contents').hide();
-				} else if ( winWidth_resized <= tab ) {
-					//タブ用
-
 				} else {
-					$('#footer .acc_contents').show();
+					$('#footer .acc_contents').css('display', '');
 					$('#footer .acc_tit').next().removeClass('acc_contents');
 				}
 
@@ -199,8 +189,8 @@ $(window).on('load',function(){
 //	var id = location.href.indexOf("?id=");
 //	if( id !== -1 ) {
 //		var target = $('#' + location.href.slice(id+4));
-//		//固定ヘッダーの高さ分をマイナス（ #h_wrap の箇所は固定ヘッダーのid名に合わせてください）
-//		var position = target.offset().top - $('#h_wrap').height();
+//		//固定ヘッダーの高さ分をマイナス（ #header_wrap の箇所は固定ヘッダーのid名に合わせてください）
+//		var position = target.offset().top - $('#header_wrap').height();
 //
 //		//以下はレスポンシブ時固定ヘッダーが無くなる時の処理です　必要ない場合は削除
 //		if ( winWidth <= 1100 ) { //1100 の箇所は固定ヘッダーが無くなるウィンドウサイズを入れてください

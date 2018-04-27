@@ -52,9 +52,9 @@ L<perl>.
 
 Casey West, <F<casey@geeknest.com>>.
 
-=head1 COPYRIGHT
+=head1 Copyright
 
-  Copyright (c) 2004 Casey West.  All rights reserved.
+  Copyright (c) 2004 Casey West.  All Rright Reserved.
   This module is free software; you can redistribute it and/or modify it
   under the same terms as Perl itself.
 
