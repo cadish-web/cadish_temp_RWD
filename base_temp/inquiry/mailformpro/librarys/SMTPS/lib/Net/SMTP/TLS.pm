@@ -437,9 +437,9 @@ Fayland Lam <fayland@gmail.com>
 
 =back
 
-=head1 Copyright AND LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2011 by Alexander Christian Westholm, Fayland Lam.
+This software is copyright (c) 2011 by Alexander Christian Westholm, Fayland Lam.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#"><!-- ogpタグ用prefix -->
 <meta charset="utf-8">
 <meta name="author" content="施設名">
 <meta name="description" content="施設の特徴、ページの売り等80〜100文字くらい">
 <meta name="keywords" content="検索キーワード MAX5個まで コンマ区切り">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <meta name="format-detection" content="telephone=no" />
 
 <link rel="canonical" href="http://www.example.com/inquiry/" />
@@ -42,11 +42,11 @@
 <body id="inquiry">
 <!-- ============ header_wrap GO ============ -->
 <div id="header_wrap">
-<header id="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+<header id="header">
 <h1>施設名やディスクリプション等が入ります。</h1><!-- #BeginLibraryItem "/Library/header.lbi" -->
 <div id="logo"><a href="../"><img src="../common/img/h_logo.png" alt="施設名"></a></div>
-<ul id="h_nav">
-	<li><a class="tel-link" href="tel:0000000000"><img src="../common/img/h_tel_sp.png" alt="TEL.000-000-0000" class="switch" data-size="sp"></a></li>
+<ul id="head_nav">
+	<li><a class="tel-link" href="tel:0000000000"><img src="../common/img/h_tel.png" alt="TEL.000-000-0000"></a></li>
 	<li><a class="btn" href="#" target="_blank"><img src="../common/img/h_planlist.png" alt="ご予約・プラン一覧"></a></li>
 </ul>
 <!-- #EndLibraryItem --></header>
@@ -55,40 +55,35 @@
 
 
 <!-- ============ nav_wrap GO ============ --><!-- #BeginLibraryItem "/Library/gnav.lbi" -->
-<nav id="gnav" role="navigation" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+<nav id="gnav">
 <p id="open_menu"><img src="../common/img/icon_menu.png" alt="MENU"></p>
 <ul>
-	<li id="close_top" class="close_menu">MENU<span>閉じる</span></li>
-	<li itemprop="name" id="gn_home"><a itemprop="URL" href="../">トップページ</a></li>
-	<li itemprop="name" id="gn_01"><a itemprop="URL" href="#">温泉</a></li>
-	<li itemprop="name" id="gn_02"><a itemprop="URL" href="#">お料理</a></li>
-	<li itemprop="name" id="gn_03"><a itemprop="URL" href="#">お部屋</a></li>
-	<li itemprop="name" id="gn_04"><a itemprop="URL" href="#">周辺観光</a></li>
-	<li itemprop="name" id="gn_05"><a itemprop="URL" href="#">交通アクセス</a></li>
-	<li id="close_bot" class="close_menu"><span>閉じる</span></li>
+	<li id="close_menu">MENU<span><img src="../common/img/icon_close.png" alt="閉じる"></span></li>
+	<li id="gn_home"><a href="./">トップページ</a></li>
+	<li id="gn_01"><a href="#">温泉</a></li>
+	<li id="gn_02"><a href="#">お料理</a></li>
+	<li id="gn_03"><a href="#">お部屋</a></li>
+	<li id="gn_04"><a href="#">周辺観光</a></li>
+	<li id="gn_05"><a href="#">交通アクセス</a></li>
 </ul>
 </nav><!-- #EndLibraryItem --><!-- ============ nav_wrap END ============ -->
 
 
-<!-- ============ main_img GO ============ -->
-<div id="main_img">
-<h2>お問い合わせ</h2>
-</div>
-<!-- ============ main_img END ============ -->
-
-
 <!-- ============ contents_wrap GO ============= -->
 <div id="contents_wrap">
+<h2>お問い合わせ</h2>
+
+<div id="contents">
 <!-- ▽ パンくず ▽ -->
 <ol id="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 	<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-		<a itemprop="item" href="../" itemscope itemtype="http://schema.org/Thing">
+		<a href="../" itemscope itemtype="http://schema.org/Thing" itemprop="item">
 			<span itemprop="name">トップページ</span>
 		</a>
 		<meta itemprop="position" content="1" />
 	</li>
 	<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-		<a itemprop="item" href="./" itemscope itemtype="http://schema.org/Thing">
+		<a href="./" itemscope itemtype="http://schema.org/Thing" itemprop="item">
 			<span itemprop="name">お問い合わせ</span>
 		</a>
 		<meta itemprop="position" content="2" />
@@ -96,7 +91,7 @@
 </ol>
 <!-- △ パンくず △ -->
 
-<main role="main">
+<article>
 
 <section id="form_area">
 
@@ -107,144 +102,143 @@
 
 	<form id="mailformpro">
 	<dl>
-		<dt>お名前<span class="must">*</span></dt>
-		<dd><input type="text" name="お名前" size="40" required="required"></dd>
+		<dt class="mfp">お名前<span class="must">*</span></dt>
+		<dd class="mfp"><input type="text" name="お名前" size="40" required="required"></dd>
 	</dl>
 	<dl>
-		<dt>フリガナ<span class="must">*</span></dt>
-		<dd><input type="text" name="フリガナ" size="40" required="required"></dd>
+		<dt class="mfp">フリガナ<span class="must">*</span></dt>
+		<dd class="mfp"><input type="text" name="フリガナ" size="40" required="required"></dd>
 	</dl>
 	<dl>
-		<dt>メールアドレス<span class="must">*</span></dt>
-		<dd><input type="email" data-type="email" name="email" size="40" required="required"></dd>
+		<dt class="mfp">メールアドレス<span class="must">*</span></dt>
+		<dd class="mfp"><input type="email" data-type="email" name="email" size="40" required="required"></dd>
 	</dl>
 	<dl>
-		<dt>確認のためもう一度<span class="must">*</span></dt>
-		<dd><input type="email" data-type="email" name="confirm_email" data-post-disable="1" size="40" required="required"></dd>
+		<dt class="mfp">確認のためもう一度<span class="must">*</span></dt>
+		<dd class="mfp"><input type="email" data-type="email" name="confirm_email" data-post-disable="1" size="40" required="required"></dd>
 	</dl>
 	<dl>
-		<dt>お電話番号</dt>
-		<dd><input type="text" data-type="tel" name="お電話番号" size="20"></dd>
+		<dt class="mfp">お電話番号</dt>
+		<dd class="mfp"><input type="text" data-type="tel" name="お電話番号" size="20"></dd>
 	</dl>
 	<dl>
-		<dt>郵便番号</dt>
-		<dd><input type="text" data-type="post" name="郵便番号" size="20" data-address="都道府県,市区町村,市区町村"></dd>
+		<dt class="mfp">郵便番号</dt>
+		<dd class="mfp"><input type="text" data-type="post" name="郵便番号" size="20" data-address="都道府県,市区町村,市区町村"></dd>
 	</dl>
 	<dl>
-		<dt>ご住所</dt>
-		<dd>
-			<input type="hidden" name="ご住所" data-join="都道府県+市区町村">
-			<select name="都道府県">
-			<option value="" selected="selected">【選択して下さい】</option>
-			<optgroup label="北海道・東北地方">
-				<option value="北海道">北海道</option>
-				<option value="青森県">青森県</option>
-				<option value="岩手県">岩手県</option>
-				<option value="秋田県">秋田県</option>
-				<option value="宮城県">宮城県</option>
-				<option value="山形県">山形県</option>
-				<option value="福島県">福島県</option>
-			</optgroup>
-			<optgroup label="関東地方">
-				<option value="栃木県">栃木県</option>
-				<option value="群馬県">群馬県</option>
-				<option value="茨城県">茨城県</option>
-				<option value="埼玉県">埼玉県</option>
-				<option value="東京都">東京都</option>
-				<option value="千葉県">千葉県</option>
-				<option value="神奈川県">神奈川県</option>
-			</optgroup>
-			<optgroup label="中部地方">
-				<option value="山梨県">山梨県</option>
-				<option value="長野県">長野県</option>
-				<option value="新潟県">新潟県</option>
-				<option value="富山県">富山県</option>
-				<option value="石川県">石川県</option>
-				<option value="福井県">福井県</option>
-				<option value="静岡県">静岡県</option>
-				<option value="岐阜県">岐阜県</option>
-				<option value="愛知県">愛知県</option>
-			</optgroup>
-			<optgroup label="近畿地方">
-				<option value="三重県">三重県</option>
-				<option value="滋賀県">滋賀県</option>
-				<option value="京都府">京都府</option>
-				<option value="大阪府">大阪府</option>
-				<option value="兵庫県">兵庫県</option>
-				<option value="奈良県">奈良県</option>
-				<option value="和歌山県">和歌山県</option>
-			</optgroup>
-			<optgroup label="四国地方">
-				<option value="徳島県">徳島県</option>
-				<option value="香川県">香川県</option>
-				<option value="愛媛県">愛媛県</option>
-				<option value="高知県">高知県</option>
-			</optgroup>
-			<optgroup label="中国地方">
-				<option value="鳥取県">鳥取県</option>
-				<option value="島根県">島根県</option>
-				<option value="岡山県">岡山県</option>
-				<option value="広島県">広島県</option>
-				<option value="山口県">山口県</option>
-			</optgroup>
-			<optgroup label="九州・沖縄地方">
-				<option value="福岡県">福岡県</option>
-				<option value="佐賀県">佐賀県</option>
-				<option value="長崎県">長崎県</option>
-				<option value="大分県">大分県</option>
-				<option value="熊本県">熊本県</option>
-				<option value="宮崎県">宮崎県</option>
-				<option value="鹿児島県">鹿児島県</option>
-				<option value="沖縄県">沖縄県</option>
-			</optgroup>
-			</select><br>
-			<input type="text" data-type="address" name="市区町村" size="40">
+		<dt class="mfp">ご住所</dt>
+		<dd class="mfp">
+		<select name="都道府県">
+		<option value="" selected="selected">【選択して下さい】</option>
+		<optgroup label="北海道・東北地方">
+			<option value="北海道">北海道</option>
+			<option value="青森県">青森県</option>
+			<option value="岩手県">岩手県</option>
+			<option value="秋田県">秋田県</option>
+			<option value="宮城県">宮城県</option>
+			<option value="山形県">山形県</option>
+			<option value="福島県">福島県</option>
+		</optgroup>
+		<optgroup label="関東地方">
+			<option value="栃木県">栃木県</option>
+			<option value="群馬県">群馬県</option>
+			<option value="茨城県">茨城県</option>
+			<option value="埼玉県">埼玉県</option>
+			<option value="東京都">東京都</option>
+			<option value="千葉県">千葉県</option>
+			<option value="神奈川県">神奈川県</option>
+		</optgroup>
+		<optgroup label="中部地方">
+			<option value="山梨県">山梨県</option>
+			<option value="長野県">長野県</option>
+			<option value="新潟県">新潟県</option>
+			<option value="富山県">富山県</option>
+			<option value="石川県">石川県</option>
+			<option value="福井県">福井県</option>
+			<option value="静岡県">静岡県</option>
+			<option value="岐阜県">岐阜県</option>
+			<option value="愛知県">愛知県</option>
+		</optgroup>
+		<optgroup label="近畿地方">
+			<option value="三重県">三重県</option>
+			<option value="滋賀県">滋賀県</option>
+			<option value="京都府">京都府</option>
+			<option value="大阪府">大阪府</option>
+			<option value="兵庫県">兵庫県</option>
+			<option value="奈良県">奈良県</option>
+			<option value="和歌山県">和歌山県</option>
+		</optgroup>
+		<optgroup label="四国地方">
+			<option value="徳島県">徳島県</option>
+			<option value="香川県">香川県</option>
+			<option value="愛媛県">愛媛県</option>
+			<option value="高知県">高知県</option>
+		</optgroup>
+		<optgroup label="中国地方">
+			<option value="鳥取県">鳥取県</option>
+			<option value="島根県">島根県</option>
+			<option value="岡山県">岡山県</option>
+			<option value="広島県">広島県</option>
+			<option value="山口県">山口県</option>
+		</optgroup>
+		<optgroup label="九州・沖縄地方">
+			<option value="福岡県">福岡県</option>
+			<option value="佐賀県">佐賀県</option>
+			<option value="長崎県">長崎県</option>
+			<option value="大分県">大分県</option>
+			<option value="熊本県">熊本県</option>
+			<option value="宮崎県">宮崎県</option>
+			<option value="鹿児島県">鹿児島県</option>
+			<option value="沖縄県">沖縄県</option>
+		</optgroup>
+		</select><br>
+		<input type="text" data-type="address" name="市区町村" size="40">
 		</dd>
 	</dl>
 	<dl>
 		<dt>チェック項目 1</dt>
 		<dd>
-			<ul>
-				<li><label><input type="checkbox" name="チェック項目1" value="チェック項目1_1" />&nbsp;チェック項目1_1</label></li>
-				<li><label><input type="checkbox" name="チェック項目1" value="チェック項目1_2" />&nbsp;チェック項目1_2</label></li>
-				<li><label><input type="checkbox" name="チェック項目1" value="チェック項目1_3" />&nbsp;チェック項目1_3</label></li>
-				<li><label><input type="checkbox" name="チェック項目1" value="チェック項目1_4" />&nbsp;チェック項目1_4</label></li>
-				<li><label><input type="checkbox" name="チェック項目1" value="チェック項目1_5" />&nbsp;チェック項目1_5</label></li>
-				<li><label><input type="checkbox" name="チェック項目1" value="チェック項目1_6" />&nbsp;チェック項目1_6</label></li>
-			</ul>
+		<ul>
+			<li><label><input type="checkbox" name="チェック項目1" value="チェック項目1_1" />&nbsp;チェック項目1_1</label></li>
+			<li><label><input type="checkbox" name="チェック項目1" value="チェック項目1_2" />&nbsp;チェック項目1_2</label></li>
+			<li><label><input type="checkbox" name="チェック項目1" value="チェック項目1_3" />&nbsp;チェック項目1_3</label></li>
+			<li><label><input type="checkbox" name="チェック項目1" value="チェック項目1_4" />&nbsp;チェック項目1_4</label></li>
+			<li><label><input type="checkbox" name="チェック項目1" value="チェック項目1_5" />&nbsp;チェック項目1_5</label></li>
+			<li><label><input type="checkbox" name="チェック項目1" value="チェック項目1_6" />&nbsp;チェック項目1_6</label></li>
+		</ul>
 		</dd>
 	</dl>
 	<dl>
 		<dt>チェック項目 2</dt>
 		<dd>
-			<ul>
-				<li><label><input type="radio" name="チェック項目2" value="チェック項目2_1" />&nbsp;チェック項目2_1</label></li>
-				<li><label><input type="radio" name="チェック項目2" value="チェック項目2_2" />&nbsp;チェック項目2_2</label></li>
-				<li><label><input type="radio" name="チェック項目2" value="チェック項目2_3" />&nbsp;チェック項目2_3</label></li>
-				<li><label><input type="radio" name="チェック項目2" value="チェック項目2_4" />&nbsp;チェック項目2_4</label></li>
-				<li><label><input type="radio" name="チェック項目2" value="チェック項目2_5" />&nbsp;チェック項目2_5</label></li>
-			</ul>
+		<ul>
+			<li><label><input type="radio" name="チェック項目2" value="チェック項目2_1" />&nbsp;チェック項目2_1</label></li>
+			<li><label><input type="radio" name="チェック項目2" value="チェック項目2_2" />&nbsp;チェック項目2_2</label></li>
+			<li><label><input type="radio" name="チェック項目2" value="チェック項目2_3" />&nbsp;チェック項目2_3</label></li>
+			<li><label><input type="radio" name="チェック項目2" value="チェック項目2_4" />&nbsp;チェック項目2_4</label></li>
+			<li><label><input type="radio" name="チェック項目2" value="チェック項目2_5" />&nbsp;チェック項目2_5</label></li>
+		</ul>
 		</dd>
 	</dl>
 	<dl>
 		<dt>選択項目 2</dt>
 		<dd>
-			<select>
-				<option value="選択項目1">選択項目1</option>
-				<option value="選択項目2">選択項目2</option>
-				<option value="選択項目3">選択項目3</option>
-				<option value="選択項目4">選択項目4</option>
-				<option value="選択項目5">選択項目5</option>
-			</select>
+		<select>
+			<option value="選択項目1">選択項目1</option>
+			<option value="選択項目2">選択項目2</option>
+			<option value="選択項目3">選択項目3</option>
+			<option value="選択項目4">選択項目4</option>
+			<option value="選択項目5">選択項目5</option>
+		</select>
 		</dd>
 	</dl>
 	<dl>
-		<dt>お問い合せ内容<span class="must">*</span></dt>
-		<dd><textarea name="お問い合せ内容" rows="10" cols="60" required="required"></textarea></dd>
+		<dt class="mfp">お問い合せ内容<span class="must">*</span></dt>
+		<dd class="mfp"><textarea name="お問い合せ内容" rows="10" cols="60" required="required"></textarea></dd>
 	</dl>
 	<dl>
-		<dt>送信確認<span class="must">*</span></dt>
-		<dd><label><input type="checkbox" name="送信確認" value="送信チェック済み" data-exc="1" required="required"> 上記送信内容を確認したらチェックを入れてください</label></dd>
+		<dt class="mfp">送信確認<span class="must">*</span></dt>
+		<dd class="mfp"><label><input type="checkbox" name="送信確認" value="送信チェック済み" data-exc="1" required="required"> 上記送信内容を確認したらチェックを入れてください</label></dd>
 	</dl>
 	<div class="mfp_buttons">
 		<button type="submit">送信する</button>&nbsp;&nbsp;<button type="reset">リセット</button>
@@ -254,7 +248,8 @@
 
 </section>
 
-</main>
+</article>
+</div>
 </div>
 <!-- ============ contents_wrap END ============= -->
 
@@ -262,7 +257,7 @@
 <!-- ============ footer_wrap GO ============ --><!-- #BeginLibraryItem "/Library/footer.lbi" -->
 <div id="footer_wrap">
 <div id="page_top"><a href="#header_wrap"><img src="../common/img/pagetop.png" alt="ページのトップへ戻る"></a></div>
-<footer id="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+<footer id="footer">
 	<div id="f_logo">
 	<img src="../common/img/ft_logo.png" alt="施設名" />
 	<address>
@@ -270,25 +265,24 @@
 	<a class="tel-link" href="tel:0000000000">TEL.000-000-0000</a>
 	</address>
 	</div>
-	<div id="f_nav">
+	<div id="fnav">
 		<p class="acc_tit">コンテンツメニュー</p>
-		<ul role="navigation" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
-			<li itemprop="name"><a itemprop="URL" href="./">トップページ</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">温泉</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">お料理</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">お部屋</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">館内案内</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">周辺観光</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">交通アクセス</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">ご予約・プラン一覧</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">お問い合わせ</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">プライバシーポリシー</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">キャンセルポリシー</a></li>
-		</ul>
+		<ul>
+		<li><a href="./">トップページ</a></li>
+		<li><a href="#">温泉</a></li>
+		<li><a href="#">お料理</a></li>
+		<li><a href="#">お部屋</a></li>
+		<li><a href="#">館内案内</a></li>
+		<li><a href="#">周辺観光</a></li>
+		<li><a href="#">交通アクセス</a></li>
+		<li><a href="#">ご予約・プラン一覧</a></li>
+		<li><a href="#">お問い合わせ</a></li>
+		<li><a href="#">プライバシーポリシー</a></li>
+		<li><a href="#">キャンセルポリシー</a></li>
+	</ul>
 	</div>
-	<p id="copyright">Copyright &copy; <script type="text/javascript">myDate= new Date();myYear=myDate.getFullYear();document.write(myYear);</script> 施設名. All Rright Reserved</p>
+	<p id="copyright">COPYRIGHT &copy; <script type="text/javascript">myDate= new Date();myYear=myDate.getFullYear();document.write(myYear);</script> 施設名. ALL RIGHTS RESERVED</p>
 </footer>
-</div>
-<!-- #EndLibraryItem --><!-- ============ footer_wrap END ============ -->
+</div><!-- #EndLibraryItem --><!-- ============ footer_wrap END ============ -->
 </body>
 </html>

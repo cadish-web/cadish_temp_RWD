@@ -5,7 +5,7 @@
 <meta name="author" content="施設名">
 <meta name="description" content="施設の特徴、ページの売り等80〜100文字くらい">
 <meta name="keywords" content="検索キーワード MAX5個まで コンマ区切り">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <meta name="format-detection" content="telephone=no" />
 
 <title>【公式】施設タイトル | お探しのページが見つかりませんでした</title>
@@ -26,11 +26,11 @@
 <body id="error">
 <!-- ============ header_wrap GO ============ -->
 <div id="header_wrap">
-<header id="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+<header id="header">
 <h1>施設名やディスクリプション等が入ります。</h1><!-- #BeginLibraryItem "/Library/header.lbi" -->
-<div id="logo"><a href="../"><img src="http://www.example.com/common/img/h_logo.png" alt="施設名"></a></div>
-<ul id="h_nav">
-	<li><a class="tel-link" href="tel:0000000000"><img src="http://www.example.com/common/img/h_tel_sp.png" alt="TEL.000-000-0000" class="switch" data-size="sp"></a></li>
+<div id="logo"><a href="http://www.example.com/"><img src="http://www.example.com/common/img/h_logo.png" alt="施設名"></a></div>
+<ul id="head_nav">
+	<li><a class="tel-link" href="tel:0000000000"><img src="http://www.example.com/common/img/h_tel.png" alt="TEL.000-000-0000"></a></li>
 	<li><a class="btn" href="#" target="_blank"><img src="http://www.example.com/common/img/h_planlist.png" alt="ご予約・プラン一覧"></a></li>
 </ul>
 <!-- #EndLibraryItem --></header>
@@ -39,54 +39,35 @@
 
 
 <!-- ============ nav_wrap GO ============ --><!-- #BeginLibraryItem "/Library/gnav.lbi" -->
-<nav id="gnav" role="navigation" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+<nav id="gnav">
 <p id="open_menu"><img src="http://www.example.com/common/img/icon_menu.png" alt="MENU"></p>
 <ul>
-	<li id="close_top" class="close_menu">MENU<span>閉じる</span></li>
-	<li itemprop="name" id="gn_home"><a itemprop="URL" href="../">トップページ</a></li>
-	<li itemprop="name" id="gn_01"><a itemprop="URL" href="#">温泉</a></li>
-	<li itemprop="name" id="gn_02"><a itemprop="URL" href="#">お料理</a></li>
-	<li itemprop="name" id="gn_03"><a itemprop="URL" href="#">お部屋</a></li>
-	<li itemprop="name" id="gn_04"><a itemprop="URL" href="#">周辺観光</a></li>
-	<li itemprop="name" id="gn_05"><a itemprop="URL" href="#">交通アクセス</a></li>
-	<li id="close_bot" class="close_menu"><span>閉じる</span></li>
+	<li id="close_menu">MENU<span><img src="http://www.example.com/common/img/icon_close.png" alt="閉じる"></span></li>
+	<li id="gn_home"><a href="http://www.example.com/">トップページ</a></li>
+	<li id="gn_01"><a href="#">温泉</a></li>
+	<li id="gn_02"><a href="#">お料理</a></li>
+	<li id="gn_03"><a href="#">お部屋</a></li>
+	<li id="gn_04"><a href="#">周辺観光</a></li>
+	<li id="gn_05"><a href="#">交通アクセス</a></li>
 </ul>
 </nav><!-- #EndLibraryItem --><!-- ============ nav_wrap END ============ -->
 
 
-<!-- ============ main_img GO ============ -->
-<div id="main_img">
-<h2>404 - Not Found -</h2>
-</div>
-<!-- ============ main_img END ============ -->
-
-
 <!-- ============ contents_wrap GO ============= -->
 <div id="contents_wrap">
-<!-- ▽ パンくず ▽ -->
-<ol id="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-	<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-		<a itemprop="item" href="../" itemscope itemtype="http://schema.org/Thing">
-			<span itemprop="name">トップページ</span>
-		</a>
-		<meta itemprop="position" content="1" />
-	</li>
-	<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-		<a itemprop="item" href="./" itemscope itemtype="http://schema.org/Thing">
-			<span itemprop="name">404 - Not found -</span>
-		</a>
-		<meta itemprop="position" content="2" />
-	</li>
-</ol>
-<!-- △ パンくず △ -->
+<h2>404 - Not Found -</h2>
 
-<main role="main">
+<div id="contents">
+<article>
+
 <section>
 	<h3>お探しのページが見つかりませんでした。</h3>
 	<p>ページが移転したか、サーバーから削除された可能性があります。<br>
 	誠に申し訳ありませんが、トップページに戻って閲覧をお続けください。</p>
 </section>
-</main>
+
+</article>
+</div>
 </div>
 <!-- ============ contents_wrap END ============= -->
 
@@ -94,7 +75,7 @@
 <!-- ============ footer_wrap GO ============ --><!-- #BeginLibraryItem "/Library/footer.lbi" -->
 <div id="footer_wrap">
 <div id="page_top"><a href="#header_wrap"><img src="http://www.example.com/common/img/pagetop.png" alt="ページのトップへ戻る"></a></div>
-<footer id="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+<footer id="footer">
 	<div id="f_logo">
 	<img src="http://www.example.com/common/img/ft_logo.png" alt="施設名" />
 	<address>
@@ -102,25 +83,24 @@
 	<a class="tel-link" href="tel:0000000000">TEL.000-000-0000</a>
 	</address>
 	</div>
-	<div id="f_nav">
+	<div id="fnav">
 		<p class="acc_tit">コンテンツメニュー</p>
-		<ul role="navigation" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
-			<li itemprop="name"><a itemprop="URL" href="./">トップページ</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">温泉</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">お料理</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">お部屋</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">館内案内</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">周辺観光</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">交通アクセス</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">ご予約・プラン一覧</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">お問い合わせ</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">プライバシーポリシー</a></li>
-			<li itemprop="name"><a itemprop="URL" href="#">キャンセルポリシー</a></li>
-		</ul>
+		<ul>
+		<li><a href="http://www.example.com/">トップページ</a></li>
+		<li><a href="#">温泉</a></li>
+		<li><a href="#">お料理</a></li>
+		<li><a href="#">お部屋</a></li>
+		<li><a href="#">館内案内</a></li>
+		<li><a href="#">周辺観光</a></li>
+		<li><a href="#">交通アクセス</a></li>
+		<li><a href="#">ご予約・プラン一覧</a></li>
+		<li><a href="#">お問い合わせ</a></li>
+		<li><a href="#">プライバシーポリシー</a></li>
+		<li><a href="#">キャンセルポリシー</a></li>
+	</ul>
 	</div>
-	<p id="copyright">Copyright &copy; <script type="text/javascript">myDate= new Date();myYear=myDate.getFullYear();document.write(myYear);</script> 施設名. All Rright Reserved</p>
+	<p id="copyright">COPYRIGHT &copy; <script type="text/javascript">myDate= new Date();myYear=myDate.getFullYear();document.write(myYear);</script> 施設名. ALL RIGHTS RESERVED</p>
 </footer>
-</div>
-<!-- #EndLibraryItem --><!-- ============ footer_wrap END ============ -->
+</div><!-- #EndLibraryItem --><!-- ============ footer_wrap END ============ -->
 </body>
 </html>

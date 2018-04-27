@@ -1,16 +1,9 @@
 RewriteEngine on
-
-#wwwありに統一
 RewriteCond %{HTTP_HOST} ^example.com
 RewriteRule (.*) http://www.example.com/$1 [R=301,L]
-
-#index.htmlなしに統一
 RewriteCond %{THE_REQUEST} ^.*/index.html
 RewriteRule ^(.*)index.html$ http://www.example.com/$1 [R=301,L]
-
-#httpsに統一
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://www.example.com/$1 [R=301,L]
 
 ErrorDocument 404 /404/
-
