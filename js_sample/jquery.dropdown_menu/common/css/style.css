@@ -2,75 +2,106 @@
 /* ------------------------------------------------------
 	dropdown menu
 ------------------------------------------------------ */
-/* g-nav
+/* ---------------------------------------------------
+	G-nav
 ------------------------------------------------------ */
-#nav_wrap{
-	margin: 0 auto 25px; width: 100%;
-	background: #000; box-shadow: 0 5px 5px 0 rgba(0,0,0,0.25);
+.close_menu { display: none;}
+
+#gnav { clear: both; background: #000;}
+#gnav li {
+	width: 20%; height: 50px; float: left; border-right: 1px solid #555;
+	-webkit-box-sizing: border-box; box-sizing: border-box;
 }
+#gnav li:nth-last-child(2) { border-right:0;} /* 最後の閉じるボタンを抜かして一番最後のリスト */
+#gnav a { display:block; height: 0; padding: 50px 0 0; overflow: hidden;}
 
-#open_menu,
-#close_menu { display: none;}
+#gn_home { display: none;}
+#gn_01 a { background:url(../img/gn_01.png) no-repeat center center;}
+#gn_02 a { background:url(../img/gn_02.png) no-repeat center center;}
+#gn_03 a { background:url(../img/gn_03.png) no-repeat center center;}
+#gn_04 a { background:url(../img/gn_04.png) no-repeat center center;}
+#gn_05 a { background:url(../img/gn_05.png) no-repeat center center;}
 
-#gnav { margin: 0 auto; width: 1000px; line-height: 1;}
-#gnav ul:after { clear: both; content: "."; display: block; height: 0; font-size: 0; visibility: hidden;}
-#gnav li{ width: 20%; height: 50px; float: left;}
-#gnav a{ display:block; height: 50px; text-indent: -9999px;}
-#gnav a:hover{ background-color: rgba(255,255,255,0.35);}
+#gnav a:hover { background-color: rgba( 255,255,255,0.25);}
 
-#gn_01{ display: none;}
-#gn_02 a{ background:url(../img/gn_02.png) no-repeat center center;}
-#gn_03 a{ background:url(../img/gn_03.png) no-repeat center center;}
-#gn_04 a{ background:url(../img/gn_04.png) no-repeat center center;}
-#gn_05 a{ background:url(../img/gn_05.png) no-repeat center center;}
-#gn_06 a{ background:url(../img/gn_06.png) no-repeat center center;}
 
-@media screen and (orientation:landscape) {
-	html,body {
-		width: 100%;
+@media screen and (max-width: 600px) {
+	/* ▼ jquery-dropdown 用のcss設定です ▼
+		#menuOuter,#menuInner,.pos_fix はjsで自動的に追加される要素です。
+		別にgnavを囲むwrapper等を使用する場合はid名が被らないようにしてください。
+	*/
+	/* html,body 固定用クラス ※iphoneでは効きません。 */
+	.pos_fix { overflow: hidden; /* メニューボタンがfixedじゃない場合は右記を追記 position: fixed; top: 0; width: 100%; */}
+	/* gnav外側に追加する要素 画面全体を覆います。 */
+	#menuOuter { display: none; width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 10000; background: rgba(0,0,0,0.5); overflow: auto;}
+	/* gnav外の領域用要素 この部分をタップするとメニューが閉じます。 */
+	#menuInner { width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 0; cursor: pointer;}
+	/* ▲ jquery-dropdown 用のcss設定です ▲ */
+
+	/* ▼ 以下はデザインに合わせて変更してください ▼ */
+	/* #gnavのz-indexは必ず#menuInnerより上に来るように設定してください。 */
+	#gnav { width: 100%; padding: 0; position: relative; z-index: 15; background: none;}
+
+	#gnav .close_menu { cursor: pointer;}
+	#gnav .close_menu span:before,
+	#gnav .close_menu span:after { content: ''; width: 15px; height: 3px; position: absolute; left: 0;}
+	#gnav .close_menu span:before { -webkit-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg);}
+	#gnav .close_menu span:after { -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg);}
+	#gnav #close_top { padding: 5px 0; text-align: center; position: relative;}
+	#gnav #close_top span {
+		width: 15px; height: 0; padding: 15px 0 0;
+		position: absolute; top: 13px; right: 10px; overflow: hidden;
 	}
-}
+	#gnav #close_top span:before,
+	#gnav #close_top span:after { background: #787878; margin: -2px 0 0; top: 50%;}
+	#gnav #close_bot {
+		padding: 5px; margin: 10px auto 0; background: #000;
+		border: 1px solid #555; color: #fff; text-align: center;
+	}
+	#gnav #close_bot span { display: inline-block; padding: 0 0 0 20px; position: relative;}
+	#gnav #close_bot span:before,
+	#gnav #close_bot span:after { margin: -2px 0 0; top: 50%; background: #fff;}
 
-@media screen and (max-width: 1000px) {
-	#gnav_wrap { width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 10000; overflow: auto;}
-	.pos_fix {
-		overflow: hidden;
-		/* メニューボタンがfixedじゃない場合は下記を追記してください
-		position: fixed; top: 0; width: 100%;
-		*/
-	}
-	
-	#open_menu{
-		display: block; top: 10px; right: 10px; position: fixed; cursor: pointer;
-		width: 45px; height: 45px; padding: 0; background: #000;
-	}
-	
-	#gnav{ width: 100%; position: relative;}
-	#gnav ul{
-		display: none; margin: 75px 10px 20px 10px; padding: 0;
-		background-color: #fff; box-sizing: border-box;
-		-webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;
+	#gnav ul {
+		width: auto; padding: 0; margin: 10px 10px 80px 10px;
+		-webkit-box-sizing: border-box; box-sizing: border-box;
 	}
 	#gnav li {
-		display: block; width: 100%; height: auto; line-height: 2;
-		float: none; border-bottom: 1px dashed #ccc;
+		display: block; width: 100%; height: auto; float: none; padding: 0;
+		background-color: #fff; font-size: 15px; line-height: 2;
+		border-left: 1px solid #ccc; border-right: 1px solid #ccc; border-bottom: 1px dashed #ccc;
 	}
-	#gnav li:last-child{ border-bottom: none;}
-	#gnav li:last-child a { -webkit-border-radius: 0 0 4px 4px; -moz-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;}
-	
-	#gnav a{
-		display: block; margin: 1px; padding: 5px 10px 5px 20px; height: auto;
-		color: #000; text-decoration: none; text-align: left; text-indent: 0; box-sizing: border-box;
+	#gnav li:first-child { border-top: 1px solid #ccc; border-radius: 4px 4px 0 0;}
+	#gnav li:nth-last-child(2) { border-bottom-style: solid; border-radius: 0 0 4px 4px;}
+
+	#gnav a {
+		height: auto; padding: 5px 20px; color: #000;
+		background: none; line-height: 1.8; text-decoration: none;
+		-webkit-box-sizing: border-box; box-sizing: border-box;
 	}
-	#gnav a:hover{ display: block; text-decoration: none; background-color: rgba(204,204,204,0.25);}
+	#gnav a:hover { background: rgba(204,204,204,0.25); text-decoration: none;}
 
-	#gn_01{ display: block;}
-	#gn_02 a, #gn_03 a, #gn_04 a, #gn_05 a, #gn_06 a{ background: none;}
-
-	#close_menu { padding: 5px 0; text-align: center; position: relative;}
-	#close_menu span { width: 15px; position: absolute; right: 10px; top: 6px;}
-	#close_menu img { width: 100%;}
+	#gnav li:nth-last-child(2) a { border-radius: 0 0 4px 4px;}
 }
 
 
+/* ---------------------------------------------------
+	sp_nav
+------------------------------------------------------ */
 
+#sp_nav { display: none;}
+
+@media screen and (max-width: 600px) {
+	#sp_nav { display: block; position: fixed; z-index: 10001; bottom: 0; left: 0; background: #000; border-top: 3px solid #555;}
+	#sp_nav ul { display: table; width: 100%; margin: 0; table-layout: fixed;}
+	#sp_nav li { display: table-cell; -webkit-box-sizing: border-box; box-sizing: border-box;}
+	#sp_nav li + li { border-left: 1px solid #555;}
+	#sp_nav a { display: block; padding: 10px; text-align: center;}
+	#sp_nav img { width: 50px;}
+}
+
+
+/* ---------------------------------------------------
+	clear
+------------------------------------------------------ */
+#gnav ul:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}

@@ -48,17 +48,13 @@ ul li a:before {
 */
 ul li a:hover{ color: #000; text-decoration:underline;}
 
-
-
 p { margin: 0 auto 25px; line-height: 1.6;}
 
 
 
-@media screen and (max-width: 1000px) {
-	section{ width: 96%; max-width: 96%;}
-	h1{ padding: 5px 2%;}
-}
 @media screen and (max-width: 768px) {
+	section{ width: 92%; max-width: 92%;}
+	h1{ padding: 5px 2%;}
 }
 @media screen and (max-width: 640px) {
 }

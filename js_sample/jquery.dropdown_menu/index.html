@@ -5,51 +5,70 @@
 <meta name="format-detection" content="telephone=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet"  href="../../base_temp/common/css/reset.css" />
 <link rel="stylesheet"  href="../common/css/sample_style.css" />
-<!--[if lt IE 9]>
-<script src="../base_temp/common/js/html5shiv.js"></script>
-<script src="../base_temp/common/js/selectivizr.js"></script>
-<script src="../base_temp/common/js/css3-mediaqueries.js"></script>
-<![endif]-->
 
+<title>dropdownサンプル</title>
 
 <!-- ▽ ドロップダウンメニュー・ここから▽ -->
 <script src="../../base_temp/common/js/jquery.min.js"></script>
-<!-- <script  src="common/js/jquery-dropdown.js"></script> -->
-<script  src="common/js/jquery-dropdown2.js"></script>
+<script  src="common/js/jquery-dropdown.js"></script>
 <link rel="stylesheet" href="common/css/style.css" />
 <!-- △ ドロップダウンメニュー・ここまで△ -->
 
 <style>
 	/* サンプル用 */
-	p{ margin: 0 auto; width: 1000px; max-width: 100%;}
-	p img{ display: block; margin: 0 auto 15px; max-width: 100%;}
+	#main_img { width: 1000px; max-width: 100%; margin: 0 auto;}
+	img { max-width: 100%;}
+	section { height: 100vh;}
+	section .attention { color: #f00;}
 </style>
 
 </head>
 <body>
 
-<div id="nav_wrap">
-	<nav id="gnav">
-	<div id="open_menu"><img src="common/img/h_icon_menu.png" alt="メニュー"></div>
+<!-- ▼ 参考HTML ▼ -->
+<!-- このブロックがモーダルで表示されます。 -->
+<nav id="gnav" role="navigation" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
 	<ul>
-		<li id="close_menu">MENU<span><img src="common/img/close.gif" alt="閉じる"></span></li>
-		<li id="gn_01"><a href="./">ホーム</a></li>
-		<li id="gn_02"><a href="#">温泉</a></li>
-		<li id="gn_03"><a href="#">お料理</a></li>
-		<li id="gn_04"><a href="#">お部屋</a></li>
-		<li id="gn_05"><a href="#">周辺観光</a></li>
-		<li id="gn_06"><a href="#">交通アクセス</a></li>
+		<li id="close_top" class="close_menu">MENU<span>閉じる</span></li>
+		<li itemprop="name" id="gn_home"><a itemprop="URL" href="./">トップページ</a></li>
+		<li itemprop="name" id="gn_01"><a itemprop="URL" href="#">温泉</a></li>
+		<li itemprop="name" id="gn_02"><a itemprop="URL" href="#meal" class="anchor">お料理</a></li>
+		<li itemprop="name" id="gn_03"><a itemprop="URL" href="#">お部屋</a></li>
+		<li itemprop="name" id="gn_04"><a itemprop="URL" href="#">周辺観光</a></li>
+		<li itemprop="name" id="gn_05"><a itemprop="URL" href="#">交通アクセス</a></li>
+		<li id="close_bot" class="close_menu"><span>閉じる</span></li>
 	</ul>
-	</nav>
+</nav>
+<!-- ▲ 参考HTML ▲ -->
+
+<div id="main_img"><img src="../../js_sample/common/img/sample_img01.jpg" alt=""></div>
+<section id="sample">
+	<h2>説明</h2>
+	<p>格納メニューモーダル表示用のjsです。<br>
+	通常のアコーディオンでメニューを実装する場合は、setting_optionのアコーディオン用のjsを使用した方が楽です。</p>
+	<p class="attention">※gnav内にページ内リンクがある場合はaタグにanchorクラスをつけてください。</p>
+</section>
+
+<section id="meal">
+	<h2>お料理</h2>
+	<p>ダミーブロックダミーブロックダミーブロックダミーブロックダミーブロック<br>
+	ダミーブロックダミーブロックダミーブロックダミーブロックダミーブロックダミーブロック<br>
+	ダミーブロックダミーブロックダミーブロック<br>
+	ダミーブロックダミーブロックダミーブロックダミーブロックダミーブロックダミーブロックダミーブロックダミーブロックダミーブロックダミーブロックダミーブロックダミーブロックダミーブロック</p>
+</section>
+
+<div id="sp_nav">
+	<ul>
+		<li><a href=""><img src="common/img/sp_nav1.png" alt="アクセス"></a></li>
+		<li><a href=""><img src="common/img/sp_nav2.png" alt="TEL"></a></li>
+		<li><a href="" target="_blank"><img src="common/img/sp_nav3.png" alt="空室検索"></a></li>
+		<li><a href="" target="_blank"><img src="common/img/sp_nav4.png" alt="プラン検索"></a></li>
+		<!-- メニューのトリガーは#gnav外であればどこに設置してもokです。 -->
+		<li><a href="javascript:void(0);" id="open_menu"><img src="common/img/sp_nav5.png" alt="MENU"></a></li>
+	</ul>
 </div>
-
-<p><img src="../../js_sample/common/img/sample_img01.jpg" alt="">
-横幅1000px以下の時のメニューの位置などを分かりやすくするために、サンプルとして置いてあります。
-実際に設置する際は削除して使用して下さい。</p>
-
-<p style="padding: 10px 0 0 0; color: #8F0A0C;">※gnav内にページ内リンクがある場合は「jquery-dropdown2.js」を使用してください。</p>
-
 </body>
 </html>
