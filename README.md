@@ -14,7 +14,7 @@
 
 ### 2018-08-03
 
-- 全html内jsを</body>直前で読み込むように修正（jsとセットのcssはそのままhead内にあります）
+- 全html内jsを`</body>`直前で読み込むように修正（セットで使用するcssはそのままhead内にあります）
 - base_temp_new/, js_sample/ 各html meta viewport から initial-scale=1.0 を削除
 - base_temp_new/ breakpointを600pxからに変更
 - jqueryを最新の3.3.1に変更
