@@ -7,56 +7,14 @@
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <link rel="stylesheet"  href="../common/css/sample_style.css" />
-<!--[if lt IE 9]>
-<script src="../base_temp/common/js/html5shiv.js"></script>
-<script src="../base_temp/common/js/selectivizr.js"></script>
-<script src="../base_temp/common/js/css3-mediaqueries.js"></script>
-<![endif]-->
+
+<title>bxslider</title>
 
 
-<!-- ▽ bxslider / レスポンシブ対応スライダー ・セットCSS有 / 共通要素ここから▽ -->
-<script src="../../base_temp/common/js/jquery.min.js"></script>
-<script src="common/js/jquery.bxslider.min.js"></script>
-<link rel="stylesheet" href="common/css/jquery.bxslider.css" />
+<!-- ▽ bxslider セットCSSここから▽ -->
+<link rel="stylesheet" href="common/css/jquery.bxslider.min.css" />
 <link rel="stylesheet" href="common/css/style.css" />
-<!-- △ bxslider・共通要素ここまで△ -->
-
-<!-- ▽ひたすら自動で流れるティッカー・ここから▽ -->
-<script>
-$(document).ready(function() {
-	$('.bx_ticker').bxSlider({
-		ticker: true,
-		tickerHover: true,
-		useCSS: false,
-		minSlides: 1,
-		maxSlides: 10,
-		slideWidth: 480,
-		slideMargin: 0,
-		speed: 50000
-	});
-});
-</script>
-<!-- △ひたすら自動で流れるティッカー・ここまで△ -->
-
-<!-- ▽フェードイン＆フェードアウト・ここから▽ -->
-<script>
-$(document).ready(function() {
-	var bx_fade = $('.bx_fade').bxSlider({
-		mode: 'fade',
-		auto: true,
-		pause: 3000,
-		speed: 1500,
-		controls:  false,    // 前後へのナビゲーション　表示させたい場合は true に変更
-		pager: false,        // ページ送り　表示させたい場合は true に変更
-		onSlideAfter: function(){
-			//オートプレイの停止防止
-			bx_fade.startAuto();
-		}
-	});
-});
-</script>
-<!-- △フェードイン＆フェードアウト・ここまで△ -->
-
+<!-- △ bxslider セットCSSここまで△ -->
 </head>
 <body>
 <article>
@@ -73,13 +31,12 @@ $(document).ready(function() {
 			<ul>
 				<li><a href="http://zxcvbnmnbvcxz.com/demonstration/slide_in_slide.html" target="_blank">レスポンシブデザインにも対応した高性能なスライダー【bxslider】の設置 ｜ Stronghold</a>　※必見!!　サンプルめっちゃ多いです！</li>
 				<li><a href="http://webdesignmagazine.net/javascript/bxslider-options/" target="_blank">jQueryプラグイン「bxSlider」のいろいろなオプションの使い方のまとめ！ ｜ Web Design Magazine</a></li>
-				<li><a href="http://yane-ni-kabochano.com/blog/?p=7" target="_blank">jQueryプラグインbxSliderで初心者もスライダーつけてみるの回 ｜ 屋根にかぼちゃの花が咲く覚え書き</a></li>
 			</ul>
 			</dd>
 		</dl>
 	</section>
-	
-	
+
+
 	<section id="ticker_area">
 		<h2>ひたすら自動で流れるティッカー</h2>
 		<p>クラス名：　bx_ticker</p>
@@ -94,8 +51,8 @@ $(document).ready(function() {
 			<div><a href="#"><img src="../common/img/sample_img_s04.jpg" alt="" /></a></div>
 		</div>
 	</section>
-	
-	
+
+
 	<section>
 		<h2>フェードイン＆フェードアウト</h2>
 		<p>クラス名：　bx_fade　（FlexSliderでも同様の事ができます）</p>
@@ -108,5 +65,46 @@ $(document).ready(function() {
 	</section>
 
 </article>
+
+<!-- ▽ bxslider JSここから ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.bxslider.min.js"></script>
+<!-- △ bxslider JSここまで △ -->
+
+<!-- ▽ ひたすら自動で流れるティッカー・ここから ▽ -->
+<script>
+$(document).ready(function() {
+	$('.bx_ticker').bxSlider({
+		ticker: true,
+		tickerHover: true,
+		useCSS: false,
+		minSlides: 1,
+		maxSlides: 10,
+		slideWidth: 480,
+		slideMargin: 0,
+		speed: 50000
+	});
+});
+</script>
+<!-- △ ひたすら自動で流れるティッカー・ここまで △ -->
+
+<!-- ▽ フェードイン＆フェードアウト・ここから ▽ -->
+<script>
+$(document).ready(function() {
+	var bx_fade = $('.bx_fade').bxSlider({
+		mode: 'fade',
+		auto: true,
+		pause: 3000,
+		speed: 1500,
+		controls:  false,    // 前後へのナビゲーション　表示させたい場合は true に変更
+		pager: false,        // ページ送り　表示させたい場合は true に変更
+		onSlideAfter: function(){
+			//オートプレイの停止防止
+			bx_fade.startAuto();
+		}
+	});
+});
+</script>
+<!-- △ フェードイン＆フェードアウト・ここまで △ -->
 </body>
 </html>

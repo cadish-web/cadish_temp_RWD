@@ -7,6 +7,7 @@ $(function(){
 		return result;
 	}
 
+	// タッチデバイスの挙動設定
 	if (isTouchDevice()){
 		var $tableBody = $(".table_wrap tbody"),				// スクロールさせるtbody
 				animateSpeed = 400;													// アニメーションスピード
@@ -46,12 +47,12 @@ $(window).on('load resize', function(){
 	$('.table_wrap table').each(function() {
 		paddingCal($(this));
 	});
-
 });
 
+// スクロールバーが表示されている場合はthead箇所右側にスクロールバー分のpaddingを入れる
 function paddingCal (thisTable) {
 	if ( window.innerWidth < thisTable.width() ) {
-		var barSize = window.innerWidth - $(window).outerWidth(true);
+		var barSize = window.innerWidth - $(window).width();
 		thisTable.find('thead').css('padding-right', barSize);
 	} else {
 		thisTable.find('thead').css('padding-right', '');

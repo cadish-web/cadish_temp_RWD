@@ -5,44 +5,15 @@
 <meta name="format-detection" content="telephone=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="viewport" content="width=device-width" />
 <link rel="stylesheet"  href="../common/css/sample_style.css" />
-<!--[if lt IE 9]>
-<script src="../../base_temp/common/js/html5shiv.js"></script>
-<script src="../../base_temp/common/js/selectivizr.js"></script>
-<script src="../../base_temp/common/js/css3-mediaqueries.js"></script>
-<![endif]-->
 
+<title>easyresponsivetabs - アコーディオン開きっぱなし -</title>
 
-<!-- ▽ jquery.easyResponsiveTabs.js / レスポンシブ対応タブ切り替え（タブ→アコーディオン） / セットCSS有 / 共通要素ここから▽ -->
-<script src="../../base_temp/common/js/jquery.min.js"></script>
-<script src="common/js/jquery.easyResponsiveTabs2.js"></script>
+<!-- ▽ jquery.easyResponsiveTabs セットCSSここから▽ -->
 <link rel="stylesheet" href="common/css/jquery.easy-responsive-tabs.css" />
 <link rel="stylesheet" href="common/css/style.css" />
-<!-- △jquery.easyResponsiveTabs.js・共通要素ここまで△ -->
-
-
-<!-- ▽横並び・ここから▽ -->
-<script>
-$(document).ready(function() {
-	$('.acc_tab_block').easyResponsiveTabs({
-		type: 'default',
-		width: 'auto',
-		fit: true,
-		tabidentify: 'acc_tab',
-		closed: 'accordion',
-		activate: function(event) { // Callback function if tab is switched
-			var $tab = $(this);
-			var $info = $('#nested-tabInfo');
-			var $name = $('span', $info);
-			$name.text($tab.text());
-			$info.show();
-		}
-	});
-});
-</script>
-<!-- △横並び・ここまで△ -->
-
+<!-- △ jquery.easyResponsiveTabs セットCSSここまで△ -->
 </head>
 <body>
 <article>
@@ -52,7 +23,7 @@ $(document).ready(function() {
 		<p>他のアコーディオンを開いた時に現在開いているアコーディオンを開きっぱなしにするサンプルです。<br />
 		jquery.easyResponsiveTabs2.js を使用してください。</p>
 	</section>
-	
+
 	<section>
 		<p><a href="index.html">通常バージョンはこちら　→</a></p>
 		<p><a href="index_03.html">googlemap併用サンプルはこちら　→</a></p>
@@ -87,5 +58,31 @@ $(document).ready(function() {
 
 
 </article>
+
+<!-- ▽ jquery.easyResponsiveTabs JSここから▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.easyResponsiveTabs2.js"></script>
+<!-- △ jquery.easyResponsiveTabs JSここまで △ -->
+
+<!-- ▽横並び・ここから▽ -->
+<script>
+$(document).ready(function() {
+	$('.acc_tab_block').easyResponsiveTabs({
+		type: 'default',
+		width: 'auto',
+		fit: true,
+		tabidentify: 'acc_tab',
+		closed: 'accordion',
+		activate: function(event) { // Callback function if tab is switched
+			var $tab = $(this);
+			var $info = $('#nested-tabInfo');
+			var $name = $('span', $info);
+			$name.text($tab.text());
+			$info.show();
+		}
+	});
+});
+</script>
+<!-- △横並び・ここまで△ -->
 </body>
 </html>

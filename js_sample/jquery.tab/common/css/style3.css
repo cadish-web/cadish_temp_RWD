@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* ===================================================
+◇　js & jQuery Style CSS　◇
+====================================================== */
+/* ---------------------------------------------------
+	jquery.tab_panel.js / タブ切り替え
+------------------------------------------------------ */
+/* タブパネルエリア */
+#tab_area{}
+
+
+/* ナビゲーション部分 */
+.tabs ul{ clear: both; margin: 0 0 15px; padding: 0; font-size: 0; text-align: right;}
+.tabs li { display: inline-block; margin: 0; padding: 0; width: 20%; font-size: 13px;}
+.tabs li:last-child{ margin: 0;}
+
+.tabs li a{
+	display: block; margin: 0 1px; padding: 0; line-height: 50px;
+	color: #555; text-align: center; background: #dedede; text-decoration: none;
+}
+.tabs li a.active,
+.tabs li a:hover{ cursor: default; color: #fff; background: #8b0000;}
+
+
+/* コンテンツ部分*/
+.tabs .panel {
+	clear: both; margin: 0 auto 25px; padding: 10px; width: 100%;
+	background: #fff; border: 5px solid #8b0000; box-sizing: border-box;
+}
+.tabs .panel img {
+	display: block; margin: 0 10px 10px 0; float: left;
+	width: 360px; height: auto;
+}
+.tabs .panel p {
+	margin: 0 0 10px; font-size: 16px; line-height: 1.8;
+	font-family:"ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+}
+
+#tab_area .link { text-align: right;}
+
+.tabs ul:after,
+.tabs .panel:after {
+	clear: both; content: "."; display: block; height: 0;
+	font-size: 0; visibility: hidden;
+}
+
+@media screen and (max-width: 640px) {
+	.tabs ul{ margin: 0 0 25px;}
+	.tabs li{ margin: 0 0 5px; width: 100%; height: auto; line-height: 2;}
+	.tabs .panel img { margin: 0 auto 10px; float: none; width:100%; height: auto;}
+}
+
+
+

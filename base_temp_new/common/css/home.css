@@ -8,8 +8,6 @@
 #main_img { padding: 0;}
 #contents_wrap { padding-top: 25px;}
 
-@media screen and (max-width: 768px) {
-}
 @media screen and (max-width: 600px) {
 }
 
@@ -18,7 +16,5 @@
 
 ------------------------------------------------------ */
 
-@media screen and (max-width: 768px) {
-}
 @media screen and (max-width: 600px) {
 }

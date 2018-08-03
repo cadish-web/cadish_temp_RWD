@@ -5,23 +5,22 @@
 <meta name="format-detection" content="telephone=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="viewport" content="width=device-width" />
 
 <title>テンプレートパッケージ：サンプル</title>
 
 <link rel="stylesheet"  href="common/css/sample_style.css" />
-<!--[if lt IE 9]>
-<script src="../base_temp/common/js/html5shiv.js"></script>
-<script src="../base_temp/common/js/selectivizr.js"></script>
-<script src="../base_temp/common/js/css3-mediaqueries.js"></script>
-<![endif]-->
 <style>
-ul li a{ padding: 0 0 0 15px; color: #555; text-decoration:none; position:relative;}
-ul li a:before {
+dd ul { margin: 0;}
+dd ul li { padding: 0 0 0 15px; position:relative; list-style: none;}
+dd ul li:before {
 	display: block; content: ""; position: absolute;
 	top: 50%; left: 0; width: 0; height: 0; margin-top: -5px;
-	border: 5px solid transparent; border-left: 5px solid #960000;
+	border: 5px solid transparent; border-left-color: #960000;
 }
+dd ul li a { color: #555; text-decoration: none;}
+.preInstall { color: #f00;}
+.preInstall:hover { color: #f00;}
 </style>
 </head>
 <body>
@@ -29,23 +28,17 @@ ul li a:before {
 
 <section>
 	<h1>Sample Menu</h1>
-	<dl>
-		<dt>ヘッダー周り</dt>
-		<dd>
-		<ul>
-			<li><a href="jquery.dropdown_menu/">ドロップダウンメニュー</a></li>
-		</ul>
-		</dd>
-	</dl>
+
+	<p><span class="preInstall">赤文字</span>は base_temp_new/ に組み込んであるものです。</p>
 
 	<dl>
 		<dt>スライダー系</dt>
 		<dd>
 		<ul>
-			<li><a href="jquery.flexslider/">flexslider</a></li>
-			<li><a href="jquery.bxslider/">bxslider</a></li>
-			<li><a href="jquery.jcarousel/">jcarousel</a></li>
-			<li><a href="jquery.slick/">slick</a></li>
+			<li><a href="jquery.flexslider/index.html" class="preInstall">flexslider</a></li>
+			<li><a href="jquery.bxslider/index.html">bxslider</a></li>
+			<li><del>jcarousel</del>　※slickで代用できるため削除</li>
+			<li><a href="jquery.slick/index.html">slick</a></li>
 		</ul>
 		</dd>
 	</dl>
@@ -54,10 +47,11 @@ ul li a:before {
 		<dt>タブ切り替え＆アコーディオン</dt>
 		<dd>
 		<ul>
-			<li><a href="jquery.easyResponsiveTabs/">easyResponsiveTabs</a></li>
-			<li><a href="jquery.tab/">jquery.tab</a>　※スムーススクロールと併用すると、スマホ時に選択したタブを開いた状態で、そこまで移動してくれる</li>
-			<li><a href="jquery.yuga/">jquery.yuga</a>　※おすすめプラン自動書き出し＆タブ切り替え</li>
-			<li><a href="jquery.slide_panel/">jquery.slide_panel</a>　※超シンプルなスライドパネル</li>
+			<li><a href="jquery.easyResponsiveTabs/index.html">easyResponsiveTabs</a></li>
+			<li><a href="jquery.tab/index.html">jquery.tab</a>　※スムーススクロールと併用すると、スマホ時に選択したタブを開いた状態で、そこまで移動してくれる</li>
+			<li><a href="jquery.yuga/index.html">jquery.yuga</a>　※おすすめプラン自動書き出し＆タブ切り替え</li>
+			<li><del>jquery.slide_panel</del>　※jquery.tabに統合（スライドダウンバージョン）</li>
+			<li><a href="jquery.accordion/index.html" class="preInstall">jquery.accordion</a></li>
 		</ul>
 		</dd>
 	</dl>
@@ -66,9 +60,9 @@ ul li a:before {
 		<dt>ブロック要素の高さを揃える</dt>
 		<dd>
 		<ul>
-			<li><a href="jquery.lineup/">lineup.js</a></li>
-			<li><a href="jquery.matchHeight/">matchHeight</a></li>
-			<li><a href="jquery.heightLine/">jquery.heightLine</a></li>
+			<li><del>lineup.js</del>　※jquery3に非対応のため削除</li>
+			<li><a href="jquery.matchHeight/index.html" class="preInstall">matchHeight</a></li>
+			<li><del>jquery.heightLine</del>　※jquery3に非対応のため削除</li>
 		</ul>
 		</dd>
 	</dl>
@@ -77,16 +71,26 @@ ul li a:before {
 		<dt>モーダルウィンドウ（LightBox/Popup等）</dt>
 		<dd>
 		<ul>
-			<li><a href="jquery.magnific-popup/">magnific-popup</a></li>
+			<li><a href="jquery.magnific-popup/index.html">magnific-popup</a></li>
+			<li><a href="jquery.dropdown_menu/index.html" class="preInstall">dropdown_menu</a>　※gnav等に使用</li>
 		</ul>
 		</dd>
 	</dl>
 
 	<dl>
-		<dt>その他</dt>
+		<dt>テーブルレスポンシブ対応</dt>
 		<dd>
 		<ul>
-			<li><a href="googlemap/">Google Map</a></li>
+			<li><a href="footable/index.html">footable</a></li>
+		</ul>
+		</dd>
+	</dl>
+
+	<dl>
+		<dt>Google Map</dt>
+		<dd>
+		<ul>
+			<li><a href="googlemap/index.html">Google Map</a></li>
 		</ul>
 		</dd>
 	</dl>

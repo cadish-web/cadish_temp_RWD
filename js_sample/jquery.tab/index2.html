@@ -5,15 +5,10 @@
 <meta name="format-detection" content="telephone=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<title>タブ用js</title>
+<meta name="viewport" content="width=device-width" />
 <link rel="stylesheet"  href="../common/css/sample_style.css" />
-<!--[if lt IE 9]>
-<script src="../../base_temp/common/js/html5shiv.js"></script>
-<script src="../../base_temp/common/js/selectivizr.js"></script>
-<script src="../../base_temp/common/js/css3-mediaqueries.js"></script>
-<![endif]-->
 
+<title>タブ用js - タブ箇所の画像をactive時に切り替える -</title>
 
 <!-- ▽ jquery.tab panel ▽ -->
 <script src="../../base_temp/common/js/jquery.min.js"></script>
@@ -23,7 +18,7 @@
 
 <script>
 	$(document).ready(function() {
-	$('a[href^=#]').click(function(){
+	$('a[href^="#"]').click(function(){
 		var speed = 500;
 		var href= $(this).attr("href");
 		var target = $(href == "#" || href == "" ? 'html' : href);
@@ -39,20 +34,7 @@
 
 	<section>
 		<h1>タブ切り替え：jquery.tab.js</h1>
-		<dl>
-			<dt>特徴</dt>
-			<dd>同一ページ内複数設置可・CSSでレスポンシブ対応。<br>
-			スムーススクロール（setting_option.jsに記載してあるもの か 同梱してあるsmoothscroll.js）を使うと、<br>
-			スマホ時に選択したタブを開いた状態で、そこまで移動してくれるのでオススメ。</dd>
-		</dl>
-		<dl>
-			<dt>参考サイト</dt>
-			<dd>
-			<ul>
-				<li><a href="https://www.softel.co.jp/blogs/tech/archives/2958" target="_blank">【Javascript】jQueryだけでタブ切り替えの例（また）| SOFTEL</a>　配布元</li>
-			</ul>
-			</dd>
-		</dl>
+		<p>タブ箇所の画像をactive時に切り替える</p>
 	</section>
 
 	<section id="tab_area">
@@ -101,7 +83,7 @@
 			これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
 		</div>
 	</div>
-	<p class="link"><a href="index.html">タブ内がテキストの場合はこちら &gt;&gt;</a></p>
+	<p class="link"><a href="index.html">通常verはこちら &gt;&gt;</a></p>
 	</section>
 
 </article>

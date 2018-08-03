@@ -7,9 +7,13 @@ $(function() {
 		$(this).addClass("active");
 
 		$(this.hash).fadeIn();
+
 		return false;
 	});
-	//わざと1つ目を表示させておくことができます
+
 	$('.tabs .panel').hide();
+
+	//一つ目のパネルを表示しておく（以下のクラス名等を修正で任意のパネルに変更可能）
+	//初期状態で何も表示させない場合は以下1行を削除
 	$('.tabs .panel:first-of-type').show();
 });

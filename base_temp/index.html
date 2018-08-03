@@ -25,10 +25,97 @@
 <link rel="stylesheet" href="common/css/import.css" media="all" />
 <link rel="stylesheet" href="common/css/home.css" media="all" />
 
+<!-- ▽ Googleアナリティクスタグ ▽ -->
+<!-- △ Googleアナリティクスタグ △ -->
+</head>
+<body id="home">
+<!-- ============ header_wrap GO ============ -->
+<div id="header_wrap">
+<header id="header">
+<h1>施設名やディスクリプション等が入ります。</h1><!-- #BeginLibraryItem "/Library/header.lbi" -->
+<div id="logo"><a href="./"><img src="common/img/h_logo.png" alt="施設名"></a></div>
+<ul id="h_nav">
+	<li><a class="tel-link" href="tel:0000000000"><img src="common/img/h_tel.png" alt="TEL.000-000-0000" class="switch" data-size="sp"></a></li>
+	<li><a class="btn" href="#" target="_blank"><img src="common/img/h_planlist.png" alt="ご予約・プラン一覧"></a></li>
+</ul>
+<!-- #EndLibraryItem --></header>
+</div>
+<!-- ============ header_wrap END ============ -->
+
+
+<!-- ============ nav_wrap GO ============ --><!-- #BeginLibraryItem "/Library/gnav.lbi" -->
+<nav id="gnav" role="navigation" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+<ul>
+	<li id="close_top" class="close_menu">MENU<span>閉じる</span></li>
+	<li itemprop="name" id="gn_home"><a itemprop="URL" href="./">トップページ</a></li>
+	<li itemprop="name" id="gn_01"><a itemprop="URL" href="#">温泉</a></li>
+	<li itemprop="name" id="gn_02"><a itemprop="URL" href="#">お料理</a></li>
+	<li itemprop="name" id="gn_03"><a itemprop="URL" href="#">お部屋</a></li>
+	<li itemprop="name" id="gn_04"><a itemprop="URL" href="#">周辺観光</a></li>
+	<li itemprop="name" id="gn_05"><a itemprop="URL" href="#">交通アクセス</a></li>
+	<li id="close_bot" class="close_menu"><span>閉じる</span></li>
+</ul>
+</nav><!-- #EndLibraryItem --><!-- ============ nav_wrap END ============ -->
+
+<!-- ============ contents_wrap GO ============= -->
+<div id="contents_wrap">
+<main role="main">
+
+<section style="height:100vh;">
+セクション
+</section>
+
+</main>
+</div>
+<!-- ============ contents_wrap END ============= -->
+
+
+<!-- ============ footer_wrap GO ============ --><!-- #BeginLibraryItem "/Library/footer.lbi" -->
+<div id="footer_wrap">
+<div id="page_top"><a href="#header_wrap"><img src="common/img/pagetop.png" alt="ページのトップへ戻る"></a></div>
+<footer id="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+	<div id="f_logo">
+	<img src="common/img/ft_logo.png" alt="施設名" />
+	<address>
+	<span>〒000‐000</span><span>□□□□□□□□□□　□□□□□</span>
+	<a class="tel-link" href="tel:0000000000">TEL.000-000-0000</a>
+	</address>
+	</div>
+	<div id="f_nav">
+		<p class="acc_tit" data-size="sp">コンテンツメニュー</p>
+		<ul role="navigation" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+			<li itemprop="name"><a itemprop="URL" href="">トップページ</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">温泉</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">お料理</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">お部屋</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">館内案内</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">周辺観光</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">交通アクセス</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">お問い合わせ</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">プライバシーポリシー</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#">キャンセルポリシー</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#" target="_blank">ご予約・プラン一覧</a></li>
+			<li itemprop="name"><a itemprop="URL" href="#" target="_blank">予約の確認・変更・キャンセル</a></li>
+		</ul>
+	</div>
+	<p id="copyright">Copyright &copy; <script type="text/javascript">myDate= new Date();myYear=myDate.getFullYear();document.write(myYear);</script> 施設名. All Rright Reserved</p>
+</footer>
+</div>
+
+<div id="sp_nav">
+	<ul>
+		<li><a href=""><img src="common/img/sp_nav1.png" alt="アクセス"></a></li>
+		<li><a href=""><img src="common/img/sp_nav2.png" alt="TEL"></a></li>
+		<li><a href="" target="_blank"><img src="common/img/sp_nav3.png" alt="空室検索"></a></li>
+		<li><a href="" target="_blank"><img src="common/img/sp_nav4.png" alt="プラン検索"></a></li>
+		<li><a href="javascript:void(0);" id="open_menu"><img src="common/img/sp_nav5.png" alt="MENU"></a></li>
+	</ul>
+</div><!-- #EndLibraryItem --><!-- ============ footer_wrap END ============ -->
+
 <!-- ▽common▽ -->
 <script src="common/js/jquery.min.js"></script>
 <script src="common/js/jquery-dropdown.js"></script>
-<script src="common/js/jquery-lineup.min.js"></script>
+<script src="common/js/jquery.matchHeight-min.js"></script>
 <script src="common/js/setting_option.js"></script>
 <!-- △common△ -->
 
@@ -44,92 +131,5 @@ location.href = 'http://www.example.com/sp/';
 }
 </script>
 <!-- △each page△ -->
-
-<!-- ▽ Googleアナリティクスタグ ▽ -->
-<!-- △ Googleアナリティクスタグ △ -->
-</head>
-<body id="home">
-<!-- ============ header_wrap GO ============ -->
-<div id="header_wrap">
-<header id="header">
-<h1>施設名やディスクリプション等が入ります。</h1>
-<!-- #BeginLibraryItem "/Library/header.lbi" -->
-<div id="logo"><a href="./"><img src="common/img/h_logo.png" alt="施設名"></a></div>
-<ul id="head_nav">
-	<li><a class="tel-link" href="tel:0000000000"><img src="common/img/h_tel.png" alt="TEL.000-000-0000"></a></li>
-	<li><a class="btn" href="#" target="_blank"><img src="common/img/h_planlist.png" alt="ご予約・プラン一覧"></a></li>
-</ul>
-<!-- #EndLibraryItem -->
-</header>
-</div>
-<!-- ============ header_wrap END ============ -->
-
-
-<!-- ============ nav_wrap GO ============ --><!-- #BeginLibraryItem "/Library/gnav.lbi" -->
-<nav id="gnav">
-<p id="open_menu"><img src="common/img/icon_menu.png" alt="MENU"></p>
-<ul>
-	<li id="close_menu">MENU<span><img src="common/img/icon_close.png" alt="閉じる"></span></li>
-	<li id="gn_home"><a href="./">トップページ</a></li>
-	<li id="gn_01"><a href="#">温泉</a></li>
-	<li id="gn_02"><a href="#">お料理</a></li>
-	<li id="gn_03"><a href="#">お部屋</a></li>
-	<li id="gn_04"><a href="#">周辺観光</a></li>
-	<li id="gn_05"><a href="#">交通アクセス</a></li>
-</ul>
-</nav><!-- #EndLibraryItem --><!-- ============ nav_wrap END ============ -->
-
-
-<!-- ============ contents_wrap GO ============= -->
-<div id="contents_wrap">
-<div id="contents">
-<article>
-
-
-
-<section style="height:1000px;">
-	<h2>見出し</h2>
-	<p>段落</p>
-	<div id="feed"></div>
-</section>
-
-
-
-</article>
-</div>
-</div>
-<!-- ============ contents_wrap END ============= -->
-
-
-<!-- ============ footer_wrap GO ============ --><!-- #BeginLibraryItem "/Library/footer.lbi" -->
-<div id="footer_wrap">
-<div id="page_top"><a href="#header_wrap"><img src="common/img/pagetop.png" alt="ページのトップへ戻る"></a></div>
-<footer id="footer">
-	<div id="f_logo">
-	<img src="common/img/ft_logo.png" alt="施設名" />
-	<address>
-	<span>〒000‐000</span><span>□□□□□□□□□□　□□□□□</span>
-	<a class="tel-link" href="tel:0000000000">TEL.000-000-0000</a>
-	</address>
-	</div>
-	<div id="fnav">
-		<p class="acc_tit">コンテンツメニュー</p>
-		<ul>
-		<li><a href="./">トップページ</a></li>
-		<li><a href="#">温泉</a></li>
-		<li><a href="#">お料理</a></li>
-		<li><a href="#">お部屋</a></li>
-		<li><a href="#">館内案内</a></li>
-		<li><a href="#">周辺観光</a></li>
-		<li><a href="#">交通アクセス</a></li>
-		<li><a href="#">ご予約・プラン一覧</a></li>
-		<li><a href="#">お問い合わせ</a></li>
-		<li><a href="#">プライバシーポリシー</a></li>
-		<li><a href="#">キャンセルポリシー</a></li>
-	</ul>
-	</div>
-	<p id="copyright">COPYRIGHT &copy; <script type="text/javascript">myDate= new Date();myYear=myDate.getFullYear();document.write(myYear);</script> 施設名. ALL RIGHTS RESERVED</p>
-</footer>
-</div><!-- #EndLibraryItem --><!-- ============ footer_wrap END ============ -->
 </body>
 </html>

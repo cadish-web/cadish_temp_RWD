@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* ------------------------------------------------------
+	accordionサンプル
+------------------------------------------------------ */
+
+.acc_tit:not([data-size]) { padding-left: 30px; position: relative;}
+.acc_tit:not([data-size]):before {
+	content: '▼'; position: absolute; top: 50%; left: 10px; color: #940025; font-size: 10px;
+	-webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%);
+}
+.acc_tit.active:not([data-size]):before { content: '▲';}
+
+@media screen and (max-width: 600px) {
+	.acc_tit[data-size] { padding-left: 30px; position: relative;}
+	.acc_tit[data-size]:before {
+		content: '▼'; position: absolute; top: 50%; left: 10px; color: #940025; font-size: 10px;
+		-webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%);
+	}
+	.acc_tit.active[data-size]:before { content: '▲';}
+}
+

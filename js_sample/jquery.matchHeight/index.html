@@ -7,22 +7,8 @@
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <link rel="stylesheet"  href="../common/css/sample_style.css" />
-<!--[if lt IE 9]>
-<script src="../../base_temp/common/js/html5shiv.js"></script>
-<script src="../../base_temp/common/js/selectivizr.js"></script>
-<script src="../../base_temp/common/js/css3-mediaqueries.js"></script>
-<![endif]-->
 
-
-<!-- ▽ matchHeight / レスポンシブ対応 要素の高さ揃え / 共通要素ここから▽ -->
-<script src="../../base_temp/common/js/jquery.min.js"></script>
-<script src="common/js/jquery.matchHeight-min.js"></script>
-<script>
-$(window).load(function(){
-	$('.item').matchHeight();
-});
-</script>
-<!-- △ matchHeight・ここまで△ -->
+<title>matchHeight</title>
 
 <!-- ▽ 以下はサンプル用CSSです。実際に使用する場合は削除してください。 ▽ -->
 <style>
@@ -64,7 +50,6 @@ $(window).load(function(){
 			<ul>
 				<li><a href="http://coliss.com/articles/build-websites/operation/javascript/jquery-plugin-matchheight.html" target="_blank">[JS]異なる高さを単に揃えるだけでなく、グルーピングや列に応じて揃えることも可能な便利スクリプト -matchHeight | コリス</a></li>
 				<li><a href="http://cly7796.net/wp/javascript/plugin-jquery-matchheight/" target="_blank">jquery.matchHeight.jsの使い方まとめ | cly7796.net</a></li>
-				<li><a href="http://blog.kohki.tv/jquery-match-height/" target="_blank">HTML要素の高さ揃え決定版！ jquery.matchHeightが優秀すぎる。レスポンシブもOK - しかたこうきブログ</a></li>
 				<li><a href="https://github.com/liabru/jquery-match-height" target="_blank">jquery.matchHeight.js - GitHub</a>　配布元</li>
 			</ul>
 			</dd>
@@ -72,7 +57,7 @@ $(window).load(function(){
 	</section>
 
 	<section id="matchheight-area">
-		<p>1000px以下で3列ずつ、768以下で2列ずつ、640以下で1列に並びます。</p>	
+		<p>1000px以下で3列ずつ、768以下で2列ずつ、640以下で1列に並びます。</p>
 		<div class="item">これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</div>
 		<div class="item">これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</div>
 		<div class="item">これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。 これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</div>
@@ -84,5 +69,15 @@ $(window).load(function(){
 	</section>
 
 </article>
+
+<!-- ▽ matchHeight JSここから ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.matchHeight-min.js"></script>
+<script>
+$(window).on('load', function(){
+	$('.item').matchHeight();
+});
+</script>
+<!-- △ matchHeight JSここまで △ -->
 </body>
 </html>

@@ -5,41 +5,29 @@
 <meta name="format-detection" content="telephone=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="viewport" content="width=device-width" />
 
 <title>ヘッダー固定テーブル</title>
 
-<!-- ▽ footable / bootstrap用css / ※reset.cssよりも前に読み込んでください ▽ -->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<!-- △ footable・bootstrap用cssここまで△ -->
-
 <link rel="stylesheet"  href="../common/css/sample_style.css" />
-<!--[if lt IE 9]>
-<script src="../base_temp/common/js/html5shiv.js"></script>
-<script src="../base_temp/common/js/selectivizr.js"></script>
-<script src="../base_temp/common/js/css3-mediaqueries.js"></script>
-<![endif]-->
 
-<!-- ▽ レスポンシブ対応テーブル用js・css修正必要あり / 共通要素ここから▽ -->
-<script src="../../base_temp/common/js/jquery.min.js"></script>
-<script src="common/js/hammer.min.js"></script>
-<script src="common/js/jquery.hammer.js"></script>
-<script src="common/js/table.scroll.js"></script>
+<!-- ▽ ヘッダー固定テーブル CSSここから▽ -->
 <link rel="stylesheet" href="common/css/style.css" />
-<!-- △ footable・共通要素ここまで△ -->
+<!-- △ ヘッダー固定テーブル CSSここまで △ -->
 
 <!-- ▽ 以下はサンプル用CSSです。実際に使用する場合は削除してください。 ▽ -->
 <style>
-@media screen and (min-width: 641px) {
+@media screen and (min-width: 601px) {
 	.table_wrap table { width: 100%;}
 	.table_wrap th,
 	.table_wrap td { width: 20%;}
 }
-.table_wrap table { table-layout: fixed;}
+.table_wrap table { border-collapse: collapse; border-spacing: 0; table-layout: fixed;}
 .table_wrap th,
 .table_wrap td { padding: 5px; border: 1px solid #aaa;}
 .table_wrap th { background: #ccc;}
 </style>
+<!-- △ サンプル用CSS △ -->
 
 </head>
 <body>
@@ -68,7 +56,7 @@
 
 
 	<section>
-		<p>640px以下で縦横にスクロールします。</p>
+		<p>600px以下で縦横にスクロールします。</p>
 		<div class="table_wrap">
 			<table>
 				<thead>
@@ -192,5 +180,11 @@
 	</section>
 
 </article>
+
+<!-- ▽ ヘッダー固定テーブル JSここから ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/hammer.min.js"></script>
+<script src="common/js/table.scroll.js"></script>
+<!-- △ ヘッダー固定テーブル JSここまで△ -->
 </body>
 </html>

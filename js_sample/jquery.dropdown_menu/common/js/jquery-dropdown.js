@@ -1,7 +1,7 @@
 $(function($){
 	var menuSize = window.matchMedia('(max-width: 600px)'),						// メニューをモーダルにする幅
 			menuObj = $("#gnav"),																					// メニューブロック
-			menuTrigger = "#open_menu, .close_menu, #menuInner, .anchor",	//開閉動作用のトリガー（複数設定可能）
+			menuTrigger = ".anchor",	//開閉動作用のトリガー（複数設定可能）
 			menuWrap;
 
 	const wrapChange = function() {
@@ -22,10 +22,10 @@ $(function($){
 		}
 	}
 
-	$(document).on("click", menuTrigger, function(e){
+	$(document).on("click", '#open_menu, .close_menu, #menuInner,' + menuTrigger, function(e){
 		if(menuSize.matches) {
 			$("html,body").toggleClass('pos_fix');
-			menuWrap.slideToggle(500);
+			menuWrap.toggleClass('active');
 			e.stopPropagation();
 		}
 	});

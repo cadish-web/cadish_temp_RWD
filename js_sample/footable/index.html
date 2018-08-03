@@ -5,40 +5,17 @@
 <meta name="format-detection" content="telephone=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="viewport" content="width=device-width" />
 
 <title>footable.js</title>
 
-<!-- ▽ footable / bootstrap用css / ※reset.cssよりも前に読み込んでください ▽ -->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<!-- △ footable・bootstrap用cssここまで△ -->
-
 <link rel="stylesheet"  href="../common/css/sample_style.css" />
-<!--[if lt IE 9]>
-<script src="../base_temp/common/js/html5shiv.js"></script>
-<script src="../base_temp/common/js/selectivizr.js"></script>
-<script src="../base_temp/common/js/css3-mediaqueries.js"></script>
-<![endif]-->
 
-<!-- ▽ footable / レスポンシブ対応テーブル用js ・セットCSS有 / 共通要素ここから▽ -->
-<script src="../../base_temp/common/js/jquery.min.js"></script>
-<script src="common/js/footable.min.js"></script>
-<link rel="stylesheet" href="common/css/footable.bootstrap.min.css" />
-<link rel="stylesheet" href="common/css/style.css" />
-<script>
-$(document).ready(function() {
-	$('.footable').footable({
-		"breakpoints": {
-			"sp": 480,			//640以下で非表示
-			"min-tab": 641,	//641〜768で非表示
-			"tab": 769,			//769〜1000で非表示
-			"pc": 1001			//1000以上で非表示
-		},
-		"toggleSelector": "tr,th,td,.footable-toggle"
-	});
-});
-</script>
-<!-- △ footable・共通要素ここまで△ -->
+<!-- ▽ footable セットCSSここから ▽ -->
+<link rel="stylesheet" href="common/css/footable.css" />
+<link rel="stylesheet" href="common/css/fooTable.FontAwesome.css" /><!-- アイコン用 -->
+<link rel="stylesheet" href="common/css/fooTable.Glyphicons.css" /><!-- アイコン用 -->
+<!-- △ footable セットCSSここまで △ -->
 
 <!-- ▽ 以下はサンプル用CSSです。実際に使用する場合は削除してください。 ▽ -->
 <style>
@@ -76,7 +53,7 @@ $(document).ready(function() {
 			<thead>
 			<tr>
 				<th>見出し</th>
-				<th data-breakpoints="sp">項目1</th>									<!-- 640以下で非表示 -->
+				<th data-breakpoints="sp">項目1</th>							<!-- 640以下で非表示 -->
 				<th data-breakpoints="sp min-tab">項目2</th>					<!-- 768以下で非表示 -->
 				<th data-breakpoints="sp min-tab tab">項目3</th>			<!-- 1000以下で非表示 -->
 				<th data-breakpoints="sp min-tab tab pc">項目4</th>		<!-- ずっと非表示 -->
@@ -109,5 +86,23 @@ $(document).ready(function() {
 	</section>
 
 </article>
+
+<!-- ▽ footable JSここから ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/footable.min.js"></script>
+<script>
+$(document).ready(function() {
+	$('.footable').footable({
+		"breakpoints": {
+			"sp": 480,			//640以下で非表示
+			"min-tab": 641,	//641〜768で非表示
+			"tab": 769,			//769〜1000で非表示
+			"pc": 1001			//1000以上で非表示
+		},
+		"toggleSelector": "tr,th,td,.footable-toggle"
+	});
+});
+</script>
+<!-- △ footable JSここまで △ -->
 </body>
 </html>

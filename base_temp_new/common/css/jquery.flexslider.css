@@ -1,5 +1,5 @@
 /*
- * jQuery FlexSlider v2.5.0
+ * jQuery FlexSlider v2.7.1
  * http://www.woothemes.com/flexslider/
  *
  * Copyright 2012 WooThemes
@@ -7,27 +7,23 @@
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
  * Contributing author: Tyler Smith (@mbmufffin)
- * 
+ *
  */
 /* ====================================================================================================================
  * FONT-FACE
  * ====================================================================================================================*/
-/*
 @font-face {
   font-family: 'flexslider-icon';
-  src: url('fonts/flexslider-icon.eot');
-  src: url('fonts/flexslider-icon.eot?#iefix') format('embedded-opentype'), url('fonts/flexslider-icon.woff') format('woff'), url('fonts/flexslider-icon.ttf') format('truetype'), url('fonts/flexslider-icon.svg#flexslider-icon') format('svg');
+  src: url('../flex_fonts/flexslider-icon.eot');
+  src: url('../flex_fonts/flexslider-icon.eot?#iefix') format('embedded-opentype'), url('../flex_fonts/flexslider-icon.woff') format('woff'), url('../flex_fonts/flexslider-icon.ttf') format('truetype'), url('../flex_fonts/flexslider-icon.svg#flexslider-icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
-*/
 /* ====================================================================================================================
  * RESETS
  * ====================================================================================================================*/
 .flex-container a:hover,
-.flex-slider a:hover,
-.flex-container a:focus,
-.flex-slider a:focus {
+.flex-slider a:hover {
   outline: none;
 }
 .slides,
@@ -76,16 +72,12 @@ html[xmlns] .flexslider .slides {
 /* ====================================================================================================================
  * DEFAULT THEME
  * ====================================================================================================================*/
-
 .flexslider {
-  /*
   margin: 0 0 60px;
-  background: #ffffff;
-  border: 4px solid #ffffff;
-  */
+  background: #fff;
+  border: 4px solid #fff;
   position: relative;
   zoom: 1;
-  /*
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -93,14 +85,13 @@ html[xmlns] .flexslider .slides {
   -moz-box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
   -o-box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
   box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
-  */
 }
-
 .flexslider .slides {
   zoom: 1;
 }
 .flexslider .slides img {
   height: auto;
+  -moz-user-select: none;
 }
 .flex-viewport {
   max-height: 2000px;
@@ -113,6 +104,11 @@ html[xmlns] .flexslider .slides {
 .loading .flex-viewport {
   max-height: 300px;
 }
+@-moz-document url-prefix() {
+  .loading .flex-viewport {
+    max-height: none;
+  }
+}
 .carousel li {
   margin-right: 5px;
 }
@@ -122,9 +118,8 @@ html[xmlns] .flexslider .slides {
 .flex-direction-nav a {
   text-decoration: none;
   display: block;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+  width: 40px;
+  height: 40px;
   margin: -20px 0 0;
   position: absolute;
   top: 50%;
@@ -139,27 +134,17 @@ html[xmlns] .flexslider .slides {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  
-
 }
 .flex-direction-nav a:before {
-/*  font-family: "flexslider-icon";*/
-  font-size: 16px;
-  font-weight: bold;
+  font-family: "flexslider-icon";
+  font-size: 40px;
   display: inline-block;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  content: '＜';
+  content: '\f001';
   color: rgba(0, 0, 0, 0.8);
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
-  
-  text-align: center;
-  background: #fff;
-  border-radius: 15px;
 }
 .flex-direction-nav a.flex-next:before {
-  content: '＞';
+  content: '\f002';
 }
 .flex-direction-nav .flex-prev {
   left: -50px;
@@ -169,23 +154,24 @@ html[xmlns] .flexslider .slides {
   text-align: right;
 }
 .flexslider:hover .flex-direction-nav .flex-prev {
-  opacity: 0.5;
+  opacity: 0.7;
   left: 10px;
 }
 .flexslider:hover .flex-direction-nav .flex-prev:hover {
-  opacity: 0.9;
+  opacity: 1;
 }
 .flexslider:hover .flex-direction-nav .flex-next {
-  opacity: 0.5;
+  opacity: 0.7;
   right: 10px;
 }
 .flexslider:hover .flex-direction-nav .flex-next:hover {
-  opacity: 0.9;
+  opacity: 1;
 }
 .flex-direction-nav .flex-disabled {
   opacity: 0!important;
   filter: alpha(opacity=0);
   cursor: default;
+  z-index: -1;
 }
 .flex-pauseplay a {
   display: block;
@@ -265,6 +251,7 @@ html[xmlns] .flexslider .slides {
   display: block;
   opacity: .7;
   cursor: pointer;
+  -moz-user-select: none;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -ms-transition: all 1s ease;

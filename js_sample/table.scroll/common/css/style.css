@@ -1,9 +1,11 @@
 @charset "utf-8";
 
-@media screen and (max-width: 640px) {
+/* 640px以下でヘッダー固定＆横スクロール */
+/*  */
+@media screen and (max-width: 600px) {
 	/* 以下のcssをヘッダー固定したいテーブルの箇所に記述してください */
 	.table_wrap { width: 100%; overflow: scroll; overflow-y: hidden; overflow-x: scroll;}
-	.table_wrap table { width: 640px;/* テーブルの固定幅 px指定 */ position: relative;}
+	.table_wrap table { width: 600px;/* テーブルの固定幅 px指定 */ position: relative;}
 	.table_wrap thead,
 	.table_wrap tbody { display: block;}
 	.table_wrap tbody {
@@ -11,8 +13,16 @@
 		overflow-y: scroll;
 	}
 	.table_wrap tbody tr:first-child td { border-top: none;}
+
+	/* セルの幅 */
+	/*
+		%指定やautoだとうまくいきません。
+		calcを使用して tableのwidth/一行のセル数 にするか、
+		pxで固定幅にしてください。
+		px固定幅の場合は、一行のセルの横幅の合計とtable自体の幅がなるべく等しくなるようにしてください。
+	*/
 	.table_wrap th,
-	.table_wrap td { width: 128px;/* セルの固定幅 px指定 */}
+	.table_wrap td { width: calc(600px / 5);}
 }
 
 

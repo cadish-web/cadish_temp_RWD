@@ -5,95 +5,21 @@
 <meta name="format-detection" content="telephone=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="viewport" content="width=device-width" />
 <link rel="stylesheet"  href="../common/css/sample_style.css" />
-<!--[if lt IE 9]>
-<script src="../../base_temp/common/js/html5shiv.js"></script>
-<script src="../../base_temp/common/js/selectivizr.js"></script>
-<script src="../../base_temp/common/js/css3-mediaqueries.js"></script>
-<![endif]-->
+
+<title>magnific-popup</title>
 
 
-<!-- ▽ magnific-popup / ポップアップ＆モーダルウィンドウ / セットCSS有 / 共通要素ここから▽ -->
-<script src="../../base_temp/common/js/jquery.min.js"></script>
-<script src="common/js/jquery.magnific-popup.min.js"></script>
+<!-- ▽ magnific-popup セットCSSここから ▽ -->
 <link rel="stylesheet" href="common/css/jquery.magnific-popup.css" />
 <link rel="stylesheet" href="common/css/style.css" />
-<!-- △ magnific-popup・共通要素ここまで△ -->
-
-
-<!-- ▽ 画像単体・ここから▽ -->
-<script>
-$(document).ready(function() {
-	$('.popup').magnificPopup({
-		type: 'image',
-		closeOnContentClick: true,
-		closeBtnInside: false,
-		fixedContentPos: true,
-		mainClass: 'mfp-no-margins mfp-with-zoom',
-		image: {
-			verticalFit: true
-		},
-		zoom: {
-			enabled: true,
-			duration: 300
-		}
-	});
-});
-</script>
-<!-- △ 画像単体・ここまで△ -->
-
-
-<!-- ▽ ギャラリー・ここから▽ -->
-<script>
-$(document).ready(function() {
-	$('.popup-gallery').magnificPopup({
-		delegate: 'a',
-		type: 'image',
-		gallery: { //ギャラリー表示にする
-			enabled:true
-		}
-	});
-});
-</script>
-<!-- △ ギャラリー・ここまで△ -->
-
-
-<!-- ▽ インラインで画像とテキストを表示・ここから▽ -->
-<script>
-$(document).ready(function() {
-	$('.popup-modal').magnificPopup({
-		type: 'inline',
-		preloader: false
-	});
-	$(document).on('click', '.popup-modal-dismiss', function (e) {
-		e.preventDefault();
-		$.magnificPopup.close();
-	});
-});
-</script>
-<!-- △ インラインで画像とテキストを表示・ここまで△ -->
-
-
-<!-- ▽ iframeで表示・ここから▽ -->
-<script>
-$(document).ready(function() {
-  $('.popup-iframe').magnificPopup({
-    type: 'iframe',
-    disableOn: 640, //ウィンドウ幅が640px以下だったらモーダル表示させずにリンク先へ遷移
-    mainClass: 'mfp-fade',
-    removalDelay: 200,
-    preloader: false,
-    fixedContentPos: false
-  });
-});
-</script>
-<!-- △ iframeで表示・ここまで△ -->
-
+<!-- △ magnific-popup セットCSSここまで △ -->
 
 <style>
 /* サンプル用 */
 	section:last-child{ margin: 0 auto 250px;}
+	section:not(:first-child) li { list-style-type: none;}
 </style>
 
 </head>
@@ -189,5 +115,76 @@ $(document).ready(function() {
 
 
 </article>
+
+<!-- ▽ magnific-popup JSここから ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.magnific-popup.min.js"></script>
+<!-- △ magnific-popup JSここまで △ -->
+
+<!-- ▽ 画像単体・ここから▽ -->
+<script>
+$(document).ready(function() {
+	$('.popup').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		closeBtnInside: false,
+		fixedContentPos: true,
+		mainClass: 'mfp-no-margins mfp-with-zoom',
+		image: {
+			verticalFit: true
+		},
+		zoom: {
+			enabled: true,
+			duration: 300
+		}
+	});
+});
+</script>
+<!-- △ 画像単体・ここまで△ -->
+
+
+<!-- ▽ ギャラリー・ここから▽ -->
+<script>
+$(document).ready(function() {
+	$('.popup-gallery').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		gallery: { //ギャラリー表示にする
+			enabled:true
+		}
+	});
+});
+</script>
+<!-- △ ギャラリー・ここまで△ -->
+
+<!-- ▽ インラインで画像とテキストを表示・ここから▽ -->
+<script>
+$(document).ready(function() {
+	$('.popup-modal').magnificPopup({
+		type: 'inline',
+		preloader: false
+	});
+	$(document).on('click', '.popup-modal-dismiss', function (e) {
+		e.preventDefault();
+		$.magnificPopup.close();
+	});
+});
+</script>
+<!-- △ インラインで画像とテキストを表示・ここまで△ -->
+
+<!-- ▽ iframeで表示・ここから▽ -->
+<script>
+$(document).ready(function() {
+	$('.popup-iframe').magnificPopup({
+		type: 'iframe',
+		disableOn: 640, //ウィンドウ幅が640px以下だったらモーダル表示させずにリンク先へ遷移
+		mainClass: 'mfp-fade',
+		removalDelay: 200,
+		preloader: false,
+		fixedContentPos: false
+	});
+});
+</script>
+<!-- △ iframeで表示・ここまで△ -->
 </body>
 </html>

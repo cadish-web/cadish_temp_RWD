@@ -5,96 +5,15 @@
 <meta name="format-detection" content="telephone=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="viewport" content="width=device-width" />
 <link rel="stylesheet"  href="../common/css/sample_style.css" />
-<!--[if lt IE 9]>
-<script src="../../base_temp/common/js/html5shiv.js"></script>
-<script src="../../base_temp/common/js/selectivizr.js"></script>
-<script src="../../base_temp/common/js/css3-mediaqueries.js"></script>
-<![endif]-->
 
+<title>easyresponsivetabs - 通常サンプル -</title>
 
-<!-- ▽ jquery.easyResponsiveTabs.js / レスポンシブ対応タブ切り替え（タブ→アコーディオン） / セットCSS有 / 共通要素ここから▽ -->
-<script src="../../base_temp/common/js/jquery.min.js"></script>
-<script src="common/js/jquery.easyResponsiveTabs.js"></script>
+<!-- ▽ jquery.easyResponsiveTabs セットCSSここから▽ -->
 <link rel="stylesheet" href="common/css/jquery.easy-responsive-tabs.css" />
 <link rel="stylesheet" href="common/css/style.css" />
-<!-- △jquery.easyResponsiveTabs.js・共通要素ここまで△ -->
-
-
-<!-- ▽横並び・ここから▽ -->
-<script>
-$(document).ready(function() {
-	$('.acc_tab_block').easyResponsiveTabs({
-		type: 'default',
-		width: 'auto',
-		fit: true,
-		tabidentify: 'acc_tab',
-		closed: 'accordion',
-		activate: function(event) { // Callback function if tab is switched
-			var $tab = $(this);
-			var $info = $('#nested-tabInfo');
-			var $name = $('span', $info);
-			$name.text($tab.text());
-			$info.show();
-		}
-	});
-});
-</script>
-<!-- △横並び・ここまで△ -->
-
-
-<!-- ▽縦並び・ここから▽ -->
-<script>
-$(document).ready(function() {
-	$('.acc_tab_block_ver').easyResponsiveTabs({
-		type: 'vertical',
-		width: 'auto',
-		fit: true,
-		tabidentify: 'acc_tab_ver',
-		activate: function(event) { // Callback function if tab is switched
-			var $tab = $(this);
-			var $info = $('#nested-tabInfo');
-			var $name = $('span', $info);
-			$name.text($tab.text());
-			$info.show();
-		}
-	});
-});
-</script>
-<!-- △縦並び・ここまで△ -->
-
-
-<!-- ▽複合タイプ・ここから▽ -->
-<script>
-$(document).ready(function() {
-	// 親タブ
-	$('.acc_tab_block_parent').easyResponsiveTabs({
-		type: 'default',
-		width: 'auto',
-		fit: true,
-		tabidentify: 'acc_tab_group',
-		activate: function(event) { // Callback function if tab is switched
-			var $tab = $(this);
-			var $info = $('#nested-tabInfo');
-			var $name = $('span', $info);
-			$name.text($tab.text());
-			$info.show();
-		}
-	});
-
-	// 子タブ
-	$('.acc_tab_block_child').easyResponsiveTabs({
-		type: 'vertical',
-		width: 'auto',
-		fit: true,
-		tabidentify: 'acc_tab_ver1',
-	});
-});
-</script>
-<!-- △複合タイプ・ここまで△ -->
-
-
+<!-- △ jquery.easyResponsiveTabs セットCSSここまで△ -->
 </head>
 <body>
 <article>
@@ -103,7 +22,10 @@ $(document).ready(function() {
 		<h1>タブ切り替え＆アコーディオン機能：jquery.easyResponsiveTabs.js</h1>
 		<dl>
 			<dt>特徴</dt>
-			<dd>特徴：　同一ページ内複数設置可・レスポンシブ対応（768px以上 タブ → 768px以下 アコーディオン）</dd>
+			<dd>
+				同一ページ内複数設置可・レスポンシブ対応（768px以上 タブ → 768px以下 アコーディオン）<br>
+				タブとアコーディオンの切り替えのタイミングを変更したい場合はセットCSS内のメディアクエリーを変更することで対応できます。
+			</dd>
 		</dl>
 		<dl>
 			<dt>参考サイト</dt>
@@ -177,7 +99,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</section>
-	
+
 	<section>
 		<h2>複合バージョン</h2>
 	<div class="acc_tab_block_parent">
@@ -280,5 +202,82 @@ $(document).ready(function() {
 
 
 </article>
+
+<!-- ▽ jquery.easyResponsiveTabs JSここから▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.easyResponsiveTabs.js"></script>
+<!-- △ jquery.easyResponsiveTabs JSここまで △ -->
+
+<!-- ▽横並び・ここから▽ -->
+<script>
+$(document).ready(function() {
+	$('.acc_tab_block').easyResponsiveTabs({
+		type: 'default',
+		width: 'auto',
+		fit: true,
+		tabidentify: 'acc_tab',
+		closed: 'accordion',
+		activate: function(event) { // Callback function if tab is switched
+			var $tab = $(this);
+			var $info = $('#nested-tabInfo');
+			var $name = $('span', $info);
+			$name.text($tab.text());
+			$info.show();
+		}
+	});
+});
+</script>
+<!-- △横並び・ここまで△ -->
+
+
+<!-- ▽縦並び・ここから▽ -->
+<script>
+$(document).ready(function() {
+	$('.acc_tab_block_ver').easyResponsiveTabs({
+		type: 'vertical',
+		width: 'auto',
+		fit: true,
+		tabidentify: 'acc_tab_ver',
+		activate: function(event) { // Callback function if tab is switched
+			var $tab = $(this);
+			var $info = $('#nested-tabInfo');
+			var $name = $('span', $info);
+			$name.text($tab.text());
+			$info.show();
+		}
+	});
+});
+</script>
+<!-- △縦並び・ここまで△ -->
+
+
+<!-- ▽複合タイプ・ここから▽ -->
+<script>
+$(document).ready(function() {
+	// 親タブ
+	$('.acc_tab_block_parent').easyResponsiveTabs({
+		type: 'default',
+		width: 'auto',
+		fit: true,
+		tabidentify: 'acc_tab_group',
+		activate: function(event) { // Callback function if tab is switched
+			var $tab = $(this);
+			var $info = $('#nested-tabInfo');
+			var $name = $('span', $info);
+			$name.text($tab.text());
+			$info.show();
+		}
+	});
+
+	// 子タブ
+	$('.acc_tab_block_child').easyResponsiveTabs({
+		type: 'vertical',
+		width: 'auto',
+		fit: true,
+		tabidentify: 'acc_tab_ver1',
+	});
+});
+</script>
+<!-- △複合タイプ・ここまで△ -->
 </body>
 </html>

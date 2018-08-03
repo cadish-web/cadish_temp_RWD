@@ -5,34 +5,14 @@
 <meta name="format-detection" content="telephone=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<title>タブ用js</title>
+<meta name="viewport" content="width=device-width" />
 <link rel="stylesheet"  href="../common/css/sample_style.css" />
-<!--[if lt IE 9]>
-<script src="../../base_temp/common/js/html5shiv.js"></script>
-<script src="../../base_temp/common/js/selectivizr.js"></script>
-<script src="../../base_temp/common/js/css3-mediaqueries.js"></script>
-<![endif]-->
 
+<title>タブ用js</title>
 
-<!-- ▽ jquery.tab panel ▽ -->
-<script src="../../base_temp/common/js/jquery.min.js"></script>
-<script src="common/js/jquery.tab.js"></script>
+<!-- ▽ サンプル用CSS ▽ -->
 <link href="common/css/style.css" rel="stylesheet">
-<!-- △jquery.tab panel △ -->
-
-<script>
-	$(document).ready(function() {
-	$('a[href^=#]').click(function(){
-		var speed = 500;
-		var href= $(this).attr("href");
-		var target = $(href == "#" || href == "" ? 'html' : href);
-		var position = target.offset().top;
-		$("html, body").animate({scrollTop:position}, speed, "swing");
-		return false;
-	});
-});
-</script>
+<!-- △ サンプル用CSS △ -->
 </head>
 <body>
 <article>
@@ -179,5 +159,23 @@
 	</section>
 
 </article>
+
+<!-- ▽ jquery.tab panel ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.tab.js"></script>
+<!-- △jquery.tab panel △ -->
+
+<script>
+	$(document).ready(function() {
+	$('a[href^=#]').click(function(){
+		var speed = 500;
+		var href= $(this).attr("href");
+		var target = $(href == "#" || href == "" ? 'html' : href);
+		var position = target.offset().top;
+		$("html, body").animate({scrollTop:position}, speed, "swing");
+		return false;
+	});
+});
+</script>
 </body>
 </html>

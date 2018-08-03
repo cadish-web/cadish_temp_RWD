@@ -5,19 +5,14 @@
 <meta name="format-detection" content="telephone=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="viewport" content="width=device-width" />
 <link rel="stylesheet"  href="../common/css/sample_style.css" />
-<!--[if lt IE 9]>
-<script src="../../base_temp/common/js/html5shiv.js"></script>
-<script src="../../base_temp/common/js/selectivizr.js"></script>
-<script src="../../base_temp/common/js/css3-mediaqueries.js"></script>
-<![endif]-->
 
-<!-- ▽ yuga.js / おすすめプラン　自動書き出し&タブ切り替え：yuga.js(タブ切り替えの部分)ここから▽ -->
-<script src="../../base_temp/common/js/jquery.min.js"></script>
-<script src="common/js/jquery.yuga.js"></script>
+<title>yuga.js</title>
+
+<!-- ▽ サンプルCSSここから▽ -->
 <link href="common/css/style.css" rel="stylesheet">
-<!-- △ yuga.js / おすすめプラン　自動書き出し&タブ切り替え：yuga.js(タブ切り替えの部分)ここまで△ -->
+<!-- △ サンプルCSSここまで△ -->
 </head>
 <body>
 <article>
@@ -30,15 +25,143 @@
 			<dd>おすすめプラン自動書き出し＆タブ切り替えができる。</dd>
 		</dl>
 	</section>
-	
+
 	<section>
 		<h2>オススメプラン</h2>
 		<div id="recommend_tab">
-			<script src="http://www1.489ban.net/v4/client/plan/recommend/customer/sinappi/linktype/2/navi/1" type="text/javascript" charset="utf-8"></script>
+			<!-- 本来は自動書き出しなので以下のようにスクリプトが入ります -->
+			<!-- <script src="http://www1.489ban.net/v4/client/plan/recommend/customer/sinappi/linktype/2/navi/1" type="text/javascript" charset="utf-8"></script> -->
+
+			<div id="navi_menu_489ban">
+				<ul class="tabNav_489ban">
+					<li id="navi_1_id"><a href="#navi_1_489ban">期間限定★お得な宿泊プラン</a></li>
+					<li id="navi_2_id"><a href="#navi_2_489ban">季節のお料理★基本プラン</a></li>
+					<li id="navi_3_id"><a href="#navi_3_489ban">カップル★ファミリー★グループプラン</a></li>
+				</ul>
+			</div>
+			<div id="navi_1_489ban" class="tab_489ban">
+				<div class="PlanView">
+					<div class="picture" id="image_div_1_1" border="0" alt="プラン画像">
+						<p class="main_picture"><img src="http://www1.489ban.net/v4/image/20178/1/51580.png" id="main_1_1" class="yoyakuban_main_picture_img"></p>
+					</div>
+					<div class="explan">
+						<p class="plan">みんなで行こう「トミカ博 in APPI」入場券付！1泊2食付プラン♪【夕食は女将膳・レストラン】</p>
+						<div class="comment">
+							<p></p>
+						</div>
+						<div class="pblist">
+							<p class="pb_list_header"></p>
+							<ul>
+								<li><a href="http://www1.489ban.net/v4/client/plan/pbview/customer/sinappi/pbid/214123/from/recommend" target="_blank">詳細・ご予約</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="PlanView">
+					<div class="picture" id="image_div_1_2" border="0" alt="プラン画像">
+						<p class="main_picture"><img src="http://www1.489ban.net/v4/image/20178/1/15801.png" id="main_1_2" class="yoyakuban_main_picture_img"></p>
+					</div>
+					<div class="explan">
+						<p class="plan">☆八幡平で年末年始☆郷土のお正月料理でおもてなし♪～松コース～</p>
+						<div class="comment">
+							<p></p>
+						</div>
+						<div class="pblist">
+							<p class="pb_list_header"></p>
+							<ul>
+								<li><a href="http://www1.489ban.net/v4/client/plan/pbview/customer/sinappi/pbid/51327/from/recommend" target="_blank">詳細・ご予約</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="navi_2_489ban" class="tab_489ban">
+				<div class="PlanView">
+					<div class="picture" id="image_div_2_1" border="0" alt="プラン画像">
+						<p class="main_picture"><img src="http://www1.489ban.net/v4/image/20178/1/52202.png" id="main_2_1" class="yoyakuban_main_picture_img"></p>
+					</div>
+					<div class="explan">
+						<p class="plan">★八幡平ポークあい＆まいたけ釜飯★女将おススメ♪安比の美味しい和食膳【夕食はレストラン】</p>
+						<div class="comment">
+							<p></p>
+						</div>
+						<div class="pblist">
+							<p class="pb_list_header"></p>
+							<ul>
+								<li><a href="http://www1.489ban.net/v4/client/plan/pbview/customer/sinappi/pbid/30967/from/recommend" target="_blank">詳細・ご予約</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="navi_3_489ban" class="tab_489ban">
+				<div class="PlanView">
+					<div class="picture" id="image_div_3_1" border="0" alt="プラン画像">
+						<p class="main_picture"><img src="http://www1.489ban.net/v4/image/20178/1/51580.png" id="main_3_1" class="yoyakuban_main_picture_img"></p>
+					</div>
+					<div class="explan">
+						<p class="plan">みんなで行こう「トミカ博 in APPI」入場券付！1泊2食付プラン♪【夕食は女将膳・レストラン】</p>
+						<div class="comment">
+							<p></p>
+						</div>
+						<div class="pblist">
+							<p class="pb_list_header"></p>
+							<ul>
+								<li><a href="http://www1.489ban.net/v4/client/plan/pbview/customer/sinappi/pbid/214123/from/recommend" target="_blank">詳細・ご予約</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="PlanView">
+					<div class="picture" id="image_div_3_2" border="0" alt="プラン画像">
+						<p class="main_picture"><img src="http://www1.489ban.net/v4/image/20178/1/14546.png" id="main_3_2" class="yoyakuban_main_picture_img"></p>
+					</div>
+					<div class="explan">
+						<p class="plan">★夏休みはお子様特典充実★駄菓子のつかみ取りや花火をプレゼント♪ワクワクファミリープラン</p>
+						<div class="comment">
+							<p></p>
+						</div>
+						<div class="pblist">
+							<p class="pb_list_header"></p>
+							<ul>
+								<li><a href="http://www1.489ban.net/v4/client/plan/pbview/customer/sinappi/pbid/152394/from/recommend" target="_blank">詳細・ご予約</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="PlanView">
+					<div class="picture" id="image_div_3_3" border="0" alt="プラン画像">
+						<p class="main_picture"><img src="http://www1.489ban.net/v4/image/20178/1/9579.png" id="main_3_3" class="yoyakuban_main_picture_img"></p>
+					</div>
+					<div class="explan">
+						<p class="plan">カップル＆ご夫婦へ☆気軽に温泉デート♪貸切風呂１回無料の特典付きプラン</p>
+						<div class="comment">
+							<p></p>
+							<p>思い立ったら温泉♪してみませんか？カップル、ご夫婦限定の２名様専用のプランです。<br></p>
+							<p>当館自慢の「塩の湯」を、よりご堪能していただきたく、<br>「貸切風呂」を１回無料でサービスいたします。<br></p>
+							<p><br></p>
+							<p><br></p>
+							<p><br></p>
+							<p></p>
+						</div>
+						<div class="pblist">
+							<p class="pb_list_header"></p>
+							<ul>
+								<li><a href="http://www1.489ban.net/v4/client/plan/pbview/customer/sinappi/pbid/30562/from/recommend" target="_blank">詳細・ご予約</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 </div>
 
 </article>
+
+<!-- ▽ yuga.js ここから▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.yuga.js"></script>
+<!-- △ yuga.js ここまで△ -->
 </body>
 </html>

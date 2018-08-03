@@ -5,6 +5,7 @@
 /* 共通スタイル
 ------------------------------------------------------ */
 .flexslider{ clear: both; margin: 0 auto;}
+.flexslider li { list-style-type: none;}
 
 .slides { margin: 0; width: 100%; position: relative;}
 .slides li{ width: 100%; text-align: center;}

@@ -6,24 +6,57 @@ var Map_Action2 = function() {
 	this.defaultNumber = 1; // 最初にオープンするウィンドウ
 	this.WindowOpenflg = false;
 
-	/* 各スポットの設定
+	/*--------------------------------------------
+	 各スポットの設定
+	--------------------------------------------*/
+	/*
 			point : スポットの座標
-			contents : 情報ウィンドウ
+			contents : 吹き出しの内容
 			flag : ピンとして立てる画像名
+
+			増やす場合は this.keyArray[] = {〜}; をコピーして [] 内の数字が連番になるように変更してください。
 	*/
-	this.keyArray[0] = { point : new google.maps.LatLng(36.2234172, 136.1910285), contents : '<div style="width: 285px; overflow: hidden; color:#333333; text-align:left;"><p><span style="font-weight: bold; font-size:1.1em;">清風荘</span><br /><br />〒910-4104　福井県あわら市温泉3-803<br />TEL：0776-77-2500　FAX：0776-77-2515</p></div>', flag : 'flag1' };
-	this.keyArray[1] = { point : new google.maps.LatLng(36.237653, 136.125425), contents : '<div style="width: 285px; overflow: hidden; color:#333333; text-align:left;"><p><span style="font-weight: bold; font-size:1.1em;">東尋坊</span><br /><br />〒913-0063　福井県坂井市三国町東尋坊<br />TEL：0776-82-3111</p></div>', flag : 'flag2' };
-	this.keyArray[2] = { point : new google.maps.LatLng(36.0557259243218, 136.355438232421), contents : '<div style="width: 285px; overflow: hidden; color:#333333; text-align:left;"><p><span style="font-weight: bold; font-size:1.1em;">永平寺</span><br /><br />〒910-1228　福井県吉田郡永平寺町志比5-15<br />TEL：0776-63-3102</p></div>', flag : 'flag3' };
-	this.keyArray[3] = { point : new google.maps.LatLng(36.2507573, 136.1761575), contents : '<div style="width: 285px; overflow: hidden; color:#333333; text-align:left;"><p><span style="font-weight: bold; font-size:1.1em;">芝政ワールド</span><br />〒913-0005　福井県坂井市三国町浜地45-1<br />TEL：0776-81-2110<br />FAX：0776-81-2118</p></div>', flag : 'flag2' };
-	this.keyArray[4] = { point : new google.maps.LatLng(36.083346, 136.506639), contents : '<div style="width: 285px; overflow: hidden; color:#333333; text-align:left;"><p><span style="font-weight: bold; font-size:1.1em;">恐竜博物館</span><br /><br />〒911-8601　福井県勝山市村岡町寺尾51-11<br />TEL：0779-88-0001　FAX：0779-88-8700</p></div>', flag : 'flag1' };
+	this.keyArray[0] = {
+		point : new google.maps.LatLng(36.161268, 137.231832),
+		contents : '<div style="width: 340px; overflow: hidden; color:#333333;"><p><span style="font-weight: bold; font-size:1.1em;">株式会社キャディッシュ</span><br />〒506-0045<br />岐阜県高山市赤保木町1169-7<br />TEL：0577-36-3604<br />FAX：0577-35-0202</p></div>',
+		flag : 'flag1'
+	};
+	this.keyArray[1] = {
+		point : new google.maps.LatLng(36.167020, 137.237473),
+		contents : '<div style="width: 340px; overflow: hidden; color:#333333;"><p><span style="font-weight: bold; font-size:1.2em;">JA岐阜厚生連久美愛厚生病院</span><br />〒506-0043<br />岐阜県高山市中切町1-1<br />TEL：0577-32-1115</p></div>',
+		flag : 'flag2'
+	};
+	this.keyArray[2] = {
+		point : new google.maps.LatLng(36.150178, 137.233780),
+		contents : '<div style="width: 340px; overflow: hidden; color:#333333;"><p><span style="font-weight: bold; font-size:1.2em;">飛騨高山ビッグアリーナ</span><br />〒506-0051<br />岐阜県高山市中山町600番地<br />TEL：0577-34-3333<br />FAX：0577-34-4448</p></div>',
+		flag : 'flag3'
+	};
+	this.keyArray[3] = {
+		point : new google.maps.LatLng(36.146178, 137.252194),
+		contents : '<div style="width: 340px; overflow: hidden; color:#333333;"><p><span style="font-weight: bold; font-size:1.2em;">高山市役所</span><br />〒506-8555<br />高山市花岡町2丁目18番地<br />TEL：0577-32-3333</p></div>',
+		flag : 'flag2'
+	};
+	this.keyArray[4] = {
+		point : new google.maps.LatLng(36.132667, 137.235392),
+		contents : '<div style="width: 340px; overflow: hidden; color:#333333;"><p><span style="font-weight: bold; font-size:1.2em;">飛騨の里</span><br />〒506-0055<br />岐阜県高山市上岡本町1丁目590<br />TEL：0577-34-4711</p></div>',
+		flag : 'flag1'
+	};
+	/*-- 各スポットの設定 ここまで --*/
 
 
-	//google map 初期設定
+	/*--------------------------------------------
+	 Google map 初期設定
+	--------------------------------------------*/
+	var mapId = 'map_canvas02', //マップを出す箇所のid名
+			defaultPoint = new google.maps.LatLng( 36.161268, 137.231832 ), // マップの真ん中
+			defaultZoom = 13; //zoom率 数字が小さくなるほど広い範囲を表示します。
+	/*-- Google map 初期設定 ここまで --*/
+
 	this.initialize = function() {
-		this.mapdiv = document.getElementById('map_canvas02'); //マップ出したいとこのid名
+		this.mapdiv = document.getElementById(mapId);
 		var myOptions = {
-				zoom: 10,//zoom率
-				center: new google.maps.LatLng(36.2234172, 136.1910285), //真ん中の位置
+				zoom: defaultZoom,
+				center: defaultPoint,
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				scaleControl: true
 		};
@@ -33,10 +66,12 @@ var Map_Action2 = function() {
 		for( var i in this.keyArray)	{
 			if(this.keyArray.hasOwnProperty(i)){
 				this.WindowOpenflg = false;
+
 				// 初期状態でウィンドウを表示したくない場合は下記3行を削除
 				if ( j == (this.defaultNumber-1) ) {
 					this.WindowOpenflg = true;
 				}
+
 				this.createMarker(this.keyArray[i].point,this.keyArray[i].contents, this.keyArray[i].flag , this.WindowOpenflg);
 				j++;
 			}
@@ -49,9 +84,16 @@ var Map_Action2 = function() {
 		var MarkerSetting = null;
 		var MakerImg = new google.maps.MarkerImage();
 
-		MakerImg.url = "common/js/mapimage3/" + flag +".png"; //パスは適宜変更
-		MakerImg.size = new google.maps.Size(27, 40);
-		MakerImg.iconAnchor = new google.maps.Point(10, 34);
+		/*--------------------------------------------
+		 アイコンの設定
+		--------------------------------------------*/
+		// 画像の相対パスはjsを読み込むhtmlからのものになります。
+		// jsを設置しているディレクトリからの相対パスではないので注意してください。
+		// 表示開始位置は基本的に変更しなくてもok。表示した時に位置がずれるようであれば修正してください。
+		MakerImg.url = "common/mapimage3/" + flag + ".png"; //アイコン画像パス / flag には各スポットの設定でflagに設定した画像名が入ります。
+		MakerImg.size = new google.maps.Size(27, 40); //アイコンサイズ
+		MakerImg.iconAnchor = new google.maps.Point(10, 34); //アイコンの表示開始位置（0,0）は左上角から
+		/*-- アイコンの設定 ここまで --*/
 
 		var MarkerSetting = {
 				icon: MakerImg,
@@ -90,4 +132,5 @@ var Map_Action2 = function() {
 	};
 
 };
+
 var objMap_Action2 = new Map_Action2();
