@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+
+<title>scrollAnimation</title>
+
+<!-- ▽ セットCSSここから ▽ -->
+<link rel="stylesheet"  href="common/css/scrollAnimation.css" />
+<!-- △ セットCSSここまで △ -->
+
+
+<!-- ▽ サンプルCSSここから ▽ -->
+<style>
+#demo .parent {
+	width: 100%; height: 600px; padding: 20px 0;
+	-webkit-background-size: cover; background-size: cover;
+}
+#demo .parent dt { padding: 0; margin-bottom: 5px; border-left: none; background: none;}
+#demo .parent ul { margin: 0;}
+#demo .parent li { list-style-type: none;}
+#demo .parent .sa {
+	width: 600px; padding: 20px; margin: 0 auto; height: 100%;
+	background: rgba(0,0,0,0.4); color: #fff;
+	text-shadow: 0 0 5px #000;
+	-webkit-box-sizing: border-box; box-sizing: border-box;
+}
+#demo #sec1 {background-image: url(common/img/sample_img01.jpg);}
+#demo #sec2 { background-image: url(common/img/sample_img02.jpg);}
+#demo #sec3 {
+	display: -webkit-flex; display: -ms-flex; display: flex;
+	justify-content: center; -ms-align-items: center; align-items: center;
+	background-image: url(common/img/sample_img03.jpg);
+}
+#demo #sec3 .sa {
+	-webkit-flex: 0 0 290px; -ms-flex: 0 0 290px; flex: 0 0 290px;
+	width: 290px; margin: 0 10px;
+}
+
+/* backdrop-filterお試し ※safariかedgeじゃないと見れません。 */
+#demo #sec1 .sa { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);}
+#demo #sec2 .sa { -webkit-backdrop-filter: sepia(); backdrop-filter: sepia();}
+#demo #sec3a { -webkit-backdrop-filter: brightness(1.8); backdrop-filter: brightness(1.8);}
+#demo #sec3b { -webkit-backdrop-filter: contrast(1.8); backdrop-filter: contrast(1.8);}
+</style>
+<!-- △ サンプルCSSここまで △ -->
+</head>
+<body>
+<article>
+
+	<section>
+		<h1>scrollAnimation</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>
+				要素が画面内に入ったらふわっと表示させるjs<br>
+				セットCSS必須<br>
+				アニメーションはCSS3で行っているため、古いブラウザは非対応です。
+			</dd>
+			<dt>参考サイト</dt>
+			<dd>
+				<ul>
+					<li><a href="http://noze.space/archives/415" target="_blank">【JavaScript・CSS】スクロールしたらフワッと要素を表示させるスクリプトの使い勝手を良くしてみる</a> ※コード配布サイト</li>
+				</ul>
+			</dd>
+		</dl>
+	</section>
+
+
+	<section id="demo">
+		<h2>設置サンプル</h2>
+		<p>一応デモ作ってますが、基本的には配布サイトを参照したほうがわかりやすいと思います。</p>
+		<div id="sec1" class="parent">
+			<div class="sa sa--up">
+				<dl>
+					<dt>アニメーション</dt>
+					<dd>
+						<ul>
+							<li>.sa–-lr：左から右にフェードイン</li>
+							<li>.sa-–rl：右から左にフェードイン</li>
+							<li>.sa–-up：下から上にフェードイン</li>
+							<li>.sa–-down：上から下にフェードイン</li>
+							<li>.sa–-scaleUp：縮小した状態から拡大しながらフェードイン</li>
+							<li>.sa–-scaleDown：拡大した状態から縮小しながらフェードイン</li>
+							<li>.sa–-rotateL：左に回転しながらフェードイン</li>
+							<li>.sa–-rotateR：右に回転しながらフェードイン</li>
+						</ul>
+					</dd>
+					<dt>表示タイミングを指定の要素と揃える</dt>
+					<dd>data-sa_trigger="#id名"</dd>
+					<dt>表示タイミングを指定margin分ずらす</dt>
+					<dd>data-sa_margin="数値"</dd>
+					<dt>表示タイミングを指定時間分ずらす</dt>
+					<dd>data-sa_delay="数値（ミリ秒）"</dd>
+				</dl>
+			</div>
+		</div>
+		<div id="sec2" class="parent">
+			<div class="sa sa--lr">
+				<p>
+					ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト。<br>
+					ダミーテキストダミーテキストダミーテキスト。
+				</p>
+			</div>
+		</div>
+		<div id="sec3" class="parent">
+			<div id="sec3a" class="sa sa--scaleDown">
+				<p>
+					ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト。<br>
+					ダミーテキストダミーテキストダミーテキスト。
+				</p>
+			</div>
+			<div id="sec3b" class="sa sa--scaleUp" data-sa_trigger="#sec3a">
+				<p>
+					ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト。ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト。ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト。ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト。
+				</p>
+			</div>
+		</div>
+	</section>
+
+</article>
+
+<!-- ▽ bxslider JSここから ▽ -->
+<script src="common/js/scrollAnimation.js"></script>
+<!-- △ bxslider JSここまで △ -->
+</body>
+</html>
