@@ -12,6 +12,17 @@
 
 ## ChangeLog
 
+### 2018-08-06
+
+- jquery.tabを改修
+  - 同一ページ内でパネルを開いて移動させる処理を追加<br>
+  （サンプル：[index.html](js_sample/jquery.tab/index.html)）
+  - 別ページからパネルを開いて移動させる処理を追加<br>
+	（サンプル：[index_04.html](js_sample/jquery.tab/index_04.html)）
+- js_sample/jquery.smoothscroll サンプルを追加
+  - 上記jsにアニメーションさせないようにするクラスを追加（setting_option.jsに組み込み済）
+- js_sample/scrollAnimation サンプルを追加
+
 ### 2018-08-03
 
 - 全html内jsを`</body>`直前で読み込むように修正（セットで使用するcssはそのままhead内にあります）
