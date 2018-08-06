@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+
+<title>smoothscroll</title>
+
+<!-- ▽ サンプルCSSここから▽ -->
+<style>
+section:not(:first-child) { height: 100vh;}
+</style>
+<!-- △ サンプルCSSここまで△ -->
+</head>
+<body>
+<article>
+
+	<section>
+		<h1>smoothscroll</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>
+				ページ内リンクでするする移動させるjs<br>
+				※setting_option内に組み込み済
+			</dd>
+		</dl>
+	</section>
+
+
+	<section id="sec1">
+		<h2>smoothscrollさせる</h2>
+		<div>
+			【利用方法】<br>
+			hrefの最初に # がくるようになっていれば自動的にアニメーションがつきます。
+			<p><a href="#sec2">下に移動（アニメーションあり）↓</a></p>
+		</div>
+	</section>
+
+	<section id="sec2">
+		<h2>smoothscrollさせない</h2>
+		<div>
+			【利用方法】<br>
+			アニメーションさせたくないaタグに class="nosmooth" を追加してください。
+			<p><a href="#sec1" class="nosmooth">上に移動（アニメーションなし）↑</a></p>
+		</div>
+	</section>
+
+</article>
+
+<!-- ▽ bxslider JSここから ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.smoothscroll.js"></script>
+<!-- △ bxslider JSここまで △ -->
+</body>
+</html>

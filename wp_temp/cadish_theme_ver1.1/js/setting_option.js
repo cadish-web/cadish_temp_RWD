@@ -12,7 +12,7 @@ jQuery(document).ready(function() {
 	}
 	/* スムーススクロール
 	-------------------------------------------------------- */
-	jQuery('a[href^=#]').click(function(){
+	jQuery('a[href^="#"]:not(.nosmooth)').click(function(){
 		var speed = 500;
 		var href= jQuery(this).attr("href");
 		var target = jQuery(href == "#" || href == "" ? 'html' : href);

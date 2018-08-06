@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 	/* スムーススクロール
 	-------------------------------------------------------- */
-	$('a[href^="#"]').click(function(){
+	$('a[href^="#"]:not(.nosmooth)').click(function(){
 		var speed = 500;
 		var href= $(this).attr("href");
 		var target = $(href == "#" || href == "" ? 'html' : href);
@@ -49,7 +49,7 @@ $(document).ready(function() {
 
 	/* スムーススクロール＆同一ページ内リンクでナビの高さ分だけずらす
 	-------------------------------------------------------- */
-	// $('a[href^="#"]').click(function() {
+	// $('a[href^="#"]:not(.nosmooth)').click(function() {
 	// 	var speed = 500;
 	// 	var href= $(this).attr("href");
 	// 	var target = $(href == "#" || href == "" ? 'html' : href);
