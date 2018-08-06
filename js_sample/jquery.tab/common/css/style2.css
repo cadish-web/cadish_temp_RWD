@@ -6,7 +6,7 @@
 	jquery.tab_panel.js / タブ切り替え
 ------------------------------------------------------ */
 /* タブパネルエリア */
-#tab_area{}
+#tab_area{ min-height: 100vh;}
 
 
 /* ナビゲーション部分 */
@@ -25,6 +25,10 @@
 	clear: both; width: 100%; margin: 0 auto 25px; padding: 10px; width: 100%;
 	background: #fff; border: 5px solid #000; box-sizing: border-box;
 }
+
+/* 最初に表示させておくパネル以外を非表示 */
+.tabs .panel:not(:first-of-type) { display: none;}
+
 .tabs .panel img {
 	display: block; margin: 0 10px 10px 0; float: left;
 	width: 360px; height: auto;

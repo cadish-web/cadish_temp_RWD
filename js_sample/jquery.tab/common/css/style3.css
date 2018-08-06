@@ -6,7 +6,7 @@
 	jquery.tab_panel.js / タブ切り替え
 ------------------------------------------------------ */
 /* タブパネルエリア */
-#tab_area{}
+#tab_area{ min-height: 100vh;}
 
 
 /* ナビゲーション部分 */
@@ -24,7 +24,7 @@
 
 /* コンテンツ部分*/
 .tabs .panel {
-	clear: both; margin: 0 auto 25px; padding: 10px; width: 100%;
+	clear: both; display: none; margin: 0 auto 25px; padding: 10px; width: 100%;
 	background: #fff; border: 5px solid #8b0000; box-sizing: border-box;
 }
 .tabs .panel img {

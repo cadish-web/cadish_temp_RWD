@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+
+<title>タブ用js - タブ箇所の画像をactive時に切り替える -</title>
+
+<!-- ▽ サンプル用CSS ▽ -->
+<link href="common/css/style2.css" rel="stylesheet">
+<!-- △ サンプル用CSS △ -->
+</head>
+<body>
+<article>
+
+	<section>
+		<h1>タブ切り替え：サンプル02</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>タブ箇所の画像をactive時に切り替える</dd>
+			<dt>その他サンプル</dt>
+			<dd>
+				<ul>
+					<li><a href="index.html">通常verはこちら</a></li>
+					<li><a href="index_link.html">別ページへの移動サンプルはこちら</a></li>
+					<li><a href="index_03.html">スライドダウンバージョンはこちら</a></li>
+				</ul>
+			</dd>
+		</dl>
+	</section>
+
+	<section id="tab_area">
+		<h2>設置サンプル</h2>
+		<div class="tabs">
+			<ul>
+				<!-- いちばん最初に表示させたいタブのimgタグはon画像を入れるようにしてください。 -->
+				<li><a href="#panel1" class="active nosmooth"><img src="img/tab1_on.gif" alt="春"></a></li>
+				<li><a href="#panel2" class="nosmooth"><img src="img/tab2_off.gif" alt="夏"></a></li>
+				<li><a href="#panel3" class="nosmooth"><img src="img/tab3_off.gif" alt="秋"></a></li>
+				<li><a href="#panel4" class="nosmooth"><img src="img/tab4_off.gif" alt="冬"></a></li>
+			</ul>
+
+			<div id="panel1" class="panel">
+				<h2>お料理</h2>
+				<img src="../common/img/sample_cuisine.jpg" alt="" />
+				<p>大自然に囲まれた当館では、一年を通して新鮮な食材をご用意しております。
+				四季折々の食材と、新鮮な海の幸をふんだんに使った懐石料理を是非ご賞味下さい。</p>
+				<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+				これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+			</div>
+
+			<div id="panel2" class="panel">
+				<h2>お風呂</h2>
+				<img src="../common/img/sample_spa.jpg" alt="" />
+				<p>四季折々の景観を存分にお愉しみ頂ける、豊かな自然に囲まれた広々とした露天風呂。
+				広々とした作りで、ゆっくりとお湯に浸かって頂けます。</p>
+				<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+				これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+			</div>
+
+			<div id="panel3" class="panel">
+				<h2>お部屋</h2>
+				<img src="../common/img/sample_room.jpg" alt="" />
+				<p>窓の外に広がる大自然を眺めてながら過ごす、ゆったりと落ち着きのある時間。
+				それぞれ趣向を凝らしたお部屋から異なる景観でお愉しみいただけます。どうぞごゆっくりおくつろぎ下さい。</p>
+				<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+				これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>　
+			</div>
+
+			<div id="panel4" class="panel">
+				<h2>周辺観光</h2>
+				<img src="../common/img/sample_spa.jpg" alt="" />
+				<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+				これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+				<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
+				これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
+			</div>
+		</div>
+	</section>
+
+</article>
+
+<!-- ▽ jquery.tab panel ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.tab2.js"></script>
+<!-- △jquery.tab panel △ -->
+
+<script>
+$(document).ready(function() {
+	$('a[href^="#"]:not(.nosmooth)').click(function(){
+		var speed = 500;
+		var href= $(this).attr("href");
+		var target = $(href == "#" || href == "" ? 'html' : href);
+		var position = target.offset().top;
+		$("html, body").animate({scrollTop:position}, speed, "swing");
+		return false;
+	});
+});
+</script>
+</body>
+</html>

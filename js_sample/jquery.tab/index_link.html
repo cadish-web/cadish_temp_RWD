@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+
+<title>タブ用js - 別ページに移動するサンプル -</title>
+
+<!-- ▽ サンプル用CSS ▽ -->
+<link href="common/css/style.css" rel="stylesheet">
+<!-- △ サンプル用CSS △ -->
+</head>
+<body>
+<article>
+
+	<section>
+		<h1>タブ切り替え：リンクサンプル</h1>
+
+		<dl>
+			<dt>その他サンプル</dt>
+			<dd>
+				<ul>
+					<li><a href="index.html">通常verはこちら</a></li>
+					<li><a href="index_02.html">タブ画像のon,offをjsで切り替えたいときはこちら</a></li>
+					<li><a href="index_03.html">スライドダウンバージョンはこちら</a></li>
+				</ul>
+			</dd>
+			<dt>別ページに移動するサンプル</dt>
+			<dd>
+				<ul>
+					<!-- tab=の後に開きたいパネル #の後に表示位置を入れてください -->
+					<!-- 入れ子になったタブを開きたい時は 親タブのパネル,子タブのパネル のように , で区切って親子を指定してください。 -->
+					<li><a href="index.html?tab=panel1_3#panel1">index.html の#panel1 お部屋タブへ移動</a></li>
+					<li><a href="index.html?tab=panel2_4#panel2">index.html の#panel2 周辺観光タブへ移動</a></li>
+					<li><a href="index.html?tab=panel1_1,panel3_3#panel1">index.html の#panel1_1内別注料理タブへ移動</a></li>
+					<li><a href="index.html?tab=panel1_3,panel4_2#panel1">index.html の#panel1_3内朝食タブへ移動</a></li>
+				</ul>
+			</dd>
+		</dl>
+	</section>
+
+</article>
+</body>
+</html>

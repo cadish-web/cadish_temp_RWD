@@ -1,25 +1,43 @@
 $(function() {
-	$('.tabs a[href^="#panel"]').click(function(){
-		$(this).parents('.tabs').children('.panel').hide();
+	var arg = new Object;
+	var pair = location.search.substring(1).split('&');
+	for(var i=0 ; pair[i] ; i++) {
+		var kv = pair[i].split('=');
+		arg[kv[0]]=kv[1];
+	}
 
-		// class名の付け外し
-		$(this).parent('li').siblings().find('a').removeClass('active');
-		$(this).addClass("active");
+	$('.tabs a[href^="#panel"]').on('click', function(e){
 
-		// imgの _on, _off も一緒に切り替えたい場合
-		$(this).parent('li').siblings().each(function(){
-			$(this).find('img').attr('src', $(this).find('img').attr('src').replace('_on', '_off'));
-		});
-		$(this).children('img').attr('src', $(this).children('img').attr('src').replace('_off', '_on'));
+		if(!$(this).attr('onclick')) {
+			$(this).closest('.tabs').children('.panel').hide();
 
-		$(this.hash).fadeIn();
+			// class名の付け外し
+			$(this).parent('li').siblings().find('a').removeClass('active');
+			$(this).addClass("active");
+
+			// imgの _on, _off も一緒に切り替えたい場合
+			$(this).parent('li').siblings().each(function(){
+				$(this).find('img').attr('src', $(this).find('img').attr('src').replace('_on', '_off'));
+			});
+			$(this).children('img').attr('src', $(this).children('img').attr('src').replace('_off', '_on'));
+
+			$(this.hash).fadeIn();
+		}
 		return false;
+
 	});
 
-
-	$(".tabs .panel").hide();
-
-	//一つ目のパネルを表示しておく（以下のクラス名等を修正で任意のパネルに変更可能）
-	//初期状態で何も表示させない場合は以下1行を削除
-	$(".tabs .panel:first-of-type").show();
+	// 別ページから飛んだ時にtabパラメータが指定されている場合
+	if(arg['tab']){
+		tabMove(arg['tab']);
+	}
 });
+
+function tabMove(hash) {
+	var tab_arg = hash.split(',');
+	$.each(tab_arg, function() {
+		openHash = this.replace(/\s+/g, "");
+		$('.tabs a[href^="#' + openHash + '"]').trigger('click');
+	});
+	return false;
+}
