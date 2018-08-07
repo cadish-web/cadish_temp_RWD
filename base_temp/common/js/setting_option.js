@@ -40,7 +40,7 @@ $(document).ready(function() {
 	tabSize.addListener(imgSize);
 	imgSize();
 
-	/* スムーススクロール
+	/* スムーススクロール / 通常ver
 	-------------------------------------------------------- */
 	$('a[href^="#"]:not(.nosmooth)').click(function(){
 		var speed = 500;
@@ -51,7 +51,9 @@ $(document).ready(function() {
 		return false;
 	});
 
-	/* スムーススクロール＆同一ページ内リンクでナビの高さ分だけずらす
+	/* スムーススクロール / 同一ページ内リンクでナビの高さ分だけずらす
+			※上記通常verと併用すると挙動がおかしくなるので、
+			　使用する場合はどちらか一方だけにしてください。
 	-------------------------------------------------------- */
 	// $('a[href^="#"]:not(.nosmooth)').click(function() {
 	// 	var speed = 500;

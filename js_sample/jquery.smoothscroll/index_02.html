@@ -12,11 +12,22 @@
 
 <!-- ▽ サンプルCSSここから▽ -->
 <style>
+header {
+	width: 100%; padding: 30px 4%; position: fixed; top: 0; left: 0;
+	background: #000; color: #fff; font-size: 24px; text-align: center;
+	-webkit-box-sizing: border-box; box-sizing: border-box;
+}
+article { margin-top: 80px;}
 section:not(:first-child) { height: 100vh;}
+#sec1 { padding-top: 120px; margin-top: -120px;}
 </style>
 <!-- △ サンプルCSSここまで△ -->
 </head>
 <body>
+<header id="header_wrap">
+	ヘッダー
+</header>
+
 <article>
 
 	<section>
@@ -24,13 +35,14 @@ section:not(:first-child) { height: 100vh;}
 		<dl>
 			<dt>特徴</dt>
 			<dd>
-				ページ内リンクでするする移動させるjs<br>
-				※setting_option内に組み込み済
+				固定ヘッダー分高さをずらして移動するバージョン
+				※setting_option内に組み込み済（コメントアウトしてある方です。）
+				※通常verと併用すると挙動がおかしくなります。使用する場合はどちらか一方だけにしてください。
 			</dd>
 			<dt>その他サンプル</dt>
 			<dd>
 				<ul>
-					<li><a href="index_02.html">固定ヘッダー分ずらして移動</a></li>
+					<li><a href="index.html">通常ver</a></li>
 				</ul>
 			</dd>
 		</dl>
@@ -40,8 +52,6 @@ section:not(:first-child) { height: 100vh;}
 	<section id="sec1">
 		<h2>smoothscrollさせる</h2>
 		<div>
-			【利用方法】<br>
-			hrefの最初に # がくるようになっていれば自動的にアニメーションがつきます。
 			<p><a href="#sec2">下に移動（アニメーションあり）↓</a></p>
 		</div>
 	</section>
@@ -49,8 +59,7 @@ section:not(:first-child) { height: 100vh;}
 	<section id="sec2">
 		<h2>smoothscrollさせない</h2>
 		<div>
-			【利用方法】<br>
-			アニメーションさせたくないaタグに class="nosmooth" を追加してください。
+			アニメーションなしの場合はjsが動かないので、css等で移動する位置を調整する必要があります。
 			<p><a href="#sec1" class="nosmooth">上に移動（アニメーションなし）↑</a></p>
 		</div>
 	</section>
@@ -59,7 +68,7 @@ section:not(:first-child) { height: 100vh;}
 
 <!-- ▽ smoothscroll JSここから ▽ -->
 <script src="../../base_temp/common/js/jquery.min.js"></script>
-<script src="common/js/jquery.smoothscroll.js"></script>
+<script src="common/js/jquery.smoothscroll2.js"></script>
 <!-- △ smoothscroll JSここまで △ -->
 </body>
 </html>
