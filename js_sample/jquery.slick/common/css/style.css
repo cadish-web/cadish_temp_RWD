@@ -2,20 +2,56 @@
 /* ---------------------------------------------------
 	slick　/　カルーセルスライダー
 ------------------------------------------------------ */
-#slick_area{ width: 100%; max-width: 100%; position: relative;}
-#slick_area h2,
-#slick_area p{ margin: 0 auto 25px; max-width: 1000px;}
 
-.slick_item{ position: relative; z-index: 100;}
-.slick_item:after{
+section:not(:first-child) { width: 100%; max-width: 100%; position: relative; overflow: hidden;}
+section:not(:first-child) h2,
+section:not(:first-child) p { margin: 0 auto 25px; width: 92%; max-width: 1000px; -webkit-box-sizing: border-box; box-sizing: border-box;}
+
+section .slick-slider { margin-bottom: 0;}
+section .slick-dots { bottom: 10px;}
+section .slick-dots li button:before { font-size: 15px; opacity: 0.5; text-shadow: 0 0 10px #fff;}
+section .slick-dots li.slick-active button:before { font-size: 15px; opacity: 1;}
+
+/* ---- 通常カルーセル ---- */
+#slick_area .slick_item { position: relative; z-index: 100;}
+#slick_area .slick_item:after {
 	clear: both; display: block; content: ".";
 	height: 0px; font-size: 0; visibility: hidden;
 }
-.slick_item .slick-slide    { text-align: center; }
-.slick_item .slick-slide img{ display: block; margin: 0 auto; text-align: center;}
+#slick_area .slick_item .slick-slide    { text-align: center; }
+#slick_area .slick_item .slick-slide img{ display: block; margin: 0 auto; text-align: center;}
 
 /* IE7 */
-#slick_area    { /height: auto; }
-.slick_item div{ /float: left; /margin: 0;}
+#slick_area { /height: auto; }
+#slick_area .slick_item div { /float: left; /margin: 0;}
 
 
+/* ---- 一枚ずつのカルーセル ---- */
+#slick_area2 .slick-slider { margin-bottom: 0;}
+#slick_area2 .slick_center .slick-slide { width: 1000px; padding: 0 50px; text-align: center;}
+#slick_area2 .slick_center .slick-slide img { max-width: 100%; margin: 0 auto;}
+#slick_area2 .slick_center .slick-prev,
+#slick_area2 .slick_center .slick-next { width: 80px; height: 80px; z-index: 999;}
+#slick_area2 .slick_center .slick-prev:before,
+#slick_area2 .slick_center .slick-next:before { color: #000; font-size: 80px; opacity: 0.5; text-shadow: 0 0 10px #fff;}
+#slick_area2 .slick_center .slick-prev:hover:before,
+#slick_area2 .slick_center .slick-next:hover:before { opacity: 1;}
+#slick_area2 .slick_center .slick-prev { margin-left: -600px; left: 50%;}
+#slick_area2 .slick_center .slick-prev:before { content: '〈';}
+#slick_area2 .slick_center .slick-next { margin-left: 520px; left: 50%; right: auto;}
+#slick_area2 .slick_center .slick-next:before { content: '〉';}
+
+@media screen and (max-width: 1200px) {
+	#slick_area2 .slick_center .slick-slide { padding: 0 50px;}
+	#slick_area2 .slick_center .slick-prev { margin-left: 0; left: -40px;}
+	#slick_area2 .slick_center .slick-next { margin-left: 0; left: auto; right: -40px;}
+}
+@media screen and (max-width: 1000px) {
+	#slick_area2 .slick_center .slick-slide { padding: 0;}
+	#slick_area2 .slick_center .slick-prev:before,
+	#slick_area2 .slick_center .slick-next:before { font-size: 50px;}
+}
+@media screen and (max-width: 600px) {
+	#slick_area2 .slick_center .slick-slide { overflow: hidden;}
+	#slick_area2 .slick_center .slick-slide img { max-width: none; height: 300px; position: relative; left: -50%;}
+}

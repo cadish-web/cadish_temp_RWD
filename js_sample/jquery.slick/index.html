@@ -43,12 +43,8 @@
 	</section>
 
 	<section id="slick_area">
-		<h2>カルーセル</h2>
+		<h2>通常カルーセル</h2>
 		<div class="slick_item">
-			<div><a href="#"><img src="../common/img/sample_img_s01.jpg" alt="" /></a></div>
-			<div><a href="#"><img src="../common/img/sample_img_s02.jpg" alt="" /></a></div>
-			<div><a href="#"><img src="../common/img/sample_img_s03.jpg" alt="" /></a></div>
-			<div><a href="#"><img src="../common/img/sample_img_s04.jpg" alt="" /></a></div>
 			<div><a href="#"><img src="../common/img/sample_img_s01.jpg" alt="" /></a></div>
 			<div><a href="#"><img src="../common/img/sample_img_s02.jpg" alt="" /></a></div>
 			<div><a href="#"><img src="../common/img/sample_img_s03.jpg" alt="" /></a></div>
@@ -57,16 +53,12 @@
 	</section>
 
 	<section id="slick_area2">
-		<h2>カルーセル</h2>
-		<div class="slick_item">
-			<div><a href="#"><img src="../common/img/sample_img_s01.jpg" alt="" /></a></div>
-			<div><a href="#"><img src="../common/img/sample_img_s02.jpg" alt="" /></a></div>
-			<div><a href="#"><img src="../common/img/sample_img_s03.jpg" alt="" /></a></div>
-			<div><a href="#"><img src="../common/img/sample_img_s04.jpg" alt="" /></a></div>
-			<div><a href="#"><img src="../common/img/sample_img_s01.jpg" alt="" /></a></div>
-			<div><a href="#"><img src="../common/img/sample_img_s02.jpg" alt="" /></a></div>
-			<div><a href="#"><img src="../common/img/sample_img_s03.jpg" alt="" /></a></div>
-			<div><a href="#"><img src="../common/img/sample_img_s04.jpg" alt="" /></a></div>
+		<h2>1枚ずつのカルーセル（左右矢印付き）</h2>
+		<div class="slick_center">
+			<div><a href="#"><img src="../common/img/sample_img01.jpg" alt="" /></a></div>
+			<div><a href="#"><img src="../common/img/sample_img02.jpg" alt="" /></a></div>
+			<div><a href="#"><img src="../common/img/sample_img03.jpg" alt="" /></a></div>
+			<div><a href="#"><img src="../common/img/sample_img04.jpg" alt="" /></a></div>
 		</div>
 	</section>
 
@@ -79,6 +71,7 @@
 
 <script>
 $(document).ready(function() {
+	// #slick_area1
 	$('.slick_item').slick({
 		dots: true,						// 下のドットのナビ
 		infinite: true,				// ループさせるか
@@ -108,6 +101,25 @@ $(document).ready(function() {
 					dots: false,
 					slidesToShow: 1,
 					slidesToScroll: 1
+				}
+			}
+		]
+	});
+
+	// #slick_area2
+	$('.slick_center').slick({
+		dots: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		centerMode: true,			// currentの画像が真ん中に来る（デフォルトは左端）
+		variableWidth: true,	// slickのアイテム幅を中身の幅に合わせる
+		responsive: [
+			{
+				breakpoint: 1200,
+				settings: {
+					variableWidth: false,
+					centerPadding: '0'
 				}
 			}
 		]
