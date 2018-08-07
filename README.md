@@ -1,6 +1,8 @@
 # cadish_temp_RWD
 レスポンシブ対応テンプレートパッケージ
 
+---
+
 ## 各ディレクトリ説明
 
 - リキッドレイアウト用テンプレート：[base_temp/](base_temp/)
@@ -9,19 +11,32 @@
 - 各jsサンプル：[js_sample/](js_sample/)
 - ブログ等rss書き出し：[RSS_data/](RSS_data/)
 
+---
 
 ## ChangeLog
+### 2018-08-07
+
+- js_sample/jquery.slick 左右矢印付きカルーセルのサンプルを追加
+- js_sample/scrollAnimation サンプルCSSを微修正
+- js_sample/jquery.tab 上下連動するタブのサンプルを追加・jsを改修
+- js_sample/jquery.smoothscroll 固定ヘッダー分ずらすサンプルを追加<br>
+（サンプル：js_sample/jquery.smoothscroll/index_02.html）
+- 各setting_option.js smoothscrollに関する注意を追加
+- js_sample/jquery.tel-link サンプルを追加
+- js_sample/jquery.imgSize サンプルを追加
+
 
 ### 2018-08-06
 
 - jquery.tabを改修
   - 同一ページ内でパネルを開いて移動させる処理を追加<br>
-  （サンプル：[index.html](js_sample/jquery.tab/index.html)）
+  （サンプル：js_sample/jquery.tab/index.html）
   - 別ページからパネルを開いて移動させる処理を追加<br>
-	（サンプル：[index_04.html](js_sample/jquery.tab/index_04.html)）
+	（サンプル：js_sample/jquery.tab/index_04.html）
 - js_sample/jquery.smoothscroll サンプルを追加
   - 上記jsにアニメーションさせないようにするクラスを追加（setting_option.jsに組み込み済）
 - js_sample/scrollAnimation サンプルを追加
+
 
 ### 2018-08-03
 
