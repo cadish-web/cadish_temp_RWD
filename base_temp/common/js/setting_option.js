@@ -21,23 +21,23 @@ $(document).ready(function() {
 	var $setElem = $('.switch'),
 			pcName = '_pc',
 			spName = '_sp',
-			spSize = window.matchMedia('(max-width: 600px)'),
-			tabSize = window.matchMedia('(max-width: 768px)');
+			changeSize1 = window.matchMedia('(max-width: 600px)'),
+			changeSize2 = window.matchMedia('(max-width: 768px)');
 
-	const imgSize = function() {
+	const imgSize = function(){
 		$setElem.each(function(){
-			if($(this).attr('data-size')=='sp' && spSize.matches) {
-				$(this).attr('src',$(this).attr('src').replace(pcName,spName)).css({visibility:'visible'});
-			} else if($(this).attr('data-size')=='tab' && tabSize.matches) {
-				$(this).attr('src',$(this).attr('src').replace(pcName,spName)).css({visibility:'visible'});
+			if($(this).attr('data-size')=='sp' && changeSize1.matches) {
+				$(this).attr('src',$(this).attr('src').replace(pcName,spName));
+			} else if($(this).attr('data-size')=='tab' && changeSize2.matches) {
+				$(this).attr('src',$(this).attr('src').replace(pcName,spName));
 			} else {
-				$(this).attr('src',$(this).attr('src').replace(spName,pcName)).css({visibility:'visible'});
+				$(this).attr('src',$(this).attr('src').replace(spName,pcName));
 			}
 		});
 	};
 
-	spSize.addListener(imgSize);
-	tabSize.addListener(imgSize);
+	changeSize1.addListener(imgSize);
+	changeSize2.addListener(imgSize);
 	imgSize();
 
 	/* スムーススクロール / 通常ver

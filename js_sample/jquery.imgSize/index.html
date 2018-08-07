@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+
+<title>imgSize</title>
+
+<!-- ▽ サンプルCSSここから▽ -->
+<style>
+img { max-width: 100%;}
+</style>
+<!-- △ サンプルCSSここまで△ -->
+</head>
+<body>
+<article>
+
+	<section>
+		<h1>imgSize</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>
+				ウィンドウサイズに応じて画像を切り替える<br>
+				※setting_option内に組み込み済
+			</dd>
+		</dl>
+	</section>
+
+
+	<section>
+		<h2>設置サンプル</h2>
+		<div>
+			<p>
+				【利用方法】<br>
+				imgタグに .switch クラスと data-size="sp" を追加してください。<br>
+				初期のsrcはPC用スマホ用どちらの画像でもokです。
+			</p>
+			<p>
+				<img src="img/sample_pc.jpg" alt="" class="switch" data-size="sp">
+			</p>
+			<p>
+				<img src="img/sample_sp.jpg" alt="" class="switch" data-size="sp">
+			</p>
+		</div>
+	</section>
+
+</article>
+
+<!-- ▽ imgChange JSここから ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.imgSize.js"></script>
+<!-- △ imgChange JSここまで △ -->
+</body>
+</html>

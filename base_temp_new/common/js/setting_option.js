@@ -15,7 +15,6 @@ $(document).ready(function() {
 	/* ウィンドウサイズによって読み込む画像を切り替え
 	▼画像：2パターン用意し、PC用に「_pc」タブレット＆スマホ用に「_sp」を追加。
 	▼HTML：下記クラス+データサイズを該当する画像のimgタグに追加
-	768で切り替え → class="switch" data-size="tab"
 	600で切り替え → class="switch" data-size="sp"
 	-------------------------------------------------------- */
 	var $setElem = $('.switch'),
@@ -26,12 +25,12 @@ $(document).ready(function() {
 	const imgSize = function(){
 		$setElem.each(function(){
 			if($(this).attr('data-size')=='sp' && spSize.matches) {
-				$(this).attr('src',$(this).attr('src').replace(pcName,spName)).css({visibility:'visible'});
+				$(this).attr('src',$(this).attr('src').replace(pcName,spName));
 			} else {
-				$(this).attr('src',$(this).attr('src').replace(spName,pcName)).css({visibility:'visible'});
+				$(this).attr('src',$(this).attr('src').replace(spName,pcName));
 			}
 		});
-	}
+	};
 
 	spSize.addListener(imgSize);
 	imgSize();
