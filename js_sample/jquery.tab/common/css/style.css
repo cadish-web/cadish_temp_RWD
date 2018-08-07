@@ -3,10 +3,10 @@
 ◇　js & jQuery Style CSS　◇
 ====================================================== */
 /* ---------------------------------------------------
-	jquery.tab_panel.js / タブ切り替え
+	jquery.tab_panel.js / タブ切り替え サンプルCSS
 ------------------------------------------------------ */
 /* タブパネルエリア */
-#tab_area{ min-height: 100vh;}
+.tab_area { min-height: 100vh;}
 
 #cnav { margin: 0 0 30px;}
 
@@ -18,7 +18,7 @@
 
 .tabs li a{
 	display: block; margin: 0 1px; padding: 0; line-height: 50px;
-	color: #555; text-align: center; background: #dedede; cursor: pointer;
+	color: #555; text-align: center; background: #dedede; cursor: pointer; text-decoration: none;
 }
 .tabs li a.active,
 .tabs li a:hover{ cursor: default; color: #fff; background: #8b0000;}
@@ -26,9 +26,10 @@
 
 /* コンテンツ部分*/
 .tabs .panel {
-	clear: both; margin: 0 auto 25px; padding: 10px; width: 100%;
+	clear: both; margin: 0 auto; padding: 10px; width: 100%;
 	background: #fff; border: 5px solid #8b0000; box-sizing: border-box;
 }
+.tabs + dl { margin: 10px 0 0;}
 
 /* 最初に表示させておくパネル以外を非表示 */
 .tabs .panel:not(:first-of-type) { display: none;}
@@ -49,6 +50,10 @@
 	clear: both; content: "."; display: block; height: 0;
 	font-size: 0; visibility: hidden;
 }
+
+#panel1 { margin: 20px 0 0;}
+
+#panel2 li { width: 25%;}
 
 @media screen and (max-width: 640px) {
 	.tabs ul{ margin: 0 0 25px;}

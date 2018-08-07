@@ -22,7 +22,7 @@
 
 /* コンテンツ部分*/
 .tabs .panel {
-	clear: both; width: 100%; margin: 0 auto 25px; padding: 10px; width: 100%;
+	clear: both; width: 100%; margin: 0 auto; padding: 10px; width: 100%;
 	background: #fff; border: 5px solid #000; box-sizing: border-box;
 }
 

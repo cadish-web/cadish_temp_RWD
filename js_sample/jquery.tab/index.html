@@ -39,21 +39,19 @@
 		</dl>
 	</section>
 
-	<section id="tab_area">
-		<h2>設置サンプル</h2>
-		<dl>
-			<dt>ページ内リンク</dt>
-			<dd>
-				<ul>
-					<!-- hrefには移動したい位置 onclick には開きたいパネルidを入れてください -->
-					<!-- 入れ子になったタブを開きたい時は 親タブのパネル,子タブのパネル のように , で区切って親子を指定してください。 -->
-					<li><a href="#panel2" onclick="tabMove('panel2_4');">#panel2 周辺観光へ</a></li>
-					<li><a href="#panel1" onclick="tabMove('panel1_3')">#panel1 お部屋へ</a></li>
-					<li><a href="#panel1" onclick="tabMove('panel1_3, panel4_2')">#panel1_3内朝食タブへ</a></li>
-				</ul>
-			</dd>
-		</dl>
+	<section>
+		<h2>ページ内リンクサンプル</h2>
+		<ul>
+			<!-- hrefには移動したい位置 onclick には開きたいパネルidを入れてください -->
+			<!-- 入れ子になったタブを開きたい時は 親タブのパネル,子タブのパネル のように , で区切って親子を指定してください。 -->
+			<li><a href="#panel2" onclick="tabMove('panel2_4');">#panel2 周辺観光へ</a></li>
+			<li><a href="#panel1" onclick="tabMove('panel1_3')">#panel1 お部屋へ</a></li>
+			<li><a href="#panel1" onclick="tabMove('panel1_3, panel4_2')">#panel1_3内朝食タブへ</a></li>
+		</ul>
+	</section>
 
+	<section class="tab_area">
+		<h2>通常ver ＆ 入れ子サンプル</h2>
 		<div id="panel1" class="tabs">
 			<ul>
 				<!-- いちばん最初に表示させたいタブのaタグにhtml側で class="active" をつけるようにしてください -->
@@ -65,14 +63,14 @@
 			</ul>
 
 			<div id="panel1_1" class="panel">
-				<h2>お料理</h2>
+				<h3>お料理</h3>
 				<img src="../common/img/sample_cuisine.jpg" alt="" />
 				<p>大自然に囲まれた当館では、一年を通して新鮮な食材をご用意しております。
 				四季折々の食材と、新鮮な海の幸をふんだんに使った懐石料理を是非ご賞味下さい。</p>
 				<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
 				これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
 
-				<div class="tabs">
+				<div id="panel3" class="tabs">
 					<ul>
 						<li><a href="#panel3_1" class="active nosmooth">懐石料理</a></li>
 						<li><a href="#panel3_2" class="nosmooth">朝食</a></li>
@@ -100,7 +98,7 @@
 			</div>
 
 			<div id="panel1_2" class="panel">
-				<h2>お風呂</h2>
+				<h3>お風呂</h3>
 				<img src="../common/img/sample_spa.jpg" alt="" />
 				<p>四季折々の景観を存分にお愉しみ頂ける、豊かな自然に囲まれた広々とした露天風呂。
 				広々とした作りで、ゆっくりとお湯に浸かって頂けます。</p>
@@ -109,13 +107,13 @@
 			</div>
 
 			<div id="panel1_3" class="panel">
-				<h2>お部屋</h2>
+				<h3>お部屋</h3>
 				<img src="../common/img/sample_room.jpg" alt="" />
 				<p>窓の外に広がる大自然を眺めてながら過ごす、ゆったりと落ち着きのある時間。
 				それぞれ趣向を凝らしたお部屋から異なる景観でお愉しみいただけます。どうぞごゆっくりおくつろぎ下さい。</p>
 				<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
 				これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
-				<div class="tabs">
+				<div id="panel4" class="tabs">
 					<ul>
 						<li><a href="#panel4_1" class="active nosmooth">懐石料理</a></li>
 						<li><a href="#panel4_2" class="nosmooth">朝食</a></li>
@@ -148,7 +146,7 @@
 			</div>
 
 			<div id="panel1_4" class="panel">
-				<h2>周辺観光</h2>
+				<h3>周辺観光</h3>
 				<img src="../common/img/sample_spa.jpg" alt="" />
 				<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
 				これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
@@ -156,19 +154,21 @@
 				これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
 			</div>
 		</div>
+	</section>
 
-		<div id="panel2" class="tabs" style="height: 100vh;">
-			<ul>
-				<!-- いちばん最初に表示させたいタブのaタグにhtml側で class="active" をつけるようにしてください -->
+	<section class="tab_area">
+		<h2>上下のタブ連動</h2>
+		<div id="panel2" class="tabs">
+			<!-- 上下のタブの data-pairing を同じ名前にしてください。 -->
+			<ul data-pairing="panel2_tabs">
 				<li><a href="#panel2_1" class="active nosmooth">お料理</a></li>
 				<li><a href="#panel2_2" class="nosmooth">お風呂</a></li>
 				<li><a href="#panel2_3" class="nosmooth">お部屋</a></li>
 				<li><a href="#panel2_4" class="nosmooth">周辺観光</a></li>
-				<li><a href="mailto:test&#64;example.com">お問い合わせ</a></li>
 			</ul>
 
 			<div id="panel2_1" class="panel">
-				<h2>お料理</h2>
+				<h3>お料理</h3>
 				<img src="../common/img/sample_cuisine.jpg" alt="" />
 				<p>大自然に囲まれた当館では、一年を通して新鮮な食材をご用意しております。
 				四季折々の食材と、新鮮な海の幸をふんだんに使った懐石料理を是非ご賞味下さい。</p>
@@ -177,7 +177,7 @@
 			</div>
 
 			<div id="panel2_2" class="panel">
-				<h2>お風呂</h2>
+				<h3>お風呂</h3>
 				<img src="../common/img/sample_spa.jpg" alt="" />
 				<p>四季折々の景観を存分にお愉しみ頂ける、豊かな自然に囲まれた広々とした露天風呂。
 				広々とした作りで、ゆっくりとお湯に浸かって頂けます。</p>
@@ -186,7 +186,7 @@
 			</div>
 
 			<div id="panel2_3" class="panel">
-				<h2>お部屋</h2>
+				<h3>お部屋</h3>
 				<img src="../common/img/sample_room.jpg" alt="" />
 				<p>窓の外に広がる大自然を眺めてながら過ごす、ゆったりと落ち着きのある時間。
 				それぞれ趣向を凝らしたお部屋から異なる景観でお愉しみいただけます。どうぞごゆっくりおくつろぎ下さい。</p>
@@ -195,13 +195,20 @@
 			</div>
 
 			<div id="panel2_4" class="panel">
-				<h2>周辺観光</h2>
+				<h3>周辺観光</h3>
 				<img src="../common/img/sample_spa.jpg" alt="" />
 				<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
 				これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
 				<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
 				これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
 			</div>
+
+			<ul data-pairing="panel2_tabs">
+				<li><a href="#panel2_1" class="active">お料理</a></li>
+				<li><a href="#panel2_2">お風呂</a></li>
+				<li><a href="#panel2_3">お部屋</a></li>
+				<li><a href="#panel2_4">周辺観光</a></li>
+			</ul>
 		</div>
 	</section>
 </article>
