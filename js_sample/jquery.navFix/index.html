@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+
+<title>navFix</title>
+
+<!-- ▽ サンプルCSSここから▽ -->
+<style>
+header,
+nav,
+section { min-width: 1000px;}
+header {
+	width: 100%; padding: 30px 4%;
+	background: #000; color: #fff; font-size: 24px; text-align: center;
+	-webkit-box-sizing: border-box; box-sizing: border-box;
+}
+nav { width: 100%; background: #555; color: #fff;}
+nav ul {
+	display: -webkit-flex; display: -ms-flex; display: flex;
+	width: 1000px; margin: 0 auto;
+}
+nav li {
+	display: -webkit-flex; display: -ms-flex; display: flex;
+	-webkit-flex: 1 1 100%; -ms-flex: 1 1 100%; flex: 1 1 100%;
+	-ms-align-items: center; align-items: center;
+	justify-content: center; width: 100%; padding: 10px;
+	-webkit-box-sizing: border-box; box-sizing: border-box;
+}
+nav li + li { border-left: 1px solid #fff;}
+.fixed { position: fixed; top: 0; left: 0;}
+section:not(:first-child) { height: 100vh;}
+#sec1 { padding-top: 120px; margin-top: -120px;}
+
+@media screen and (max-width:600px) {
+	header,
+	nav,
+	section { min-width: 0;}
+	nav ul { -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; width: 100%;}
+	nav li { flex-basis: 50%;}
+	nav li + li { border-top: 1px solid #fff;}
+	nav li:nth-child(-n+2) { border-top: none;}
+	nav li:nth-child(2n+1) { border-left: none;}
+}
+</style>
+<!-- △ サンプルCSSここまで△ -->
+</head>
+<body>
+
+<header id="header_wrap">
+	ヘッダー
+</header>
+
+<nav id="gnav">
+	<ul>
+		<li>魅力</li>
+		<li>お部屋</li>
+		<li>お料理</li>
+		<li>お風呂</li>
+		<li>周辺観光</li>
+		<li>交通アクセス</li>
+	</ul>
+</nav>
+
+<article id="contents_wrap">
+
+	<section>
+		<h1>navFix</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>
+				スクロールでgnavを画面上部に固定するjs
+				※setting_option内に組み込み済
+			</dd>
+			<dt>参考サイト</dt>
+			<dd>
+				<ul>
+					<li><a href="https://into-the-program.com/jquery/scroll-fixed-elem.php" target="_blank">スクロールでヘッダーのナビゲーションやサイドバーを固定する</a></li>
+				</ul>
+			</dd>
+		</dl>
+	</section>
+
+
+	<section id="sec1">
+		<h2>ダミーブロック</h2>
+		<div>
+			<p>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト<br>
+				ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト<br>
+				ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+		</div>
+	</section>
+
+	<section id="sec2">
+		<h2>ダミーブロック</h2>
+		<div>
+			<p>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト<br>
+				ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト<br>
+				ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+		</div>
+	</section>
+
+</article>
+
+<!-- ▽ navFix JSここから ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.navFix.js"></script>
+<!-- △ navFix JSここまで △ -->
+</body>
+</html>
