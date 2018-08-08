@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+
+<title>pagetopFade</title>
+
+<!-- ▽ サンプルCSSここから▽ -->
+<style>
+section:not(:first-child) { height: 100vh;}
+#pagetop { margin: 0; position: fixed; bottom: 0; right: 0;}
+#pagetop a {
+	display: block; width: 60px; height: 0; padding: 60px 0 0;
+	background: #000; overflow: hidden;
+}
+#pagetop a:before {
+	content: ''; width: 20px; height: 20px; margin: -5px 0 0 -10px; position: absolute; top: 50%; left: 50%;
+	border: 3px solid #fff; border-bottom: none; border-right: none;
+	-webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg);
+}
+</style>
+<!-- △ サンプルCSSここまで△ -->
+</head>
+<body id="home">
+
+<article id="contents_wrap">
+
+	<section>
+		<h1>pagetopFade</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>
+				idで表示タイミングをずらしたサンプル
+				（js内5行目で分岐処理を行なっています。）
+			</dd>
+			<dt>その他サンプル</dt>
+			<dd>
+				<ul>
+					<li><a href="index.html">通常ver</a></li>
+				</ul>
+			</dd>
+		</dl>
+	</section>
+
+
+	<section id="sec1">
+		<h2>ダミーブロック</h2>
+		<div>
+			<p>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト<br>
+				ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト<br>
+				ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+		</div>
+	</section>
+
+	<section id="sec2">
+		<h2>ダミーブロック</h2>
+		<div>
+			<p>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト<br>
+				ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト<br>
+				ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+		</div>
+	</section>
+
+	<p id="pagetop"><a href="#">pagetop</a></p>
+
+</article>
+
+<!-- ▽ pagetopFade JSここから ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.pagetopFade.js"></script>
+<!-- △ pagetopFade JSここまで △ -->
+
+<script>
+	$(document).ready(function() {
+	$('a[href^="#"]:not(.nosmooth)').click(function(){
+		var speed = 500;
+		var href= $(this).attr("href");
+		var target = $(href == "#" || href == "" ? 'html' : href);
+		var position = target.offset().top;
+		$("html, body").animate({scrollTop:position}, speed, "swing");
+		return false;
+	});
+});
+</script>
+</body>
+</html>
