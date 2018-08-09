@@ -14,6 +14,19 @@
 ---
 
 ## ChangeLog
+
+### 2018-08-09
+- js_sample/jquery.smoothscroll 固定ヘッダーがある場合の処理を微調整
+- js_sample/jquery.loadmove サンプルを追加
+
+
+### 2018-08-08
+
+- js_sample/jquery.navFix サンプルを追加
+- js_sample/jquery.pagetopFade サンプルを追加
+- js_sample/jquery.fbResize サンプルを追加
+
+
 ### 2018-08-07
 
 - js_sample/jquery.slick 左右矢印付きカルーセルのサンプルを追加
