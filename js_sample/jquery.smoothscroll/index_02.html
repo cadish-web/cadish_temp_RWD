@@ -20,6 +20,12 @@ header {
 article { margin-top: 80px;}
 section:not(:first-child) { height: 100vh;}
 #sec1 { padding-top: 120px; margin-top: -120px;}
+
+@media screen and (max-width: 600px) {
+	header { position: static;}
+	article { margin-top: 0;}
+	#sec1 { padding-top: 0; margin-top: 0;}
+}
 </style>
 <!-- △ サンプルCSSここまで△ -->
 </head>
@@ -35,8 +41,8 @@ section:not(:first-child) { height: 100vh;}
 		<dl>
 			<dt>特徴</dt>
 			<dd>
-				固定ヘッダー分高さをずらして移動するバージョン
-				※setting_option内に組み込み済（コメントアウトしてある方です。）
+				固定ヘッダー分高さをずらして移動するバージョン<br>
+				※setting_option内に組み込み済（コメントアウトしてある方です。）<br>
 				※通常verと併用すると挙動がおかしくなります。使用する場合はどちらか一方だけにしてください。
 			</dd>
 			<dt>その他サンプル</dt>
