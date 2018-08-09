@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+
+<title>loadMove</title>
+
+<!-- ▽ サンプルCSSここから▽ -->
+<style>
+header {
+	width: 100%; padding: 30px 4%; position: fixed; top: 0; left: 0;
+	background: #000; color: #fff; font-size: 24px; text-align: center;
+	-webkit-box-sizing: border-box; box-sizing: border-box;
+}
+article { margin-top: 80px;}
+section:not(:first-child) { height: 100vh;}
+
+@media screen and (max-width: 600px) {
+	header { position: static;}
+}
+</style>
+<!-- △ サンプルCSSここまで△ -->
+</head>
+<body>
+<header id="header_wrap">
+	ヘッダー
+</header>
+
+<article>
+
+	<section>
+		<h1>loadMove</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>
+				固定ヘッダーありの場合
+			</dd>
+			<dt>その他サンプル</dt>
+			<dd>
+				<ul>
+					<li><a href="index.html">リンクサンプル</a></li>
+					<li><a href="index_01.html?id=sec1">固定ヘッダー無し</a></li>
+				</ul>
+			</dd>
+		</dl>
+	</section>
+
+
+	<section id="sec1">
+		<h2>読み込み終わったらここまで移動</h2>
+		<div>
+			ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト<br>
+			ダミーテキストダミーテキストダミーテキスト<br>
+			ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト<br>
+			ダミーテキストダミーテキスト
+		</div>
+	</section>
+
+</article>
+
+<!-- ▽ loadMove JSここから ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.loadMove2.js"></script>
+<!-- △ loadMove JSここまで △ -->
+</body>
+</html>
