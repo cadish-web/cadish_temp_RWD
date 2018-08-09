@@ -12,6 +12,7 @@ $(document).ready(function() {
 		});
 	}
 
+
 	/* ウィンドウサイズによって読み込む画像を切り替え
 	▼画像：2パターン用意し、PC用に「_pc」タブレット＆スマホ用に「_sp」を追加。
 	▼HTML：下記クラス+データサイズを該当する画像のimgタグに追加
@@ -21,49 +22,47 @@ $(document).ready(function() {
 	var $setElem = $('.switch'),
 			pcName = '_pc',
 			spName = '_sp',
-			changeSize1 = window.matchMedia('(max-width: 600px)'),
-			changeSize2 = window.matchMedia('(max-width: 768px)');
+			spSize = window.matchMedia('(max-width: 600px)'),
+			tabSize = window.matchMedia('(max-width: 768px)');
 
 	const imgSize = function(){
 		$setElem.each(function(){
-			if($(this).attr('data-size')=='sp' && changeSize1.matches) {
+			if($(this).attr('data-size')=='sp' && spSize.matches) {
 				$(this).attr('src',$(this).attr('src').replace(pcName,spName));
-			} else if($(this).attr('data-size')=='tab' && changeSize2.matches) {
+			} else if($(this).attr('data-size')=='tab' && tabSize.matches) {
 				$(this).attr('src',$(this).attr('src').replace(pcName,spName));
 			} else {
 				$(this).attr('src',$(this).attr('src').replace(spName,pcName));
 			}
 		});
 	};
-
-	changeSize1.addListener(imgSize);
-	changeSize2.addListener(imgSize);
+	spSize.addListener(imgSize);
+	tabSize.addListener(imgSize);
 	imgSize();
 
-	/* スムーススクロール / 通常ver
+
+	/* スムーススクロール
 	-------------------------------------------------------- */
 	$('a[href^="#"]:not(.nosmooth)').click(function(){
 		var speed = 500;
 		var href= $(this).attr("href");
 		var target = $(href == "#" || href == "" ? 'html' : href);
-		var position = target.offset().top;
+		var hHeight = '';
+
+		/* ▽ 固定ヘッダーありの場合の処理 ▽ */
+		// // ヘッダー固定が解除されるウィンドウ幅
+		// var hFixSize = window.matchMedia('(max-width: 768px)');
+		// // 固定ヘッダーの高さ
+		// if(!hFixSize.matches) {
+		// 	// 固定ヘッダー（ #header_wrap の箇所は固定ヘッダーのid名に合わせてください ）
+		// 	hHeight = $('#header_wrap').outerHeight() + 20;
+		// }
+		/* △ 固定ヘッダーありの場合の処理 ▽ */
+
+		var position = target.offset().top - hHeight;
 		$("html, body").animate({scrollTop:position}, speed, "swing");
 		return false;
 	});
-
-	/* スムーススクロール / 同一ページ内リンクでナビの高さ分だけずらす
-			※上記通常verと併用すると挙動がおかしくなるので、
-			　使用する場合はどちらか一方だけにしてください。
-	-------------------------------------------------------- */
-	// $('a[href^="#"]:not(.nosmooth)').click(function() {
-	// 	var speed = 500;
-	// 	var href= $(this).attr("href");
-	// 	var target = $(href == "#" || href == "" ? 'html' : href);
-	// 	var hHeight = $('#header_wrap').height(); //固定ヘッダーの高さ（ #header_wrap の箇所は固定ヘッダーのid名に合わせてください ）
-	// 	var position = target.offset().top - hHeight; //ターゲットの座標からヘッダの高さ分引く
-	// 	$('body,html').animate({scrollTop:position}, speed, 'swing');
-	// 	return false;
-	// });
 
 /* ----- Setting End ----------------------------------- */
 });
@@ -74,61 +73,78 @@ $(window).on('load',function(){
 	-------------------------------------------------------- */
 	$(".item").matchHeight();
 
+
 	/* グローバルナビ途中から上部固定にする
 		※最初から一番上にくっついてる場合はこのjsいらないので消してください。
 	-------------------------------------------------------- */
-	var nav = $('#gnav');      // 固定するナビ領域の名前
-	var con = $('#contents_wrap'); // コンテンツ領域の名前
-	var navTop = nav.offset().top; // 固定するナビまでの高さを算出
+	var nav = $('#gnav');						// 固定するナビ領域
+	var con = $('#contents_wrap');	// ナビ領域の次の要素（ナビがfixedになった時に位置がずれないように上にpaddingを確保する要素）
+	var navTop = nav.offset().top;	// 固定するナビまでの高さを算出
 	var navHeight = $("#gnav").height(); // nav_wrap の高さを取得
-	var storeNav = 768; //gnavが格納される幅
-	if( $(this).scrollTop() >= navTop && $(window).width() >= storeNav) {
-		nav.addClass('fixed');
-		con.css('padding-top', navHeight+'px');
-	}
-	//リサイズしたらナビの位置を再取得
-	$(window).on('resize', function() {
-		navTop = nav.offset().top;
-	});
-	//スクロール時の処理
-	$(window).scroll(function () {
-		var winTop = $(this).scrollTop();
-		if (winTop >= navTop && $(window).width() >= storeNav ) {
-			nav.addClass('fixed').css('top','0');
-			con.css( 'padding-top', navHeight+'px');
-			//PC用は下記1行を追記してください
-			//nav.css("left", -$(window).scrollLeft());
-		} else if (winTop < navTop) {
+	var storeNav = 768;							// ナビ固定を解除するウィンドウ幅
+	function navFix() {
+		if($(this).scrollTop() >= navTop && $(window).width() >= storeNav) {
+			if(!nav.hasClass('fixed')) {
+				nav.addClass('fixed');	// fixed クラスを追加
+				con.css('padding-top', parseInt(con.css('padding-top'))+parseInt(navHeight)+'px');	// コンテンツ領域上部にgnav分の余白を確保
+			}
+		} else if(nav.hasClass('fixed')) {
 			nav.removeClass('fixed').css('top','');
 			con.css('padding-top','');
 		}
+	}
+	navFix();
+
+	//リサイズ時の処理
+	$(window).on('resize', function() {
+		if(nav.hasClass('fixed')) {
+			if(navTop != con.offset().top) {
+				navTop = con.offset().top;
+			}
+		} else if(navTop != nav.offset().top) {
+			navTop = nav.offset().top;
+		}
+		navFix();
 	});
+
+	//スクロール時の処理
+	$(window).scroll(function () {
+		var winTop = $(this).scrollTop();
+		navFix();
+		if(nav.hasClass('fixed')){
+			//fixedの際に横スクロールする処理
+			nav.css("left", -$(window).scrollLeft());
+		}
+	});
+
 
 	/* ページトップへ戻るをフェードインで表示
 	-------------------------------------------------------- */
-	// var fade_pos = 700; //ページトップボタンを表示させたい位置（上からのpx）
-
-	/* トップページのみ表示位置を変えたい場合はここの数字を変更 */
-	// if($('#home').length){
-	// 	fade_pos = 1000;
+	// var fade_pos = 200; // このpx分スクロールしたらpagetopを表示させる
+	//
+	// // bodyのid名でfadeInするタイミングを変更することができます
+	// if($('body').attr('id') == 'home') {
+	// 	// bodyのid名がhomeだったら500pxスクロールでpagetop表示
+	// 	fade_pos = 500;
 	// }
-	// if ($(this).scrollTop()+$(window).height() <= fade_pos) {
-	// 	$("#page_top").css({"display":"none"});
+	//
+	// if ($(this).scrollTop() <= fade_pos) {
+	// 	$("#pagetop").css({"display":"none"});
 	// }
 	// $(window).on('scroll',function() {
-	// 	if ($(this).scrollTop()+$(window).height() > fade_pos) {
-	// 		$('#page_top').fadeIn(500);
+	// 	if ($(this).scrollTop() > fade_pos) {
+	// 		$('#pagetop').fadeIn(500);
 	// 	} else {
-	// 		$('#page_top').fadeOut(500);
+	// 		$('#pagetop').fadeOut(500);
 	// 	}
 	// });
+
 
 	/* アコーディオンメニュー
 	-------------------------------------------------------- */
 	var accTrigger = $('.acc_tit'),
 			accSpSize = window.matchMedia('(max-width: 600px)'),
 			accTabSize = window.matchMedia('(max-width: 768px)');
-
 	const accChange = function() {
 		accTrigger.each(function() {
 			if($(this).attr('data-size')){
@@ -148,11 +164,9 @@ $(window).on('load',function(){
 			}
 		});
 	}
-
 	accSpSize.addListener(accChange);
 	accTabSize.addListener(accChange);
 	accChange();
-
 	$('.acc_contents').hide();
 	$('.acc_tit').on("click",function(){
 		var acc = $(this);
@@ -160,57 +174,75 @@ $(window).on('load',function(){
 	});
 
 
-	/* windowリサイズ時の遅延処理 + facebookのリサイズ処理
+	/* facebook / page plugin のリサイズ処理
 	-------------------------------------------------------- */
-	// var timer = false;
-	// var winWidth = $(window).width();
-	// var winWidth_resized;
+	// var fbTimer = false;	// タイマー準備
+	// var fbWrap = $('#fb_col');	// page pluginの親要素（ここの幅に合わせてpage pluginをリサイズします）
+	// var fbSize = fbWrap.width(); // 親要素の横幅初期幅
+	// var fbSize_re;
 	//
 	// $(window).on("orientationchange resize",function() {
 	// 	// リサイズ後の放置時間が指定ミリ秒以下なら何もしない(リサイズ中に何度も処理が行われるのを防ぐ)
-	// 	if (timer !== false) {
-	// 		clearTimeout(timer);
+	// 	if (fbTimer !== false) {
+	// 		clearTimeout(fbTimer);
 	// 	}
-	// 	// 放置時間が指定ミリ秒以上なので処理を実行
-	// 	timer = setTimeout(function() {
-	// 		// リサイズ後のウインドウの横幅を取得
-	// 		winWidth_resized = $(window).width();
 	//
-	// 		// リサイズ前のウインドウ幅とリサイズ後のウインドウ幅が異なる場合
-	// 		if ( winWidth !== winWidth_resized ) {
-	// 			//facebook用の処理
-	// 			boxWidth=$('#fb_col').width();
-	// 			currentWidth=$('#fb_col .fb-page').attr('data-width');
+	// 	// 放置時間が指定ミリ秒以上なので処理を実行
+	// 	fbTimer = setTimeout(function() {
+	// 		// リサイズ後の親要素の横幅を取得
+	// 		fbSize_re = fbWrap.width();
+	//
+	// 		// リサイズ前の親要素の横幅とリサイズ後の親要素の横幅が異なる場合
+	// 		if ( fbSize !== fbSize_re ) {
+	// 			//facebookのリサイズ処理
+	// 			boxWidth=Math.floor(fbSize_re); // 親要素の横幅から小数点を切り捨て
+	// 			currentWidth=fbWrap.find('.fb-page').attr('data-width');
 	// 			if(boxWidth != currentWidth){
-	// 				$('#fb_col .fb-page').attr('data-width', boxWidth);
-	// 				FB.XFBML.parse(document.getElementById('fb_col'));
+	// 				fbWrap.find('.fb-page').attr('data-width', boxWidth);
+	// 				FB.XFBML.parse();
 	// 			}
 	//
-	// 			// 次回以降使えるようにリサイズ後の幅をウインドウ幅に設定する
-	// 			winWidth = $(window).width();
+	// 			// 次回以降使えるようにリサイズ後の幅を保存
+	// 			fbSize = $(window).width();
 	// 		}
 	// 	}, 200);
 	// });
 
-//	/* 別ページから特定ID箇所へ移動するときに固定ヘッダー分位置をずらす
-//	 * aタグのリンクを下記のように修正してください。
-//	 * <a href="hoge/?id=id名">hogehoge</a>
-//	-------------------------------------------------------- */
-//	var speed = 500;
-//	var id = location.href.indexOf("?id=");
-//	if( id !== -1 ) {
-//		var target = $('#' + location.href.slice(id+4));
-//		//固定ヘッダーの高さ分をマイナス（ #header_wrap の箇所は固定ヘッダーのid名に合わせてください）
-//		var position = target.offset().top - $('#header_wrap').height();
-//
-//		//以下はレスポンシブ時固定ヘッダーが無くなる時の処理です　必要ない場合は削除
-//		if ( winWidth <= 1100 ) { //1100 の箇所は固定ヘッダーが無くなるウィンドウサイズを入れてください
-//			position = target.offset().top; //固定ヘッダーの高さ分マイナスしたのを元に戻す
-//		}
-//
-//		$("html, body").animate({scrollTop:position}, speed, "swing");
-//	}
 
+	/* 別ページから特定ID箇所へ移動するときに固定ヘッダー分位置をずらす
+	 * aタグのリンクを下記のように設定してください。
+	 * <a href="hoge/?id=id名">hogehoge</a>
+	-------------------------------------------------------- */
+	// // urlパラメータの取得
+	// var moveArg = new Object;
+	// var movePrm = location.search.substring(1).split('&');
+	// var moveFlg = false;
+	// for(var i=0 ; movePrm[i] ; i++) {
+	// 	var kv = movePrm[i].split('=');
+	// 	moveArg[kv[0]]=kv[1];
+	//
+	// 	if(kv[0] == 'id') {
+	// 		moveFlg = true;
+	// 	}
+	// }
+	//
+	// if( moveFlg ) {
+	// 	var target = $('#' + moveArg['id']);
+	// 	var hHeight = '';
+	//
+	// 	/* ▽ 固定ヘッダー有りの場合の処理 ▽ */
+	// 	// // ヘッダー固定が解除されるウィンドウ幅
+	// 	// var hFixSize = window.matchMedia('(max-width: 768px)');
+	// 	// // 固定ヘッダーの高さ
+	// 	// if(!hFixSize.matches) {
+	// 	// 	// 固定ヘッダー（ #header_wrap の箇所は固定ヘッダーのid名に合わせてください ）
+	// 	// 	hHeight = $('#header_wrap').outerHeight() + 20;
+	// 	// }
+	// 	/* △ 固定ヘッダー有りの場合の処理 △ */
+	//
+	// 	var position = target.offset().top - hHeight;
+	// 	$("html, body").animate({scrollTop:position}, 500, "swing");
+	// }
 
 
 /* ----- Setting End ----------------------------------- */
