@@ -246,8 +246,8 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 /* ---------------------------------------------------
 	Footer
 ------------------------------------------------------ */
-#page_top { display:block; position: fixed; bottom: 10px; right: 10px; z-index: 9999;}
-#page_top a { display: block; width: 48px; height: 48px;}
+#pagetop { display:block; position: fixed; bottom: 10px; right: 10px; z-index: 9999;}
+#pagetop a { display: block; width: 48px; height: 48px;}
 
 #footer_wrap { background: #000;}
 #footer { padding: 25px 0; color: #f3f3f3; line-height: 1.6;}
@@ -282,7 +282,7 @@ iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 	#f_nav ul { text-align: left;}
 }
 @media screen and (max-width: 768px) {
-	#page_top { bottom: 80px;}
+	#pagetop { bottom: 80px;}
 	#footer { padding-bottom: 80px;}
 }
 @media screen and (max-width: 600px) {
