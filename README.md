@@ -15,6 +15,10 @@
 
 ## ChangeLog
 
+### 2018-08-10
+- jquery-dropdown.js PCサイズ時にナビの親要素が消えてしまう不具合があったため修正
+
+
 ### 2018-08-09
 - js_sample/jquery.smoothscroll 固定ヘッダーがある場合の処理を微調整
 - js_sample/jquery.loadmove サンプルを追加

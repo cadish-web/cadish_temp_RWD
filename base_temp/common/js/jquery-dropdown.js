@@ -16,8 +16,10 @@ $(function($){
 			}
 		} else {
 			$('#menuInner').remove();
-			menuObj.unwrap();
-			menuObj.css("position","");
+			if($('#menuOuter').length){
+				menuObj.unwrap();
+				menuObj.css("position","");
+			}
 			$("html,body").removeClass('pos_fix');
 		}
 	}
