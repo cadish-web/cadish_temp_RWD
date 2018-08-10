@@ -16,6 +16,7 @@
 ## ChangeLog
 
 ### 2018-08-10
+- base_temp, base_temp_new 各htmlページトップボタンのidを修正
 - jquery-dropdown.js PCサイズ時にナビの親要素が消えてしまう不具合があったため修正
 
 
