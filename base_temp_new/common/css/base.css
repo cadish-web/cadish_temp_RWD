@@ -308,7 +308,7 @@ iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;
 #sp_nav { display: none;}
 
 @media screen and (max-width: 600px) {
-	#sp_nav { display: block; position: fixed; z-index: 10001; bottom: 0; left: 0; background: #000; border-top: 3px solid #555;}
+	#sp_nav { display: block; position: fixed; bottom: 0; left: 0; background: #000; border-top: 3px solid #555;}
 	#sp_nav ul { display: table; width: 100%; table-layout: fixed;}
 	#sp_nav li { display: table-cell; -webkit-box-sizing: border-box; box-sizing: border-box;}
 	#sp_nav li + li { border-left: 1px solid #555;}

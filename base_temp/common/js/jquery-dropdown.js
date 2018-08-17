@@ -24,12 +24,20 @@ $(function($){
 		}
 	}
 
-	$(document).on("click", "#open_menu, .close_menu, #menuInner," + menuTrigger, function(e){
+	const wrapToggle = function(e) {
 		if(menuSize.matches) {
 			$("html,body").toggleClass('pos_fix');
 			menuWrap.toggleClass('active');
 			e.stopPropagation();
 		}
+	}
+
+	$(document).on("click", "#open_menu, .close_menu, #menuInner", function(e){
+		wrapToggle(e);
+	});
+
+	$(menuTrigger).on("click", function(e){
+		wrapToggle(e);
 	});
 
 	menuSize.addListener(wrapChange);

@@ -24,12 +24,21 @@ $(function($){
 		}
 	}
 
-	$(document).on("click", '#open_menu, .close_menu, #menuInner,' + menuTrigger, function(e){
+	const wrapToggle = function(e) {
 		if(menuSize.matches) {
 			$("html,body").toggleClass('pos_fix');
 			menuWrap.toggleClass('active');
 			e.stopPropagation();
 		}
+	}
+
+	$(document).on("click", "#open_menu, .close_menu, #menuInner", function(e){
+		wrapToggle(e);
+	});
+
+	// スムーススクロールと併用した場合 document へのバブリングが効かないため、aタグに直接クリックイベントを設定する必要がある。
+	$(menuTrigger).on("click", function(e){
+		wrapToggle(e);
 	});
 
 	menuSize.addListener(wrapChange);
