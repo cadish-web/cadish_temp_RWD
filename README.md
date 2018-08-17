@@ -15,6 +15,10 @@
 
 ## ChangeLog
 
+### 2018-08-17
+- jquery-dropdown スムーススクロールを併用した時にページ内リンクで閉じる処理が効かなくなるバグを修正
+- js_sample サンプルスタイルを微修正
+
 ### 2018-08-10
 - base_temp, base_temp_new 各htmlページトップボタンのidを修正
 - jquery-dropdown.js PCサイズ時にナビの親要素が消えてしまう不具合があったため修正
