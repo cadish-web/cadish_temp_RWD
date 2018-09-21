@@ -15,12 +15,18 @@
 
 ## ChangeLog
 
+### 2018-09-21
+- js_sample/jquery.slick/index.html 参考サイトを一件追加
+
+
 ### 2018-09-11
 - base_temp_newにreadme.md追加
+
 
 ### 2018-08-17
 - jquery-dropdown スムーススクロールを併用した時にページ内リンクで閉じる処理が効かなくなるバグを修正
 - js_sample サンプルスタイルを微修正
+
 
 ### 2018-08-10
 - base_temp, base_temp_new 各htmlページトップボタンのidを修正
@@ -33,14 +39,12 @@
 
 
 ### 2018-08-08
-
 - js_sample/jquery.navFix サンプルを追加
 - js_sample/jquery.pagetopFade サンプルを追加
 - js_sample/jquery.fbResize サンプルを追加
 
 
 ### 2018-08-07
-
 - js_sample/jquery.slick 左右矢印付きカルーセルのサンプルを追加
 - js_sample/scrollAnimation サンプルCSSを微修正
 - js_sample/jquery.tab 上下連動するタブのサンプルを追加・jsを改修
@@ -52,7 +56,6 @@
 
 
 ### 2018-08-06
-
 - jquery.tabを改修
   - 同一ページ内でパネルを開いて移動させる処理を追加<br>
   （サンプル：js_sample/jquery.tab/index.html）
@@ -64,7 +67,6 @@
 
 
 ### 2018-08-03
-
 - 全html内jsを`</body>`直前で読み込むように修正（セットで使用するcssはそのままhead内にあります）
 - base_temp_new/, js_sample/ 各html meta viewport から initial-scale=1.0 を削除
 - base_temp_new/ breakpointを600pxからに変更
