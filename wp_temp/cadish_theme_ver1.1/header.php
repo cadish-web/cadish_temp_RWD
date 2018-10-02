@@ -14,9 +14,9 @@ global $page,$paged,$canonical_url;
 if (is_home()) {
 	$canonical_url  = get_bloginfo('url')."/";
 } elseif (is_category()) {
-	$canonical_url=get_category_link(get_query_var('cat'));
+	$canonical_url=get_category_link(get_query_var('cat'))."/";
 } elseif (is_page() || is_single()) {
-	$canonical_url = get_permalink();
+	$canonical_url = get_permalink()."/";
 } elseif (is_date()) {
 	$canonical_url=get_bloginfo('url')."/".get_query_var('year')."/";
 	if( !is_year() ){
