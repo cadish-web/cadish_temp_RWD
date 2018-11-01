@@ -3,7 +3,7 @@
 <div id="footer_wrap">
 <div id="backtop"><a href="#header_wrap" title="ページのトップへ戻る">↑ページのトップへ戻る</a></div>
 
-	<footer id="footer">
+	<footer id="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
 	<address>
 	<img src="<?php echo get_template_directory_uri(); ?>/img/ft_logo.png" alt="施設名が入ります">
 	<span>〒000‐000</span><span>岐阜県高山市赤保木町1169-7</span><a class="tel-link" href="tel:0000000000">TEL.000-000-0000</a>
@@ -27,6 +27,11 @@
 
 </div>
 <!-- ============ footer_wrap END ============ -->
+<?php /* jsの読み込み 公式サイトで読み込んでいるjsを使う場合は絶対パスで読み込む */ ?>
+<script src="http://www.example.com/common/js/jquery.min.js"></script>
+<script src="http://www.example.com/common/js/jquery-dropdown.js"></script>
+<script src="http://www.example.com/common/js/lineup.js"></script>
+<script src="http://www.example.com/common/js/setting_option.js"></script>
 <?php wp_footer(); ?>
 </body>
 </html>

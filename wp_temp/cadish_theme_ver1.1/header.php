@@ -6,7 +6,7 @@
 <meta name="author" content="<?php bloginfo('name'); ?>" />
 <meta name="Description" content="<?php bloginfo('description'); ?>" />
 <meta name="Keywords" content="<?php wp_title('', true, 'right'); ?>,<?php bloginfo('name'); ?>" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="viewport" content="width=device-width" />
 <meta name="format-detection" content="telephone=no" />
 
 <?php
@@ -74,13 +74,8 @@ if (is_single()){
 <link rel="stylesheet" href="http://www.example.com/common/css/import.css" media="all" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css" media="all" />
 
-<?php /* jsの読み込み 公式サイトで読み込んでいるjsを使う場合は絶対パスで読み込む */ ?>
 <?php wp_deregister_script('jquery'); /* WordPressのjQueryを使わない */ ?>
-<script src="http://www.example.com/common/js/jquery.min.js"></script>
-<script src="http://www.example.com/common/js/jquery-dropdown.js"></script>
-<script src="http://www.example.com/common/js/lineup.js"></script>
-<script src="http://www.example.com/common/js/setting_option.js"></script>
-<?php /* テーマ内で読み込む場合や、WordPressのjQueryを使う場合はこっち↓ */ ?>
+<?php /* jsは基本的にfooter.phpに記述、テーマ内で読み込む場合や、WordPressのjQueryを使う場合はこっち↓ */ ?>
 <?php /* wp_enqueue_script('js_name', get_bloginfo('template_directory').'/js/js_name.js', array('jquery')); */ ?>
 
 <!-- ▽ Googleアナリティクスタグ ▽ -->
@@ -90,7 +85,7 @@ if (is_single()){
 <body>
 <!-- ============ header_wrap GO ============ -->
 <div id="header_wrap">
-<header id="header">
+<header id="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 	<h1><?php bloginfo('description'); ?>│<?php bloginfo('name'); ?></h1>
 	<div id="head_logo"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/h_logo.png" alt="施設名が入ります"/></a></div>
 	<ul id="head_nav">
@@ -103,14 +98,14 @@ if (is_single()){
 
 <!-- ============ nav_wrap GO ============ -->
 <div id="nav_wrap">
-<nav id="gnav">
+<nav id="gnav" role="navigation" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
 <ul>
 	<li id="gn_home"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/gn_01_off.png" alt="トップページ"></a></li>
-	<li id="gn_01"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/gn_02_off.png" alt="温泉"></a></li>
-	<li id="gn_02"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/gn_03_off.png" alt="お料理"></a></li>
-	<li id="gn_03"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/gn_04_off.png" alt="お部屋"></a></li>
-	<li id="gn_04"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/gn_05_off.png" alt="周辺観光"></a></li>
-	<li id="gn_05"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/gn_06_off.png" alt="交通アクセス"></a></li>
+	<li itemprop="name" id="gn_01"><a href="#" itemprop="URL"><img src="<?php echo get_template_directory_uri(); ?>/img/gn_02_off.png" alt="温泉"></a></li>
+	<li itemprop="name" id="gn_02"><a href="#" itemprop="URL"><img src="<?php echo get_template_directory_uri(); ?>/img/gn_03_off.png" alt="お料理"></a></li>
+	<li itemprop="name" id="gn_03"><a href="#" itemprop="URL"><img src="<?php echo get_template_directory_uri(); ?>/img/gn_04_off.png" alt="お部屋"></a></li>
+	<li itemprop="name" id="gn_04"><a href="#" itemprop="URL"><img src="<?php echo get_template_directory_uri(); ?>/img/gn_05_off.png" alt="周辺観光"></a></li>
+	<li itemprop="name" id="gn_05"><a href="#" itemprop="URL"><img src="<?php echo get_template_directory_uri(); ?>/img/gn_06_off.png" alt="交通アクセス"></a></li>
 </ul>
 </nav>
 </div>

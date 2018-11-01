@@ -6,7 +6,7 @@
 
 <!-- ============ main_area GO ============= -->
 <div id="main_area">
-<article>
+<main role="main">
 
 <?php if (is_search()) { /* 検索結果 */ ?>
 
@@ -88,13 +88,15 @@
 <?php } ?>
 
 <?php } ?>
-</article>
+</main>
 </div>
 <!-- ============ main_area END ============ -->
 
 <!-- ============ side_area GO ================= -->
 <div id="side_area">
+<aside>
 <?php get_template_part('sidebar'); ?>
+</aside>
 </div>
 <!-- ============ side_area END ================ -->
 
