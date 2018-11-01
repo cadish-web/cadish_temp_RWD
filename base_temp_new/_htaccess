@@ -23,4 +23,3 @@ RewriteBase /
 RewriteRule ^example/ sample/ [R=301,L]
 
 ErrorDocument 404 /404/
-
