@@ -18,6 +18,7 @@
 ### 2018-11-01
 - base_temp内html header箇所に構造化マークアップ用のrole等を追加
 - wp_temp/cadish_theme_ver1.1 タグ構造をbase_temp_newに合わせて変更
+- base_temp/_htaccess, base_temp_new/_htaccess 内のバックスペースを削除
 
 ### 2018-09-21
 - js_sample/jquery.slick/index.html 参考サイトを一件追加
