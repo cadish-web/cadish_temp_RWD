@@ -1,6 +1,7 @@
-$config{'about'} = 'Mailform Pro 4.2.3';
+$config{'about'} = 'Mailform Pro 4.2.4';
 ## コメントの先頭に!の付いている箇所を編集してください。
 ## メールアドレス認証機能を使用する場合は configs/mailauth.cgi も合わせて修正してください。（デフォルトでは機能を使用する状態になっています。）
+## 連続送信防止機能を利用する場合は configs/ipblock.cgi も合わせて修正してください。（デフォルトでは機能を使用する状態になっています。）
 
 ## 確認画面のタイプ
 ## 0: オーバーレイ / 1:フラット / 2: システムダイアログ / 3:確認なし
@@ -11,13 +12,16 @@ $config{'ConfirmationMode'} = 0;
 $config{'sendmail'} = '/usr/sbin/sendmail';
 
 ## !フォームの送信先
-#push @mailto,'web_ml@cadish.co.jp';
+push @mailto,'web_ml@cadish.co.jp';
 
 ## !自動返信メールの差出人名
 $config{'fromname'} = '株式会社キャディッシュ';
 
 ## 自動返信メールの差出人メールアドレス
 $config{'mailfrom'} = $mailto[0];
+
+## 自動返信メールのreply-to
+#$config{'replyto'} = '';
 
 ## 念のためBCC送信宛先 (解除する場合は下記1行をコメントアウト)
 ## 以下をコメントアウトしていない場合は自動返信メールの控えが届きます。
@@ -37,7 +41,7 @@ $config{'SerialBoost'} = 0;
 $config{'ThanksPage'} = '../thanks.html?no=%s';
 
 ## !設置者に届くメールの件名
-$config{'subject'} = '[ %s ] お問い合せフォームから';
+$config{'subject'} = '【施設名】お問い合せフォームからメールを受け付けました';
 
 ## !設置者に届くメールの本文整形
 $_TEXT{'posted'} = <<'__posted_body__';
@@ -46,12 +50,9 @@ $_TEXT{'posted'} = <<'__posted_body__';
 お問い合せフォームより以下のメールを受付ました。
 ──────────────────────────
 受付番号：<_mfp_serial_>
-入力時間：<_mfp_input_time_>
-確認時間：<_mfp_confirm_time_>
 　送信元：<_mfp_referrer_>
 
 <_resbody_>
-
 ──────────────────────────
 
 <_mfp_env_>
@@ -116,7 +117,7 @@ $config{'mfp_separator_2'} = "\n【お問い合わせ内容】\n";
 ####################################################
 
 ## Javascriptが無効の場合は送信を許可しない(1:許可しない / 0:許可する)
-$config{'DisabledJs'} = 0;
+$config{'DisabledJs'} = 1;
 
 ## リファラードメインチェック / 有効にする場合は行頭の#を削除
 $config{'PostDomain'} = $ENV{'HTTP_HOST'};
@@ -160,7 +161,8 @@ push @AddOns,'prefcode/prefcode.js';	## 郵便番号からの住所入力
 #push @AddOns,'prefcodeadv/prefcode.js';## 郵便番号からの住所入力(高機能・高負荷)
 push @AddOns,'furigana.js';				## フリガナ(Firefox非対応)
 #push @AddOns,'datelist.js';				## 日付リストの生成機能 [Update]
-push @AddOns,'ok.js';					## OKアドオン [New]
+#push @AddOns,'ok.js';					## OKアドオン [New]
+push @AddOns,'okng.js';					## OKアドオン [New]
 push @AddOns,'nospace.js';				## スペースのみの入力を無効
 #push @AddOns,'toggle.js';				## 入力欄の可変
 #push @AddOns,'cart/cart.js';			## ショッピングカート機能
@@ -176,8 +178,8 @@ push @AddOns,'nospace.js';				## スペースのみの入力を無効
 #push @AddOns,'WadaVoiceDemo.js';		## (技術デモ)音声ガイダンス
 #push @AddOns,'progress.js';			## プログレスバー表示
 #push @AddOns,'WTKConnect.js';			## WebsiteToolKit.jsとの連動
-#push @AddOns,'submitdisabled.js';		## エラー時に送信ボタンを無効化
-#push @AddOns,'sizeajustdisabled.js';	## 入力欄の自動調整機能を無効化
+push @AddOns,'submitdisabled.js';		## エラー時に送信ボタンを無効化
+push @AddOns,'sizeajustdisabled.js';	## 入力欄の自動調整機能を無効化
 #push @AddOns,'defaultValue.js';		## 初期値を無効
 #push @AddOns,'estimate.js';			## 見積計算(ベータ版)
 #push @AddOns,'beforeunload.js';		## ページを離脱する際のアラート(ベータ版)
@@ -192,10 +194,16 @@ push @AddOns,'nospace.js';				## スペースのみの入力を無効
 #push @AddOns,'record.js';				## [New] 記録用
 #push @AddOns,'birthday.js';			## [New] 生年月日選択補助
 #push @AddOns,'unchecked.js';			## [New] radioのチェック解除
-push @AddOns,'mobileScrollFix.js';		## [New] モバイル端末エラー時のスクロール調整
+#push @AddOns,'mobileScrollFix.js';		## [New] モバイル端末エラー時のスクロール調整
+push @AddOns,'smoothScroll.js';		## [New] モバイル端末エラー時のスクロール調整
 #push @AddOns,'bpm.js';		## [New] BPMクレジット決済
-#push @AddOns,'attachedfiles.js';		## 添付ファイル機能(有償)
 #push @AddOns,'coupon/coupon.js';
+#push @AddOns,'attachedfiles.js';		## 添付ファイル機能[有償]
+
+#push @AddOns,'guide.js';			## [New] エレメントフォーカス時にガイドを表示
+#push @AddOns,'firstfocus.js';		## [New] ページ読み込み時に最初のエレメントにフォーカス
+#push @AddOns,'submitblock.js';		## [New] 未入力項目があるとき送信ブロック
+
 
 ####################################################
 ## モジュール(CGIの追加機能)
@@ -212,12 +220,13 @@ push @Modules,'logger';			## アクセス解析ログモジュール
 #push @Modules,'ISO-2022-JP';	## メールをJISで送信
 #push @Modules,'HTMLMail';		## 自動返信メールにHTMLメールを追加
 #push @Modules,'HTMLMailAdmin';	## 管理者宛メールにHTMLメールを追加
-push @Modules,'CSVExport';		## CSV保存機能
+#push @Modules,'CSVExport';		## CSV保存機能
 #push @Modules,'SQLExport';		## SQL発行機能
 #push @Modules,'vCard';			## vCard機能
 #push @Modules,'iCal';			## iCal連携機能
 #push @Modules,'IPLogs';		## IPログトラッキング機能
 #push @Modules,'PayPal';		## PayPal決済
+#push @Modules,'PayPal2';		## PayPal決済
 #push @Modules,'SMTP';			## SMTP送信
 #push @Modules,'SMTPS';			## [New] SMTPS送信
 #push @Modules,'SimpleMailHead';## [New] シンプルメールヘッダ
@@ -233,8 +242,14 @@ push @Modules,'mailauth';		## メールアドレス認証
 #push @Modules,'taboowords';	## 禁止ワードの指定 [New]
 #push @Modules,'stress';		## ストレスチェック判定モジュール
 #push @Modules,'csvatt';		## CSV添付機能
-#push @Modules,'bpm';		## [New] BPMクレジット決済
+#push @Modules,'bpm';			## BPMクレジット決済
+push @Modules,'ipblock';		## [New] 連続送信ブロック機能
+#push @Modules,'response';		## [New] 応答文章分岐
+#push @Modules,'referercheck';	## [New] 厳密なリファラチェック
+#push @Modules,'blacklist';		## [New] ブラックリスト
 
+#push @Modules,'attachedfiles'; ## 添付ファイル [有償]
+#push @Modules,'UnlistedBBS'; ## 限定公開掲示板接続 [有償]
 #push @Modules,'MFPOrderConnect'; ## MFP Order Connect API
 #push @Modules,'MFPAddressConnect'; ## MFP Address Connect API
 #push @Modules,'demo';			## デモ
@@ -292,4 +307,3 @@ $config{'uri'} = 'http://' . $ENV{'SERVER_NAME'} . $ENV{'SCRIPT_NAME'};
 $config{'prefix'} = '_MFP';
 
 1;
-
