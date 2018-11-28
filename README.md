@@ -15,6 +15,9 @@
 
 ## ChangeLog
 
+### 2018-11-28
+- base_temp, base_temp_new のお問い合わせフォーム 設定ファイルのサンプルを更新_
+
 ### 2018-11-01
 - base_temp内html header箇所に構造化マークアップ用のrole等を追加
 - wp_temp/cadish_theme_ver1.1 タグ構造をbase_temp_newに合わせて変更
