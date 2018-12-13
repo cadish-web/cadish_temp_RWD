@@ -15,8 +15,12 @@
 
 ## ChangeLog
 
+### 2018-12-13
+- base_temp, base_temp_new のお問い合わせフォーム
+　連続送信防止機能の設定サンプルを更新・追加
+
 ### 2018-11-28
-- base_temp, base_temp_new のお問い合わせフォーム 設定ファイルのサンプルを更新_
+- base_temp, base_temp_new のお問い合わせフォーム 設定ファイルのサンプルを更新
 
 ### 2018-11-01
 - base_temp内html header箇所に構造化マークアップ用のrole等を追加
