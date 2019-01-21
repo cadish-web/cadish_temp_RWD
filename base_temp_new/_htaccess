@@ -1,10 +1,8 @@
 RewriteEngine on
 
 #wwwありに統一
-#GMOサーバ ワンクリックSSLを利用する場合は下記一行のコメントを外す
-#RewriteCond %{REQUEST_URI} !^/.well-known/pki-validation/gsdv.txt$
-#さくらサーバ クイックSSLを利用する場合は下記一行のコメントを外す
-#RewriteCond %{REQUEST_URI} !^/.well-known/pki-validation/fileauth.txt$
+#クイックSSL認証を利用する場合は下記一行のコメントを外す
+#RewriteCond %{REQUEST_URI} !^/.well-known/pki-validation/
 RewriteCond %{HTTP_HOST} ^example.com
 RewriteRule (.*) http://www.example.com/$1 [R=301,L]
 
@@ -16,6 +14,7 @@ RewriteRule ^(.*)index.html$ http://www.example.com/$1 [R=301,L]
 #サーバ毎のリダイレクト設定は https://cadish.backlog.jp/wiki/OFC_01/SSL化後のリダイレクト設定について を参照
 RewriteCond %{HTTP_USER_AGENT} !(Facebot|facebookexternalhit/1.1) [NC]
 RewriteCond %{HTTPS} off
+RewriteCond %{REQUEST_URI} !^/.well-known/pki-validation/
 RewriteRule ^(.*)$ https://www.example.com/$1 [R=301,L]
 
 #通常のリダイレクト
