@@ -15,6 +15,10 @@
 
 ## ChangeLog
 
+### 2019-01-21
+- base_temp, base_temp_new の_htaccess
+　SSL認証用ファイルの除外設定をディレクトリまでに変更
+
 ### 2018-12-13
 - base_temp, base_temp_new のお問い合わせフォーム
 　連続送信防止機能の設定サンプルを更新・追加
