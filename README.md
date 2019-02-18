@@ -15,6 +15,11 @@
 
 ## ChangeLog
 
+### 2019-02-18
+- base_temp, base_temp_new
+　inquiry/config_sample/ipblock/check_sample.cgi
+　コメントがjs用になっていたので修正
+
 ### 2019-01-21
 - base_temp, base_temp_new の_htaccess
 　SSL認証用ファイルの除外設定をディレクトリまでに変更
