@@ -28,3 +28,8 @@ canonicalタグで一部「/」が入らない時の修正を行いました
 　- article → main
 　- sidebar内にaside要素を追加
 ・js読み込みを footer.php に移動
+---------------------------------------------------------------
+▼更新日：190228
+・blog.css内38行目を以下のように変更
+　修正前：　#main_area article>p
+　修正後：　#main_area main>p

@@ -35,7 +35,7 @@ a:hover img{ opacity: 0.75; filter: alpha(opacity=75); -moz-opacity: 0.75;}
 #main_area{ width: 730px; float: left;}
 #side_area{ width: 230px; float: right;}
 
-#main_area article>p{ margin: 0 0 20px; font-size: 20px; font-weight: 400;}
+#main_area main>p{ margin: 0 0 20px; font-size: 20px; font-weight: 400;}
 
 
 @media screen and (max-width: 1100px) {
