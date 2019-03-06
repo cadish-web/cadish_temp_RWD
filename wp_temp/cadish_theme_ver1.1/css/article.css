@@ -7,6 +7,9 @@ Article CSS / 記事＆固定ページ用CSS
 ------------------------------------------------------ */
 #main_area section{ margin: 0 0 35px;}
 #main_area .post_body{ margin: 0 0 15px; line-height: 1.6;}
+#main_area .post_body div,
+#main_area .post_body p{ max-width: 100% !important;}
+
 #main_area .postmeta_txt{
 	margin: 0; padding: 5px 10px; font-size: 13px;
 	text-align: right; color: #787878;

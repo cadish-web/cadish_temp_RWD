@@ -23,6 +23,9 @@ Sidebar CSS / サイドバー（ウィジェット対応）
 	background: url(../img/icon_arrow_g.gif) no-repeat 0 12px; border-bottom: 1px dotted #aaa;
 }
 
+.side_block ul li ul,
+.widget_box ul li ul{ margin: 3px 0 10px -3px;}
+
 .side_block ul li ul li,
 .widget_box ul li ul li{ margin: 0; border: none;}
 
