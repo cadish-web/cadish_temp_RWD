@@ -6,28 +6,23 @@ Sidebar CSS / サイドバー（ウィジェット対応）
 	Side Block & Widget box
 ------------------------------------------------------ */
 .side_block,
-.widget_box  { margin: 0 0 25px; padding: 0; max-width: 100%;}
+.widget_box{ margin: 0 0 25px; padding: 0; max-width: 100%;}
 
-.side_block h3,
-.widget_box h3{
+.side_block h3{
 	clear: both; margin: 0 0 15px; padding: 3px 0 3px 10px;
 	border-left: 5px solid #787878; border-top: 0; border-bottom:0; background:none;
 }
 
-.side_block p, .widget_box p  { margin: 0 10px 10px; line-height: 1.6;}
-.side_block ul, .widget_box ul{ margin: 0 0 10px; padding: 0; color: #787878; font-size: 13px; line-height: 1.6;}
+.side_block div{ line-height: 1.2;}
+.side_block p  { margin: 0 10px 10px; line-height: 1.6;}
+.side_block ul { margin: 0 0 10px; padding: 0; color: #787878; font-size: 13px; line-height: 1.6;}
 
-.side_block ul li,
-.widget_box ul li{
+.side_block ul li{
 	margin: 0 0 3px; padding: 5px 5px 5px 15px;
 	background: url(../img/icon_arrow_g.gif) no-repeat 0 12px; border-bottom: 1px dotted #aaa;
 }
-
-.side_block ul li ul,
-.widget_box ul li ul{ margin: 3px 0 10px -3px;}
-
-.side_block ul li ul li,
-.widget_box ul li ul li{ margin: 0; border: none;}
+.side_block ul li ul{ margin: 3px 0 10px -3px;}
+.side_block ul li ul li{ margin: 0; border: none;}
 
 .side_block:after,
 .widget_box:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
@@ -41,8 +36,6 @@ Sidebar CSS / サイドバー（ウィジェット対応）
 
 
 @media screen and (max-width: 1100px) {
-}
-@media screen and (max-width: 900px) {
 }
 @media screen and (max-width: 768px) {
 }

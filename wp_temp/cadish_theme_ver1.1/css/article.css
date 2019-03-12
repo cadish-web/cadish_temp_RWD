@@ -39,39 +39,39 @@ Article CSS / 記事＆固定ページ用CSS
 /* ---------------------------------------------------
 	画像
 ------------------------------------------------------ */
-.post_body img{ margin: 0 0 10px; max-width: 100%;}
-.post_body img.alignnone  { display: block; margin: 0 0 10px;}
-.post_body img.aligncenter{ display: block; margin: 0 auto 10px; text-align: center;}
-.post_body img.alignleft  { display: block; margin: 0 10px 10px 0; float: left;}
-.post_body img.alignright { display: block; margin: 0 0 10px 10px; float: right;}
+.post_body .alignnone   { display: block; margin: 0 0 15px;}
+.post_body .aligncenter { display: block; margin: 0 auto 15px; text-align: center;}
+.post_body .alignleft   { display: block; margin: 0 15px 15px 0; float: left;}
+.post_body .alignright  { display: block; margin: 0 0 15px 15px; float: right;}
 
+.post_body img{ margin: 0 0 15px; max-width: 100%;}
 
 @media screen and (max-width: 768px) {
 	.post_body img,
-	.post_body img.aligennone,
-	.post_body img.aligncenter,
-	.post_body img.alignleft,
-	.post_body img.alignright { clear: both; float: none; margin: 0 auto 15px; max-width: 100%;}
+	.post_body .aligennone,
+	.post_body .aligncenter,
+	.post_body .alignleft,
+	.post_body .alignright { clear: both; float: none; margin: 0 auto 15px; max-width: 100%;}
 }
 @media screen and (max-width: 600px) {
 	.post_body img,
-	.post_body img.aligennone,
-	.post_body img.aligncenter,
-	.post_body img.alignleft,
-	.post_body img.alignright { width: 100%;}
+	.post_body .aligennone,
+	.post_body .aligncenter,
+	.post_body .alignleft,
+	.post_body .alignright { width: 100%;}
 }
 
 
 /* ---------------------------------------------------
 	段落・リスト・水平線
 ------------------------------------------------------ */
-.post_body p { clear:both; margin: 0 10px 15px;}
+.post_body p { margin: 0 10px 15px;}
 
-.post_body ul   { clear:both; margin: 15px 10px 25px;}
+.post_body ul   { clear:both; margin: 15px 10px 25px; padding: 0;}
 .post_body ul li{ margin: 0 ; padding: 0 0 0 15px; line-height: 1.6; background: url(../img/icon_arrow_g.gif) no-repeat 0 8px;}
 .post_body ul li ul{ margin: 0 0 15px;}
 
-.post_body ol   { clear:both; margin: 10px 10px 15px 30px; list-style: decimal;}
+.post_body ol   { clear:both; margin: 10px 10px 15px 30px; padding: 0; list-style: decimal;}
 .post_body ol li{ margin: 0 0 3px; padding: 0; line-height: 1.6; background: none;}
 
 .post_body hr {
@@ -155,7 +155,7 @@ Article CSS / 記事＆固定ページ用CSS
 /* ---------------------------------------------------
 	記事リスト
 ------------------------------------------------------ */
-.post_list{ margin: 15px 0 35px; width: 100%;}
+.post_list{ margin: 15px 0 35px; padding: 0;}
 .post_list li{
 	margin: 0 0 3px; padding: 5px 10px 5px 25px; color: #787878; line-height: 1.6;
 	background: url(../img/icon_arrow_g.gif) no-repeat 10px 12px; border-bottom: 1px dotted #aaa;

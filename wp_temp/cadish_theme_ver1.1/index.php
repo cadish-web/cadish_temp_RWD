@@ -24,7 +24,7 @@
 
 <ul class="post_list">
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-	<li><?php the_time('Y.m.d') ?> [ <?php the_category('. ',''); ?> ] <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></li>
+	<li><?php the_time('Y.m.d') ?> [ <?php if (the_category(', '))  the_category(); ?> ] <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></li>
 <?php endwhile; endif; ?>
 </ul>
 </section>
@@ -48,6 +48,8 @@
 
 <?php if (is_category()) { ?>
 <p>「<?php single_cat_title(); ?>」の記事一覧</p>
+<?php } elseif (is_tag()) { ?>
+<p>「<?php echo single_tag_title(); ?>」の記事一覧</p>
 <?php } elseif (is_archive()) { ?>
 <p>「<?php echo get_the_date('Y年m月'); ?>」の記事一覧</p>
 <?php } ?>
@@ -58,7 +60,7 @@
 <section>
 	<h2><?php the_title(); ?></h2>
 	<div class="post_body"><?php the_content('&raquo;&raquo;　続きを読む '); ?></div>
-	<div class="postmeta_txt"><?php the_time('Y.m.d') ?> | <?php the_category('. ',''); ?></div>
+	<div class="postmeta_txt"><?php the_time('Y.m.d') ?> | <?php if (the_category(', '))  the_category(); ?><?php if (get_the_tags()) the_tags(' | Tags: ', ', ', ''); ?></div>
 </section>
 
 <div class="article_nav">
@@ -77,7 +79,7 @@
 	<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
 	<div class="post_body"><?php the_content('&raquo;&raquo;　続きを読む '); ?></div>
 	<?php if ( !(is_page()) ) { ?>
-	<div class="postmeta_txt"><?php the_time('Y.m.d') ?> | <?php the_category('. ',''); ?></div>
+	<div class="postmeta_txt"><?php the_time('Y.m.d') ?> | <?php if (the_category(', '))  the_category(); ?><?php if (get_the_tags()) the_tags(' | Tags: ', ', ', ''); ?></div>
 	<?php } ?>
 </section>
 <?php endwhile; endif; ?>

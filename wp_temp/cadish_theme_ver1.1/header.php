@@ -82,7 +82,7 @@ if (is_single()){
 <!-- △ Googleアナリティクスタグ △ -->
 <?php wp_head(); ?>
 </head>
-<body>
+<body id="blog">
 <!-- ============ header_wrap GO ============ -->
 <div id="header_wrap">
 <header id="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
