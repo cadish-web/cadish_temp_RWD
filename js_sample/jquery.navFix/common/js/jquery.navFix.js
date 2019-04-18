@@ -6,7 +6,7 @@ $(window).on('load', function() {
 	var storeNav = 600;							// ナビ固定を解除するウィンドウ幅
 
 	function navFix() {
-		if($(this).scrollTop() >= navTop && $(window).width() >= storeNav) {
+		if($(this).scrollTop() >= navTop && $(window).width() > storeNav) {
 			if(!nav.hasClass('fixed')) {
 				nav.addClass('fixed');	// fixed クラスを追加
 				con.css('padding-top', parseInt(con.css('padding-top'))+parseInt(navHeight)+'px');	// コンテンツ領域上部にgnav分の余白を確保
