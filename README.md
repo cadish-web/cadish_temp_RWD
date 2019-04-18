@@ -15,6 +15,10 @@
 
 ## ChangeLog
 
+### 2019-4-17
+- 各base_temp setting_option.js, js_sample jquery.navFix.js
+　ナビ固定を解除する際のしきい値判定を修正
+
 ### 2019-02-18
 - base_temp, base_temp_new
 　inquiry/config_sample/ipblock/check_sample.cgi
