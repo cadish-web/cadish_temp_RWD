@@ -15,6 +15,11 @@
 
 ## ChangeLog
 
+### 2019-6-18
+- 各base_temp メールフォームのディレクトリ構成・設定を変更
+ - 本体設置場所をformディレクトリに変更
+ - config_sampleに迷惑メール防止用の設定をいくつか追加
+
 ### 2019-4-17
 - 各base_temp setting_option.js, js_sample jquery.navFix.js
 　ナビ固定を解除する際のしきい値判定を修正
