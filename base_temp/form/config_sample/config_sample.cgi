@@ -1,7 +1,5 @@
-$config{'about'} = 'Mailform Pro 4.2.4';
+$config{'about'} = 'Mailform Pro 4.2.5';
 ## コメントの先頭に!の付いている箇所を編集してください。
-## メールアドレス認証機能を使用する場合は configs/mailauth.cgi も合わせて修正してください。（デフォルトでは機能を使用する状態になっています。）
-## 連続送信防止機能を利用する場合は configs/ipblock.cgi , librarys/ipblock/check.cgi も合わせて修正してください。（デフォルトでは機能を使用する状態になっています。）
 
 ## 確認画面のタイプ
 ## 0: オーバーレイ / 1:フラット / 2: システムダイアログ / 3:確認なし
@@ -11,7 +9,7 @@ $config{'ConfirmationMode'} = 0;
 #$config{'sendmail'} = 'C:\sendmail\sendmail.exe';
 $config{'sendmail'} = '/usr/sbin/sendmail';
 
-## !フォームの送信先
+## !フォームの宛先
 push @mailto,'web_ml@cadish.co.jp';
 
 ## !自動返信メールの差出人名
@@ -38,7 +36,7 @@ $config{'SerialFormat'} = '<date>%04d';
 $config{'SerialBoost'} = 0;
 
 ## !サンクスページのURL(URLかmailformpro.cgiから見た相対パス)
-$config{'ThanksPage'} = '../thanks.html?no=%s';
+$config{'ThanksPage'} = '../../inquiry/thanks.html?no=%s';
 
 ## !設置者に届くメールの件名
 $config{'subject'} = '【施設名】お問い合せフォームからメールを受け付けました';
@@ -50,6 +48,8 @@ $_TEXT{'posted'} = <<'__posted_body__';
 お問い合せフォームより以下のメールを受付ました。
 ──────────────────────────
 受付番号：<_mfp_serial_>
+入力時間：<_mfp_input_time_>
+確認時間：<_mfp_confirm_time_>
 　送信元：<_mfp_referrer_>
 
 <_resbody_>
@@ -58,7 +58,7 @@ $_TEXT{'posted'} = <<'__posted_body__';
 <_mfp_env_>
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
-　※この署名はサンプルです。必ず変更してください※　
+　※この署名はサンプルです。必ず変更してください※
 　株式会社キャディッシュ
 　〒506-0045 岐阜県高山市赤保木町1169-7
 　TEL / 0577-36-3604　FAX / 0577-35-0202
@@ -95,7 +95,7 @@ $_TEXT{'responder'} = <<'__return_body__';
 この度はお問い合わせ重ねてお礼申し上げます。
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
-　※この署名はサンプルです。必ず変更してください※　
+　※この署名はサンプルです。必ず変更してください※
 　株式会社キャディッシュ
 　〒506-0045 岐阜県高山市赤保木町1169-7
 　TEL / 0577-36-3604　FAX / 0577-35-0202
@@ -116,10 +116,12 @@ $config{'mfp_separator_2'} = "\n【お問い合わせ内容】\n";
 ## スパム対策関連
 ####################################################
 
-## Javascriptが無効の場合は送信を許可しない(1:許可しない / 0:許可する)
+## !Javascriptが無効の場合は送信を許可しない(1:許可しない / 0:許可する)
+## 許可しない に設定してください。
 $config{'DisabledJs'} = 1;
 
-## リファラードメインチェック / 有効にする場合は行頭の#を削除
+## !リファラードメインチェック / 有効にする場合は行頭の#を削除
+## 有効にしてください。
 $config{'PostDomain'} = $ENV{'HTTP_HOST'};
 
 ## 全文英語のスパム候補を除外(1:除外 / 0:除外しない)
@@ -154,6 +156,9 @@ $config{'DisableURI'} = 0;
 $config{'dir.AddOns'} = './add-ons/';
 
 ## !不要なアドオン等は先頭に'#'をつけて無効にしてください
+## 以下の機能は必ず有効にしてください
+## ・イタズラ防止
+## ・メールアドレスのチェック(やや厳格)
 @AddOns = ();
 push @AddOns,'OperationCheck.js';		## 動作チェック ※本番では消してください
 push @AddOns,'charactercheck.js';		## 文字校正
@@ -172,7 +177,7 @@ push @AddOns,'nospace.js';				## スペースのみの入力を無効
 #push @AddOns,'charformat.js';			## テキスト整形(Xperia非対応)
 #push @AddOns,'noresume.js';			## 入力された内容をレジュームしない
 #push @AddOns,'switching.js';			## スイッチング機能サンプル
-#push @AddOns,'prevention.js';			## イタズラ防止
+push @AddOns,'prevention.js';			## イタズラ防止
 #push @AddOns,'wellcome.js';			## (技術デモ)ウェルカムメッセージ
 #push @AddOns,'speechAPI.js';			## (技術デモ)音声入力
 #push @AddOns,'WadaVoiceDemo.js';		## (技術デモ)音声ガイダンス
@@ -186,16 +191,18 @@ push @AddOns,'sizeajustdisabled.js';	## 入力欄の自動調整機能を無効�
 #push @AddOns,'setValue.js';			## 初期値をセット
 #push @AddOns,'errorScroll.js';			## エラー時に対象エレメントまでスクロール(ベータ版)
 #push @AddOns,'reserve.js';				## 予約受付 [New]
-#push @AddOns,'taboowords/taboowords.js';## 禁止ワードの指定 [New]
+push @AddOns,'taboowords/taboowords.js';## 禁止ワードの指定 [New]
 #push @AddOns,'pricefactor.js';			## 人数分の料金掛け算
 #push @AddOns,'tax.js';					## 消費税計算 [New]
-#push @AddOns,'email.js';				## メールアドレスのチェック(やや厳格)
+push @AddOns,'email.js';				## メールアドレスのチェック(やや厳格)
 #push @AddOns,'confirm.js';				## [New] 確認用エレメント
 #push @AddOns,'record.js';				## [New] 記録用
 #push @AddOns,'birthday.js';			## [New] 生年月日選択補助
 #push @AddOns,'unchecked.js';			## [New] radioのチェック解除
 #push @AddOns,'mobileScrollFix.js';		## [New] モバイル端末エラー時のスクロール調整
 push @AddOns,'smoothScroll.js';		## [New] モバイル端末エラー時のスクロール調整
+#push @AddOns,'suggest/suggest.js';		## [New] サジェスト機能
+#push @AddOns,'search/search.js';		## [New] サーチ機能
 #push @AddOns,'bpm.js';		## [New] BPMクレジット決済
 #push @AddOns,'coupon/coupon.js';
 #push @AddOns,'attachedfiles.js';		## 添付ファイル機能[有償]
@@ -203,6 +210,7 @@ push @AddOns,'smoothScroll.js';		## [New] モバイル端末エラー時のス�
 #push @AddOns,'guide.js';			## [New] エレメントフォーカス時にガイドを表示
 #push @AddOns,'firstfocus.js';		## [New] ページ読み込み時に最初のエレメントにフォーカス
 #push @AddOns,'submitblock.js';		## [New] 未入力項目があるとき送信ブロック
+#push @AddOns,'bootstrap.js';		## [New] Bootstrapへの対応
 
 
 ####################################################
@@ -210,6 +218,10 @@ push @AddOns,'smoothScroll.js';		## [New] モバイル端末エラー時のス�
 ####################################################
 
 ## !不要なモジュールは先頭に'#'をつけて無効にしてください
+## 以下の機能は必ず有効にしてください。()内は修正が必要なファイル
+## ・メールアドレス認証機能（configs/mailauth.cgi）
+## ・連続送信防止機能（configs/ipblock.cgi, librarys/ipblock/check.cgi）
+## ・厳密なリファラチェック（config/referercheck.cgi）
 @Modules = ();
 #push @Modules,'MultiConfig';	## 複数の設定ファイルを分岐させる
 push @Modules,'check';			## CGI動作環境チェック ※本番では消してください
@@ -226,7 +238,6 @@ push @Modules,'logger';			## アクセス解析ログモジュール
 #push @Modules,'iCal';			## iCal連携機能
 #push @Modules,'IPLogs';		## IPログトラッキング機能
 #push @Modules,'PayPal';		## PayPal決済
-#push @Modules,'PayPal2';		## PayPal決済
 #push @Modules,'SMTP';			## SMTP送信
 #push @Modules,'SMTPS';			## [New] SMTPS送信
 #push @Modules,'SimpleMailHead';## [New] シンプルメールヘッダ
@@ -239,14 +250,17 @@ push @Modules,'mailauth';		## メールアドレス認証
 #push @Modules,'ReplyTime';		## 応答時間計測
 #push @Modules,'count';			## 集計モジュール
 #push @Modules,'reserve';		## 予約管理モジュール
-#push @Modules,'taboowords';	## 禁止ワードの指定 [New]
+push @Modules,'taboowords';		## 禁止ワードの指定 [New]
 #push @Modules,'stress';		## ストレスチェック判定モジュール
 #push @Modules,'csvatt';		## CSV添付機能
 #push @Modules,'bpm';			## BPMクレジット決済
 push @Modules,'ipblock';		## [New] 連続送信ブロック機能
 #push @Modules,'response';		## [New] 応答文章分岐
-#push @Modules,'referercheck';	## [New] 厳密なリファラチェック
+push @Modules,'referercheck';	## [New] 厳密なリファラチェック
 #push @Modules,'blacklist';		## [New] ブラックリスト
+#push @Modules,'suggest';			## [New] サジェスト機能
+#push @Modules,'search';			## [New] サーチ機能
+#push @Modules,'sendgrid';			## [New] Sendgrid連携機能
 
 #push @Modules,'attachedfiles'; ## 添付ファイル [有償]
 #push @Modules,'UnlistedBBS'; ## 限定公開掲示板接続 [有償]
@@ -261,6 +275,9 @@ push @Modules,'ipblock';		## [New] 連続送信ブロック機能
 
 ## 詳細なsendmail設定
 #$config{'sendmail_advanced'} = '/usr/local/bin/sendmail -t -f$email';
+
+## 同一name属性の場合のセパレーター
+$config{'multiple'} = "\n";
 
 ## 表示調整 単一行表示
 $config{'singleline'} = "[ %s ] %s\n";

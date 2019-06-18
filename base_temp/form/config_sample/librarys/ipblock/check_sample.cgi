@@ -4,7 +4,8 @@ if(-f $ipblock{'path'}){
 	$ipblock{'time'} = (stat($ipblock{'path'}))[9] + $config{'ipblock.time'};
 	if(time < $ipblock{'time'}){
 		$_ErrorScreen = 1;
-		# 数字ではなく文字列に変更してください。
+		# configs/ipblock_sample.cgiで指定した$lang{} 箇所の Warning 以降の文字列を入れてください
+		# デフォルトの 11 のままだとうまく動きません。
 		$Error = 'ipBlock';
 	}
 }

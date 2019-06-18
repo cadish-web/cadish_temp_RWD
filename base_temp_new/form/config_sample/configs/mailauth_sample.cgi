@@ -1,7 +1,8 @@
 ## Mail auth config
 ## コメントの先頭に!の付いている箇所を編集してください。
 
-## 認証トークンの有効期限（秒数）
+## !認証トークンの有効期限（秒数）
+## デフォルトは1時間（3600秒）なので、24時間（86400秒）に変更してください
 $config{'mailauth.expire'} = 86400;
 
 ## 認証トークン有効期限切れ時のエラーメッセージ
@@ -16,7 +17,7 @@ $config{'mailauth.dir'} = "$config{'data.dir'}mailauth/";
 $config{'mailauth.uri'} = "http://$ENV{'HTTP_HOST'}$ENV{'REQUEST_URI'}";
 
 ## !認証前のサンクスページURL
-$config{'mailauth.thanks'} = '../add_check.html';
+$config{'mailauth.thanks'} = '../../inquiry/add_check.html';
 
 ## !メールアドレス確認メールの件名
 $config{'mailauth.subject'} = '【施設名】メールアドレス確認';
@@ -37,7 +38,7 @@ $config{'mailauth.body'} = <<'__return_body__';
 大変お手数ではございますが本メールを削除して下さい。
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
-　※この署名はサンプルです。必ず変更してください※　
+　※この署名はサンプルです。必ず変更してください※
 　株式会社キャディッシュ
 　〒506-0045 岐阜県高山市赤保木町1169-7
 　TEL / 0577-36-3604　FAX / 0577-35-0202
