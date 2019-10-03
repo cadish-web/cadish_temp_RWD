@@ -194,7 +194,7 @@ push @AddOns,'sizeajustdisabled.js';	## 入力欄の自動調整機能を無効�
 push @AddOns,'taboowords/taboowords.js';## 禁止ワードの指定 [New]
 #push @AddOns,'pricefactor.js';			## 人数分の料金掛け算
 #push @AddOns,'tax.js';					## 消費税計算 [New]
-push @AddOns,'email.js';				## メールアドレスのチェック(やや厳格)
+#push @AddOns,'email.js';				## メールアドレスのチェック(やや厳格)
 #push @AddOns,'confirm.js';				## [New] 確認用エレメント
 #push @AddOns,'record.js';				## [New] 記録用
 #push @AddOns,'birthday.js';			## [New] 生年月日選択補助
