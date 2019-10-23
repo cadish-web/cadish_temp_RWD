@@ -8,44 +8,51 @@
 <meta name="viewport" content="width=device-width" />
 <link rel="stylesheet"  href="../common/css/sample_style.css" />
 
-<title>easyresponsivetabs - アコーディオン開きっぱなし -</title>
+<title>easyresponsivetabs - PC閲覧時にアコーディオンのコンテンツ位置までページ内移動 -</title>
 
 <!-- ▽ jquery.easyResponsiveTabs セットCSSここから▽ -->
 <link rel="stylesheet" href="common/css/jquery.easy-responsive-tabs.css" />
 <link rel="stylesheet" href="common/css/style.css" />
 <!-- △ jquery.easyResponsiveTabs セットCSSここまで△ -->
+
+<!-- ▽ 動作確認用のサンプルcssです。実装時には削除してください。▽ -->
+<style>
+	article{ padding-bottom: 750px;}
+	.resp-tabs-container{ margin-top: 200px;}
+</style>
+<!-- △ 動作確認用のサンプルcssです。実装時には削除してください。△ -->
+
 </head>
 <body>
 <article>
 
 	<section>
-		<h1>タブ切り替え＆アコーディオン機能：サンプル02</h1>
+		<h1>タブ切り替え＆アコーディオン機能：サンプル04</h1>
 		<dl>
 			<dt>特徴</dt>
-			<dd>
-				他のアコーディオンを開いた時に現在開いているアコーディオンを開きっぱなしにするサンプルです。<br />
-				jquery.easyResponsiveTabs2.js を使用してください。
-			</dd>
+			<dd>PC閲覧時（○○px以上など、オプション内で設定）にアコーディオンのコンテンツ位置までページ内移動します。</dd>
 			<dt>その他サンプル</dt>
 			<dd>
 				<ul>
 					<li><a href="index.html">通常バージョンはこちら　→</a></li>
+					<li><a href="index_02.html">アコーディオンを開きっぱなしにしたい場合はこちら　→</a></li>
 					<li><a href="index_03.html">googlemap併用サンプルはこちら　→</a></li>
-					<li><a href="index_04.html">PC閲覧時にアコーディオンのコンテンツ位置までページ内移動したい場合はこちら</a></li>
 				</ul>
 			</dd>
 		</dl>
 	</section>
 
 	<section>
-		<h2>アコーディオン開きっぱなしバージョン</h2>
-		<div class="acc_tab_block">
+		<h2>PC閲覧時にアコーディオンのコンテンツ位置までページ内移動</h2>
+		<div id="acc_wrap" class="acc_tab_block">
+
 			<ul class="resp-tabs-list acc_tab">
 				<li>タブ見出し1</li>
 				<li>タブ見出し2</li>
 				<li>タブ見出し3</li>
 			</ul>
-			<div class="resp-tabs-container acc_tab">
+
+			<div id="acc_contents" class="resp-tabs-container acc_tab">
 				<div>
 					<p>タブ1のコンテンツ</p>
 					<p>これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。
@@ -62,6 +69,7 @@
 					これはサンプルテキストです。これはサンプルテキストです。これはサンプルテキストです。</p>
 				</div>
 			</div>
+
 		</div>
 	</section>
 
@@ -70,7 +78,7 @@
 
 <!-- ▽ jquery.easyResponsiveTabs JSここから▽ -->
 <script src="../../base_temp/common/js/jquery.min.js"></script>
-<script src="common/js/jquery.easyResponsiveTabs2.js"></script>
+<script src="common/js/jquery.easyResponsiveTabs.js"></script>
 <!-- △ jquery.easyResponsiveTabs JSここまで △ -->
 
 <!-- ▽横並び・ここから▽ -->
@@ -88,6 +96,27 @@ $(document).ready(function() {
 			var $name = $('span', $info);
 			$name.text($tab.text());
 			$info.show();
+
+			if(window.matchMedia('(min-width:600px)').matches){
+				var speed = 500;
+				var target = $('#acc_contents')
+				var hHeight = '';
+
+				/* ▽ 固定ヘッダーありの場合の処理 ▽ */
+				// ヘッダー固定が解除されるウィンドウ幅
+				// var hFixSize = window.matchMedia('(max-width: 600px)');
+				// 固定ヘッダーの高さ
+				// if(!hFixSize.matches) {
+				// 	固定ヘッダー（ #header_wrap の箇所は固定ヘッダーのid名に合わせてください ）
+				// 	hHeight = $('#header_wrap').outerHeight();
+				// }
+				/* △ 固定ヘッダーありの場合の処理 ▽ */
+
+				var position = target.offset().top - hHeight;
+				$("html, body").animate({scrollTop:position}, speed, "swing");
+				return false;
+			}
+
 		}
 	});
 });
