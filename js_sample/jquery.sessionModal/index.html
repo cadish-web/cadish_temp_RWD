@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+
+<title>sessionModal</title>
+
+<!-- ▽ サンプルCSSここから▽ -->
+<style>
+#sec1 { width: 1000px; margin: 50px auto;}
+#modal_inner h2 { padding: 0; margin: 0 0 10px; border: none; font-size: 20px; text-align: center;}
+</style>
+<!-- △ サンプルCSSここまで△ -->
+</head>
+<body>
+
+<article id="contents_wrap">
+
+	<section>
+		<h1>sessionModal</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>
+				セッション保持機能付きモーダルウィンドウ<br>
+				一度モーダルウィンドウを閉じた後でページ移動をした際、タブかウィンドウを閉じるまでは再表示させません。
+			</dd>
+		</dl>
+	</section>
+
+	<div id="sec1">
+		<a href="index2.html">ページ移動</a>
+	</div>
+
+	<div id="modal_overlay">
+		<div id="modal_outer">
+			<div id="modal_hidden"></div>
+			<div id="modal_inner">
+				<h2>お知らせウィンドウ</h2>
+				<p>ダミーテキストダミーテキストダミーテキスト<br>
+				ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+				<p class="close">×</p>
+			</div>
+		</div>
+	</div>
+
+</article>
+
+<!-- ▽ rwdImageMaps JSここから ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.sessionModal.min.js"></script>
+<link rel="stylesheet"  href="common/css/style.css" />
+<!-- △ rwdImageMaps JSここまで △ -->
+</body>
+</html>

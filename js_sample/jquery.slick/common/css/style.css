@@ -21,10 +21,6 @@ section .slick-dots li.slick-active button:before { font-size: 15px; opacity: 1;
 #slick_area .slick_item .slick-slide    { text-align: center; }
 #slick_area .slick_item .slick-slide img{ display: block; margin: 0 auto; text-align: center;}
 
-/* IE7 */
-#slick_area { /height: auto; }
-#slick_area .slick_item div { /float: left; /margin: 0;}
-
 
 /* ---- 一枚ずつのカルーセル ---- */
 #slick_area2 .slick-slider { margin-bottom: 0;}
@@ -40,6 +36,7 @@ section .slick-dots li.slick-active button:before { font-size: 15px; opacity: 1;
 #slick_area2 .slick_center .slick-prev:before { content: '〈';}
 #slick_area2 .slick_center .slick-next { margin-left: 520px; left: 50%; right: auto;}
 #slick_area2 .slick_center .slick-next:before { content: '〉';}
+#slick_area2 .slick-counter { text-align: center;}
 
 @media screen and (max-width: 1200px) {
 	#slick_area2 .slick_center .slick-slide { padding: 0 50px;}

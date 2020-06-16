@@ -11,11 +11,9 @@
 <title>slick</title>
 
 
-<!-- ▽ slick セットCSSここから ▽ -->
-<link rel="stylesheet" href="common/css/jquery.slick.css" />
-<link rel="stylesheet" href="common/css/jquery.slick-theme.css" />
+<!-- ▽ サンプルCSSここから ▽ -->
 <link rel="stylesheet" href="common/css/style.css" />
-<!-- △ slick セットCSSここまで △ -->
+<!-- △ サンプルCSSここまで △ -->
 </head>
 <body>
 <article>
@@ -54,7 +52,7 @@
 	</section>
 
 	<section id="slick_area2">
-		<h2>1枚ずつのカルーセル（左右矢印付き）</h2>
+		<h2>1枚ずつのカルーセル（左右矢印 &amp; 数字カウント付き）</h2>
 		<div class="slick_center">
 			<div><a href="#"><img src="../common/img/sample_img01.jpg" alt="" /></a></div>
 			<div><a href="#"><img src="../common/img/sample_img02.jpg" alt="" /></a></div>
@@ -68,51 +66,69 @@
 <!-- ▽ slick JSここから ▽ -->
 <script src="../../base_temp/common/js/jquery.min.js"></script>
 <script src="common/js/jquery.slick.min.js"></script>
+<link rel="stylesheet" href="common/css/jquery.slick.css" />
+<link rel="stylesheet" href="common/css/jquery.slick-theme.css" />
 <!-- △ slick JSここまで △ -->
 
 <script>
 $(document).ready(function() {
 	// #slick_area1
 	$('.slick_item').slick({
-		dots: true,						// 下のドットのナビ
-		infinite: true,				// ループさせるか
-		slidesToShow: 4,			// 一度に表示する枚数
-		slidesToScroll: 1,		// 切り替える時に移動する枚数
-		autoplay: true,				// 自動再生
-		autoplaySpeed: 2500,	// 切り替える時間
-		speed: 1000,					// 切り替え時のアニメーションのスピード
-		responsive: [					// ウィンドウサイズごとの設定
-			{
-				breakpoint: 1440,
-				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 1,
+			dots: true,						// 下のドットのナビ
+			infinite: true,				// ループさせるか
+			slidesToShow: 4,			// 一度に表示する枚数
+			slidesToScroll: 1,		// 切り替える時に移動する枚数
+			autoplay: true,				// 自動再生
+			autoplaySpeed: 2500,	// 切り替える時間
+			speed: 1000,					// 切り替え時のアニメーションのスピード
+			responsive: [					// ウィンドウサイズごとの設定
+				{
+					breakpoint: 1440,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 1,
+					}
+				},
+				{
+					breakpoint: 960,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 1
+					}
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						dots: false,
+						slidesToShow: 1,
+						slidesToScroll: 1
+					}
 				}
-			},
-			{
-				breakpoint: 960,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 1
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					dots: false,
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			}
-		]
-	});
+			]
+		});
 
 	// #slick_area2
+	// 枚数カウント準備
+	$('.slick_center').on("init", function (event, slick) {
+		$(this).parent().append(
+			'<div class="slick-counter"><span class="count-current"></span> / <span class="count-total"></span></div>'
+		);
+		$(".count-current").text(slick.currentSlide + 1);
+		$(".count-total").text(slick.slideCount);
+	});
+	// 枚数カウント数字切り替え
+	$('.slick_center').on("beforeChange", function (event, slick, currentSlide, nextSlide) {
+		$(".count-current").text(nextSlide + 1);
+	});
+
+	// スライドショー設定
 	$('.slick_center').slick({
-		dots: true,
+		dots: false,
 		infinite: true,
 		slidesToShow: 1,
 		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 2500,
 		centerMode: true,			// currentの画像が真ん中に来る（デフォルトは左端）
 		variableWidth: true,	// slickのアイテム幅を中身の幅に合わせる
 		responsive: [

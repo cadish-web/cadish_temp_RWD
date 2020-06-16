@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<link rel="stylesheet"  href="../common/css/sample_style.css" />
+
+<title>rwdImageMaps</title>
+
+<!-- ▽ サンプルCSSここから▽ -->
+<style>
+section:not(:first-child):not(#sec1) { width: 100%; max-width: none; height: 600px; margin: 0;}
+section:not(:first-child):nth-child(even) { background: #ddd;}
+#nav { display: block; max-width: 92%; height: auto; margin: 0 auto;}
+#sec1 { margin: 50px auto;}
+#sec1 li { list-style: decimal;}
+#sec1 li span { color: #f00;}
+</style>
+<!-- △ サンプルCSSここまで△ -->
+</head>
+<body>
+
+<article id="contents_wrap">
+
+	<section>
+		<h1>rwdImageMaps</h1>
+		<dl>
+			<dt>特徴</dt>
+			<dd>
+				画像が伸縮してもクリッカブルマップが使えるようにするjs
+			</dd>
+		</dl>
+	</section>
+
+	<div>
+		<img src="common/img/link.jpg" alt="リンク" width="1000" height="131" usemap="#navMap" id="nav">
+		<map name="navMap">
+			<area shape="rect" coords="0,38,191,90" href="#sec1">
+			<area shape="rect" coords="202,38,393,91" href="#sec2">
+			<area shape="rect" coords="404,38,596,91" href="#sec3">
+			<area shape="rect" coords="606,37,797,91" href="#sec4">
+			<area shape="rect" coords="809,38,1001,91" href="https://www.cadish.co.jp" target="_blank">
+		</map>
+	</div>
+
+	<section id="sec1">
+		<h2>【利用方法】</h2>
+		<ol>
+			<li>
+				画像を配置する<br>
+				<span>※ 必ずwidthとheightをimgタグに記述すること</span>
+			</li>
+			<li>jsを読み込む</li>
+			<li>
+				以下のスクリプトを記述する
+				<code>
+					<script>
+						$(document).ready(function() {
+							$('img[usemap]').rwdImageMaps();
+						});
+					</script>
+				</code>
+			</li>
+		</ol>
+	</section>
+
+	<section id="sec2"></section>
+	<section id="sec3"></section>
+	<section id="sec4"></section>
+
+</article>
+
+<!-- ▽ rwdImageMaps JSここから ▽ -->
+<script src="../../base_temp/common/js/jquery.min.js"></script>
+<script src="common/js/jquery.rwdImageMaps.min.js"></script>
+<script>
+$(document).ready(function() {
+	$('img[usemap]').rwdImageMaps();
+});
+</script>
+<!-- △ rwdImageMaps JSここまで △ -->
+</body>
+</html>
