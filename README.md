@@ -16,6 +16,11 @@
 
 ## ChangeLog
 
+### 2020-06-18
+
+- js_sample/sessionModal<br>
+  #modal_innerがウィンドウ幅より大きい場合のスクロールがおかしかったので修正
+
 ### 2020-06-16
 
 -   js_sample 以下のサンプルを追加<br>
