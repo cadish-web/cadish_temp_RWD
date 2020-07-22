@@ -16,6 +16,11 @@
 
 ## ChangeLog
 
+### 2020-07-22
+
+- wp_temp
+    直下のメモ書きのファイル名を**_Tips.md**に変更し、WordPressテスト用データに関する記述を追加
+
 ### 2020-06-18
 
 - js_sample/sessionModal<br>
