@@ -16,6 +16,10 @@
 
 ## ChangeLog
 
+### 2020-08-05
+
+- waki test
+
 ### 2020-07-22
 
 - wp_temp
