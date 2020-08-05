@@ -18,7 +18,7 @@
 
 ### 2020-08-05
 
-- 下記HTMLソース修正
+- 下記HTMLソース修正<br>
 base_temp_new/index.html<br>
 base_temp_new/_master/index.htmll<br>
 base_temp_new/404/index.htmll<br>
@@ -35,7 +35,7 @@ base_temp_new/privacy/index.html<br>
 - base_temp_new/common/js/jquery.matchHeight-min.js を削除
 - base_temp_new/common/js/setting_option.js から matchHeight 呼び出し記述を削除
 
- - 下記DWライブラリ修正
+ - 下記DWライブラリ修正<br>
 base_temp_new/Library/footer.lbi<br>
 base_temp_new/Library/gnav.lbi<br>
 http://schema.org/ および http://www.schema.org/ を https://schema.org/ に統一
