@@ -1,5 +1,5 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<nav id="gnav" role="navigation" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+<nav id="gnav" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
 <ul>
 	<li id="close_top" class="close_menu">MENU<span>閉じる</span></li>
 	<li itemprop="name" id="gn_home"><a itemprop="URL" href=".././/">トップページ</a></li>

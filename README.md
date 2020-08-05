@@ -18,7 +18,21 @@
 
 ### 2020-08-05
 
-- waki test
+- base_temp_new/index.html
+- base_temp_new/_master/index.html
+- base_temp_new/404/index.html
+- base_temp_new/inquiry/index.html
+- base_temp_new/inquiry/add_check.html
+- base_temp_new/inquiry/thanks.html
+- base_temp_new/privacy/index.html
+  head内などに混在していた /> の / をトル（HTML5準拠）
+  http://ogp.me を https://ogp.me に統一
+  http://schema.org/ および http://www.schema.org/ を https://schema.org/ に統一
+  パンくず内のaタグについていたitemscopeをトル
+  
+ - base_temp_new/Library/footer.lbi
+ - base_temp_new/Library/gnav.lbi
+  http://schema.org/ および http://www.schema.org/ を https://schema.org/ に統一
 
 ### 2020-07-22
 
