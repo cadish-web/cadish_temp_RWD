@@ -18,21 +18,27 @@
 
 ### 2020-08-05
 
-- base_temp_new/index.html
-- base_temp_new/_master/index.html
-- base_temp_new/404/index.html
-- base_temp_new/inquiry/index.html
-- base_temp_new/inquiry/add_check.html
-- base_temp_new/inquiry/thanks.html
-- base_temp_new/privacy/index.html<br>
-  head内などに混在していた /> の / をトル（HTML5準拠）<br>
-  http://ogp.me を https://ogp.me に統一<br>
-  http://schema.org/ および http://www.schema.org/ を https://schema.org/ に統一<br>
-  パンくず内のaタグについていたitemscopeをトル<br>
-  
- - base_temp_new/Library/footer.lbi
- - base_temp_new/Library/gnav.lbi<br>
-  http://schema.org/ および http://www.schema.org/ を https://schema.org/ に統一
+- 下記HTMLソース修正
+base_temp_new/index.html<br>
+base_temp_new/_master/index.htmll<br>
+base_temp_new/404/index.htmll<br>
+base_temp_new/inquiry/index.htmll<br>
+base_temp_new/inquiry/add_check.htmll<br>
+base_temp_new/inquiry/thanks.htmll<br>
+base_temp_new/privacy/index.html<br>
+  -   head内などに混在していた /> の / をトル（HTML5準拠）<br>
+  -   http://ogp.me を https://ogp.me に統一<br>
+  -   http://schema.org/ および http://www.schema.org/ を https://schema.org/ に統一<br>
+  -   パンくず内のaタグについていたitemscopeをトル<br>
+  -   common/js/jquery.matchHeight-min.jsの読み込み記述を削除<br>
+
+- base_temp_new/common/js/jquery.matchHeight-min.js を削除
+- base_temp_new/common/js/setting_option.js から matchHeight 呼び出し記述を削除
+
+ - 下記DWライブラリ修正
+base_temp_new/Library/footer.lbi<br>
+base_temp_new/Library/gnav.lbi<br>
+http://schema.org/ および http://www.schema.org/ を https://schema.org/ に統一
 
 ### 2020-07-22
 
