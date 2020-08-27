@@ -1,4 +1,4 @@
-$config{'about'} = 'Mailform Pro 4.2.5';
+$config{'about'} = 'Mailform Pro 4.2.9';
 ## コメントの先頭に!の付いている箇所を編集してください。
 
 ## 確認画面のタイプ
@@ -51,6 +51,15 @@ $_TEXT{'posted'} = <<'__posted_body__';
 入力時間：<_mfp_input_time_>
 確認時間：<_mfp_confirm_time_>
 　送信元：<_mfp_referrer_>
+支払金額：<_mfp_cartprice_>
+
+待ち時間確認用URL
+<_mfp_numticket_uri_>
+予想待ち時間：<_mfp_numticket_wait_> 分程度
+予想時間：<_mfp_numticket_datetime_>（実際の状況により前後します）
+順番：<_mfp_numticket_qty_> 番目
+受付番号：<_mfp_numticket_number_>
+照会番号：<_mfp_numticket_code_>
 
 <_resbody_>
 ──────────────────────────
@@ -165,13 +174,13 @@ push @AddOns,'charactercheck.js';		## 文字校正
 push @AddOns,'prefcode/prefcode.js';	## 郵便番号からの住所入力
 #push @AddOns,'prefcodeadv/prefcode.js';## 郵便番号からの住所入力(高機能・高負荷)
 push @AddOns,'furigana.js';				## フリガナ(Firefox非対応)
-#push @AddOns,'datelist.js';				## 日付リストの生成機能 [Update]
+#push @AddOns,'datelist.js';			## 日付リストの生成機能 [Update]
 #push @AddOns,'ok.js';					## OKアドオン [New]
 push @AddOns,'okng.js';					## OKアドオン [New]
 push @AddOns,'nospace.js';				## スペースのみの入力を無効
 #push @AddOns,'toggle.js';				## 入力欄の可変
 #push @AddOns,'cart/cart.js';			## ショッピングカート機能
-#push @AddOns,'request/request.js';		## [New] リクエスト機能
+#push @AddOns,'request/request.js';		## リクエスト機能
 #push @AddOns,'phase.js';				## 段階的入力機能
 #push @AddOns,'drilldown.js';			## ドリルダウン機能
 #push @AddOns,'charformat.js';			## テキスト整形(Xperia非対応)
@@ -195,22 +204,27 @@ push @AddOns,'taboowords/taboowords.js';## 禁止ワードの指定 [New]
 #push @AddOns,'pricefactor.js';			## 人数分の料金掛け算
 #push @AddOns,'tax.js';					## 消費税計算 [New]
 #push @AddOns,'email.js';				## メールアドレスのチェック(やや厳格)
-#push @AddOns,'confirm.js';				## [New] 確認用エレメント
-#push @AddOns,'record.js';				## [New] 記録用
-#push @AddOns,'birthday.js';			## [New] 生年月日選択補助
-#push @AddOns,'unchecked.js';			## [New] radioのチェック解除
-#push @AddOns,'mobileScrollFix.js';		## [New] モバイル端末エラー時のスクロール調整
-push @AddOns,'smoothScroll.js';		## [New] モバイル端末エラー時のスクロール調整
-#push @AddOns,'suggest/suggest.js';		## [New] サジェスト機能
-#push @AddOns,'search/search.js';		## [New] サーチ機能
-#push @AddOns,'bpm.js';		## [New] BPMクレジット決済
-#push @AddOns,'coupon/coupon.js';
+#push @AddOns,'confirm.js';				## 確認用エレメント
+#push @AddOns,'record.js';				## 記録用
+#push @AddOns,'birthday.js';			## 生年月日選択補助
+#push @AddOns,'unchecked.js';			## radioのチェック解除
+push @AddOns,'smoothScroll.js';			## モバイル端末エラー時のスクロール調整
+#push @AddOns,'suggest/suggest.js';		## サジェスト機能
+#push @AddOns,'search/search.js';		## サーチ機能
+#push @AddOns,'bpm.js';					## BPMクレジット決済
 #push @AddOns,'attachedfiles.js';		## 添付ファイル機能[有償]
+push @AddOns,'ipblock.js';				## 連続送信ブロック機能
+#push @AddOns,'guide.js';				## エレメントフォーカス時にガイドを表示
+#push @AddOns,'firstfocus.js';			## ページ読み込み時に最初のエレメントにフォーカス
+#push @AddOns,'submitblock.js';			## 未入力項目があるとき送信ブロック
+#push @AddOns,'bootstrap.js';			## Bootstrapへの対応
+#push @AddOns,'datelisten.js';			## 日付リストの生成機能 [Update]
+#push @AddOns,'call/call.js';			## 商品呼び出し機能
+#push @AddOns,'coupon/coupon.js';
 
-#push @AddOns,'guide.js';			## [New] エレメントフォーカス時にガイドを表示
-#push @AddOns,'firstfocus.js';		## [New] ページ読み込み時に最初のエレメントにフォーカス
-#push @AddOns,'submitblock.js';		## [New] 未入力項目があるとき送信ブロック
-#push @AddOns,'bootstrap.js';		## [New] Bootstrapへの対応
+#push @AddOns,'onetimetoken/onetimetoken.js';	## [New] ワンタイムトークン
+#push @AddOns,'numticket.js';					## [New] 順番待ち受付システム
+#push @AddOns,'yearmonth.js';					## [New] 年月選択補助
 
 
 ####################################################
@@ -226,7 +240,7 @@ push @AddOns,'smoothScroll.js';		## [New] モバイル端末エラー時のス�
 #push @Modules,'MultiConfig';	## 複数の設定ファイルを分岐させる
 push @Modules,'check';			## CGI動作環境チェック ※本番では消してください
 push @Modules,'logger';			## アクセス解析ログモジュール
-#push @Modules,'thanks';			## サンクスページへの引き継ぎ
+#push @Modules,'thanks';		## サンクスページへの引き継ぎ
 #push @Modules,'cart';			## ショッピングカート機能
 #push @Modules,'request';		## リクエスト機能
 #push @Modules,'ISO-2022-JP';	## メールをJISで送信
@@ -239,8 +253,8 @@ push @Modules,'logger';			## アクセス解析ログモジュール
 #push @Modules,'IPLogs';		## IPログトラッキング機能
 #push @Modules,'PayPal';		## PayPal決済
 #push @Modules,'SMTP';			## SMTP送信
-#push @Modules,'SMTPS';			## [New] SMTPS送信
-#push @Modules,'SimpleMailHead';## [New] シンプルメールヘッダ
+#push @Modules,'SMTPS';			## SMTPS送信
+#push @Modules,'SimpleMailHead';## シンプルメールヘッダ
 #push @Modules,'MAILHEAD';		## メールヘッダのカスタマイズ
 push @Modules,'mailauth';		## メールアドレス認証
 #push @Modules,'reqonce';		## 一度きりの送信
@@ -254,20 +268,29 @@ push @Modules,'taboowords';		## 禁止ワードの指定 [New]
 #push @Modules,'stress';		## ストレスチェック判定モジュール
 #push @Modules,'csvatt';		## CSV添付機能
 #push @Modules,'bpm';			## BPMクレジット決済
-push @Modules,'ipblock';		## [New] 連続送信ブロック機能
-#push @Modules,'response';		## [New] 応答文章分岐
-push @Modules,'referercheck';	## [New] 厳密なリファラチェック
-#push @Modules,'blacklist';		## [New] ブラックリスト
-#push @Modules,'suggest';			## [New] サジェスト機能
-#push @Modules,'search';			## [New] サーチ機能
-#push @Modules,'sendgrid';			## [New] Sendgrid連携機能
+#push @Modules,'bpm2';			## BPMクレジット決済 リンク型
+push @Modules,'ipblock';		## 連続送信ブロック機能
+#push @Modules,'response';		## 応答文章分岐
+push @Modules,'referercheck';	## 厳密なリファラチェック
+#push @Modules,'blacklist';		## ブラックリスト
+#push @Modules,'suggest';		## サジェスト機能
+#push @Modules,'search';		## サーチ機能
+#push @Modules,'sendgrid';		## Sendgrid連携機能
+#push @Modules,'call';			## 商品呼び出し機能
 
-#push @Modules,'attachedfiles'; ## 添付ファイル [有償]
-#push @Modules,'UnlistedBBS'; ## 限定公開掲示板接続 [有償]
-#push @Modules,'MFPOrderConnect'; ## MFP Order Connect API
-#push @Modules,'MFPAddressConnect'; ## MFP Address Connect API
+#push @Modules,'radiovalue';
+#push @Modules,'attachedfiles';	## 添付ファイル [有償]
+#push @Modules,'UnlistedBBS';	## 限定公開掲示板接続 [有償]
 #push @Modules,'demo';			## デモ
+#push @Modules,'MFPOrderConnect';	## MFP Order Connect API
+#push @Modules,'MFPAddressConnect'; ## MFP Address Connect API
 
+#push @Modules,'numticket';			## [New] 順番待ち受付システム
+#push @Modules,'LineNotify';		## [New] LINE通知機能
+#push @Modules,'spreadsheet';		## [New] Googleスプレッドシート連携CGI版
+#push @Modules,'onetimetoken';		## [New] ワンタイムトークン
+#push @Modules,'questionnaire2';	## [New] アンケート集計モジュール2
+#push @Modules,'qrcode';	## [New] QRコード添付
 
 ####################################################
 ## 高度な設定的な感じのもの
@@ -307,6 +330,9 @@ $config{'data.dir'} = './data/';
 ## [0] Serial, [1] InputTime, [2] ConfirmTime, [3] UniqueUser
 $config{'file.data'} = "$config{'data.dir'}dat.mailformpro.cgi";
 
+## カウンタファイル
+$config{'file.count'} = "$config{'data.dir'}dat.counter.cgi";
+
 ## ドロップ検知
 $config{'file.drop'} = "$config{'data.dir'}dat.drop.cgi";
 
@@ -317,8 +343,14 @@ $config{'file.cache'} = "$config{'data.dir'}mfp.cache.js";
 $config{'lang'} = 'lang.ja';
 #$config{'lang'} = 'lang.en';
 
+## プロトコル
+$config{'protocol'} = 'http://';
+if($ENV{'HTTPS'}){
+	$config{'protocol'} = 'https://';
+}
+
 ## スクリプトのURL / ※基本的にここは変更しなくてOKです
-$config{'uri'} = 'http://' . $ENV{'SERVER_NAME'} . $ENV{'SCRIPT_NAME'};
+$config{'uri'} = $config{'protocol'} . $ENV{'SERVER_NAME'} . $ENV{'SCRIPT_NAME'};
 
 ## Prefix
 $config{'prefix'} = '_MFP';
