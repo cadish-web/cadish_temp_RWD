@@ -18,17 +18,17 @@
 
 ### 2020-08-27
 
-MailFormPro ver.4.2.9
-2020/08/27現在の最新バージョン。
-旧バージョンでipblock関連でエラーが出る件。
-
-config.cgiの207行目にある
-push @AddOns,'ipblock.js';				## 連続送信ブロック機能
-が最新バージョンで追加されており、このコメントを外せばOKで
-configs/ipblock.cgi
-および
-librarys/ipblock/check.cgi
-への改修対応は不要となっていました。
+MailFormPro ver.4.2.9<br>
+2020/08/27現在の最新バージョン。<br>
+旧バージョンでipblock関連でエラーが出る件。<br>
+<br>
+config.cgiの207行目にある<br>
+push @AddOns,'ipblock.js';				## 連続送信ブロック機能<br>
+が最新バージョンで追加されており、このコメントを外せばOKで<br>
+configs/ipblock.cgi<br>
+および<br>
+librarys/ipblock/check.cgi<br>
+への改修対応は不要となっていました。<br>
 これに伴い、config_sample.cgiおよびconfigs/ipblock_sample.cgiを最新バージョンのモノで置き換えました。
 
 ### 2020-08-05
