@@ -12,6 +12,12 @@ body {
 	-webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column;
 }
 
+/* IE表示用のCSS　*/
+_:-ms-input-placeholder, body {
+   font-family: "ＭＳ Ｐゴシック", sans-serif;
+}
+
+
 input,
 select,
 textarea { font-size: 13px;}
