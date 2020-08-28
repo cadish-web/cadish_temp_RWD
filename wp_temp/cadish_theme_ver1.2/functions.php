@@ -199,12 +199,12 @@ function breadcrumb($divOption = array("id" => "breadcrumb")){
 		$cnt = 3;
 		$str.= '<ol'. $tagAttribute .' itemscope itemtype="http://schema.org/BreadcrumbList">'."\n";
 		$str.= '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-		$str.= '<a href="http://www.example.com/" itemscope itemtype="http://schema.org/Thing" itemprop="item">';
+		$str.= '<a href="http://www.example.com/" itemtype="http://schema.org/Thing" itemprop="item">';
 		$str.= '<span itemprop="name">トップページ</span></a>';
 		$str.= '<meta itemprop="position" content="1" />';
 		$str.= '</li>'."\n";
 		$str.= '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-		$str.= '<a href="'. home_url() .'/" itemscope itemtype="http://schema.org/Thing" itemprop="item">';
+		$str.= '<a href="'. home_url() .'/" itemtype="http://schema.org/Thing" itemprop="item">';
 		$str.= '<span itemprop="name">ブログ</span></a>';
 		$str.= '<meta itemprop="position" content="2" />';
 		$str.= '</li>'."\n";
@@ -214,7 +214,7 @@ function breadcrumb($divOption = array("id" => "breadcrumb")){
 				$ancestors = array_reverse(get_ancestors( $cat -> cat_ID, 'category' ));
 				foreach($ancestors as $ancestor){
 					$str.='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-					$str.='<a href="'. get_category_link($ancestor) .'" itemscope itemtype="http://schema.org/Thing" itemprop="item">';
+					$str.='<a href="'. get_category_link($ancestor) .'" itemtype="http://schema.org/Thing" itemprop="item">';
 					$str.='<span itemprop="name">'. get_cat_name($ancestor) .'</span></a>';
 					$str.='<meta itemprop="position" content="'. $cnt .'" />';
 					$str.='</li>'."\n";
@@ -222,7 +222,8 @@ function breadcrumb($divOption = array("id" => "breadcrumb")){
 				}
 			}
 			$str.='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-			$str.='<span itemprop="name">'. $cat -> name . '</span>';
+			$str.='<a href="'. get_category_link($cat -> slug) .'" itemtype="http://schema.org/Thing" itemprop="item">';
+			$str.='<span itemprop="name">'. $cat -> name . '</span></a>';
 			$str.='<meta itemprop="position" content="'. $cnt .'" />';
 			$str.='</li>'."\n";
 			$cnt++;
@@ -233,7 +234,7 @@ function breadcrumb($divOption = array("id" => "breadcrumb")){
 				$ancestors = array_reverse(get_ancestors( $cat -> cat_ID, 'category' ));
 				foreach($ancestors as $ancestor){
 					$str.='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-					$str.='<a href="'. get_category_link($ancestor).'" itemscope itemtype="http://schema.org/Thing" itemprop="item">';
+					$str.='<a href="'. get_category_link($ancestor).'" itemtype="http://schema.org/Thing" itemprop="item">';
 					$str.='<span itemprop="name">'. get_cat_name($ancestor). '</span></a>';
 					$str.='<meta itemprop="position" content="'. $cnt .'" />';
 					$str.='</li>'."\n";
@@ -241,13 +242,14 @@ function breadcrumb($divOption = array("id" => "breadcrumb")){
 				}
 			}
 			$str.='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-			$str.='<a href="'. get_category_link($cat -> term_id). '" itemscope itemtype="http://schema.org/Thing" itemprop="item">';
+			$str.='<a href="'. get_category_link($cat -> term_id). '" itemtype="http://schema.org/Thing" itemprop="item">';
 			$str.='<span itemprop="name">'. $cat-> cat_name . '</span></a>';
 			$str.='<meta itemprop="position" content="'. $cnt .'" />';
 			$str.='</li>'."\n";
 			$cnt++;
 			$str.='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-			$str.='<span itemprop="name">'. $post -> post_title .'</span>';
+			$str.='<a href="'. get_permalink(). '" itemtype="http://schema.org/Thing" itemprop="item">';
+			$str.='<span itemprop="name">'. $post -> post_title .'</span></a>';
 			$str.='<meta itemprop="position" content="'. $cnt .'" />';
 			$str.='</li>'."\n";
 			$cnt++;
@@ -264,69 +266,77 @@ function breadcrumb($divOption = array("id" => "breadcrumb")){
 				}
 			}
 			$str.='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-			$str.='<span itemprop="name">'. $post -> post_title .'</span>';
+			$str.='<a href="'. get_permalink().'" itemtype="http://schema.org/Thing" itemprop="item">';
+			$str.='<span itemprop="name">'. $post -> post_title .'</span></a>';
 			$str.='<meta itemprop="position" content="'. $cnt .'" />';
 			$str.='</li>'."\n";
 			$cnt++;
 		} elseif(is_date()){
 			if(get_query_var('day') != 0){
 				$str.='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-				$str.='<a href="'. get_year_link(get_query_var('year')). '" itemscope itemtype="http://schema.org/Thing" itemprop="item">';
+				$str.='<a href="'. get_year_link(get_query_var('year')). '" itemtype="http://schema.org/Thing" itemprop="item">';
 				$str.='<span itemprop="name">' . get_query_var('year'). '年</span></a>';
 				$str.='<meta itemprop="position" content="'. $cnt .'" />';
 				$str.='</li>'."\n";
 				$cnt++;
 				$str.='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-				$str.='<a href="'. get_month_link(get_query_var('year'), get_query_var('monthnum')). '" itemscope itemtype="http://schema.org/Thing" itemprop="item">';
+				$str.='<a href="'. get_month_link(get_query_var('year'), get_query_var('monthnum')). '" itemtype="http://schema.org/Thing" itemprop="item">';
 				$str.='<span itemprop="name">'. get_query_var('monthnum') .'月</span></a>';
 				$str.='<meta itemprop="position" content="'. $cnt .'" />';
 				$str.='</li>'."\n";
 				$cnt++;
 				$str.='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-				$str.='<span itemprop="name">'. get_query_var('day'). '日</span>';
+				$str.='<a href="'. get_day_link(get_query_var('year'), get_query_var('monthnum'), get_query_var('day')). '" itemtype="http://schema.org/Thing" itemprop="item">';
+				$str.='<span itemprop="name">'. get_query_var('day'). '日</span></a>';
 				$str.='<meta itemprop="position" content="'. $cnt .'" />';
 				$str.='</li>'."\n";
 				$cnt++;
 			} elseif(get_query_var('monthnum') != 0){
 				$str.='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-				$str.='<a href="'. get_year_link(get_query_var('year')) .'" itemscope itemtype="http://schema.org/Thing" itemprop="item">';
+				$str.='<a href="'. get_year_link(get_query_var('year')) .'" itemtype="http://schema.org/Thing" itemprop="item">';
 				$str.='<span itemprop="name">'. get_query_var('year') .'年</span></a>';
 				$str.='<meta itemprop="position" content="'. $cnt .'" />';
 				$str.='</li>'."\n";
 				$cnt++;
 				$str.='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-				$str.='<span itemprop="name">'. get_query_var('monthnum'). '月</span>';
+				$str.='<a href="'. get_month_link(get_query_var('year'), get_query_var('monthnum')). '" itemtype="http://schema.org/Thing" itemprop="item">';
+				$str.='<span itemprop="name">'. get_query_var('monthnum'). '月</span></a>';
 				$str.='<meta itemprop="position" content="'. $cnt .'" />';
 				$str.='</li>'."\n";
 				$cnt++;
 			} else {
 				$str.='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-				$str.='<span itemprop="name">'. get_query_var('year') .'年</span>';
+				$str.='<a href="'. get_year_link(get_query_var('year')). '" itemtype="http://schema.org/Thing" itemprop="item">';
+				$str.='<span itemprop="name">'. get_query_var('year') .'年</span></a>';
 				$str.='<meta itemprop="position" content="'. $cnt .'" />';
 				$str.='</li>'."\n";
 				$cnt++;
 			}
 		} elseif(is_search()) {
 			$str.='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-			$str.='<span itemprop="name">「'. get_search_query() .'」で検索した結果</span>';
+			$str.='<a itemprop="item" href="'. home_url().'/?s='. get_search_query() .'" itemtype="http://schema.org/Thing">';
+			$str.='<span itemprop="name">「'. get_search_query() .'」で検索した結果</span></a>';
 			$str.='<meta itemprop="position" content="'. $cnt .'" />';
 			$str.='</li>'."\n";
 			$cnt++;
 		} elseif(is_author()){
 			$str .='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-			$str .='<span itemprop="name">投稿者 : '. get_the_author_meta('display_name', get_query_var('author')).'</span>';
+			$str .='<a itemprop="item" href="'.get_author_posts_url( get_the_author_meta( 'ID' ) ).'" itemtype="http://schema.org/Thing">';
+			$str .='<span itemprop="name">投稿者 : '. get_the_author_meta('display_name', get_query_var('author')).'</span></a>';
 			$str.='<meta itemprop="position" content="'. $cnt .'" />';
 			$str .='</li>'."\n";
 			$cnt++;
 		} elseif(is_tag()){
 			$str .='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-			$str .='<span itemprop="name">タグ : '. single_tag_title( '' , false ). '</span>';
+			$str.='<a itemprop="item" href="'.get_tag_link($tag_id).'" itemtype="http://schema.org/Thing">';
+			$str .='<span itemprop="name">タグ : '. single_tag_title( '' , false ). '</span></a>';
 			$str.='<meta itemprop="position" content="'. $cnt .'" />';
 			$str .='</li>'."\n";
 			$cnt++;
 		} elseif(is_attachment()){
 			$str .='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-			$str .='<span itemprop="name">'. $post -> post_title .'</span>';
+			$str.= '<a itemprop="item" href="'.wp_get_attachment_image_src( $attachment_id, $size, $icon ).'" itemtype="http://schema.org/Thing">';
+			$str .='<span itemprop="name">'. $post -> post_title .'</span></a>';
 			$str.='<meta itemprop="position" content="'. $cnt .'" />';
 			$str .='</li>'."\n";
 			$cnt++;
@@ -340,7 +350,8 @@ function breadcrumb($divOption = array("id" => "breadcrumb")){
 			$str.=''."\n";
 		} else{
 			$str .='<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-			$str .='<span itemprop="name">'. wp_title('', true) .'</span>';
+			$str.='<a itemprop="item" href="'.get_the_permalink().'" itemtype="http://schema.org/Thing">';
+			$str .='<span itemprop="name">'. wp_title('', true) .'</span></a>';
 			$str.='<meta itemprop="position" content="'. $cnt .'" />';
 			$str .='</li>'."\n";
 			$cnt++;
