@@ -6,7 +6,7 @@ body {
 	min-width: 1100px; min-height: 100vh; background: #fff; color: #000;
 	font-size: 14px; font-weight: normal; line-height: 1.5;
 	font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3","Hiragino Kaku GothicPro","Osaka","Verdana","Helvetica","Arial","ＭＳ Ｐゴシック", sans-serif;
-	-webkit-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%; font-feature-settings: "palt";
 
 	display: -webkit-flex; display: -ms-flex; display: flex;
 	-webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column;
@@ -342,6 +342,7 @@ iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;
 
 180205_kamiguchi_更新履歴コメントひな形追加
 200828_akimoto_IEで游ゴシック体を使用すると謎の余白ができるバグがあるため、IEでのみfont-familyを変更する記述を追記
+201029_maehata_bodyタグにfont-feature-settings: "palt";追加
 180228_〇〇_cssを更新したらここに更新履歴を追加していきます。多くなったら上の方は削除。
 
 ------------------------------------------------------ */
