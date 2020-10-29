@@ -16,6 +16,11 @@
 
 ## ChangeLog
 
+### 2020-10-29
+
+- bace_temp_new/common/css/bace.css bodyタグにfont-feature-settings: "palt";追加
+
+
 ### 2020-08-27
 
 MailFormPro ver.4.2.9<br>
