@@ -8,13 +8,10 @@ body {
 	font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3","Hiragino Kaku GothicPro","Osaka","Verdana","Helvetica","Arial","ＭＳ Ｐゴシック", sans-serif;
 	-webkit-text-size-adjust: 100%;
 
-	font-feature-settings: "palt";
-	/* font-feature-settings: "palt";
+	font-feature-settings: "palt"; letter-spacing: 0.08em;
+	/* font-feature-settings: "palt"; こちらの指定をすると文字が詰まりすぎてしまう場合があるので、letter-spaceingの記述が必要です。デザイン上不要であれば削除してください。
 	縦書きテキストだと崩れる可能性があります。縦書きの項目は下記のようにしてください。
 	.v_rl{ -webkit-writing-mode: vertical-rl; -ms-writing-mode: tb-rl; writing-mode: vertical-rl; font-feature-settings: "palt" 0;}*/
-
-	display: -webkit-flex; display: -ms-flex; display: flex;
-	-webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column;
 }
 
 /* IE表示用のCSS　*/
@@ -35,6 +32,7 @@ a:hover img { opacity: 0.75;}
 
 #lineup-font-size-sampler { bottom: 0; left: 0;}
 .fixed { width: 100%; position: fixed; top:0; left: 0; z-index: 999;}
+.ofi { object-fit: cover; font-family: 'object-fit: cover;';}
 iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;}
 
 @media screen and (max-width: 600px) {
