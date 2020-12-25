@@ -63,15 +63,6 @@ iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;
 	-webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
-/*
-	大枠のレイアウトにflexboxを使用しているので、
-	orderを使用してheaderと見出しの位置を入れ替えたりもできます。
-
-	例）#main_imgをheaderの上に持って来るように設定
-	#main_img { order: -1;}
-*/
-
-
 @media screen and (max-width: 600px) {
 	#header,
 	#gnav ul,
@@ -326,7 +317,6 @@ iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;
 }
 
 
-
 /* ---------------------------------------------------
 	clear
 ------------------------------------------------------ */
@@ -338,14 +328,17 @@ iframe[name="google_conversion_frame"] { position: absolute; bottom: 0; left: 0;
 #footer:after { content: "."; display: block; height: 0px; clear: both; visibility: hidden; font-size: 0;}
 
 
-
 /* ---------------------------------------------------
 	更新履歴
 ------------------------------------------------------
 
+180228_〇〇_cssを更新したらここに更新履歴を追加していきます。多くなったら上の方は削除。
 180205_kamiguchi_更新履歴コメントひな形追加
 200828_akimoto_IEで游ゴシック体を使用すると謎の余白ができるバグがあるため、IEでのみfont-familyを変更する記述を追記
 201029_maehata_bodyタグにfont-feature-settings: "palt";追加
-180228_〇〇_cssを更新したらここに更新履歴を追加していきます。多くなったら上の方は削除。
+201223_akimito_下記内容の修正
+　・bodyのdisplay:flex;の削除。
+　・iPhoneセーフエリアの対応記述。
+　・object-fitのIE対応の記述およびjs追加。
 
 ------------------------------------------------------ */
