@@ -16,6 +16,26 @@
 
 ## ChangeLog
 
+### 2021-03-30
+
+- 下記HTMLソース修正<br>
+base_temp_new/index.html<br>
+base_temp_new/_master/index.htmll<br>
+base_temp_new/404/index.htmll<br>
+base_temp_new/inquiry/index.htmll<br>
+base_temp_new/inquiry/add_check.htmll<br>
+base_temp_new/inquiry/thanks.htmll<br>
+base_temp_new/privacy/index.html<br>
+
+  -   パンくず内のaタグについていたitemscopeをトル<br>
+  -   パンくず内のURLを絶対パスに変更<br>
+
+- base_temp_new/common/js/jquery-dropdown.js
+
+  -   $('#gnav a').on("click", function(e){ wrapToggle(e); }); を追記
+  -   （格納メニューから、ページ遷移後に戻るとメニューが開いたままになるのを修正）
+
+
 ### 2020-10-29
 
 - bace_temp_new/common/css/bace.css bodyタグにfont-feature-settings: "palt";追加
