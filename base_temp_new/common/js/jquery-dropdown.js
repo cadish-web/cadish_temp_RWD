@@ -40,6 +40,10 @@ $(function($){
 		wrapToggle(e);
 	});
 
+	$('#gnav a').on("click", function(e){
+		wrapToggle(e);
+	});
+
 	menuSize.addListener(wrapChange);
 	wrapChange();
 });
