@@ -32,8 +32,8 @@ base_temp_new/privacy/index.html<br>
 
 - base_temp_new/common/js/jquery-dropdown.js
 
-  -   $('#gnav a').on("click", function(e){ wrapToggle(e); }); を追記
-  -   （格納メニューから、ページ遷移後に戻るとメニューが開いたままになるのを修正）
+  -   $('#gnav a').on("click", function(e){ wrapToggle(e); }); を追記<br>
+    （格納メニューから、ページ遷移後に戻るとメニューが開いたままになるのを修正）
 
 
 ### 2020-10-29
