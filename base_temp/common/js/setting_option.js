@@ -69,6 +69,13 @@ $(document).ready(function() {
 
 // ページが完全に読み込まれたら実行
 $(window).on('load',function(){
+	/* object-fit IE対応
+		object-fitプロパティを指定するimgタグに class="ofi" を追加してください。
+		object-fit: cover; のみの場合のcssはbase.cssに記載してありますが、
+		object-positionなどを別途指定する場合は個別にcssを記述する必要があります。
+	-------------------------------------------------------- */
+	objectFitImages('.ofi', {watchMQ: true});
+
 	/* 指定した要素の高さを揃える
 	-------------------------------------------------------- */
 	$(".item").matchHeight();

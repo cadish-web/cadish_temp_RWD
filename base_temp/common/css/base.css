@@ -25,6 +25,21 @@ a:hover img { opacity: 0.75;}
 .fixed{ width: 100%; top:0; left: 0; position: fixed; z-index: 999;}
 iframe[name="google_conversion_frame"]{ position: absolute; bottom: 0; left: 0;}
 
+.ofi {
+	object-fit: cover;
+
+	/* IE11 polyfill用 */
+	font-family: 'object-fit: cover;';
+
+	/* 個別にobject-fit-positionなどを指定する場合は
+	object-fit-positionを指定したimgのスタイルを以下の例のように別途指定する必要があります。 */
+	/* 例）#sec1の画像に対してobject-positionを指定した場合
+	#sec1 .ofi {
+		object-position: left center;
+		font-family: 'object-fit:cover; object-position: left center;';
+	}
+	*/
+}
 
 @media screen and (orientation:landscape) {
 	html,
