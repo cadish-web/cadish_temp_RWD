@@ -16,6 +16,14 @@
 
 ## ChangeLog
 
+### 2021-04-22
+
+- 地味にobject-fitのIE用polyfillが入ってなかったので base_temp/ と base_temp_new/ に追加しました。
+  - 各common/js内に ofi.min.js を追加
+  - 各setting_option.js にofi.min.jsの設定を追記
+  - 各base.cssにobject-fitの例を記載
+
+
 ### 2021-03-30
 
 - 下記HTMLソース修正<br>
