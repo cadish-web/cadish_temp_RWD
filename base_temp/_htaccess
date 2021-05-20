@@ -1,8 +1,7 @@
 RewriteEngine on
 
 #wwwありに統一
-#クイックSSL認証を利用する場合は下記一行のコメントを外す
-#RewriteCond %{REQUEST_URI} !^/.well-known/pki-validation/
+RewriteCond %{REQUEST_URI} !^/.well-known/pki-validation/
 RewriteCond %{HTTP_HOST} ^example.com
 RewriteRule (.*) http://www.example.com/$1 [R=301,L]
 
