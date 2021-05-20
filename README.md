@@ -16,6 +16,11 @@
 
 ## ChangeLog
 
+### 2021-05-20
+
+- 各base_temp _htaccessのSSL認証用フォルダをデフォルトでリダイレクトから除外するように修正
+
+
 ### 2021-04-22
 
 - 地味にobject-fitのIE用polyfillが入ってなかったので base_temp/ と base_temp_new/ に追加しました。
