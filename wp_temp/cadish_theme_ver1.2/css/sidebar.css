@@ -62,5 +62,11 @@ Sidebar CSS / サイドバー（ウィジェット対応）
 
 #wp-calendar td a{}
 #wp-calendar #today{ background: #f0f0f0;}
-#wp-calendar #prev { text-align: left;}
-#wp-calendar #next { text-align: right;}
+
+#calendar_wrap .wp-calendar-nav{
+	margin-top: 5px;
+	display: -webkit-flex; display: -ms-flex; display: flex;
+	justify-content: space-between;
+}
+#calendar_wrap .wp-calendar-nav-prev,
+#calendar_wrap .wp-calendar-nav-next{ text-align: center;}
