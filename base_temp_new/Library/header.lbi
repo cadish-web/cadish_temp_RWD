@@ -1,6 +1,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<div id="logo"><a href=".././/"><img src="../common/img/h_logo.png" alt="施設名"></a></div>
-<ul id="h_nav">
-	<li><a class="tel-link" href="tel:0000000000"><img src="../common/img/h_tel.png" alt="TEL.000-000-0000"></a></li>
-	<li><a class="btn" href="#" target="_blank"><img src="../common/img/h_planlist.png" alt="ご予約・プラン一覧"></a></li>
+<div id="h_inner">
+<div class="logo"><a href=".././/"><img src="../common/img/h_logo.png" alt="施設名"></a></div>
+<ul id="h_nav" class="pc">
+	<li class="tel"><a class="tel-link" href="tel:0000000000">TEL.<span>000-000-0000</span></a></li>
+	<li class="btn"><a href="#" target="_blank">ご予約・プラン一覧</a></li>
 </ul>
+</div>
+
+<nav id="gnav" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+<p id="close_top" class="close_menu sp"><span>閉じる</span></p>
+<p class="logo sp">MENU</p>
+<ul>
+	<li itemprop="name" id="gn_home" class="sp"><a itemprop="URL" href=".././/">トップページ</a></li>
+	<li itemprop="name" id="gn_01"><a itemprop="URL" href="#">温泉</a></li>
+	<li itemprop="name" id="gn_02"><a itemprop="URL" href="#">お料理</a></li>
+	<li itemprop="name" id="gn_03"><a itemprop="URL" href="#">お部屋</a></li>
+	<li itemprop="name" id="gn_04"><a itemprop="URL" href="#">周辺観光</a></li>
+	<li itemprop="name" id="gn_05"><a itemprop="URL" href="#">交通アクセス</a></li>
+</ul>
+<div class="sp">
+<p class="btn"><a href="" target="_blank">ご予約・プラン一覧</a></p>
+<p class="tel"><a class="tel-link" href="tel:0000000000">TEL.<span>000-000-0000</span></a></p>
+</div>
+<p id="close_bot" class="close_menu sp"><span>CLOSE</span></p>
+</nav>

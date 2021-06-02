@@ -6,6 +6,9 @@
 
 ------------------------------------------------------ */
 #main_img { padding: 0;}
+#main_img .slick-slide div { vertical-align: bottom;}
+#main_img img { width: 100%;}
+
 #contents_wrap { padding-top: 25px;}
 
 @media screen and (max-width: 600px) {
