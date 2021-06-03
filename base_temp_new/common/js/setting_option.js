@@ -67,11 +67,13 @@ $(window).on('load',function(){
 	/* datepicker
 	-------------------------------------------------------- */
 	var dateFormat = 'yy/mm/dd';
-	$('.date_489ban input[name="date"]').datepicker({
-			dateFormat: dateFormat,
-			showButtonPanel: true,
-			showAnim: 'slideDown'
-	});
+	if($('.date_489ban').length){
+		$('.date_489ban input[name="date"]').datepicker({
+				dateFormat: dateFormat,
+				showButtonPanel: true,
+				showAnim: 'slideDown'
+		});
+	}
 
 	/* グローバルナビ途中から上部固定にする
 		※最初から一番上にくっついてる場合はこのjsいらないので消してください。
